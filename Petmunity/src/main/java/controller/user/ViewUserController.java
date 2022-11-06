@@ -5,28 +5,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import model.service.UserManager;
-import model.service.UserNotFoundException;
-import model.User;
+import model.UserList;
 
 public class ViewUserController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
-    	// ë¡œê·¸ì¸ ì—¬ë¶€ í™•ì¸
+    	// ·Î±×ÀÎ ¿©ºÎ È®ÀÎ
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
-            return "redirect:/user/login/form";		// login form ìš”ì²­ìœ¼ë¡œ redirect
+            return "redirect:/user/login/form";		// login form ¿äÃ»À¸·Î redirect
         }
     	
 		UserManager manager = UserManager.getInstance();
 		String userId = request.getParameter("userId");
 		
-    	User user = null;
-		try {
-			user = manager.findUser(userId);	// ì‚¬ìš©ì ì •ë³´ ê²€ìƒ‰
-		} catch (UserNotFoundException e) {				
-	        return "redirect:/user/list";
-		}	
-		
-		request.setAttribute("user", user);		// ì‚¬ìš©ì ì •ë³´ ì €ì¥				
-		return "/user/view.jsp";				// ì‚¬ìš©ì ë³´ê¸° í™”ë©´ìœ¼ë¡œ ì´ë™
+    	UserList user = null;
+		user = manager.findUser(userId);	// »ç¿ëÀÚ Á¤º¸ °Ë»ö	
+		request.setAttribute("user", user);		// »ç¿ëÀÚ Á¤º¸ ÀúÀå				
+		return "/user/view.jsp";				// »ç¿ëÀÚ º¸±â È­¸éÀ¸·Î ÀÌµ¿
     }
 }

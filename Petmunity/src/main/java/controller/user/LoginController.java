@@ -10,22 +10,22 @@ import model.service.UserManager;
 public class LoginController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	String userId = request.getParameter("userId");
-		String password = request.getParameter("password");
+    	String loginId = request.getParameter("loginId");
+		String loginPwd = request.getParameter("loginPwd");
 		
 		try {
-			// ëª¨ë¸ì— ë¡œê·¸ì¸ ì²˜ë¦¬ë¥¼ ìœ„ì„
+			// ¸ğµ¨¿¡ ·Î±×ÀÎ Ã³¸®¸¦ À§ÀÓ
 			UserManager manager = UserManager.getInstance();
-			manager.login(userId, password);
+			manager.login(loginId, loginPwd);
 	
-			// ì„¸ì…˜ì— ì‚¬ìš©ì ì´ì´ë”” ì €ì¥
+			// ¼¼¼Ç¿¡ »ç¿ëÀÚ ÀÌÀÌµğ ÀúÀå
 			HttpSession session = request.getSession();
-            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
+            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, loginId);
             
             return "redirect:/user/list";			
 		} catch (Exception e) {
-			/* UserNotFoundExceptionì´ë‚˜ PasswordMismatchException ë°œìƒ ì‹œ
-			 * ë‹¤ì‹œ login formì„ ì‚¬ìš©ìì—ê²Œ ì „ì†¡í•˜ê³  ì˜¤ë¥˜ ë©”ì„¸ì§€ë„ ì¶œë ¥
+			/* UserNotFoundExceptionÀÌ³ª PasswordMismatchException ¹ß»ı ½Ã
+			 * ´Ù½Ã login formÀ» »ç¿ëÀÚ¿¡°Ô Àü¼ÛÇÏ°í ¿À·ù ¸Ş¼¼Áöµµ Ãâ·Â
 			 */
             request.setAttribute("loginFailed", true);
 			request.setAttribute("exception", e);

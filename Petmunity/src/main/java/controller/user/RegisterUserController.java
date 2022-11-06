@@ -1,6 +1,6 @@
 package controller.user;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,8 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.Community;
-import model.User;
+import model.UserList;
 import model.service.ExistingUserException;
 import model.service.UserManager;
 
@@ -19,33 +18,35 @@ public class RegisterUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-       	if (request.getMethod().equals("GET")) {	
-    		// GET request: íšŒì›ì •ë³´ ë“±ë¡ form ìš”ì²­	
+       	/*if (request.getMethod().equals("GET")) {	
+    		// GET request: È¸¿øÁ¤º¸ µî·Ï form ¿äÃ»	
     		log.debug("RegisterForm Request");
-
-    		List<Community> commList = UserManager.getInstance().findCommunityList();	// ì»¤ë®¤ë‹ˆí‹° ë¦¬ìŠ¤íŠ¸ ê²€ìƒ‰
-			request.setAttribute("commList", commList);	
 		
-			return "/user/registerForm.jsp";   // ê²€ìƒ‰í•œ ì»¤ë®¤ë‹ˆí‹° ë¦¬ìŠ¤íŠ¸ë¥¼ registerFormìœ¼ë¡œ ì „ì†¡     	
-	    }	
+			return "/user/registerForm.jsp";   //  registerFormÀ¸·Î Àü¼Û     	
+	    }	*/
 
-    	// POST request (íšŒì›ì •ë³´ê°€ parameterë¡œ ì „ì†¡ë¨)
-       	User user = new User(
-			request.getParameter("userId"),
-			request.getParameter("password"),
-			request.getParameter("name"),
-			request.getParameter("email"),
-			request.getParameter("phone"),
-			Integer.parseInt(request.getParameter("commId")));
+    	// POST request (È¸¿øÁ¤º¸°¡ parameter·Î Àü¼ÛµÊ)
+       	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+       	UserList user = new UserList(
+       		Integer.parseInt(request.getParameter("userId")),
+			request.getParameter("loginId"),
+			request.getParameter("loginPwd"),
+			request.getParameter("userNickname"),
+			formatter.parse(request.getParameter("userBirth")),
+			request.getParameter("phoneNumber"),
+			request.getParameter("gender"),
+			request.getParameter("address"),
+			Integer.parseInt(request.getParameter("petList"))
+			);
 		
         log.debug("Create User : {}", user);
 
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.create(user);
-	        return "redirect:/user/list";	// ì„±ê³µ ì‹œ ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸ í™”ë©´ìœ¼ë¡œ redirect
+	        return "redirect:/user/list";	// ¼º°ø ½Ã »ç¿ëÀÚ ¸®½ºÆ® È­¸éÀ¸·Î redirect
 	        
-		} catch (ExistingUserException e) {	// ì˜ˆì™¸ ë°œìƒ ì‹œ íšŒì›ê°€ì… formìœ¼ë¡œ forwarding
+		} catch (ExistingUserException e) {	// ¿¹¿Ü ¹ß»ı ½Ã È¸¿ø°¡ÀÔ formÀ¸·Î forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("user", user);
