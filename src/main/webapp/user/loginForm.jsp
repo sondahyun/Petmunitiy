@@ -36,10 +36,11 @@ function userCreate(targetUri) {
 	<tr>
 	  <td width="20"></td>
 	  <td>
-	  	<b>UserMan3</b><br><br>
+	  	<center>
+	  	<b>(뭉게구름 로고)</b><br><br>
 	   	<table>
 	   	  <tr>
-		    <td class="title">&nbsp;&nbsp;사용자 관리 - 로그인&nbsp;&nbsp;</td>
+		    <!-- <td class="title">&nbsp;&nbsp;사용자 관리 - 로그인&nbsp;&nbsp;</td> -->
 		  </tr>
 	    </table>  
 		
@@ -48,16 +49,16 @@ function userCreate(targetUri) {
 	  	  <br><font color="red"><c:out value="${exception.getMessage()}" /></font><br>
 	    </c:if>
 	    <br>	  
-	    <table style="background-color: YellowGreen">
+	    <table style="background-color: white">
 	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
-			<td width="250" bgcolor="ffffff" style="padding-left:10">
+			<td width="150" align="center">ID</td>
+			<td width="250" style="padding-left:10">
 				<input type="text" style="width:240" name="userId">
 			</td>
 		  </tr>
 	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">비밀번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left:10">
+			<td width="150" align="center">비밀번호</td>
+			<td width="250" style="padding-left:10">
 				<input type="password" style="width:240" name="password">
 			</td>
 		  </tr>
@@ -65,22 +66,23 @@ function userCreate(targetUri) {
 	    <br>	  
 	    <table style="width:100%">
 		  <tr>
-			<td align=left>
-			<input type="button" value="로그인" onClick="login()"> &nbsp;
+			<td align="center">
+			<input type="button" value="로그인" onClick="login()"> &nbsp;&nbsp;&nbsp;
 			<input type="button" value="회원가입" onClick="userCreate(
 								'<c:url value='/user/register'/>')">
 			</td>						
 		  </tr>
-		  <tr height="40"><td>(관리자 로그인: admin/admin)</td></tr>
+		  <!--<center><tr height="40"><td>(관리자 로그인: admin/admin)</center></td></tr>-->
 	    </table>
+	    </center>
 	  </td>	  
 	</tr>
-	<tr height="100"><td>&nbsp;</td>
+	<!-- <tr height="100"><td>&nbsp;</td>
 	  <td>
 		<a href="http://cs.dongduk.ac.kr">
 		  <img src="<c:url value='/images/logo.gif' />" /></a>		
 	  </td>
-	</tr>
+	</tr>-->
   </table>  
 </form>
 </body>
