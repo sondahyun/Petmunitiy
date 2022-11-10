@@ -42,7 +42,6 @@ function userCreate(targetUri) {
 	<tr>
 	  <td width="20"></td>
 	  <td align="center">
-	  	<b>(뭉게구름 로고)</b><br><br>
 	   	<table>
 	   	  <tr>
 		    <!-- <td class="title">&nbsp;&nbsp;사용자 관리 - 로그인&nbsp;&nbsp;</td> -->
