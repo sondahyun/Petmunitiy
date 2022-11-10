@@ -33,10 +33,15 @@ function userCreate(targetUri) {
 <!-- login form  -->
 <form name="form" method="POST" action="<c:url value='/user/login' />">
   <table style="width:100%">
+    <tr height="100"><td>&nbsp;</td>
+	  <td>
+		<a href="http://cs.dongduk.ac.kr">
+		  <img src="<c:url value='/images/logo.gif' />" /></a>		
+	  </td>
+	</tr>
 	<tr>
 	  <td width="20"></td>
-	  <td>
-	  	<center>
+	  <td align="center">
 	  	<b>(뭉게구름 로고)</b><br><br>
 	   	<table>
 	   	  <tr>
@@ -74,15 +79,8 @@ function userCreate(targetUri) {
 		  </tr>
 		  <!--<center><tr height="40"><td>(관리자 로그인: admin/admin)</center></td></tr>-->
 	    </table>
-	    </center>
 	  </td>	  
 	</tr>
-	<!-- <tr height="100"><td>&nbsp;</td>
-	  <td>
-		<a href="http://cs.dongduk.ac.kr">
-		  <img src="<c:url value='/images/logo.gif' />" /></a>		
-	  </td>
-	</tr>-->
   </table>  
 </form>
 </body>
