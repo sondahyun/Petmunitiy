@@ -35,7 +35,7 @@ function userCreate(targetUri) {
   <table style="width:100%">
     <tr height="100" align="center"><td>&nbsp;</td>
 	  <td>
-		<a href="http://cs.dongduk.ac.kr">
+		<a href="https://drive.google.com/drive/folders/1D9SLM6m28H5EeIwVflH8gi7PqMxX5mC6">
 		  <img src="<c:url value='/images/logo.gif' />" /></a>		
 	  </td>
 	</tr>
