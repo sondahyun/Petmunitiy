@@ -33,7 +33,7 @@ function userCreate(targetUri) {
 <!-- login form  -->
 <form name="form" method="POST" action="<c:url value='/user/login' />">
   <table style="width:100%">
-    <tr height="100"><td>&nbsp;</td>
+    <tr height="100" align="center"><td>&nbsp;</td>
 	  <td>
 		<a href="http://cs.dongduk.ac.kr">
 		  <img src="<c:url value='/images/logo.gif' />" /></a>		
