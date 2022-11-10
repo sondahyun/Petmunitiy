@@ -57,59 +57,72 @@ function userList(targetUri) {
   <table style="width: 100%">
     <tr>
       <td width="20"></td>
-	  <td>
-	    <table>
-		  <tr>
-		    <td class="title">&nbsp;&nbsp;<b>사용자 관리 - 회원 가입</b>&nbsp;&nbsp;</td>
-		  </tr>
-	    </table>  	 
+      <center>
+	  	<b>(뭉게구름 로고)</b><br><br>
+	  <td>	 
 	    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
         <c:if test="${registerFailed}">
 	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
 	    </c:if>
 	    <br>	  
-	    <table style="background-color: YellowGreen">
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240;" name="userId">
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">비밀번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="password">
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">비밀번호 확인</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="password2">
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">이름</td>
+	    <center>
+	    <table style="background-color: #848484">
+	     <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240" name="name" 
 				 	<c:if test="${registerFailed}">value="${user.name}"</c:if>>
 			</td>
 		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">이메일 주소</td>
+	  	  
+		   <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">나이</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="email" 
-					<c:if test="${registerFailed}">value="${user.email}"</c:if>>
+				<input type="text" style="width: 240" name="age" >
 			</td>
-		  </tr>	
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">전화번호</td>
+		  </tr>
+		   <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">성별</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="radio" name="gender" value="female"/> 여성
+				<input type="radio" name="gender" value="male"/> 남성
+			</td>
+		  </tr>
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">전화번호</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240" name="phone" 
 					<c:if test="${registerFailed}">value="${user.phone}"</c:if>>
 			</td>
 		  </tr>
 		  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">커뮤니티</td>
+			<td width="150" align="center" bgcolor="#E6E6E6">사용자 ID</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="text" style="width: 240;" name="userId">
+			</td>
+		  </tr>
+	  	  <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">비밀번호</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="password" style="width: 240" name="password">
+			</td>
+		  </tr>
+	  	  <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">비밀번호 확인</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="password" style="width: 240" name="password2">
+			</td>
+		  </tr>
+	  	 
+	  	  <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">이메일 주소</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="text" style="width: 240" name="email" 
+					<c:if test="${registerFailed}">value="${user.email}"</c:if>>
+			</td>
+		  </tr>	
+	  	  <!-- <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">커뮤니티</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<select name="commId" style="width: 240">
 					<option value="0">없음</option>
@@ -120,20 +133,24 @@ function userList(targetUri) {
 					</c:forEach>
 				</select>			
 			</td>
-		  </tr>		  
+		  </tr>	 -->
+		  	  
 	    </table>
 	    <br>
 	    <table style="width: 100%">
 		  <tr>
 			<td align="left">
-			<input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-			<input type="button" value="목록" onClick="userList('<c:url value='/user/list' />')">
+			<center><input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
+			<input type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/list' />')">
+			</center>
 			</td>
 		  </tr>
 	    </table>
+	   
 	  </td>
     </tr>
   </table>  
+  </center>
 </form>
 </body>
 </html>
