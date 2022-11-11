@@ -1,11 +1,12 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * »ç¿ëÀÚ °ü¸®¸¦ À§ÇØ ÇÊ¿äÇÑ µµ¸ÞÀÎ Å¬·¡½º. USERINFO Å×ÀÌºí°ú ´ëÀÀµÊ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½. USERINFO ï¿½ï¿½ï¿½Ìºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
-public class UserList {
+public class UserInfo {
 	private int userId;	
 	private String loginId;
 	private String loginPwd;
@@ -14,14 +15,14 @@ public class UserList {
 	private String phoneNumber;
 	private String gender;
 	private String address;
-	private int petList;
-	//private ArrayList<Integer> petList; //ArrayList<Integer> => Array(UserDAO findUser¿¡¼­ getArray¸¸ °¡´É
+	//private int petList;
+	private ArrayList<Integer> petList; //ArrayList<Integer> => Array(UserDAO findUserï¿½ï¿½ï¿½ï¿½ getArrayï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	public UserList() {
+	public UserInfo() {
 	}
 
-	public UserList(int userId, String loginId, String loginPwd, String userNickname, Date userBirth,
-			String phoneNumber, String gender, String address, int petList) {
+	public UserInfo(int userId, String loginId, String loginPwd, String userNickname, Date userBirth,
+			String phoneNumber, String gender, String address, ArrayList<Integer> petList) {
 		this.userId = userId;
 		this.loginId = loginId;
 		this.loginPwd = loginPwd;
@@ -130,19 +131,19 @@ public class UserList {
 
 
 
-	public int getPetList() {
+	public ArrayList<Integer> getPetList() {
 		return petList;
 	}
 
 
 
-	public void setPetList(int petList) {
+	public void setPetList(ArrayList<Integer> petList) {
 		this.petList = petList;
 	}
 
 
 
-	/* ºñ¹Ð¹øÈ£ °Ë»ç */
+	/* ï¿½ï¿½Ð¹ï¿½È£ ï¿½Ë»ï¿½ */
 	public boolean matchPassword(String password) {
 		if (password == null) {
 			return false;
@@ -150,13 +151,13 @@ public class UserList {
 		return this.loginPwd.equals(password);
 	}
 	
-	public boolean isSameUser(UserList user) {
+	public boolean isSameUser(UserInfo user) {
         return this.loginId.equals(user.loginId);
     }
 
 	@Override
 	public String toString() {
-		return "UserList [userId=" + userId + ", loginId=" + loginId + ", loginPwd=" + loginPwd + ", userNickname="
+		return "UserInfo [userId=" + userId + ", loginId=" + loginId + ", loginPwd=" + loginPwd + ", userNickname="
 				+ userNickname + ", userBirth=" + userBirth + ", phoneNumber=" + phoneNumber + ", gender=" + gender
 				+ ", address=" + address + ", petList=" + petList + "]";
 	}

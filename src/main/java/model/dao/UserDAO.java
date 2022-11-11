@@ -4,128 +4,125 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.UserList;
+import model.UserInfo;
 
 /**
- * »ç¿ëÀÚ °ü¸®¸¦ À§ÇØ µ¥ÀÌÅÍº£ÀÌ½º ÀÛ¾÷À» Àü´ãÇÏ´Â DAO Å¬·¡½º
- * USERINFO Å×ÀÌºí¿¡ »ç¿ëÀÚ Á¤º¸¸¦ Ãß°¡, ¼öÁ¤, »èÁ¦, °Ë»ö ¼öÇà 
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ DAO Å¬ï¿½ï¿½ï¿½ï¿½ USERINFO ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½
  */
 public class UserDAO {
 	private JDBCUtil jdbcUtil = null;
-	
-	public UserDAO() {			
-		jdbcUtil = new JDBCUtil();	// JDBCUtil °´Ã¼ »ı¼º
-	}
-		
-	/**
-	 * »ç¿ëÀÚ °ü¸® Å×ÀÌºí¿¡ »õ·Î¿î »ç¿ëÀÚ »ı¼º.
-	 */
-	public int create(UserList user) throws SQLException {
-		String sql = "INSERT INTO USERLIST VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";		
-		Object[] param = new Object[] {user.getUserId(), user.getLoginId(), user.getLoginPwd(),
-						user.getUserNickname(), user.getUserBirth(), user.getPhoneNumber(), 
-						user.getGender(), user.getAddress(), user.getPetList()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil ¿¡ insert¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
-						
-		try {				
-			int result = jdbcUtil.executeUpdate();	// insert ¹® ½ÇÇà
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		} finally {		
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource ¹İÈ¯
-		}		
-		return 0;			
+
+	public UserDAO() {
+		jdbcUtil = new JDBCUtil(); // JDBCUtil ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 	}
 
 	/**
-	 * ±âÁ¸ÀÇ »ç¿ëÀÚ Á¤º¸¸¦ ¼öÁ¤.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	 */
-	public int update(UserList user) throws SQLException {
-		String sql = "UPDATE USERLIST "
-					+ "SET loginPwd=?, userNickname=?, userBirth=?, phoneNumber=?, address=?, petList=?"
-					+ "WHERE userId=?";
-		Object[] param = new Object[] {user.getLoginPwd(), user.getUserNickname(), 
-					user.getUserBirth(), user.getPhoneNumber(), 
-					user.getAddress(), user.getPetList(),
-					user.getUserId()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil¿¡ update¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
-			
-		try {				
-			int result = jdbcUtil.executeUpdate();	// update ¹® ½ÇÇà
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource ¹İÈ¯
-		}		
-		return 0;
-	}
-
-	/**
-	 * »ç¿ëÀÚ ID¿¡ ÇØ´çÇÏ´Â »ç¿ëÀÚ¸¦ »èÁ¦.
-	 */
-	public int remove(String loginId) throws SQLException {
-		String sql = "DELETE FROM USERLIST WHERE loginId=?";		
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {loginId});	// JDBCUtil¿¡ delete¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
-
-		try {				
-			int result = jdbcUtil.executeUpdate();	// delete ¹® ½ÇÇà
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource ¹İÈ¯
-		}		
-		return 0;
-	}
-	
-	public UserList findUser(String loginId) throws SQLException {
-        String sql = "SELECT * "
-                 + "FROM USERLIST"
-                 + "WHERE loginId=? ";              
-      jdbcUtil.setSqlAndParameters(sql, new Object[] {loginId});   // JDBCUtil — queryë¬¸ê³¼ ×º¤ê°œ ë³  ˆ˜  „¤  •
-
-      try {
-         ResultSet rs = jdbcUtil.executeQuery();      // query  ‹¤ –‰
-         if (rs.next()) {                  //  •™ ƒ   •ë³  ë°œê²¬
-            UserList user = new UserList(      // User ê°ì²´ë¥   ƒ „± •˜ —¬  •™ ƒ   •ë³´ë      ¥
-               rs.getInt("userId"),
-               rs.getString("loginId"),
-               rs.getString("loginPwd"),
-               rs.getString("userNickname"),
-               rs.getDate("userBirth"),
-               rs.getString("phoneNumber"),
-               rs.getString("gender"),               
-               rs.getString("address"),
-               rs.getInt("petList"));//dao ¼öÁ¤
-            return user;
-         }
-      } catch (Exception ex) {
-         ex.printStackTrace();
-      } finally {
-         jdbcUtil.close();      // resource ë°˜í™˜
-      }
-      return null;
-   }
-	
-	/**
-	 * ÁÖ¾îÁø »ç¿ëÀÚ ID¿¡ ÇØ´çÇÏ´Â »ç¿ëÀÚ°¡ Á¸ÀçÇÏ´ÂÁö °Ë»ç 
-	 */
-	public boolean existingUser(String loginId) throws SQLException {
-		String sql = "SELECT count(*) FROM USERLIST WHERE loginId=?";      
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {loginId});	// JDBCUtil¿¡ query¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
+	public int create(UserInfo user) throws SQLException {
+		String sql = "INSERT INTO UserInfo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] param = new Object[] { user.getUserId(), user.getLoginId(), user.getLoginPwd(), user.getUserNickname(),
+				user.getUserBirth(), user.getPhoneNumber(), user.getGender(), user.getAddress(), user.getPetList() };
+		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil ï¿½ï¿½ insertï¿½ï¿½ï¿½ï¿½ ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query ½ÇÇà
+			int result = jdbcUtil.executeUpdate(); // insert ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // resource ï¿½ï¿½È¯
+		}
+		return 0;
+	}
+
+	/**
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+	 */
+	public int update(UserInfo user) throws SQLException {
+		String sql = "UPDATE UserInfo "
+				+ "SET loginPwd=?, userNickname=?, userBirth=?, phoneNumber=?, address=?, petList=?" + "WHERE userId=?";
+		Object[] param = new Object[] { user.getLoginPwd(), user.getUserNickname(), user.getUserBirth(),
+				user.getPhoneNumber(), user.getAddress(), user.getPetList(), user.getUserId() };
+		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtilï¿½ï¿½ updateï¿½ï¿½ï¿½ï¿½ ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // update ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // resource ï¿½ï¿½È¯
+		}
+		return 0;
+	}
+
+	/**
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½.
+	 */
+	public int remove(String loginId) throws SQLException {
+		String sql = "DELETE FROM UserInfo WHERE loginId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtilï¿½ï¿½ deleteï¿½ï¿½ï¿½ï¿½ ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // delete ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // resource ï¿½ï¿½È¯
+		}
+		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	public UserInfo findUser(String loginId) throws SQLException {
+		String sql = "SELECT * " + "FROM UserInfo" + "WHERE loginId=? ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtil ï¿½ï¿½ queryë¬¸ê³¼ ×ºï¿½ê°œ ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query ï¿½ï¿½ ï¿½ï¿½
+			UserInfo user = null;
+			ArrayList<Integer> list = new ArrayList<>();
+			if(rs.next()) {
+				user = new UserInfo();
+				user.setUserId(rs.getInt("userId"));
+				user.setLoginId(rs.getString("loginId"));
+				user.setLoginPwd(rs.getString("loginPwd"));
+				user.setUserNickname(rs.getString("userNickname"));
+				user.setUserBirth(rs.getDate("userBirth"));
+				user.setPhoneNumber(rs.getString("phoneNumber"));
+				user.setGender(rs.getString("gender"));
+				user.setAddress(rs.getString("address"));
+				user.setPetList((ArrayList<Integer>) rs.getArray("petList"));
+				
+				return user;
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close(); // resource ë°˜í™˜
+		}
+		return null;
+	}
+
+	/**
+	 * ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
+	 */
+	public boolean existingUser(String loginId) throws SQLException {
+		String sql = "SELECT count(*) FROM UserInfo WHERE loginId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtilï¿½ï¿½ queryï¿½ï¿½ï¿½ï¿½ ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query ï¿½ï¿½ï¿½ï¿½
 			if (rs.next()) {
 				int count = rs.getInt(1);
 				return (count == 1 ? true : false);
@@ -133,7 +130,7 @@ public class UserDAO {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource ¹İÈ¯
+			jdbcUtil.close(); // resource ï¿½ï¿½È¯
 		}
 		return false;
 	}

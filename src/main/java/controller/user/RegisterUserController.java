@@ -1,6 +1,7 @@
 package controller.user;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.UserList;
+import model.UserInfo;
 import model.service.ExistingUserException;
 import model.service.UserManager;
 
@@ -19,15 +20,15 @@ public class RegisterUserController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
        	/*if (request.getMethod().equals("GET")) {	
-    		// GET request: È¸¿øÁ¤º¸ µî·Ï form ¿äÃ»	
+    		// GET request: È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ form ï¿½ï¿½Ã»	
     		log.debug("RegisterForm Request");
 		
-			return "/user/registerForm.jsp";   //  registerFormÀ¸·Î Àü¼Û     	
+			return "/user/registerForm.jsp";   //  registerFormï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½     	
 	    }	*/
 
-    	// POST request (È¸¿øÁ¤º¸°¡ parameter·Î Àü¼ÛµÊ)
+    	// POST request (È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ parameterï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½)
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-       	UserList user = new UserList(
+       	UserInfo user = new UserInfo(
        		Integer.parseInt(request.getParameter("userId")),
 			request.getParameter("loginId"),
 			request.getParameter("loginPwd"),
@@ -36,7 +37,7 @@ public class RegisterUserController implements Controller {
 			request.getParameter("phoneNumber"),
 			request.getParameter("gender"),
 			request.getParameter("address"),
-			Integer.parseInt(request.getParameter("petList"))
+			stringToArrayList(request.getParameter("petList"))
 			);
 		
         log.debug("Create User : {}", user);
@@ -44,14 +45,24 @@ public class RegisterUserController implements Controller {
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.create(user);
-	        return "redirect:/user/list";	// ¼º°ø ½Ã »ç¿ëÀÚ ¸®½ºÆ® È­¸éÀ¸·Î redirect
+	        return "redirect:/user/list";	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ redirect
 	        
-		} catch (ExistingUserException e) {	// ¿¹¿Ü ¹ß»ý ½Ã È¸¿ø°¡ÀÔ formÀ¸·Î forwarding
+		} catch (ExistingUserException e) {	// ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ formï¿½ï¿½ï¿½ï¿½ forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("user", user);
 			return "/user/registerForm.jsp";
 		}
     }
+    
+    public static ArrayList<Integer> stringToArrayList(String input){
+        String[] s = input.split(",");
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int a = 0; a<s.length; a++) {
+           list.add(Integer.parseInt(s[a]));
+        }
+        return list;
+     }
+
 }
 

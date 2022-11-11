@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.UserList;
+import model.UserInfo;
 import model.service.UserManager;
 
 public class DeleteUserController implements Controller {
@@ -22,16 +22,16 @@ public class DeleteUserController implements Controller {
 		UserManager manager = UserManager.getInstance();		
 		HttpSession session = request.getSession();	
 	
-												// ¶Ç´Â 
-			if(UserSessionUtils.isLoginUser(deleteId, session)) { // ·Î±×ÀÎÇÑ »ç¿ëÀÚ°¡ »èÁ¦ ´ë»óÀÎ °æ¿ì (ÀÚ±â ÀÚ½ÅÀ» »èÁ¦)			
-				manager.remove(deleteId);				// »ç¿ëÀÚ Á¤º¸ »èÁ¦
-				return "redirect:/user/logout";		// logout Ã³¸®
+												// ï¿½Ç´ï¿½ 
+			if(UserSessionUtils.isLoginUser(deleteId, session)) { // ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½Ú±ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)			
+				manager.remove(deleteId);				// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				return "redirect:/user/logout";		// logout Ã³ï¿½ï¿½
 		}
 		
-		/* »èÁ¦°¡ ºÒ°¡´ÉÇÑ °æ¿ì */
-		UserList user = manager.findUser(deleteId);	// »ç¿ëÀÚ Á¤º¸ °Ë»ö
+		/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ */
+		UserInfo user = manager.findUser(deleteId);	// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 		request.setAttribute("user", user);						
 		request.setAttribute("deleteFailed", true);											     
-		return "/user/view.jsp";		// »ç¿ëÀÚ º¸±â È­¸éÀ¸·Î ÀÌµ¿ (forwarding)	
+		return "/user/view.jsp";		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ (forwarding)	
 	}
 }
