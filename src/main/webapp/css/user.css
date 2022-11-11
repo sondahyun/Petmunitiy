@@ -13,10 +13,23 @@ td {
 	background-color: Beige;
 	line-height: 22px;
 }
-
+.tt {
+	font-family: 돋움; 
+	font-size: 25pt; 
+	font-weight: bold;
+	color: Black; 
+	line-height: 22px;
+}
 /* Form css */
 .text, .textarea, .password, .file, .select { 
 	font-family: 돋움; 
 	font-size: 8pt; 
 	color: #333333;
+}
+p {
+  width: 100px; /* 정렬하려는 요소의 넓이를 반드시 지정 */
+  margin: 0 auto;
+}
+body {
+  text-align: center; /* Quirks Mode 를 위한 가운데 정렬 */
 }

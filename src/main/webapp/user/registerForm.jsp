@@ -53,19 +53,24 @@ function userList(targetUri) {
 <!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 <br>
 <!-- registration form  -->
+
 <form name="form" method="POST" action="<c:url value='/user/register' />">
   <table style="width: 100%">
+  	 <tr height="100" align="center"><td>&nbsp;</td>
+	  <td>
+		<a href="https://drive.google.com/drive/folders/1D9SLM6m28H5EeIwVflH8gi7PqMxX5mC6">
+		  <img src="<c:url value='/images/logo.gif' />" /></a>		
+	  </td>
+	</tr>
     <tr>
       <td width="20"></td>
-      <center>
-	  	<b>(뭉게구름 로고)</b><br><br>
 	  <td>	 
 	    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
         <c:if test="${registerFailed}">
 	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
 	    </c:if>
 	    <br>	  
-	    <center>
+	    <!--<center>-->
 	    <table style="background-color: #848484">
 	     <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
@@ -74,11 +79,17 @@ function userList(targetUri) {
 				 	<c:if test="${registerFailed}">value="${user.name}"</c:if>>
 			</td>
 		  </tr>
-	  	  
+	  	  <!-- 
 		   <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">나이</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240" name="age" >
+			</td>
+		  </tr> -->
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">생일</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="date" style="width: 240" name="birth" >
 			</td>
 		  </tr>
 		   <tr height="40">
@@ -94,6 +105,18 @@ function userList(targetUri) {
 				<input type="text" style="width: 240" name="phone" 
 					<c:if test="${registerFailed}">value="${user.phone}"</c:if>>
 			</td>
+		  </tr>
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">전화번호</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<select name=phone1>
+				<option value=0 selected>010</option>
+				<option value=1>080</option>
+				<option value=2>070</option>
+				<option value=3>02</option>
+			</select> - <input type="text" name="phone2" value="" size="4" maxlength="4"> - <input type="text" name="phone3" value="" size="4" maxlength="4">
+			<c:if test="${registerFailed}">value="${user.phone}"</c:if>
+		</td>
 		  </tr>
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">사용자 ID</td>
@@ -121,6 +144,13 @@ function userList(targetUri) {
 					<c:if test="${registerFailed}">value="${user.email}"</c:if>>
 			</td>
 		  </tr>	
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">펫의 정보</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="text" style="width: 240" name="petInfo" 
+					<c:if test="${registerFailed}">value="${user.petInfo}"</c:if>>
+			</td>
+		  </tr>
 	  	  <!-- <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">커뮤니티</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
@@ -138,11 +168,10 @@ function userList(targetUri) {
 	    </table>
 	    <br>
 	    <table style="width: 100%">
-		  <tr>
+		  <tr align="center">
 			<td align="left">
-			<center><input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
+			<input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
 			<input type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/list' />')">
-			</center>
 			</td>
 		  </tr>
 	    </table>
@@ -150,7 +179,6 @@ function userList(targetUri) {
 	  </td>
     </tr>
   </table>  
-  </center>
 </form>
 </body>
 </html>
