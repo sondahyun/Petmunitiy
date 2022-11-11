@@ -2,7 +2,7 @@
 <%@page import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	UserList user = (UserList)request.getAttribute("user");
+	UserInfo user = (UserInfo)request.getAttribute("user");
 %>
 <html>
 <head>
