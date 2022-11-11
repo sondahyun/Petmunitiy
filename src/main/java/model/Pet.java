@@ -5,6 +5,7 @@ import java.util.Date;
 public class Pet {
 	private int petId;
 	private String name;
+	
 	private String gender;
 	private Date birth;
 	private String health;
