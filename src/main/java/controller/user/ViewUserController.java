@@ -5,22 +5,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import model.service.UserManager;
-import model.UserList;
+import model.UserInfo;
 
 public class ViewUserController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
-    	// ·Î±×ÀÎ ¿©ºÎ È®ÀÎ
+    	// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
-            return "redirect:/user/login/form";		// login form ¿äÃ»À¸·Î redirect
+            return "redirect:/user/login/form";		// login form ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ redirect
         }
     	
 		UserManager manager = UserManager.getInstance();
 		String userId = request.getParameter("userId");
 		
-    	UserList user = null;
-		user = manager.findUser(userId);	// »ç¿ëÀÚ Á¤º¸ °Ë»ö	
-		request.setAttribute("user", user);		// »ç¿ëÀÚ Á¤º¸ ÀúÀå				
-		return "/user/view.jsp";				// »ç¿ëÀÚ º¸±â È­¸éÀ¸·Î ÀÌµ¿
+    	UserInfo user = null;
+		user = manager.findUser(userId);	// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½	
+		request.setAttribute("user", user);		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½				
+		return "/user/view.jsp";				// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     }
 }

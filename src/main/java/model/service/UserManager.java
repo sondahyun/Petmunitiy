@@ -2,15 +2,15 @@ package model.service;
 
 import java.sql.SQLException;
 import java.util.List;
-import model.UserList;
+import model.UserInfo;
 import model.dao.UserDAO;
 
 /**
- * »ç¿ëÀÚ °ü¸® API¸¦ »ç¿ëÇÏ´Â °³¹ßÀÚµéÀÌ Á÷Á¢ Á¢±ÙÇÏ°Ô µÇ´Â Å¬·¡½º.
- * UserDAO¸¦ ÀÌ¿ëÇÏ¿© µ¥ÀÌÅÍº£ÀÌ½º¿¡ µ¥ÀÌÅÍ Á¶ÀÛ ÀÛ¾÷ÀÌ °¡´ÉÇÏµµ·Ï ÇÏ¸ç,
- * µ¥ÀÌÅÍº£ÀÌ½ºÀÇ µ¥ÀÌÅÍµéÀ» ÀÌ¿ëÇÏ¿© ºñÁö´Ï½º ·ÎÁ÷À» ¼öÇàÇÏ´Â ¿ªÇÒÀ» ÇÑ´Ù.
- * ºñÁö´Ï½º ·ÎÁ÷ÀÌ º¹ÀâÇÑ °æ¿ì¿¡´Â ºñÁö´Ï½º ·ÎÁ÷¸¸À» Àü´ãÇÏ´Â Å¬·¡½º¸¦ 
- * º°µµ·Î µÑ ¼ö ÀÖ´Ù.
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ APIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ç´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½.
+ * UserDAOï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½,
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
  */
 public class UserManager {
 	private static UserManager userMan = new UserManager();
@@ -28,14 +28,14 @@ public class UserManager {
 		return userMan;
 	}
 	
-	public int create(UserList user) throws SQLException, ExistingUserException {
+	public int create(UserInfo user) throws SQLException, ExistingUserException {
 		if (userDAO.existingUser(user.getLoginId()) == true) {
-			throw new ExistingUserException(user.getUserId() + "´Â Á¸ÀçÇÏ´Â ¾ÆÀÌµðÀÔ´Ï´Ù.");
+			throw new ExistingUserException(user.getUserId() + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½Ô´Ï´ï¿½.");
 		}
 		return userDAO.create(user);
 	}
 
-	public int update(UserList user) throws SQLException, UserNotFoundException {
+	public int update(UserInfo user) throws SQLException, UserNotFoundException {
 		return userDAO.update(user);
 	}	
 
@@ -45,15 +45,15 @@ public class UserManager {
 
 	public boolean login(String loginId, String password)
 		throws SQLException, UserNotFoundException, PasswordMismatchException {
-		UserList user = userDAO.findUser(loginId);
+		UserInfo user = userDAO.findUser(loginId);
 
 		if (!user.matchPassword(password)) {
-			throw new PasswordMismatchException("ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+			throw new PasswordMismatchException("ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.");
 		}
 		return true;
 	}
 
-	public UserList findUser(String loginId) throws SQLException {
+	public UserInfo findUser(String loginId) throws SQLException {
 		return userDAO.findUser(loginId);
 	}
 	public UserDAO getUserDAO() {
