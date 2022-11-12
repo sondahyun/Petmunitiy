@@ -1,10 +1,16 @@
 td {
+	margin:auto;
 	font-family: 돋움; 
 	font-size: 12px; 
 	color: #333333; 
 	line-height: 18px;
 }
-
+table {
+    margin:auto; 
+}
+.find-btn{
+    text-align: center; 
+}
 .title {
 	font-family: 돋움; 
 	font-size: 12pt; 
@@ -31,5 +37,6 @@ p {
   margin: 0 auto;
 }
 body {
+  margin:auto;
   text-align: center; /* Quirks Mode 를 위한 가운데 정렬 */
 }
