@@ -167,7 +167,7 @@ function userList(targetUri) {
 		  	  
 	    </table>
 	    <br>
-	    <table style="width: 100%">
+	    <table style="margin-left: auto; margin-right: auto;">
 		  <tr align="center">
 			<td align="left">
 			<input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
@@ -175,6 +175,7 @@ function userList(targetUri) {
 			</td>
 		  </tr>
 	    </table>
+	
 	   
 	  </td>
     </tr>
