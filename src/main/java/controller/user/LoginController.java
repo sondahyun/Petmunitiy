@@ -14,18 +14,18 @@ public class LoginController implements Controller {
 		String loginPwd = request.getParameter("loginPwd");
 		
 		try {
-			// ¸ðµ¨¿¡ ·Î±×ÀÎ Ã³¸®¸¦ À§ÀÓ
+			// ï¿½ðµ¨¿ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			UserManager manager = UserManager.getInstance();
 			manager.login(loginId, loginPwd);
 	
-			// ¼¼¼Ç¿¡ »ç¿ëÀÚ ÀÌÀÌµð ÀúÀå
+			// ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 			HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, loginId);
             
-            return "redirect:/user/list";			
+            return "redirect:/";			
 		} catch (Exception e) {
-			/* UserNotFoundExceptionÀÌ³ª PasswordMismatchException ¹ß»ý ½Ã
-			 * ´Ù½Ã login formÀ» »ç¿ëÀÚ¿¡°Ô Àü¼ÛÇÏ°í ¿À·ù ¸Þ¼¼Áöµµ Ãâ·Â
+			/* UserNotFoundExceptionï¿½Ì³ï¿½ PasswordMismatchException ï¿½ß»ï¿½ ï¿½ï¿½
+			 * ï¿½Ù½ï¿½ login formï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			 */
             request.setAttribute("loginFailed", true);
 			request.setAttribute("exception", e);

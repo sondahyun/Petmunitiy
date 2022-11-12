@@ -30,7 +30,7 @@ public class UserManager {
 	
 	public int create(UserInfo user) throws SQLException, ExistingUserException {
 		if (userDAO.existingUser(user.getLoginId()) == true) {
-			throw new ExistingUserException(user.getUserId() + "�� �����ϴ� ���̵��Դϴ�.");
+			throw new ExistingUserException(user.getUserId() + "는 존재하는 아이디 입니다.");
 		}
 		return userDAO.create(user);
 	}
@@ -48,7 +48,7 @@ public class UserManager {
 		UserInfo user = userDAO.findUser(loginId);
 
 		if (!user.matchPassword(password)) {
-			throw new PasswordMismatchException("��й�ȣ�� ��ġ���� �ʽ��ϴ�.");
+			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
 		}
 		return true;
 	}

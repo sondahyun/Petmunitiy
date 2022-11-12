@@ -19,12 +19,12 @@ public class RegisterUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-       	/*if (request.getMethod().equals("GET")) {	
+       	if (request.getMethod().equals("GET")) {	
     		// GET request: ȸ������ ��� form ��û	
     		log.debug("RegisterForm Request");
 		
 			return "/user/registerForm.jsp";   //  registerForm���� ����     	
-	    }	*/
+	    }	
 
     	// POST request (ȸ�������� parameter�� ���۵�)
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,7 +45,7 @@ public class RegisterUserController implements Controller {
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.create(user);
-	        return "redirect:/user/list";	// ���� �� ����� ����Ʈ ȭ������ redirect
+	        return "redirect:/user/login/form";	// ���� �� ����� ����Ʈ ȭ������ redirect
 	        
 		} catch (ExistingUserException e) {	// ���� �߻� �� ȸ������ form���� forwarding
             request.setAttribute("registerFailed", true);
