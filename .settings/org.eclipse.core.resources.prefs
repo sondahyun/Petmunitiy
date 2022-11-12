@@ -4,4 +4,7 @@ encoding//src/main/java/controller=UTF-8
 encoding//src/main/java/controller/Controller.java=UTF-8
 encoding//src/main/java/controller/DispatcherServlet.java=UTF-8
 encoding//src/main/java/controller/RequestMapping.java=UTF-8
+encoding//src/main/java/model/dao/ConnectionManager.java=UTF-8
+encoding//src/main/java/model/dao/JDBCUtil.java=UTF-8
+encoding//src/main/java/model/dao/UserDAO.java=UTF-8
 encoding//src/main/resources=UTF-8
