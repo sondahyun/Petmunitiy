@@ -84,7 +84,7 @@ public class UserDAO {
 
 	@SuppressWarnings("unchecked")
 	public UserInfo findUser(String loginId) throws SQLException {
-		String sql = "SELECT * " + "FROM UserInfo" + "WHERE loginId=? ";
+		String sql = "SELECT * " + "FROM UserInfo " + "WHERE loginId=? ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtil에 query문과 매개 변수 설정
 
 		try {

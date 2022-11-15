@@ -31,7 +31,7 @@ function userCreate(targetUri) {
 <body>
 <br>
 <!-- login form  -->
-<form name="form" method="POST" action="<c:url value='/' />">
+<form name="form" method="POST" action="<c:url value='/user/login' />">
   <table style="width:100%">
     <tr height="100" align="center"><td>&nbsp;</td>
 	  <td>
