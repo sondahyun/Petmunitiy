@@ -21,9 +21,8 @@ public class UserInfo {
 	public UserInfo() {
 	}
 
-	public UserInfo(int userId, String loginId, String loginPwd, String userNickname, Date userBirth,
+	public UserInfo(String loginId, String loginPwd, String userNickname, Date userBirth,
 			String phoneNumber, String gender, String address, ArrayList<Integer> petList) {
-		this.userId = userId;
 		this.loginId = loginId;
 		this.loginPwd = loginPwd;
 		this.userNickname = userNickname;

@@ -48,7 +48,6 @@ public class UpdateUserController implements Controller {
     	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     	// POST request (ȸ�������� parameter�� ���۵�)
     	UserInfo updateUser = new UserInfo(
-    			Integer.parseInt(request.getParameter("userId")),
     			request.getParameter("loginId"),
     			request.getParameter("loginPwd"),
     			request.getParameter("userNickname"),

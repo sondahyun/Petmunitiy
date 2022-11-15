@@ -21,8 +21,8 @@ public class UserDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(UserInfo user) throws SQLException {
-		String sql = "INSERT INTO UserInfo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] { user.getUserId(), user.getLoginId(), user.getLoginPwd(), user.getUserNickname(),
+		String sql = "INSERT INTO UserInfo VALUES (Sequence_auto.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] param = new Object[] { user.getLoginId(), user.getLoginPwd(), user.getUserNickname(),
 				user.getUserBirth(), user.getPhoneNumber(), user.getGender(), user.getAddress(), user.getPetList() };
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 

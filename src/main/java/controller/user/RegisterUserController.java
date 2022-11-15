@@ -20,21 +20,27 @@ public class RegisterUserController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
        	if (request.getMethod().equals("GET")) {	
-    		// GET request: ȸ������ ��� form ��û	
+       		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterForm Request");
-		
+    		System.out.println("여기1");
 			return "/user/registerForm.jsp";   //  registerForm���� ����     	
 	    }	
 
-    	// POST request (ȸ�������� parameter�� ���۵�)
+     // POST request (회원정보가 parameter로 전송됨)
+       	log.debug("befor Create User : {}");
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+       	String phoneNumber = request.getParameter("phone1")+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
+       	ArrayList<Integer> list = new ArrayList<>();
+       	list.add(Integer.parseInt(request.getParameter("petList")));
+       	
+       	
        	UserInfo user = new UserInfo(
-       		Integer.parseInt(request.getParameter("userId")),
+       		
 			request.getParameter("loginId"),
 			request.getParameter("loginPwd"),
 			request.getParameter("userNickname"),
 			formatter.parse(request.getParameter("userBirth")),
-			request.getParameter("phoneNumber"),
+			phoneNumber,
 			request.getParameter("gender"),
 			request.getParameter("address"),
 			stringToArrayList(request.getParameter("petList"))
@@ -51,6 +57,7 @@ public class RegisterUserController implements Controller {
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("user", user);
+			
 			return "/user/registerForm.jsp";
 		}
     }
