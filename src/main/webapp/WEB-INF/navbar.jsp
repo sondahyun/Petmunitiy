@@ -28,6 +28,9 @@
 	    		<td>
 	    			<a class="nav-link" href="<c:url value='/community1' />">입양/임보 게시판</a>
 	    		</td>
+	    		<td>
+	    			<a class="nav-link" href="<c:url value='/community2' />">펫스타그램</a>
+	    		</td>
 	    	</th>
 	    	
 	    </table>	
