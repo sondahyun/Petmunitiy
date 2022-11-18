@@ -22,7 +22,15 @@
 	  <div class="collapse navbar-collapse" id="navbarText">
 	    <ul class="navbar-nav mr-auto">
 	      
+	    <table>
 	    
+	    	<th>
+	    		<td>
+	    			<a class="nav-link" href="<c:url value='/community1' />">입양/임보 게시판</a>
+	    		</td>
+	    	</th>
+	    	
+	    </table>	
 	      <li class="nav-item">
 	        <a class="nav-link" href="<c:url value='/community1' />">입양/임보 게시판</a>
 	      </li>
