@@ -9,16 +9,37 @@
 		}
 	body {
 		font-family: 'Y_Spotlight';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
 	}
-		
+	nav {
+		 background-color : #e8e8e8;
+     	 /*padding: 10px 0px 30px 100px;*/
+	}	
 	.h {
   		argin:auto;
   		float: right;
   		text-align: right; /* Quirks Mode �� ���� ��� ���� */
 	}
+	td {
+		width : 20%;
+		text-align : center;
+	}
+	header {
+		background-color : #e8e8e8;
+     	/*padding: 10px 0px 30px 100px;*/
+	}
+	table {
+		/*border: 1px solid #bcbcbc;*/
+	}
+	/
+	/*.navbar-nav mr-auto {
+		width : 100%;
+	}*/
 </style>
 	<header>
-		<table class="h">
+		<table class="h" >
 			<%if(session.getAttribute("userId") == null) {%>
 	    	<th>
 	    		<td class="nav-item">
@@ -43,7 +64,7 @@
 	 	  <%
 			} %>
 		</table>
-		<a href="./navbar">
+		<a href="<c:url value='/main/main' />">
 		  <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>		
    </header>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" >

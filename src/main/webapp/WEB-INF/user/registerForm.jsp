@@ -4,7 +4,7 @@
 <head>
 <title>사용자 관리</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<!-- <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> -->
 <script>
 function userCreate() {
 	if (form.userId.value == "") {
@@ -50,18 +50,12 @@ function userList(targetUri) {
 </script>
 </head>
 <body>	
-<!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
+<%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 <br>
 <!-- registration form  -->
 
 <form name="form" method="POST" action="<c:url value='/user/login/form' />">
-  <table style="width: 100%">
-  	 <tr height="100" align="center"><td>&nbsp;</td>
-	  <td>
-		<a href="https://drive.google.com/drive/folders/1D9SLM6m28H5EeIwVflH8gi7PqMxX5mC6">
-		  <img src="<c:url value='/images/logo.gif' />" /></a>		
-	  </td>
-	</tr>
+  <table>
     <tr>
       <td width="20"></td>
 	  <td>	 
@@ -71,7 +65,7 @@ function userList(targetUri) {
 	    </c:if>
 	    <br>	  
 	    <!--<center>-->
-	    <table style="background-color: #848484">
+	    <table style="background-color: #848484" style="width: 100%">
 	     <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
@@ -140,12 +134,19 @@ function userList(targetUri) {
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">이메일 주소</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="email" 
+				<input type="text" style="width: 240" name="email" placeholder="you@example.com" 
 					<c:if test="${registerFailed}">value="${user.email}"</c:if>>
 			</td>
 		  </tr>	
 		  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">펫의 정보</td>
+			<td width="150" align="center" bgcolor="#E6E6E6">거주지 주소</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="text" style="width: 240" name="address" placeholder="주소지"
+					<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+			</td>
+		  </tr>	
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">펫의 이름</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240" name="petInfo" 
 					<c:if test="${registerFailed}">value="${user.petInfo}"</c:if>>

@@ -1,1 +1,1 @@
-<% response.sendRedirect(request.getContextPath() + "/navbar"); %>
+<% response.sendRedirect(request.getContextPath() + "/main/main"); %>

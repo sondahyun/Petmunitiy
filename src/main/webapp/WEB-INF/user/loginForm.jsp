@@ -5,7 +5,10 @@
 <head>
 <title>사용자 관리(UserMan3)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> -->
+
 <script>
 function login() {
 	if (form.userId.value == "") {
@@ -27,18 +30,24 @@ function userCreate(targetUri) {
 	form.submit();
 }
 </script>
+<style>
+	@font-face {
+          font-family: 'Y_Spotlight';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+      }
+   body {
+      font-family: 'Y_Spotlight';
+   }
+</style>
 </head>
 <body>
-<br>
+<%@include file="/WEB-INF/navbar.jsp" %>
+
 <!-- login form  -->
 <form name="form" method="POST" action="<c:url value='/' />">
   <table style="width:100%">
-    <tr height="100" align="center"><td>&nbsp;</td>
-	  <td>
-		<a href="https://drive.google.com/drive/folders/1D9SLM6m28H5EeIwVflH8gi7PqMxX5mC6">
-		  <img src="<c:url value='/images/logo.gif' />" /></a>		
-	  </td>
-	</tr>
 	<tr>
 	  <td width="20"></td>
 	  <td align="center">
