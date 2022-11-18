@@ -40,12 +40,13 @@ function userCreate() {
 		form.phone.focus();
 		return false;
 	}
+	//form.method="post";
 	form.submit();
 }
 
 function userList(targetUri) {
 	form.action = targetUri;
-	form.submit();
+	form.submit();	//get
 }
 
 </script>

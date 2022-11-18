@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Pet;
 import model.UserInfo;
 
 /**
@@ -101,7 +103,7 @@ public class UserDAO {
 				user.setPhoneNumber(rs.getString("phoneNumber"));
 				user.setGender(rs.getString("gender"));
 				user.setAddress(rs.getString("address"));
-				user.setPetList((ArrayList<Integer>) rs.getArray("petList"));
+				user.setPetList((ArrayList<Pet>) rs.getArray("petList"));
 				
 				return user;
 			}

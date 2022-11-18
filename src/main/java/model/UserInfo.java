@@ -16,13 +16,13 @@ public class UserInfo {
 	private String gender;
 	private String address;
 	//private int petList;
-	private ArrayList<Integer> petList; //ArrayList<Integer> => Array(UserDAO findUser���� getArray�� ����
+	private ArrayList<Pet> petList; //ArrayList<Integer> => Array(UserDAO findUser���� getArray�� ����
 
 	public UserInfo() {
 	}
 
 	public UserInfo(String loginId, String loginPwd, String userNickname, Date userBirth,
-			String phoneNumber, String gender, String address, ArrayList<Integer> petList) {
+			String phoneNumber, String gender, String address, ArrayList<Pet> petList) {
 		this.loginId = loginId;
 		this.loginPwd = loginPwd;
 		this.userNickname = userNickname;
@@ -130,13 +130,13 @@ public class UserInfo {
 
 
 
-	public ArrayList<Integer> getPetList() {
+	public ArrayList<Pet> getPetList() {
 		return petList;
 	}
 
 
 
-	public void setPetList(ArrayList<Integer> petList) {
+	public void setPetList(ArrayList<Pet> petList) {
 		this.petList = petList;
 	}
 

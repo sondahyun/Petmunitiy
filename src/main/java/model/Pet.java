@@ -11,7 +11,7 @@ public class Pet {
 	private String health;
 	private String vaccination;
 	private String kind;
-	private String filename;	//파일 경로? (질문)
+	private String filename;	//파일 경로
 		
 	public Pet(int petId, String name, String gender, Date birth, String health, String vaccination, String kind,
 			String filename) {

@@ -35,7 +35,6 @@ public class RegisterUserController implements Controller {
        	
        	
        	UserInfo user = new UserInfo(
-       		
 			request.getParameter("loginId"),
 			request.getParameter("loginPwd"),
 			request.getParameter("userNickname"),
@@ -43,7 +42,7 @@ public class RegisterUserController implements Controller {
 			phoneNumber,
 			request.getParameter("gender"),
 			request.getParameter("address"),
-			stringToArrayList(request.getParameter("petList"))
+			(ArrayList)(request.getAttribute("petList"))
 			);
 		
         log.debug("Create User : {}", user);
