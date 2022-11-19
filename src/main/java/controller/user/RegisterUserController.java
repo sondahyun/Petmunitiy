@@ -29,9 +29,28 @@ public class RegisterUserController implements Controller {
      // POST request (회원정보가 parameter로 전송됨)
        	log.debug("befor Create User : {}");
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-       	String phoneNumber = request.getParameter("phone1")+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
+       	
+       	String phone1= null;
+       	
+       	switch(request.getParameter("phone1")) {
+       	case "0":
+       		phone1 = "010";
+       		break;
+       	case "1":
+       		phone1 = "080";
+       		break;
+       	case "2":
+       		phone1 = "070";
+       		break;
+       	case "3":
+       		phone1 = "02";
+       		break;
+       	}
+       	String phoneNumber = phone1+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
+       	//
        	ArrayList<Integer> list = new ArrayList<>();
        	list.add(Integer.parseInt(request.getParameter("petList")));
+       	//list.add(0);
        	
        	
        	UserInfo user = new UserInfo(
@@ -42,7 +61,7 @@ public class RegisterUserController implements Controller {
 			phoneNumber,
 			request.getParameter("gender"),
 			request.getParameter("address"),
-			(ArrayList)(request.getAttribute("petList"))
+			list	//petList
 			);
 		
         log.debug("Create User : {}", user);

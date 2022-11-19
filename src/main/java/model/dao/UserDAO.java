@@ -23,15 +23,17 @@ public class UserDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(UserInfo user) throws SQLException {
-		String sql = "INSERT INTO UserInfo VALUES (Sequence_auto.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
+		//
+		String sql = "INSERT INTO UserInfo (USERID, LOGINID, LOGINPWD, USERNICKNAME, USERBIRTH, PHONENUMBER, GENDER, ADDRESS, PETLIST) VALUES (Sequence_auto.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] { user.getLoginId(), user.getLoginPwd(), user.getUserNickname(),
 				user.getUserBirth(), user.getPhoneNumber(), user.getGender(), user.getAddress(), user.getPetList() };
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
-
+		
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert 문 실행
 			return result;
 		} catch (Exception ex) {
+			System.out.println("catch");
 			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
@@ -103,7 +105,7 @@ public class UserDAO {
 				user.setPhoneNumber(rs.getString("phoneNumber"));
 				user.setGender(rs.getString("gender"));
 				user.setAddress(rs.getString("address"));
-				user.setPetList((ArrayList<Pet>) rs.getArray("petList"));
+				user.setPetList((ArrayList<Integer>) rs.getArray("petList"));
 				
 				return user;
 			}

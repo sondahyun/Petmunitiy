@@ -7,6 +7,9 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userCreate() {
+	
+	System.out.println("userCreate method");
+	
 	if (form.userId.value == "") {
 		alert("사용자 ID를 입력하십시오.");
 		form.userId.focus();
@@ -40,7 +43,7 @@ function userCreate() {
 		form.phone.focus();
 		return false;
 	}
-	//form.method="post";
+	form.method="post";
 	form.submit();
 }
 
@@ -173,7 +176,8 @@ function userList(targetUri) {
 	    <table style="margin-left: auto; margin-right: auto;">
 		  <tr align="center">
 			<td align="left">
-			<input type="submit" value="회원 가입" onClick="userCreate()"> &nbsp;
+			<!-- <input type="button" value="회원 가입" onClick="userCreate()"> &nbsp; -->
+			<input type="submit" value="회원 가입">
 			<input type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
 			</td>
 		  </tr>
