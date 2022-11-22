@@ -2,6 +2,7 @@ package controller.user;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +29,6 @@ public class RegisterUserController implements Controller {
 
      // POST request (회원정보가 parameter로 전송됨)
        	log.debug("befor Create User : {}");
-       	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        	
        	String phone1= null;
        	
@@ -52,6 +52,9 @@ public class RegisterUserController implements Controller {
        	list.add(Integer.parseInt(request.getParameter("petList")));
        	//list.add(0);
        	
+       	String str = request.getParameter("userBirth");
+       	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+       	
        	
        	UserInfo user = new UserInfo(
 			request.getParameter("loginId"),
@@ -61,8 +64,9 @@ public class RegisterUserController implements Controller {
 			phoneNumber,
 			request.getParameter("gender"),
 			request.getParameter("address"),
-			list	//petList
+			Integer.parseInt(request.getParameter("petList"))
 			);
+		//user.setUserId(1);
 		
         log.debug("Create User : {}", user);
 
@@ -80,14 +84,10 @@ public class RegisterUserController implements Controller {
 		}
     }
     
-    public static ArrayList<Integer> stringToArrayList(String input){
-        String[] s = input.split(",");
-        ArrayList<Integer> list = new ArrayList<>();
-        for(int a = 0; a<s.length; a++) {
-           list.add(Integer.parseInt(s[a]));
-        }
-        return list;
-     }
-
+	/*
+	 * public static ArrayList<Integer> stringToArrayList(String input){ String[] s
+	 * = input.split(","); ArrayList<Integer> list = new ArrayList<>(); for(int a =
+	 * 0; a<s.length; a++) { list.add(Integer.parseInt(s[a])); } return list; }
+	 */
 }
 

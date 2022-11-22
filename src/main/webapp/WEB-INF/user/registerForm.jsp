@@ -7,10 +7,9 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userCreate() {
+	alert("실행");
 	
-	System.out.println("userCreate method");
-	
-	if (form.userId.value == "") {
+	if (form.loginId.value == "") {
 		alert("사용자 ID를 입력하십시오.");
 		form.userId.focus();
 		return false;
@@ -25,12 +24,15 @@ function userCreate() {
 		form.password2.focus();
 		return false;
 	}
-	if (form.name.value == "") {
+	if (form.userNickname.value == "") {
 		alert("이름을 입력하십시오.");
-		form.name.focus();
+		form.userNickname.focus();
 		return false;
 	}
-	var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	
+	//프론트팀 전달
+	-게발ㅈ;도
+	/* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;	//""
 	if(emailExp.test(form.email.value)==false) {
 		alert("이메일 형식이 올바르지 않습니다.");
 		form.email.focus();
@@ -42,8 +44,8 @@ function userCreate() {
 		alert("전화번호 형식이 올바르지 않습니다.");
 		form.phone.focus();
 		return false;
-	}
-	form.method="post";
+	} */
+	//form.method="post";
 	form.submit();
 }
 
@@ -177,7 +179,7 @@ function userList(targetUri) {
 		  <tr align="center">
 			<td align="left">
 			<!-- <input type="button" value="회원 가입" onClick="userCreate()"> &nbsp; -->
-			<input type="submit" value="회원 가입">
+			<input type="button" value="회원 가입" onClick="userCreate()">
 			<input type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
 			</td>
 		  </tr>

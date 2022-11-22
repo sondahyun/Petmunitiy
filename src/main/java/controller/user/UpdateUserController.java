@@ -55,7 +55,7 @@ public class UpdateUserController implements Controller {
     			request.getParameter("phoneNumber"),
     			request.getParameter("gender"),
     			request.getParameter("address"),
-    			(ArrayList)request.getAttribute("petList")	//??
+    			Integer.parseInt(request.getParameter("petList"))
     			);
     	log.debug("Update User : {}", updateUser);
 
