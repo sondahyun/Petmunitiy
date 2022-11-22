@@ -27,6 +27,7 @@ public class LoginController implements Controller {
 			/* UserNotFoundException�̳� PasswordMismatchException �߻� ��
 			 * �ٽ� login form�� ����ڿ��� �����ϰ� ���� �޼����� ���
 			 */
+			System.out.println("로그인실패");
             request.setAttribute("loginFailed", true);
 			request.setAttribute("exception", e);
             return "/user/loginForm.jsp";			

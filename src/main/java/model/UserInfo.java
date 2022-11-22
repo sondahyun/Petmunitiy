@@ -16,14 +16,15 @@ public class UserInfo {
 	private String gender;
 	private String address;
 	//private int petList;
-	private ArrayList<Integer> petList; //ArrayList<Integer> => Array(UserDAO findUser���� getArray�� ����
-
+	//private ArrayList<Pet> petList; //ArrayList<Integer> => Array(UserDAO findUser���� getArray�� ����
+	///private ArrayList<Pet> petList;
+	private int pet;
+	
 	public UserInfo() {
 	}
 
-	public UserInfo(int userId, String loginId, String loginPwd, String userNickname, Date userBirth,
-			String phoneNumber, String gender, String address, ArrayList<Integer> petList) {
-		this.userId = userId;
+	public UserInfo(String loginId, String loginPwd, String userNickname, Date userBirth,
+			String phoneNumber, String gender, String address, int pet) {
 		this.loginId = loginId;
 		this.loginPwd = loginPwd;
 		this.userNickname = userNickname;
@@ -31,7 +32,7 @@ public class UserInfo {
 		this.phoneNumber = phoneNumber;
 		this.gender = gender;
 		this.address = address;
-		this.petList = petList;
+		this.pet = pet;
 	}
 
 	
@@ -131,16 +132,15 @@ public class UserInfo {
 
 
 
-	public ArrayList<Integer> getPetList() {
-		return petList;
+	public int getPet() {
+		return pet;
 	}
 
 
 
-	public void setPetList(ArrayList<Integer> petList) {
-		this.petList = petList;
+	public void setPet(int pet) {
+		this.pet = pet;
 	}
-
 
 
 	/* ��й�ȣ �˻� */
@@ -159,7 +159,7 @@ public class UserInfo {
 	public String toString() {
 		return "UserInfo [userId=" + userId + ", loginId=" + loginId + ", loginPwd=" + loginPwd + ", userNickname="
 				+ userNickname + ", userBirth=" + userBirth + ", phoneNumber=" + phoneNumber + ", gender=" + gender
-				+ ", address=" + address + ", petList=" + petList + "]";
+				+ ", address=" + address + ", pet=" + pet + "]";
 	}
 	
 }
