@@ -8,14 +8,14 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function login() {
-	if (form.userId.value == "") {
+	if (form.loginId.value == "") {
 		alert("사용자 ID를 입력하십시오.");
-		form.userId.focus();
+		form.loginId.focus();
 		return false;
 	} 
-	if (form.password.value == "") {
+	if (form.loginPwd.value == "") {
 		alert("비밀번호를 입력하십시오.");
-		form.password.focus();
+		form.loginPwd.focus();
 		return false;
 	}		
 	form.submit();
@@ -57,13 +57,13 @@ function userCreate(targetUri) {
 	  	  <tr height="40">
 			<td width="150" align="center">ID</td>
 			<td width="250" style="padding-left:10">
-				<input type="text" style="width:240" name="userId">
+				<input type="text" style="width:240" name="loginId">
 			</td>
 		  </tr>
 	  	  <tr height="40">
 			<td width="150" align="center">비밀번호</td>
 			<td width="250" style="padding-left:10">
-				<input type="password" style="width:240" name="password">
+				<input type="password" style="width:240" name="loginPwd">
 			</td>
 		  </tr>
 	    </table>
