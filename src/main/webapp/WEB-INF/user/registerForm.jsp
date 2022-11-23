@@ -7,7 +7,6 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userCreate() {
-	alert("실행");
 	
 	if (form.loginId.value == "") {
 		alert("사용자 ID를 입력하십시오.");
@@ -31,7 +30,7 @@ function userCreate() {
 	}
 	
 	//프론트팀 전달
-	-게발ㅈ;도
+	//-게발ㅈ;도
 	/* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;	//""
 	if(emailExp.test(form.email.value)==false) {
 		alert("이메일 형식이 올바르지 않습니다.");
