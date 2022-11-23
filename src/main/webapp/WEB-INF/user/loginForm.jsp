@@ -13,9 +13,9 @@ function login() {
 		form.loginId.focus();
 		return false;
 	} 
-	if (form.loginPwd.value == "") {
+	if (form.password.value == "") {
 		alert("비밀번호를 입력하십시오.");
-		form.loginPwd.focus();
+		form.password.focus();
 		return false;
 	}		
 	form.submit();
@@ -63,7 +63,7 @@ function userCreate(targetUri) {
 	  	  <tr height="40">
 			<td width="150" align="center">비밀번호</td>
 			<td width="250" style="padding-left:10">
-				<input type="password" style="width:240" name="loginPwd">
+				<input type="password" style="width:240" name="password">
 			</td>
 		  </tr>
 	    </table>

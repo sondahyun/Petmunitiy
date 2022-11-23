@@ -11,7 +11,7 @@ public class LoginController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	String loginId = request.getParameter("loginId");
-		String loginPwd = request.getParameter("loginPwd");
+		String loginPwd = request.getParameter("password");
 		
 		try {
 			// �𵨿� �α��� ó���� ����
