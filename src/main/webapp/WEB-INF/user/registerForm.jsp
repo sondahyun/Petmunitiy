@@ -7,6 +7,7 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userCreate() {
+	alert("실행");
 	
 	if (form.loginId.value == "") {
 		alert("사용자 ID를 입력하십시오.");
@@ -30,7 +31,6 @@ function userCreate() {
 	}
 	
 	//프론트팀 전달
-	//-게발ㅈ;도
 	/* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;	//""
 	if(emailExp.test(form.email.value)==false) {
 		alert("이메일 형식이 올바르지 않습니다.");
@@ -122,7 +122,7 @@ function userList(targetUri) {
 				<option value=2>070</option>
 				<option value=3>02</option>
 			</select> - <input type="text" name="phone2" value="" size="4" maxlength="4"> - <input type="text" name="phone3" value="" size="4" maxlength="4">
-			<c:if test="${registerFailed}">value="${user.phone}"</c:if>	<%-- user.??? --%>
+			<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
 		</td>
 		  </tr>
 		  <tr height="40">
@@ -147,15 +147,15 @@ function userList(targetUri) {
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">이메일 주소</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="address" 
-					<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+				<input type="text" style="width: 240" name="address" >
+					<%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%>
 			</td>
 		  </tr>
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">펫의 정보</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="petList" 
-					<c:if test="${registerFailed}">value="${user.petList}"</c:if>>
+				<input type="text" style="width: 240" name="petList" >
+					<%-- <c:if test="${registerFailed}">value="${user.petList}"</c:if>> --%>
 			</td>
 		  </tr>
 	  	  <!-- <tr height="40">
