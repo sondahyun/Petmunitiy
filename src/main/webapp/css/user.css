@@ -3,9 +3,13 @@ td {
 	color: #333333; 
 	line-height: 18px;
 }
-table {
+table, form {
     margin:auto;
-    float:center; 
+    float:center;
+    text-align: center; 
+}
+div {
+	margin:auto;
 }
 .find-btn{
     text-align: center; 

@@ -40,16 +40,18 @@ function userCreate(targetUri) {
    body {
       font-family: 'Y_Spotlight';
    }
+   h2 {
+   	  text-align: center;
+   }
 </style>
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-
+<h2>로그인</h2>
 <!-- login form  -->
 <form name="form" method="POST" action="<c:url value='/' />">
   <table style="width:100%">
 	<tr>
-	  <td width="20"></td>
 	  <td align="center">
 	   	<table>
 	   	  <tr>
