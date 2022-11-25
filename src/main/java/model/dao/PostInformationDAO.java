@@ -24,14 +24,19 @@ public class PostInformationDAO {
 	/**
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
-	public int create(PostInformation post) throws SQLException {
-		String sql = "INSERT INTO PostInformation VALUES (Sequence_auto.nextval,?,?,?,?,?,?)";
-		Object[] param = new Object[] { post.getPostTitle(), post.getPostDate(), post.getPostContent(), post.getFileName(), post.getKind(), post.getUserId() };
+	public PostInformation create(PostInformation post) throws SQLException {
+		String sql = "INSERT INTO PostInformation VALUES (p0_seq.nextval,?,?,?,?,?,?)";
+		Object[] param = new Object[] {post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getPostContent(), post.getFileName(), post.getKind(), post.getLoginId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
-
+		String key[] = {"postId"};	// PK 컬럼의 이름    
 		try {
-			int result = jdbcUtil.executeUpdate(); // insert 문 실행
-			return result;
+			jdbcUtil.executeUpdate(key); // insert 문 실행
+			ResultSet rs = jdbcUtil.getGeneratedKeys();
+		   	if(rs.next()) {
+		   		int generatedKey = rs.getInt(1);   // 생성된 PK 값
+		   		post.setPostId(generatedKey); 	// id필드에 저장  
+		   	}
+			return post;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
@@ -39,7 +44,7 @@ public class PostInformationDAO {
 			jdbcUtil.commit();
 			jdbcUtil.close(); // resource 반환
 		}
-		return 0;
+		return null;
 	}
 
 	/**
@@ -101,7 +106,7 @@ public class PostInformationDAO {
 				post.setPostContent(rs.getString("postContent"));
 				post.setFileName(rs.getString("fileName"));
 				post.setKind(rs.getString("kind"));
-				post.setUserId(rs.getInt("userId"));
+				post.setLoginId(rs.getString("loginId"));
 				
 				return post;
 			}
@@ -113,70 +118,7 @@ public class PostInformationDAO {
 		}
 		return null;
 	}
-	
-	/**
-	 * 주어진  ID에 해당하는 커뮤니티 정보를 데이터베이스에서 찾아 PostInformation 도메인 클래스에 
-	 * 저장하여 반환.
-	 */
-	public PostInformation findPostInformation(int postId) throws SQLException {
-        String sql = "SELECT postTitle, postDate, loginId "
-        			+ "FROM PostInformation pi LEFT OUTER JOIN UserInfo u ON pi.userId = u.userId "
-        			+ "WHERE postId=? ";              
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	// JDBCUtil에 query문과 매개 변수 설정
-		PostInformation postInformation = null;
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			
-			if (rs.next()) {						// 학생 정보 발견
-				postInformation = new PostInformation(		// PostInformation 객체를 생성하여 커뮤니티 정보를 저장
-					postId,
-					rs.getString("postTitle"),
-					rs.getDate("postDate"),
-					rs.getString("postContent"),
-					rs.getString("fileName"),
-					rs.getString("kind"),
-					rs.getInt("userId"));
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();		// resource 반환
-		}
-		return postInformation;
-	}
 
-	/**
-	 * 전체 커뮤니티 정보를 검색하여 List에 저장 및 반환
-	 */
-	public List<PostInformation> findPostInformationList() throws SQLException {
-        String sql = "SELECT postTitle, postDate, loginId "
-        		   + "FROM PostInformation pi LEFT OUTER JOIN UserInfo u ON pi.userId = u.userId ";
-        
-		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
-					
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
-			List<PostInformation> informationList = new ArrayList<PostInformation>();	// PostInformation들의 리스트 생성
-			while (rs.next()) {
-				PostInformation comm = new PostInformation(			// PostInformation 객체를 생성하여 현재 행의 정보를 저장
-						rs.getInt("postId"),
-						rs.getString("postTitle"),
-						rs.getDate("postDate"),
-						rs.getString("postContent"),
-						rs.getString("fileName"),
-						rs.getString("kind"),
-						rs.getInt("userId"));
-				informationList.add(comm);				// List에 PostInformation 객체 저장
-			}		
-			return informationList;					
-			
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();		// resource 반환
-		}
-		return null;
-	}
+
 	
 }

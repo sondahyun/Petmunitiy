@@ -10,19 +10,19 @@ public class PostInformation {
 	private String postContent;
 	private String fileName;
 	private String kind;
-	private int userId;
+	private String loginId;
 	
 	public PostInformation() { }
 	
 	public PostInformation(String postTitle, Date postDate, String postContent,
-			String fileName, String kind, int userId) {
+			String fileName, String kind, String loginId) {
 		super();
 		this.postTitle = postTitle;
 		this.postDate = postDate;
 		this.postContent = postContent;
 		this.fileName = fileName;
 		this.kind = kind;
-		this.userId = userId;
+		this.loginId = loginId;
 	}
 
 	public int getPostId() {
@@ -73,19 +73,19 @@ public class PostInformation {
 		this.kind = kind;
 	}
 
-	public int getUserId() {
-		return userId;
+	public String getLoginId() {
+		return loginId;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 	@Override
 	public String toString() {
 		return "PostInformation [postId=" + postId +  ", postTitle=" + postTitle
 				+ ", postDate=" + postDate + ", postContent=" + postContent + ", fileName=" + fileName + ", kind="
-				+ kind + ", userId=" + userId + "]";
+				+ kind + ", loginId=" + loginId + "]";
 	}
 	
 	
