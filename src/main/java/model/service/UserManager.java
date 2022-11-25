@@ -3,8 +3,11 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import model.Community;
+import model.PostAdoption;
 import model.PostInformation;
 import model.UserInfo;
+import model.dao.PostAdoptionDAO;
 import model.dao.PostInformationDAO;
 import model.dao.UserDAO;
 
@@ -62,12 +65,18 @@ public class UserManager {
 	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}
-	public int createPostInformation(PostInformation post) throws SQLException {
-		return PostInformationDAO.create(post);		
-	}
+	public PostInformation createPostInformation(PostInformation post) throws SQLException {
+	      return PostInformationDAO.create(post);      
+	   }
 
-	public int updateCommunity(Community comm) throws SQLException {
-		return commDAO.update(comm);				
+	   public int updateCommunity(PostInformation post) throws SQLException {
+	      return PostInformationDAO.update(post);            
+	   }
+	
+	
+	//adoptiondao
+	public int createP0Adoption(PostAdoption comm) throws SQLException {
+		return PostAdoptionDAO.create(comm);	
 	}
 	
 }

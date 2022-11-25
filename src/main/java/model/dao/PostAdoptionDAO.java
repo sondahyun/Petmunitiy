@@ -25,8 +25,10 @@ public class PostAdoptionDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(PostAdoption post) throws SQLException {
-		String sql = "INSERT INTO PostAdoption VALUES (Sequence_auto.nextval,?,?,?,?,?,?)";
-		Object[] param = new Object[] { post.getPostTitle(), post.getPostDate(), post.getPostContent(), post.getFileName(), post.getKind(), post.getUserId() };
+		String sql = "INSERT INTO PostAdoption VALUES (p3_seq.nextval,?,?,?,?,?,?,?)";
+		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getType(), post.getApproval(), new java.sql.Date(post.getApprovalDate().getTime()), post.getLoginId(), post.getPostContent() };
+		
+		
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 
 		try {
@@ -47,8 +49,8 @@ public class PostAdoptionDAO {
 	 */
 	public int update(PostAdoption post) throws SQLException {
 		String sql = "UPDATE PostAdotpion "
-				+ "SET postTitle=?, postDate=?, postContent=?, fileName=?, kind=?" + "WHERE postId=?";
-		Object[] param = new Object[] { post.getPostTitle(), post.getPostDate(), post.getPostContent(), post.getFileName(), post.getKind(), post.getPostId() };
+				+ "SET postTitle=?, postDate=?, type=?, approval=?, approvaldate=?, userid=?, postcontent=? " + "WHERE postId=?";
+		Object[] param = new Object[] { post.getPostTitle(), post.getPostDate(), post.getType(), post.getApproval(), post.getApprovalDate(), post.getLoginId(),post.getPostContent(), post.getPostId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {
@@ -98,10 +100,11 @@ public class PostAdoptionDAO {
 				
 				post.setPostTitle(rs.getString("postTitle"));
 				post.setPostDate(rs.getDate("postDate"));
+				post.setType(rs.getInt("type"));
+				post.setApproval(rs.getInt("approval"));
+				post.setApprovalDate(rs.getDate("approvalDate"));
+				post.setLoginId(rs.getString("loginId"));
 				post.setPostContent(rs.getString("postContent"));
-				post.setFileName(rs.getString("fileName"));
-				post.setKind(rs.getString("kind"));
-				post.setUserId(rs.getInt("userId"));
 				
 				return post;
 			}
@@ -118,32 +121,33 @@ public class PostAdoptionDAO {
 	 * 주어진  ID에 해당하는 커뮤니티 정보를 데이터베이스에서 찾아 PostInformation 도메인 클래스에 
 	 * 저장하여 반환.
 	 */
-	public PostAdoption findPostInformation(int postId) throws SQLException {
+	public PostAdoption findPostAdoption(int postId) throws SQLException {
         String sql = "SELECT postTitle, postDate, loginId "
         			+ "FROM PostAdoption pi LEFT OUTER JOIN UserInfo u ON pi.userId = u.userId "
         			+ "WHERE postId=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	// JDBCUtil에 query문과 매개 변수 설정
-		PostAdoption postInformation = null;
+		PostAdoption postAdoption = null;
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			
 			if (rs.next()) {						// 학생 정보 발견
-				postInformation = new PostInformation(		// PostInformation 객체를 생성하여 커뮤니티 정보를 저장
+				postAdoption = new PostAdoption(		// PostInformation 객체를 생성하여 커뮤니티 정보를 저장
 					postId,
 					rs.getString("postTitle"),
 					rs.getDate("postDate"),
-					rs.getString("postContent"),
-					rs.getString("fileName"),
-					rs.getString("kind"),
-					rs.getInt("userId"));
+					rs.getInt("type"),
+					rs.getInt("approval"),
+					rs.getDate("approvalDate"),
+					rs.getString("loginId"),
+					rs.getString("postContent"));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.close();		// resource 반환
 		}
-		return postInformation;
+		return postAdoption;
 	}
 
 	/**
@@ -157,19 +161,20 @@ public class PostAdoptionDAO {
 					
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
-			List<PostAdoption> informationList = new ArrayList<PostAdoption>();	// PostInformation들의 리스트 생성
+			List<PostAdoption> adoptionList = new ArrayList<PostAdoption>();	// PostInformation들의 리스트 생성
 			while (rs.next()) {
-				PostAdoption comm = new PostAdoption(			// PostInformation 객체를 생성하여 현재 행의 정보를 저장
+				PostAdoption pAdoption = new PostAdoption(			// PostInformation 객체를 생성하여 현재 행의 정보를 저장
 						rs.getInt("postId"),
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
-						rs.getString("postContent"),
-						rs.getString("fileName"),
-						rs.getString("kind"),
-						rs.getInt("userId"));
-				informationList.add(comm);				// List에 PostInformation 객체 저장
+						rs.getInt("type"),
+						rs.getInt("approval"),
+						rs.getDate("approvalDate"),
+						rs.getString("loginId"),
+						rs.getString("postContent"));
+				adoptionList.add(pAdoption);				// List에 PostInformation 객체 저장
 			}		
-			return informationList;					
+			return adoptionList;					
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
