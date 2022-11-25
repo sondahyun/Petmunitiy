@@ -9,5 +9,6 @@ encoding//src/main/java/model/dao/JDBCUtil.java=UTF-8
 encoding//src/main/java/model/dao/UserDAO.java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/community=UTF-8
+encoding//src/main/webapp/WEB-INF/community/info_community.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/main/main.jsp=UTF-8
 encoding/<project>=UTF-8

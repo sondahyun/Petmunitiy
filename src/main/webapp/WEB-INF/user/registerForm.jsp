@@ -5,6 +5,7 @@
 <title>사용자 관리</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function userCreate() {
 	if (form.userId.value == "") {
@@ -163,8 +164,8 @@ function userList(targetUri) {
 	    <table style="margin-left: auto; margin-right: auto;">
 		  <tr align="center">
 			<td align="left">
-			<input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-			<input type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
+			<input class="btn" type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
+			<input class="btn" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
 			</td>
 		  </tr>
 	    </table>

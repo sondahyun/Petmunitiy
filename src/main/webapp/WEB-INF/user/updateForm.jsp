@@ -5,6 +5,7 @@
 <title>사용자 관리</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function userModify() {
 	if (form.password.value == "") {
@@ -113,8 +114,8 @@ function userList(targetUri) {
 	    <table style="width: 100%">
 		  <tr>
 			<td align="left">
-			<input type="button" value="수정" onClick="userModify()"> &nbsp;
-			<input type="button" value="목록" onClick="userList('<c:url value='/user/list' />')">
+			<input class="btn" type="button" value="수정" onClick="userModify()"> &nbsp;
+			<input class="btn" type="button" value="목록" onClick="userList('<c:url value='/user/list' />')">
 			</td>
 		  </tr>
 	    </table>

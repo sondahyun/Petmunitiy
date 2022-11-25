@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> -->
-
+<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
+<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function login() {
 	if (form.userId.value == "") {
@@ -50,7 +50,7 @@ function userCreate(targetUri) {
 <h2>로그인</h2>
 <!-- login form  -->
 <form name="form" method="POST" action="<c:url value='/' />">
-  <table style="width:100%">
+  <table style="width:40%">
 	<tr>
 	  <td align="center">
 	   	<table>
@@ -82,8 +82,8 @@ function userCreate(targetUri) {
 	    <table style="width:100%">
 		  <tr>
 			<td align="center">
-			<input type="button" value="로그인" onClick="login()"> &nbsp;&nbsp;&nbsp;
-			<input type="button" value="회원가입" onClick="userCreate(
+			<input class="btn" type="button" value="로그인" onClick="login()"> &nbsp;&nbsp;&nbsp;
+			<input class="btn" type="button" value="회원가입" onClick="userCreate(
 								'<c:url value='/user/register'/>')">
 			</td>						
 		  </tr>
