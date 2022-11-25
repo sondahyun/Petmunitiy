@@ -20,17 +20,18 @@ public class CreateP0Controller implements Controller {
     	
        	PostInformation pi = new PostInformation(
     		request.getParameter("postTitle"),
-			request.getParameter("post"),
 			formatter.parse(request.getParameter("postDate")),
 			request.getParameter("postContent"),
-			request.getParameter("fileName")
-			null, null, null);		
+			request.getParameter("fileName"),
+			request.getParameter("kind"),
+			Integer.parseInt(request.getParameter("userId"))
+			);		
         
 		try {
 			UserManager manager = UserManager.getInstance();
-			manager.createCommunity(comm);
+			manager.createPostInformation(pi);
 			
-	    	log.debug("Create Community : {}", comm);
+	    	log.debug("Create Community : {}", pi);
 	        return "redirect:/community/list";	// 성공 시 커뮤니티 리스트 화면으로 redirect
 	        
 		} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
