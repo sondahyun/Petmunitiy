@@ -5,6 +5,7 @@
 <title>사용자 관리</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function userCreate() {
 	alert("실행");
@@ -56,33 +57,25 @@ function userList(targetUri) {
 </script>
 </head>
 <body>	
-<!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
-<br>
+<%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 <!-- registration form  -->
-
+<h2>회원가입</h2>
 <form name="form" method="POST" action="<c:url value='/user/register' />">
   <table style="width: 100%">
-  	 <tr height="100" align="center"><td>&nbsp;</td>
-	  <td>
-		<a href="https://drive.google.com/drive/folders/1D9SLM6m28H5EeIwVflH8gi7PqMxX5mC6">
-		  <img src="<c:url value='/images/logo.gif' />" /></a>		
-	  </td>
-	</tr>
     <tr>
-      <td width="20"></td>
-	  <td>	 
+	  <td align="center">	 
 	    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
         <c:if test="${registerFailed}">
 	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
 	    </c:if>
 	    <br>	  
 	    <!--<center>-->
-	    <table style="background-color: #848484">
+	    <table style="background-color: #848484" style="width: 100%">
 	     <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240" name="userNickname" 
-				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>>
+				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
 			</td>
 		  </tr>
 	  	  <!-- 
@@ -116,14 +109,14 @@ function userList(targetUri) {
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">전화번호</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-			<select name=phone1>
-				<option value=0 selected>010</option>
-				<option value=1>080</option>
-				<option value=2>070</option>
-				<option value=3>02</option>
-			</select> - <input type="text" name="phone2" value="" size="4" maxlength="4"> - <input type="text" name="phone3" value="" size="4" maxlength="4">
-			<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
-		</td>
+				<select name=phone1>
+					<option value=0 selected>010</option>
+					<option value=1>080</option>
+					<option value=2>070</option>
+					<option value=3>02</option>
+				</select> - <input type="text" name="phone2" value="" size="4" maxlength="4"> - <input type="text" name="phone3" value="" size="4" maxlength="4">
+				<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
+			</td>
 		  </tr>
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">사용자 ID</td>
@@ -147,39 +140,31 @@ function userList(targetUri) {
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">이메일 주소</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="address" >
+				<input type="text" style="width: 240" name="address" placeholder="you@example.com">
 					<%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%>
 			</td>
 		  </tr>
 		  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">펫의 정보</td>
+			<td width="150" align="center" bgcolor="#E6E6E6">거주지 주소</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="text" style="width: 240" name="address" placeholder="주소지"
+					<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+			</td>
+		  </tr>	
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="#E6E6E6">펫의 이름</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240" name="petList" >
 					<%-- <c:if test="${registerFailed}">value="${user.petList}"</c:if>> --%>
 			</td>
 		  </tr>
-	  	  <!-- <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">커뮤니티</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<select name="commId" style="width: 240">
-					<option value="0">없음</option>
-					<c:forEach var="comm" items="${commList}">
-						<option value="${comm.id}"
-							<c:if test="${comm.id eq user.commId}">selected="selected"</c:if>
-							>${comm.name}</option>
-					</c:forEach>
-				</select>			
-			</td>
-		  </tr>	 -->
-		  	  
 	    </table>
 	    <br>
 	    <table style="margin-left: auto; margin-right: auto;">
 		  <tr align="center">
 			<td align="left">
-			<!-- <input type="button" value="회원 가입" onClick="userCreate()"> &nbsp; -->
-			<input type="button" value="회원 가입" onClick="userCreate()">
-			<input type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
+			<input class="btn" type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
+			<input class="btn" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
 			</td>
 		  </tr>
 	    </table>
