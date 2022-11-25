@@ -1,25 +1,34 @@
 th, td {
-	font-family: µ¸¿ò; 
-	font-size: 12px; 
-	line-height: 18px; 
-  	padding-left: 10px;
-  	padding-right: 10px;
+    font-family: 'Y_Spotlight';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+	font-weight: normal;
+	font-style: normal; 
+    font-size: 12px; 
+    line-height: 18px; 
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .title {
-	font-family: µ¸¿ò; 
-	font-size: 12pt; 
-	font-weight: bold;
-	color: Black; 
-	background-color: Beige;
-	line-height: 22px;
+   font-family: 'Y_Spotlight';
+   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+   font-weight: normal;
+   font-style: normal; 
+   font-size: 12pt; 
+   font-weight: bold;
+   color: Black; 
+   background-color: Beige;
+   line-height: 22px;
 }
 
 /* Form css */
 .text, .textarea, .password, .file, .select { 
-	font-family: µ¸¿ò; 
-	font-size: 8pt; 
-	color: #333333;
+   font-family: 'Y_Spotlight';
+   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+   font-weight: normal;
+   font-style: normal; 
+   font-size: 8pt; 
+   color: #333333;
 }
 
 table.commTable {
