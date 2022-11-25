@@ -3,90 +3,87 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class PostInformation {
+public class PostAdoption {
 	private int postId;
 	private String postTitle;
 	private Date postDate;
 	private String postContent;
-	private String fileName;
-	private String kind;
+	private int type;
+	private int approval;
+	private Date approvalDate;
 	private int userId;
 	
-	public PostInformation() { }
 	
-	public PostInformation(String postTitle, Date postDate, String postContent,
-			String fileName, String kind, int userId) {
+	public PostAdoption() {
 		super();
+	}
+
+	public PostAdoption(int postId, String postTitle, Date postDate, String postContent, int type, int approval, Date approvalDate, int userId) {
+		super();
+		this.postId = postId;
 		this.postTitle = postTitle;
 		this.postDate = postDate;
 		this.postContent = postContent;
-		this.fileName = fileName;
-		this.kind = kind;
+		this.type = type;
+		this.approval = approval;
+		this.approvalDate = approvalDate;
 		this.userId = userId;
 	}
-
+	
 	public int getPostId() {
 		return postId;
 	}
-
 	public void setPostId(int postId) {
 		this.postId = postId;
 	}
-
 	public String getPostTitle() {
 		return postTitle;
 	}
-
 	public void setPostTitle(String postTitle) {
 		this.postTitle = postTitle;
 	}
-
 	public Date getPostDate() {
 		return postDate;
 	}
-
 	public void setPostDate(Date postDate) {
 		this.postDate = postDate;
 	}
-
 	public String getPostContent() {
 		return postContent;
 	}
-
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-
-	public String getFileName() {
-		return fileName;
+	public int getType() {
+		return type;
 	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setType(int type) {
+		this.type = type;
 	}
-
-	public String getKind() {
-		return kind;
+	public int getApproval() {
+		return approval;
 	}
-
-	public void setKind(String kind) {
-		this.kind = kind;
+	public void setApproval(int approval) {
+		this.approval = approval;
 	}
-
+	public Date getApprovalDate() {
+		return approvalDate;
+	}
+	public void setApprovalDate(Date approvalDate) {
+		this.approvalDate = approvalDate;
+	}
 	public int getUserId() {
 		return userId;
 	}
-
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "PostInformation [postId=" + postId +  ", postTitle=" + postTitle
-				+ ", postDate=" + postDate + ", postContent=" + postContent + ", fileName=" + fileName + ", kind="
-				+ kind + ", userId=" + userId + "]";
+		return "PostAdoption [postId=" + postId + ", postTitle=" + postTitle + ", postDate=" + postDate
+				+ ", postContent=" + postContent + ", type=" + type + ", approval=" + approval + ", approvalDate="
+				+ approvalDate + ", userId=" + userId + "]";
 	}
-	
-	
+
 }

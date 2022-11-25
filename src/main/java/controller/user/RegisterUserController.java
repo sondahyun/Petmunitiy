@@ -52,7 +52,6 @@ public class RegisterUserController implements Controller {
        	list.add(Integer.parseInt(request.getParameter("petList")));
        	//list.add(0);
        	
-       	String str = request.getParameter("userBirth");
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        	
        	
