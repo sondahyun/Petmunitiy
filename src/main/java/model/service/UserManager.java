@@ -4,9 +4,11 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
+import model.Apply;
 import model.PostAdoption;
 import model.PostInformation;
 import model.UserInfo;
+import model.dao.ApplyDAO;
 import model.dao.PostAdoptionDAO;
 import model.dao.PostInformationDAO;
 import model.dao.UserDAO;
@@ -23,11 +25,13 @@ public class UserManager {
 	private UserDAO userDAO;
 	private PostInformationDAO postInformationDAO;
 	private PostAdoptionDAO postAdoptionDAO;
+	private ApplyDAO applyDAO;
 	private UserManager() {
 		try {
 			userDAO = new UserDAO();
 			postInformationDAO = new PostInformationDAO();
 			postAdoptionDAO = new PostAdoptionDAO();
+			applyDAO = new ApplyDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -118,5 +122,21 @@ public class UserManager {
 	public int removeP3Adoption(int postId) throws SQLException{
 		return postAdoptionDAO.remove(postId);
 	}
+	
+	public int createApply(Apply apply) throws SQLException, ExistingUserException {
+		return applyDAO.create(apply);
+	}
+	
+	public int removeApply(int applyId) throws SQLException{
+		return applyDAO.remove(applyId);
+	}
+	
+	public Apply findApply(int applyId) throws SQLException {
+		return applyDAO.findApply(applyId); 
+	}
+	
+	public List<Apply> findApplyList() throws SQLException {
+		return applyDAO.findApplyList();
+	} 
 	
 }
