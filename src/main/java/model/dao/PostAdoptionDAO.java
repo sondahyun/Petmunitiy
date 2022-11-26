@@ -13,7 +13,7 @@ import model.PostAdoption;
 
 /**
  * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
- * PostInformation 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
+ * PostAdoption 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
  */
 public class PostAdoptionDAO {
 	private JDBCUtil jdbcUtil = null;
@@ -86,16 +86,21 @@ public class PostAdoptionDAO {
 		}
 		return 0;
 	}
-
+	/**
+	 * 주어진  ID에 해당하는 커뮤니티 정보를 데이터베이스에서 찾아 PostAdoption 도메인 클래스에 
+	 * 저장하여 반환.
+	 */
+	//특정 포스트 띄우기
+	
 	@SuppressWarnings("unchecked")
 	public PostAdoption findPost(int postId) throws SQLException {
-		String sql = "SELECT * " + "FROM PostInformation " + "WHERE postId=? ";
+		String sql = "SELECT * " + "FROM PostAdoption " + "WHERE postId=? ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { postId }); // JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
 			PostAdoption post = null;
-			ArrayList<Integer> list = new ArrayList<>();// post들의 리스트 생성
+			
 			if(rs.next()) {// 학생 정보 발견
 				post = new PostAdoption();// post 객체를 생성하여 정보를 저장
 				
@@ -118,40 +123,6 @@ public class PostAdoptionDAO {
 		return null;
 	}
 	
-	/**
-	 * 주어진  ID에 해당하는 커뮤니티 정보를 데이터베이스에서 찾아 PostInformation 도메인 클래스에 
-	 * 저장하여 반환.
-	 */
-	//특정 포스트 띄우기
-	public PostAdoption findPostAdoption(int postId) throws SQLException {
-        String sql = "SELECT * "
-        			+ "FROM PostAdoption "
-        			+ "WHERE postId = ?";              
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	// JDBCUtil에 query문과 매개 변수 설정
-		PostAdoption pA = null;
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			
-			if (rs.next()) {						// 학생 정보 발견
-				pA = new PostAdoption(		// PostInformation 객체를 생성하여 커뮤니티 정보를 저장
-					rs.getString("postTitle"),
-					rs.getDate("postDate"),
-					rs.getInt("aType"),
-					rs.getInt("approval"),
-					rs.getDate("approvalDate"),
-					rs.getString("postContent"),
-					rs.getString("loginId")
-					);
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();		// resource 반환
-		}
-		return pA;
-	}
-	
 	//검색조건을 받아 찾음
 	//수정 필요
 	public List<PostAdoption> searchP3List(String postTitle, Date start, Date end) throws SQLException {
@@ -168,7 +139,7 @@ public class PostAdoptionDAO {
 			//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			
 			while (rs.next()) {						// 학생 정보 발견
-				postAdoption = new PostAdoption(		// PostInformation 객체를 생성하여 커뮤니티 정보를 저장
+				postAdoption = new PostAdoption(		// PostAdoption 객체를 생성하여 커뮤니티 정보를 저장
 					rs.getString("postTitle"),
 					rs.getDate("postDate"),
 					rs.getInt("aType"),
@@ -199,9 +170,9 @@ public class PostAdoptionDAO {
 					
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
-			List<PostAdoption> adoptionList = new ArrayList<PostAdoption>();	// PostInformation들의 리스트 생성
+			List<PostAdoption> adoptionList = new ArrayList<PostAdoption>();	// PostAdoption들의 리스트 생성
 			while (rs.next()) {
-				PostAdoption pAdoption = new PostAdoption(			// PostInformation 객체를 생성하여 현재 행의 정보를 저장
+				PostAdoption pAdoption = new PostAdoption(			// PostAdoption 객체를 생성하여 현재 행의 정보를 저장
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
 						rs.getInt("aType"),
@@ -210,7 +181,7 @@ public class PostAdoptionDAO {
 						rs.getString("postContent"),
 						rs.getString("loginId")
 						);
-				adoptionList.add(pAdoption);				// List에 PostInformation 객체 저장
+				adoptionList.add(pAdoption);				// List에 PostAdoption 객체 저장
 			}
 			return adoptionList;					
 			

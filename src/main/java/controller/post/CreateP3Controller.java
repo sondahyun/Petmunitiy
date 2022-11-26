@@ -31,7 +31,7 @@ public class CreateP3Controller implements Controller {
 			formatter.parse(request.getParameter("approvalDate")),
 			request.getParameter("postContent"),
 			String.valueOf(loginId)
-			);		
+			);
         
 		try {
 			UserManager manager = UserManager.getInstance();
