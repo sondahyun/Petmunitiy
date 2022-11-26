@@ -3,7 +3,6 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.Community;
 import model.PostAdoption;
 import model.PostInformation;
 import model.UserInfo;
@@ -21,19 +20,22 @@ import model.dao.UserDAO;
 public class UserManager {
 	private static UserManager userMan = new UserManager();
 	private UserDAO userDAO;
-	
+	private PostInformationDAO postInformationDAO;
+	private PostAdoptionDAO postAdoptionDAO;
 	private UserManager() {
 		try {
 			userDAO = new UserDAO();
+			postInformationDAO = new PostInformationDAO();
+			postAdoptionDAO = new PostAdoptionDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
 	}
-	
+
 	public static UserManager getInstance() {
 		return userMan;
 	}
-	
+
 	public int create(UserInfo user) throws SQLException, ExistingUserException {
 		if (userDAO.existingUser(user.getLoginId()) == true) {
 			throw new ExistingUserException(user.getUserId() + "는 존재하는 아이디 입니다.");
@@ -50,7 +52,7 @@ public class UserManager {
 	}
 
 	public boolean login(String loginId, String password)
-		throws SQLException, UserNotFoundException, PasswordMismatchException {
+			throws SQLException, UserNotFoundException, PasswordMismatchException {
 		UserInfo user = userDAO.findUser(loginId);
 
 		if (!user.matchPassword(password)) {
@@ -66,17 +68,16 @@ public class UserManager {
 		return this.userDAO;
 	}
 	public PostInformation createPostInformation(PostInformation post) throws SQLException {
-	      return PostInformationDAO.create(post);      
-	   }
+		return postInformationDAO.create(post);      
+	}
 
-	   public int updateCommunity(PostInformation post) throws SQLException {
-	      return PostInformationDAO.update(post);            
-	   }
-	
-	
+	public int updateCommunity(PostInformation post) throws SQLException {
+		return postInformationDAO.update(post);            
+	}
+
 	//adoptiondao
 	public int createP0Adoption(PostAdoption comm) throws SQLException {
-		return PostAdoptionDAO.create(comm);	
+		return postAdoptionDAO.create(comm);	
 	}
-	
+
 }
