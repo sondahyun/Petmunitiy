@@ -6,7 +6,7 @@ public class Apply {
 	private int applyId;
 	private String name;
 	private int aType;
-	private Date Birth;
+	private Date birth;
 	private String phoneNumber;
 	private String hopeConditions;
 	private String allergy;
@@ -26,7 +26,7 @@ public class Apply {
 		this.applyId = applyId;
 		this.name = name;
 		this.aType = aType;
-		Birth = birth;
+		this.birth = birth;
 		this.phoneNumber = phoneNumber;
 		this.hopeConditions = hopeConditions;
 		this.allergy = allergy;
@@ -42,7 +42,7 @@ public class Apply {
 		super();
 		this.name = name;
 		this.aType = aType;
-		Birth = birth;
+		this.birth = birth;
 		this.phoneNumber = phoneNumber;
 		this.hopeConditions = hopeConditions;
 		this.allergy = allergy;
@@ -72,10 +72,10 @@ public class Apply {
 		this.aType = aType;
 	}
 	public Date getBirth() {
-		return Birth;
+		return birth;
 	}
 	public void setBirth(Date birth) {
-		Birth = birth;
+		this.birth = birth;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -128,7 +128,7 @@ public class Apply {
 
 	@Override
 	public String toString() {
-		return "Apply [applyId=" + applyId + ", name=" + name + ", aType=" + aType + ", Birth=" + Birth
+		return "Apply [applyId=" + applyId + ", name=" + name + ", aType=" + aType + ", Birth=" + birth
 				+ ", phoneNumber=" + phoneNumber + ", hopeConditions=" + hopeConditions + ", allergy=" + allergy
 				+ ", address=" + address + ", housingType=" + housingType + ", resolution=" + resolution + ", etc="
 				+ etc + ", petId=" + petId + "]";
