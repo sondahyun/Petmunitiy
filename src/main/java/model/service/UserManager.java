@@ -1,5 +1,6 @@
 package model.service;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -73,6 +74,22 @@ public class UserManager {
 
 	public int updatePostInformation(PostInformation post) throws SQLException {
 		return postInformationDAO.update(post);            
+	}
+	
+	public int removePostInformation(int postId) throws SQLException{
+		return postInformationDAO.remove(postId);
+	}
+	
+	public PostInformation findInformationPost(int postId) throws SQLException {
+		return postInformationDAO.findPost(postId); 
+	}
+	
+	public List<PostInformation> searchP0List(String postTitle, Date start, Date end) throws SQLException {
+		return postInformationDAO.searchP0List(postTitle, start, end);
+	}
+	
+	public List<PostInformation> findP0List() throws SQLException {
+		return postInformationDAO.findP0List();
 	}
 
 	//adoptiondao

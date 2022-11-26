@@ -14,6 +14,18 @@ public class PostInformation {
 	
 	public PostInformation() { }
 	
+	public PostInformation(int postId, String postTitle, Date postDate, String postContent, String fileName,
+			String kind, String loginId) {
+		super();
+		this.postId = postId;
+		this.postTitle = postTitle;
+		this.postDate = postDate;
+		this.postContent = postContent;
+		this.fileName = fileName;
+		this.kind = kind;
+		this.loginId = loginId;
+	}
+
 	public PostInformation(String postTitle, Date postDate, String postContent,
 			String fileName, String kind, String loginId) {
 		super();

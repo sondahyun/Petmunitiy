@@ -9,9 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import model.PostInformation;
-import model.Pet;
-import model.PostInformation;
-
 /**
  * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
  * PostInformation 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
@@ -34,10 +31,10 @@ public class PostInformationDAO {
 		try {
 			jdbcUtil.executeUpdate(key); // insert 문 실행
 			ResultSet rs = jdbcUtil.getGeneratedKeys();
-		   	if(rs.next()) {
-		   		int generatedKey = rs.getInt(1);   // 생성된 PK 값
-		   		post.setPostId(generatedKey); 	// id필드에 저장  
-		   	}
+			if(rs.next()) {
+				int generatedKey = rs.getInt(1);   // 생성된 PK 값
+				post.setPostId(generatedKey); 	// id필드에 저장  
+			}
 			return post;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -72,7 +69,7 @@ public class PostInformationDAO {
 	}
 
 	public int remove(int postId) throws SQLException {
-		String sql = "DELETE FROM PostInformation WHERE postId=?";
+		String sql = "DELETE FROM PostInformation WHERE postId=? ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { postId }); // JDBCUtil에 delete문과 매개 변수 설정
 
 		try {
@@ -88,14 +85,39 @@ public class PostInformationDAO {
 		return 0;
 	}
 
-	public List<PostInformation> findPost(String postTitle, Date start, Date end) throws SQLException {
+	public PostInformation findPost(int postId) throws SQLException {
+		String sql = "SELECT * "+ "FROM PostInformation "+ "WHERE postId=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	
+		PostInformation post = null;// JDBCUtil에 query문과 매개 변수 설정
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {						// 학생 정보 발견
+				post = new PostInformation(		// Community 객체를 생성하여 커뮤니티 정보를 저장
+						postId,
+						rs.getString("postTitle"),
+						rs.getDate("postDate"),
+						rs.getString("postContent"),
+						rs.getString("fileName"),
+						rs.getString("kind"),
+						rs.getString("loginId"));
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return post;
+	}
+
+
+	public List<PostInformation> searchP0List(String postTitle, Date start, Date end) throws SQLException {
 		String sql = "SELECT * " + "FROM PostInformation " + "WHERE POSTTITLE LIKE %?% AND POSTDATE BETWEEN ? AND ? ";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { postTitle }); // JDBCUtil에 query문과 매개 변수 설정
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { postTitle, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime()) }); // JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
 			ArrayList<PostInformation> informationList = new ArrayList<PostInformation>();// post들의 리스트 생성
-			if(rs.next()) {// 학생 정보 발견
+			while(rs.next()) {// 학생 정보 발견
 				PostInformation post = new PostInformation();// post 객체를 생성하여 정보를 저장
 				post.setPostTitle(rs.getString("postTitle"));
 				post.setPostDate(rs.getDate("postDate"));
@@ -106,7 +128,7 @@ public class PostInformationDAO {
 				informationList.add(post);
 			}
 			return informationList;
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -115,6 +137,36 @@ public class PostInformationDAO {
 		return null;
 	}
 
+	public List<PostInformation> findP0List() throws SQLException {
+		String sql = "SELECT * "+ "FROM PostInformation ";
 
-	
+		jdbcUtil.setSqlAndParameters(sql, null);      // JDBCUtil에 query문 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
+			List<PostInformation> informationList = new ArrayList<PostInformation>();   // PostInformation들의 리스트 생성
+			while (rs.next()) {
+				PostInformation post = new PostInformation(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
+						rs.getInt("postId"),
+						rs.getString("postTitle"),
+						rs.getDate("postDate"),
+						rs.getString("postContent"),
+						rs.getString("fileName"),
+						rs.getString("kind"),
+						rs.getString("loginId"));
+				informationList.add(post);            // List에 PostInformation 객체 저장
+			}      
+			return informationList;               
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();      // resource 반환
+		}
+		return null;
+	}
+
+
+
+
 }
