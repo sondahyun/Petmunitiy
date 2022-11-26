@@ -80,7 +80,7 @@ public class UserManager {
 		return postInformationDAO.remove(postId);
 	}
 	
-	public PostInformation findInformationPost(int postId) throws SQLException {
+	public PostInformation findP0Information(int postId) throws SQLException {
 		return postInformationDAO.findPost(postId); 
 	}
 	
@@ -107,8 +107,16 @@ public class UserManager {
 		return post;
 	}
 	
+	public List<PostAdoption> searchP3List(String postTitle, Date start, Date end) throws SQLException {
+		return postAdoptionDAO.searchP3List(postTitle, start, end);
+	}
+	
 	public List<PostAdoption> findP3List() throws SQLException {
 		return postAdoptionDAO.findP3List();
 	}
-
+	
+	public int removeP3Adoption(int postId) throws SQLException{
+		return postAdoptionDAO.remove(postId);
+	}
+	
 }

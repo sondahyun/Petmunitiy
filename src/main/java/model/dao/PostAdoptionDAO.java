@@ -70,9 +70,9 @@ public class PostAdoptionDAO {
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.
 	 */
-	public int remove(String loginId) throws SQLException {
-		String sql = "DELETE FROM PostAdoption WHERE loginId=?";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtil에 delete문과 매개 변수 설정
+	public int remove(int postId) throws SQLException {
+		String sql = "DELETE FROM PostAdoption WHERE postId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { postId }); // JDBCUtil에 delete문과 매개 변수 설정
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // delete 문 실행

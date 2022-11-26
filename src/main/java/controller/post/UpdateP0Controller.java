@@ -24,7 +24,7 @@ public class UpdateP0Controller implements Controller {
 		if (request.getMethod().equals("GET")) {	
     		// GET request: 커뮤니티 수정 form 요청	
     		UserManager manager = UserManager.getInstance();
-			PostInformation post0 = manager.findInformationPost(postId);
+			PostInformation post0 = manager.findP0Information(postId);
 			request.setAttribute("post0", post0);			
 				
 			return "/community/updateForm.jsp";   // 검색한 정보를 update form으로 전송     
