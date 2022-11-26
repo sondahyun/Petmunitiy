@@ -7,7 +7,7 @@ public class PostAdoption {
 	private int postId;
 	private String postTitle;
 	private Date postDate;
-	private int type;
+	private int aType;
 	private int approval;
 	private Date approvalDate;
 	private String postContent;
@@ -18,12 +18,12 @@ public class PostAdoption {
 		super();
 	}
 
-	public PostAdoption(String postTitle, Date postDate, int type, int approval, Date approvalDate, String postContent, String loginId) {
+	public PostAdoption(String postTitle, Date postDate, int aType, int approval, Date approvalDate, String postContent, String loginId) {
 		super();
 		this.postId = postId;
 		this.postTitle = postTitle;
 		this.postDate = postDate;
-		this.type = type;
+		this.aType = aType;
 		this.approval = approval;
 		this.approvalDate = approvalDate;
 		this.postContent = postContent;
@@ -54,11 +54,11 @@ public class PostAdoption {
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-	public int getType() {
-		return type;
+	public int getaType() {
+		return aType;
 	}
-	public void setType(int type) {
-		this.type = type;
+	public void setaType(int aType) {
+		this.aType = aType;
 	}
 	public int getApproval() {
 		return approval;
@@ -82,7 +82,7 @@ public class PostAdoption {
 	@Override
 	public String toString() {
 		return "PostAdoption [postId=" + postId + ", postTitle=" + postTitle + ", postDate=" + postDate
-				+ ", postContent=" + postContent + ", type=" + type + ", approval=" + approval + ", approvalDate="
+				+ ", postContent=" + postContent + ", aType=" + aType + ", approval=" + approval + ", approvalDate="
 				+ approvalDate + ", loginId=" + loginId + "]";
 	}
 

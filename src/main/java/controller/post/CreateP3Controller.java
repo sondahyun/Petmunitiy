@@ -26,7 +26,7 @@ public class CreateP3Controller implements Controller {
 		PostAdoption pA = new PostAdoption(
     		request.getParameter("postTitle"),
 			formatter.parse(request.getParameter("postDate")),
-			Integer.parseInt(request.getParameter("type")),
+			Integer.parseInt(request.getParameter("aType")),
 			Integer.parseInt(request.getParameter("approval")),
 			formatter.parse(request.getParameter("approvalDate")),
 			request.getParameter("postContent"),

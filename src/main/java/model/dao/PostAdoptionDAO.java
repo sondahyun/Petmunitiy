@@ -27,7 +27,7 @@ public class PostAdoptionDAO {
 	 */
 	public int create(PostAdoption post) throws SQLException {
 		String sql = "INSERT INTO PostAdoption VALUES (p3_seq.nextval,?,?,?,?,?,?,?)";
-		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getType(), post.getApproval(), new java.sql.Date(post.getApprovalDate().getTime()), post.getPostContent(), post.getLoginId() };
+		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getaType(), post.getApproval(), new java.sql.Date(post.getApprovalDate().getTime()), post.getPostContent(), post.getLoginId() };
 		
 		
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
@@ -50,8 +50,8 @@ public class PostAdoptionDAO {
 	 */
 	public int update(PostAdoption post) throws SQLException {
 		String sql = "UPDATE PostAdotpion "
-				+ "SET postTitle=?, postDate=?, type=?, approval=?, approvaldate=?, postcontent=?, loginid=? " + "WHERE postId=?";
-		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date( post.getPostDate().getTime()), post.getType(), post.getApproval(), new java.sql.Date( post.getApprovalDate().getTime()),post.getPostContent(), post.getLoginId(), post.getPostId() };
+				+ "SET postTitle=?, postDate=?, aType=?, approval=?, approvaldate=?, postcontent=?, loginid=? " + "WHERE postId=?";
+		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date( post.getPostDate().getTime()), post.getaType(), post.getApproval(), new java.sql.Date( post.getApprovalDate().getTime()),post.getPostContent(), post.getLoginId(), post.getPostId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {
@@ -101,7 +101,7 @@ public class PostAdoptionDAO {
 				
 				post.setPostTitle(rs.getString("postTitle"));
 				post.setPostDate(rs.getDate("postDate"));
-				post.setType(rs.getInt("type"));
+				post.setaType(rs.getInt("aType"));
 				post.setApproval(rs.getInt("approval"));
 				post.setApprovalDate(rs.getDate("approvalDate"));
 				post.setPostContent(rs.getString("postContent"));
@@ -137,7 +137,7 @@ public class PostAdoptionDAO {
 				pA = new PostAdoption(		// PostInformation 객체를 생성하여 커뮤니티 정보를 저장
 					rs.getString("postTitle"),
 					rs.getDate("postDate"),
-					rs.getInt("type"),
+					rs.getInt("aType"),
 					rs.getInt("approval"),
 					rs.getDate("approvalDate"),
 					rs.getString("postContent"),
@@ -171,7 +171,7 @@ public class PostAdoptionDAO {
 				postAdoption = new PostAdoption(		// PostInformation 객체를 생성하여 커뮤니티 정보를 저장
 					rs.getString("postTitle"),
 					rs.getDate("postDate"),
-					rs.getInt("type"),
+					rs.getInt("aType"),
 					rs.getInt("approval"),
 					rs.getDate("approvalDate"),
 					rs.getString("postContent"),
@@ -204,7 +204,7 @@ public class PostAdoptionDAO {
 				PostAdoption pAdoption = new PostAdoption(			// PostInformation 객체를 생성하여 현재 행의 정보를 저장
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
-						rs.getInt("type"),
+						rs.getInt("aType"),
 						rs.getInt("approval"),
 						rs.getDate("approvalDate"),
 						rs.getString("postContent"),
