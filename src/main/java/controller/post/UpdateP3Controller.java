@@ -27,7 +27,7 @@ public class UpdateP3Controller implements Controller {
     		// GET request: 커뮤니티 수정 form 요청	
     		UserManager manager = UserManager.getInstance();
 			PostAdoption post = manager.findP3Adoption(postId);	// 수정하려는 커뮤니티 정보 검색
-			request.setAttribute("p0PostId", postId);			
+			request.setAttribute("p3PostId", postId);			
 			
 			return "/community/updateForm.jsp";   // 검색한 정보를 update form으로 전송     
 	    }	

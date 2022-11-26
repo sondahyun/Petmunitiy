@@ -102,19 +102,20 @@ public class PostAdoptionDAO {
 			PostAdoption post = null;
 			
 			if(rs.next()) {// 학생 정보 발견
-				post = new PostAdoption();// post 객체를 생성하여 정보를 저장
+				// post 객체를 생성하여 정보를 저장
 				
-				post.setPostTitle(rs.getString("postTitle"));
-				post.setPostDate(rs.getDate("postDate"));
-				post.setaType(rs.getInt("aType"));
-				post.setApproval(rs.getInt("approval"));
-				post.setApprovalDate(rs.getDate("approvalDate"));
-				post.setPostContent(rs.getString("postContent"));
-				post.setLoginId(rs.getString("loginId"));
-				
-				return post;
+				post = new PostAdoption(
+						postId,
+						rs.getString("postTitle"),
+						rs.getDate("postDate"),
+						rs.getInt("aType"),
+						rs.getInt("approval"),
+						rs.getDate("approvalDate"),
+						rs.getString("postContent"),
+						rs.getString("loginId")
+					);
 			}
-			
+			return post;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -126,7 +127,7 @@ public class PostAdoptionDAO {
 	//검색조건을 받아 찾음
 	//수정 필요
 	public List<PostAdoption> searchP3List(String postTitle, Date start, Date end) throws SQLException {
-        String sql = "SELECT postTitle, postDate, pA.loginId "
+        String sql = "SELECT * "
         			+ "FROM PostAdoption pA LEFT OUTER JOIN UserInfo u ON pA.loginId = u.loginId "
         			+ "WHERE postTitle like %?% and postDate between ? and ?";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {postTitle, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});	// JDBCUtil에 query문과 매개 변수 설정
@@ -140,6 +141,7 @@ public class PostAdoptionDAO {
 			
 			while (rs.next()) {						// 학생 정보 발견
 				postAdoption = new PostAdoption(		// PostAdoption 객체를 생성하여 커뮤니티 정보를 저장
+					rs.getInt("postId"),
 					rs.getString("postTitle"),
 					rs.getDate("postDate"),
 					rs.getInt("aType"),
@@ -163,7 +165,7 @@ public class PostAdoptionDAO {
 	 * 전체 커뮤니티 정보를 검색하여 List에 저장 및 반환
 	 */
 	public List<PostAdoption> findP3List() throws SQLException {
-        String sql = "SELECT postTitle, postDate, loginId "
+        String sql = "SELECT * "
         		   + "FROM PostAdoption";
         
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
@@ -173,6 +175,7 @@ public class PostAdoptionDAO {
 			List<PostAdoption> adoptionList = new ArrayList<PostAdoption>();	// PostAdoption들의 리스트 생성
 			while (rs.next()) {
 				PostAdoption pAdoption = new PostAdoption(			// PostAdoption 객체를 생성하여 현재 행의 정보를 저장
+						rs.getInt("postId"),
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
 						rs.getInt("aType"),
