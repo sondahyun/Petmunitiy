@@ -18,7 +18,7 @@ public class PostAdoption {
 		super();
 	}
 
-	public PostAdoption(int postId, String postTitle, Date postDate, int type, int approval, Date approvalDate, String loginId,String postContent) {
+	public PostAdoption(String postTitle, Date postDate, int type, int approval, Date approvalDate, String loginId,String postContent) {
 		super();
 		this.postId = postId;
 		this.postTitle = postTitle;

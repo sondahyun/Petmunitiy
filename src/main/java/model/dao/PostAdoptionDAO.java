@@ -133,7 +133,6 @@ public class PostAdoptionDAO {
 			
 			if (rs.next()) {						// 학생 정보 발견
 				postAdoption = new PostAdoption(		// PostInformation 객체를 생성하여 커뮤니티 정보를 저장
-					postId,
 					rs.getString("postTitle"),
 					rs.getDate("postDate"),
 					rs.getInt("type"),
@@ -164,7 +163,6 @@ public class PostAdoptionDAO {
 			List<PostAdoption> adoptionList = new ArrayList<PostAdoption>();	// PostInformation들의 리스트 생성
 			while (rs.next()) {
 				PostAdoption pAdoption = new PostAdoption(			// PostInformation 객체를 생성하여 현재 행의 정보를 저장
-						rs.getInt("postId"),
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
 						rs.getInt("type"),
