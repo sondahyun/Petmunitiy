@@ -26,13 +26,13 @@ public class CreateP3Controller implements Controller {
 			Integer.parseInt(request.getParameter("type")),
 			Integer.parseInt(request.getParameter("approval")),
 			formatter.parse(request.getParameter("approvalDate")),
-			String.valueOf(loginId),
-			request.getParameter("postContent")
+			request.getParameter("postContent"),
+			String.valueOf(loginId)
 			);		
         
 		try {
 			UserManager manager = UserManager.getInstance();
-			manager.createP0Adoption(pA);
+			manager.createP3Adoption(pA);
 			
 	    	log.debug("Create PostAdoption : {}", pA);
 	        return "redirect:/community/adopt_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect

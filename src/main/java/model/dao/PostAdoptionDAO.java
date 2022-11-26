@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import model.Pet;
@@ -26,7 +27,7 @@ public class PostAdoptionDAO {
 	 */
 	public int create(PostAdoption post) throws SQLException {
 		String sql = "INSERT INTO PostAdoption VALUES (p3_seq.nextval,?,?,?,?,?,?,?)";
-		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getType(), post.getApproval(), new java.sql.Date(post.getApprovalDate().getTime()), post.getLoginId(), post.getPostContent() };
+		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getType(), post.getApproval(), new java.sql.Date(post.getApprovalDate().getTime()), post.getPostContent(), post.getLoginId() };
 		
 		
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
@@ -49,8 +50,8 @@ public class PostAdoptionDAO {
 	 */
 	public int update(PostAdoption post) throws SQLException {
 		String sql = "UPDATE PostAdotpion "
-				+ "SET postTitle=?, postDate=?, type=?, approval=?, approvaldate=?, userid=?, postcontent=? " + "WHERE postId=?";
-		Object[] param = new Object[] { post.getPostTitle(), post.getPostDate(), post.getType(), post.getApproval(), post.getApprovalDate(), post.getLoginId(),post.getPostContent(), post.getPostId() };
+				+ "SET postTitle=?, postDate=?, type=?, approval=?, approvaldate=?, postcontent=?, loginid=? " + "WHERE postId=?";
+		Object[] param = new Object[] { post.getPostTitle(), post.getPostDate(), post.getType(), post.getApproval(), post.getApprovalDate(),post.getPostContent(), post.getLoginId(), post.getPostId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {
@@ -103,8 +104,8 @@ public class PostAdoptionDAO {
 				post.setType(rs.getInt("type"));
 				post.setApproval(rs.getInt("approval"));
 				post.setApprovalDate(rs.getDate("approvalDate"));
-				post.setLoginId(rs.getString("loginId"));
 				post.setPostContent(rs.getString("postContent"));
+				post.setLoginId(rs.getString("loginId"));
 				
 				return post;
 			}
@@ -121,11 +122,11 @@ public class PostAdoptionDAO {
 	 * 주어진  ID에 해당하는 커뮤니티 정보를 데이터베이스에서 찾아 PostInformation 도메인 클래스에 
 	 * 저장하여 반환.
 	 */
-	public PostAdoption findPostAdoption(int postId) throws SQLException {
-        String sql = "SELECT postTitle, postDate, loginId "
-        			+ "FROM PostAdoption pi LEFT OUTER JOIN UserInfo u ON pi.userId = u.userId "
-        			+ "WHERE postId=? ";              
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	// JDBCUtil에 query문과 매개 변수 설정
+	public PostAdoption findPostAdoption(String postTitle, Date start, Date end) throws SQLException {
+        String sql = "SELECT postTitle, postDate, pA.loginId "
+        			+ "FROM PostAdoption pA LEFT OUTER JOIN UserInfo u ON pA.loginId = u.loginId "
+        			+ "WHERE postTitle like %?% and postDate between ? and ?";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {postTitle, start, end});	// JDBCUtil에 query문과 매개 변수 설정
 		PostAdoption postAdoption = null;
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
@@ -138,8 +139,9 @@ public class PostAdoptionDAO {
 					rs.getInt("type"),
 					rs.getInt("approval"),
 					rs.getDate("approvalDate"),
-					rs.getString("loginId"),
-					rs.getString("postContent"));
+					rs.getString("postContent"),
+					rs.getString("loginId")
+					);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -153,8 +155,8 @@ public class PostAdoptionDAO {
 	 * 전체 커뮤니티 정보를 검색하여 List에 저장 및 반환
 	 */
 	public List<PostAdoption> findPostInformationList() throws SQLException {
-        String sql = "SELECT postTitle, postDate, loginId "
-        		   + "FROM PostInformation pi LEFT OUTER JOIN UserInfo u ON pi.userId = u.userId ";
+        String sql = "SELECT postTitle, postDate, pA.loginId "
+        		   + "FROM PostAdoption pA LEFT OUTER JOIN UserInfo u ON pA.loginId = u.loginId ";
         
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 					
@@ -168,10 +170,11 @@ public class PostAdoptionDAO {
 						rs.getInt("type"),
 						rs.getInt("approval"),
 						rs.getDate("approvalDate"),
-						rs.getString("loginId"),
-						rs.getString("postContent"));
+						rs.getString("postContent"),
+						rs.getString("loginId")
+						);
 				adoptionList.add(pAdoption);				// List에 PostInformation 객체 저장
-			}		
+			}
 			return adoptionList;					
 			
 		} catch (Exception ex) {

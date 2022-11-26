@@ -10,15 +10,15 @@ public class PostAdoption {
 	private int type;
 	private int approval;
 	private Date approvalDate;
-	private String loginId;
 	private String postContent;
+	private String loginId;
 	
 	
 	public PostAdoption() {
 		super();
 	}
 
-	public PostAdoption(String postTitle, Date postDate, int type, int approval, Date approvalDate, String loginId,String postContent) {
+	public PostAdoption(String postTitle, Date postDate, int type, int approval, Date approvalDate, String postContent, String loginId) {
 		super();
 		this.postId = postId;
 		this.postTitle = postTitle;
@@ -26,8 +26,8 @@ public class PostAdoption {
 		this.type = type;
 		this.approval = approval;
 		this.approvalDate = approvalDate;
-		this.loginId = loginId;
 		this.postContent = postContent;
+		this.loginId = loginId;
 	}
 	
 	public int getPostId() {

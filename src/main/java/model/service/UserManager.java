@@ -76,8 +76,8 @@ public class UserManager {
 	}
 
 	//adoptiondao
-	public int createP0Adoption(PostAdoption comm) throws SQLException {
-		return postAdoptionDAO.create(comm);	
+	public int createP3Adoption(PostAdoption post) throws SQLException {
+		return postAdoptionDAO.create(post);	
 	}
 
 }
