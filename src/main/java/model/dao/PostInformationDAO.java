@@ -1,9 +1,11 @@
 package model.dao;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import model.PostInformation;
@@ -53,7 +55,7 @@ public class PostInformationDAO {
 	public int update(PostInformation post) throws SQLException {
 		String sql = "UPDATE PostInformation "
 				+ "SET postTitle=?, postDate=?, postContent=?, fileName=?, kind=?" + "WHERE postId=?";
-		Object[] param = new Object[] { post.getPostTitle(), post.getPostDate(), post.getPostContent(), post.getFileName(), post.getKind(), post.getPostId() };
+		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getPostContent(), post.getFileName(), post.getKind(), post.getPostId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {
@@ -69,12 +71,9 @@ public class PostInformationDAO {
 		return 0;
 	}
 
-	/**
-	 * 사용자 ID에 해당하는 사용자를 삭제.
-	 */
-	public int remove(String loginId) throws SQLException {
-		String sql = "DELETE FROM PostInformation WHERE loginId=?";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtil에 delete문과 매개 변수 설정
+	public int remove(int postId) throws SQLException {
+		String sql = "DELETE FROM PostInformation WHERE postId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { postId }); // JDBCUtil에 delete문과 매개 변수 설정
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // delete 문 실행
@@ -89,27 +88,24 @@ public class PostInformationDAO {
 		return 0;
 	}
 
-	@SuppressWarnings("unchecked")
-	public PostInformation findPost(String loginId) throws SQLException {
-		String sql = "SELECT * " + "FROM PostInformation " + "WHERE loginId=? ";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtil에 query문과 매개 변수 설정
+	public List<PostInformation> findPost(String postTitle, Date start, Date end) throws SQLException {
+		String sql = "SELECT * " + "FROM PostInformation " + "WHERE POSTTITLE LIKE %?% AND POSTDATE BETWEEN ? AND ? ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { postTitle }); // JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
-			PostInformation post = null;
-			ArrayList<Integer> list = new ArrayList<>();// post들의 리스트 생성
+			ArrayList<PostInformation> informationList = new ArrayList<PostInformation>();// post들의 리스트 생성
 			if(rs.next()) {// 학생 정보 발견
-				post = new PostInformation();// post 객체를 생성하여 정보를 저장
-				
+				PostInformation post = new PostInformation();// post 객체를 생성하여 정보를 저장
 				post.setPostTitle(rs.getString("postTitle"));
 				post.setPostDate(rs.getDate("postDate"));
 				post.setPostContent(rs.getString("postContent"));
 				post.setFileName(rs.getString("fileName"));
 				post.setKind(rs.getString("kind"));
 				post.setLoginId(rs.getString("loginId"));
-				
-				return post;
+				informationList.add(post);
 			}
+			return informationList;
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -71,7 +71,7 @@ public class UserManager {
 		return postInformationDAO.create(post);      
 	}
 
-	public int updateCommunity(PostInformation post) throws SQLException {
+	public int updatePostInformation(PostInformation post) throws SQLException {
 		return postInformationDAO.update(post);            
 	}
 
