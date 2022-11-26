@@ -49,7 +49,7 @@ public class UserDAO {
 	public int update(UserInfo user) throws SQLException {
 		String sql = "UPDATE UserInfo "
 				+ "SET loginPwd=?, userNickname=?, userBirth=?, phoneNumber=?, address=?, petList=?" + "WHERE userId=?";
-		Object[] param = new Object[] { user.getLoginPwd(), user.getUserNickname(), user.getUserBirth(),
+		Object[] param = new Object[] { user.getLoginPwd(), user.getUserNickname(),new java.sql.Date( user.getUserBirth().getTime()),
 				user.getPhoneNumber(), user.getAddress(), user.getPet(), user.getUserId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 

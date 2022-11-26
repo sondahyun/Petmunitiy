@@ -96,5 +96,19 @@ public class UserManager {
 	public int createP3Adoption(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.create(post);	
 	}
+	
+	public int updateP3Adoption(PostAdoption post) throws SQLException {
+		return postAdoptionDAO.update(post);
+	}
+	
+	public PostAdoption findP3Adoption(int postId) throws SQLException {
+		PostAdoption post = postAdoptionDAO.findPost(postId); 
+		
+		return post;
+	}
+	
+	public List<PostAdoption> findP3List() throws SQLException {
+		return postAdoptionDAO.findP3List();
+	}
 
 }
