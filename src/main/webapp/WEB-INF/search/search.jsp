@@ -13,8 +13,8 @@
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <div>
-	<button class="btn" style="float:right; margin-right:45px;">검색</button>
-    <input type="text" placeholder="검색어를 입력하세요." style="float:right; margin-right:5px;">
+    <input class="btn1" type="text" placeholder="검색어를 입력하세요.">
+    <button class="btn" >검색</button>
 </div>
 
 <!-- 테이블 종료 -->

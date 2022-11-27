@@ -74,7 +74,7 @@ function userList(targetUri) {
 	     <tr height="40">
 			<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="userNickname" 
+				<input type="text" style="width: 240" name="userNickname" >
 				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
 			</td>
 		  </tr>
