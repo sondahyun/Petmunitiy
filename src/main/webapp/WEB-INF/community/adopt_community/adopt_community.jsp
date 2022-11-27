@@ -15,7 +15,6 @@
 <br>
 
 <div>
-
 	<%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %>
 </div>
 <div>
