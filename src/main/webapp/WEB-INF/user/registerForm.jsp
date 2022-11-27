@@ -59,120 +59,122 @@ function userList(targetUri) {
 <body>	
 <%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 <!-- registration form  -->
-<h2>회원가입</h2>
+
+<!--<h2>회원가입</h2>  -->
+
 <form name="form" method="POST" action="<c:url value='/user/register' />">
-  <table style="width: 100%">
-    <tr>
-	  <td align="center">	 
-	    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-        <c:if test="${registerFailed}">
+   <h3>나의 정보</h3>
+   <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
+   		<c:if test="${registerFailed}">
 	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
-	    </c:if>
-	    <br>	  
-	    <!--<center>-->
-	    <table style="background-color: #848484" style="width: 100%">
-	     <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="userNickname" >
+	    </c:if>  
+   <table style="background-color: #848484" style="width: 100%">
+	 <!--<center>-->
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="userNickname" >
 				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">생일</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="date" style="width: 240" name="userBirth" >
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">성별</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="radio" name="gender" value="female"/> 여성
+			<input type="radio" name="gender" value="male"/> 남성
+		</td>
+	 </tr>
+	 <%-- 
+	 <tr height="40">
+		 <td width="150" align="center" bgcolor="#E6E6E6">전화번호</td>
+		 <td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="phone" 
+		   		<c:if test="${registerFailed}">value="${user.phone}"</c:if>>
 			</td>
-		  </tr>
-	  	  <!-- 
-		   <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">나이</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="age" >
-			</td>
-		  </tr> -->
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">생일</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="date" style="width: 240" name="userBirth" >
-			</td>
-		  </tr>
-		   <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">성별</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="radio" name="gender" value="female"/> 여성
-				<input type="radio" name="gender" value="male"/> 남성
-			</td>
-		  </tr>
-		  <%-- 
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">전화번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="phone" 
-					<c:if test="${registerFailed}">value="${user.phone}"</c:if>>
-			</td>
-		  </tr> --%>
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">전화번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<select name=phone1>
-					<option value=0 selected>010</option>
-					<option value=1>080</option>
-					<option value=2>070</option>
-					<option value=3>02</option>
-				</select> - <input type="text" name="phone2" value="" size="4" maxlength="4"> - <input type="text" name="phone3" value="" size="4" maxlength="4">
-				<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
-			</td>
-		  </tr>
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">사용자 ID</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240;" name="loginId">
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">비밀번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="loginPwd">
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">비밀번호 확인</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="password2">
-			</td>
-		  </tr>
-	  	 
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">이메일 주소</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="address" placeholder="you@example.com">
-					<%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%>
-			</td>
-		  </tr>
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">거주지 주소</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="address" placeholder="주소지"
-					<c:if test="${registerFailed}">value="${user.address}"</c:if>>
-			</td>
-		  </tr>	
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="#E6E6E6">펫의 이름</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="petList" >
-					<%-- <c:if test="${registerFailed}">value="${user.petList}"</c:if>> --%>
-			</td>
-		  </tr>
-	    </table>
-	    <br>
-	    <table style="margin-left: auto; margin-right: auto;">
-		  <tr align="center">
-			<td align="left">
-			<input class="btn" type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-			<input class="btn" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
-			</td>
-		  </tr>
-	    </table>
-	
-	   
-	  </td>
-    </tr>
-  </table>  
+	 </tr> --%>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">전화번호</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<select name=phone1>
+				<option value=0 selected>010</option>
+				<option value=1>080</option>
+				<option value=2>070</option>
+				<option value=3>02</option>
+			</select> - <input type="text" name="phone2" value="" size="4" maxlength="4"> - <input type="text" name="phone3" value="" size="4" maxlength="4">
+			<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">사용자 ID</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240;" name="loginId">
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">비밀번호</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="password" style="width: 240" name="loginPwd">
+		</td>
+     </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">비밀번호 확인</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="password" style="width: 240" name="password2">
+		</td>
+     </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">이메일 주소</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="address" placeholder="you@example.com">
+				<%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%>
+		</td>
+     </tr>
+     <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">거주지 주소</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="address" placeholder="주소지"
+				<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+		</td>
+	 </tr>	
+	</table>
+	<h3>펫의 정보</h3>
+	<table style="background-color: #848484" style="width: 100%">
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">펫의 이름</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="petList" >
+				<%-- <c:if test="${registerFailed}">value="${user.petList}"</c:if>> --%>
+		</td>
+     </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">펫의 나이</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="petList" >
+				<%-- <c:if test="${registerFailed}">value="${user.petList}"</c:if>> --%>
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">펫의 이름</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="petList" >
+				<%-- <c:if test="${registerFailed}">value="${user.petList}"</c:if>> --%>
+		</td>
+	 </tr>
+	</table>
+	<table>
+	 <tr align="center">
+		<td align="left">
+		<input class="btn" type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
+		<input class="btn" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
+		</td>
+	 </tr>
+	</table>
 </form>
 </body>
 </html>
