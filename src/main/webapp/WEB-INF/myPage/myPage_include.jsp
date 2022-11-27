@@ -31,7 +31,8 @@
 	</tr>
 	<tr>
 		<td>
-			<input class="btn" type="button" value="ABOUT" onClick="userList('<c:url value='/myPage/about.jsp' />')">
+			<!-- <input class="btn" type="button" value="ABOUT" onClick="location.href='/myPage/about.jsp';"> -->
+			<a class="nav-link" href="<c:url value='/myPage/about' />">ABOUT</a>
 		</td>
 	</tr>
 </table>

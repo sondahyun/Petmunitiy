@@ -45,8 +45,6 @@
 	    		<td class="nav-item">
 	    			<a class="nav-link" href="<c:url value='/user/login/form' />">로그인</a>
 	    		</td>
-	    	</th>
-	    	<th>
 	    		<td class="nav-item">
 	    			<a class="nav-link" href="<c:url value='/user/register' />">회원가입</a>
 	    		</td>

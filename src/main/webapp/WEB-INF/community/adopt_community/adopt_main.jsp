@@ -44,6 +44,9 @@
 	}
 </style>
 <table class="adopt_main_table">
+	<tr>
+		
+	</tr>
 	<tr class="pic">
 		<td class="pic_td" colspan=2> 사진 </td>
 	</tr>

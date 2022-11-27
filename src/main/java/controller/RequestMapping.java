@@ -23,7 +23,7 @@ public class RequestMapping {
         mappings.put("/community/petstar_community/petstar_community", new ForwardController("/community/petstar_community/petstar_community.jsp"));
         mappings.put("/community/group_community/group_community", new ForwardController("/community/group_community/group_community.jsp"));
         mappings.put("/search", new ForwardController("/search/search.jsp"));
-        mappings.put("/myPage/myPage_include", new ForwardController("/myPage/myPage_include.jsp"));
+        mappings.put("/myPage/about", new ForwardController("/myPage/about.jsp"));
 
         mappings.put("/main/main", new ForwardController("/main/main.jsp"));
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
