@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=utf-8" %> <!-- 변수 바꾸기 -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -146,24 +146,37 @@ function userList(targetUri) {
 	<h3>펫의 정보</h3>
 	<table style="background-color: #848484" style="width: 100%">
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">펫의 이름</td>
+		<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
 		<td width="250" bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="petList" >
-				<%-- <c:if test="${registerFailed}">value="${user.petList}"</c:if>> --%>
-		</td>
-     </tr>
-	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">펫의 나이</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="petList" >
-				<%-- <c:if test="${registerFailed}">value="${user.petList}"</c:if>> --%>
+			<input type="text" style="width: 240" name="userNickname" >
+				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">펫의 이름</td>
+		<td width="150" align="center" bgcolor="#E6E6E6">생일</td>
 		<td width="250" bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="petList" >
-				<%-- <c:if test="${registerFailed}">value="${user.petList}"</c:if>> --%>
+			<input type="date" style="width: 240" name="userBirth" >
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">성별</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="radio" name="gender" value="female"/> 여성
+			<input type="radio" name="gender" value="male"/> 남성
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">건강상태</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="address" placeholder="건강상태"
+				<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td width="150" align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
+		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+			<input class="file_real" id="attached" type="file">
+			<input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1">
 		</td>
 	 </tr>
 	</table>
@@ -174,6 +187,7 @@ function userList(targetUri) {
 		<input class="btn" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
 		</td>
 	 </tr>
+	 
 	</table>
 </form>
 </body>

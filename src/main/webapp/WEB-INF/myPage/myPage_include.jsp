@@ -30,6 +30,8 @@
 		<td class="pic_td" colspan=2> 사진 </td>
 	</tr>
 	<tr>
-		
+		<td>
+			<input class="btn" type="button" value="ABOUT" onClick="userList('<c:url value='/myPage/about.jsp' />')">
+		</td>
 	</tr>
 </table>

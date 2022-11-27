@@ -18,7 +18,7 @@
 <br>
 <table>
 	<td>
-	<%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %>
+	<%@include file="/WEB-INF/myPage/myPage_include.jsp" %>
 	</td>
 	
 	<td>
