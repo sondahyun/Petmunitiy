@@ -12,57 +12,31 @@
 
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
+<br>
 
-<div class="post_list">
-	<table class="list_table">
-		<colgroup>
-			<col width="15%" />
-			<col width="45%" />
-			<col width="20%" />
-			<col width="20%" />
-		</colgroup>
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>이름</th>
-				<th>등록일자</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>5</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕하세요!!</a></td>
-				<td>고양이(cat)</td>
-				<td>2022-11-19</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td><a href = "post.jsp" class = "postTitle">반가워요ㅎㅎ</a></td>
-				<td>사자(lion)</td>
-				<td>2022-11-12</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td><a href = "post.jsp" class = "postTitle">입양 원해요</a></td>
-				<td>토끼(rabbit)</td>
-				<td>2022-9-19</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕안녕</a></td>
-				<td>판다(panda)</td>
-				<td>2022-9-9</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕하세요</a></td>
-				<td>판다(panda)</td>
-				<td>2022-8-19</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+<table>
+<th>
+	<%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %>
+</th>
+<th>
+<table>
+<tr>
+	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+</tr>
+<tr>
+</tr>
+<tr>
+	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+</tr>
+</table>
+</th>
+</table>
+
+
 <!-- 테이블 종료 -->
 
 </body>
