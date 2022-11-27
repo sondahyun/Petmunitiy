@@ -14,11 +14,11 @@
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
 
-<table>
-<th>
+<div>
+
 	<%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %>
-</th>
-<th>
+</div>
+<div>
 <table>
 <tr>
 	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
@@ -33,8 +33,7 @@
 	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
 </tr>
 </table>
-</th>
-</table>
+</div>
 
 
 <!-- 테이블 종료 -->
