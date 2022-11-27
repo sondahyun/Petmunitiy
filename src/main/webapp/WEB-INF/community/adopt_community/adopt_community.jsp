@@ -8,32 +8,36 @@
 <title>Insert title here</title>
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
+<style>
+
+</style>
 </head>
 
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
-
-<div>
-	<%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %>
-</div>
-<div>
 <table>
-<tr>
-	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-</tr>
-<tr>
-</tr>
-<tr>
-	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-	<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-</tr>
+	<td>
+	<%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %>
+	</td>
+	
+	<td>
+		<table>
+		<tr>
+			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+		</tr>
+		</table>
+	</td>
 </table>
-</div>
-
 
 <!-- 테이블 종료 -->
 
