@@ -23,7 +23,7 @@ public class RegisterUserController implements Controller {
        	if (request.getMethod().equals("GET")) {	
        		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterForm Request");
-    		System.out.println("여기1");
+    		//System.out.println("여기1");
 			return "/user/registerForm.jsp";   //  registerForm���� ����     	
 	    }	
 
@@ -52,7 +52,6 @@ public class RegisterUserController implements Controller {
        	list.add(Integer.parseInt(request.getParameter("petList")));
        	//list.add(0);
        	
-       	String str = request.getParameter("userBirth");
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        	
        	
