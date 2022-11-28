@@ -8,7 +8,7 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
-function userCreate() {
+function applyAdopt() {
    alert("실행");
 
    if (form.userNickname.value == "") {
@@ -144,7 +144,7 @@ function userList(targetUri) {
     <table>
 	    <tr>
 		    <td>
-		    	<input class="btn" type="button" value="신청하기" onClick="userCreate()">
+		    	<input class="btn" type="button" value="신청하기" onClick="applyAdopt1()">
 		    </td>
 	    </tr>
 	</table>

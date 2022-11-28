@@ -8,9 +8,6 @@
 <title>입양/임보 게시판 메인화면</title>
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
-<style>
-
-</style>
 </head>
 
 <body>

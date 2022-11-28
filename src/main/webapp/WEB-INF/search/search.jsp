@@ -15,13 +15,6 @@
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
-<div>
-	<!-- <input type="date" style="width: 240" name="startDate" > -->
-	<button class="btn1" >날짜</button>
-    <input class="srch" type="text" placeholder="검색어를 입력하세요.">
-    <button class="btn" >검색</button>
-</div>
-<br>
 <table style="width:100%">
 <tr>
 	<td class="myPage_mini">
@@ -29,54 +22,68 @@
 	</td>
 	
 	<td class="main">
-	<table class="list_table">
-		<colgroup>
-			<col width="15%" />
-			<col width="45%" />
-			<col width="20%" />
-			<col width="20%" />
-		</colgroup>
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>이름</th>
-				<th>등록일자</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>5</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕하세요!!</a></td>
-				<td>고양이(cat)</td>
-				<td>2022-11-19</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td><a href = "post.jsp" class = "postTitle">반가워요ㅎㅎ</a></td>
-				<td>사자(lion)</td>
-				<td>2022-11-12</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td><a href = "post.jsp" class = "postTitle">입양 원해요</a></td>
-				<td>토끼(rabbit)</td>
-				<td>2022-9-19</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕안녕</a></td>
-				<td>판다(panda)</td>
-				<td>2022-9-9</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕하세요</a></td>
-				<td>판다(panda)</td>
-				<td>2022-8-19</td>
-			</tr>
-		</tbody>
-	</table>
+		<table style="margin-top:0px;">
+		<tr>
+			<td>
+				<!-- <input type="date" style="width: 240" name="startDate" > -->
+				<button class="btn1" >날짜</button>
+			    <input class="srch" type="text" placeholder="검색어를 입력하세요.">
+			    <button class="btn" >검색</button>
+			</td>
+		<tr>
+		<tr>
+			<td>
+				<table class="list_table">
+					<colgroup>
+						<col width="15%" />
+						<col width="45%" />
+						<col width="20%" />
+						<col width="20%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>제목</th>
+							<th>이름</th>
+							<th>등록일자</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>5</td>
+							<td><a href = "post.jsp" class = "postTitle">안녕하세요!!</a></td>
+							<td>고양이(cat)</td>
+							<td>2022-11-19</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td><a href = "post.jsp" class = "postTitle">반가워요ㅎㅎ</a></td>
+							<td>사자(lion)</td>
+							<td>2022-11-12</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td><a href = "post.jsp" class = "postTitle">입양 원해요</a></td>
+							<td>토끼(rabbit)</td>
+							<td>2022-9-19</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td><a href = "post.jsp" class = "postTitle">안녕안녕</a></td>
+							<td>판다(panda)</td>
+							<td>2022-9-9</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td><a href = "post.jsp" class = "postTitle">안녕하세요</a></td>
+							<td>판다(panda)</td>
+							<td>2022-8-19</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		</table>
 	</td>
 </tr>
 </table>
