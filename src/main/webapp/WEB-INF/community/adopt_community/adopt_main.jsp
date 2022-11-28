@@ -28,7 +28,7 @@
 		border : 1px solid black;
 	  	border-collapse : collapse;
 	  	float:center;
-		width:150px;
+		width:200px;
 		height:150px;
 	}
 	.pic_td, .spec_td, .gender_td, .age_td {
@@ -37,7 +37,7 @@
 	  	float:center;
 	}
 	.spec, .gender, .age {
-		width:70px;
+		width:50px;
 		border : 1px solid black;
 	  	border-collapse : collapse;
 	  	float:center;

@@ -35,6 +35,23 @@ div {
 	font-size: 8pt; 
 	color: #333333;
 }
+.adopt_info_td_1, .adopt_info_td_2 {
+	width: 180px;
+	height: 40px;
+	background-color: White;
+	border-left: none;
+}
+.adopt_info_1, .adopt_info_2 {
+	float:center;
+	width:30%;
+	height: 20%;
+	font-size: 15pt; 
+	background-color: #e8e8e8; 
+/* 	color: Beige;
+ */	border-radius : 10px;
+	text-align: center;
+	border : 6px;
+}
 p {
   width: 100px; /* �����Ϸ��� ����� ���̸� �ݵ�� ���� */
   margin: 0 auto;
