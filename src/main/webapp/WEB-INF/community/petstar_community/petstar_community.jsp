@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>펫스타그램 게시판</title>
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 </head>
@@ -26,16 +26,16 @@
 			<td><a class="nav-link" href="<c:url value='/community/adopt_community/adopt_info' />">입양 정보 보러가기</a></td>
 		</tr> --%>
 		<tr>
-			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
-			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
-			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/petstar_community/petstar_content' />"><%@include file="/WEB-INF/community/petstar_community/petstar_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/petstar_community/petstar_content' />"><%@include file="/WEB-INF/community/petstar_community/petstar_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/petstar_community/petstar_content' />"><%@include file="/WEB-INF/community/petstar_community/petstar_main.jsp" %></a></td>
 		</tr>
 		<tr>
 		</tr>
 		<tr>
-			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
-			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
-			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/petstar_community/petstar_content' />"><%@include file="/WEB-INF/community/petstar_community/petstar_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/petstar_community/petstar_content' />"><%@include file="/WEB-INF/community/petstar_community/petstar_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/petstar_community/petstar_content' />"><%@include file="/WEB-INF/community/petstar_community/petstar_main.jsp" %></a></td>
 		</tr>
 		</table>
 	</td>

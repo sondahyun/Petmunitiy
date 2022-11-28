@@ -29,7 +29,9 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/apply_form", new ForwardController("/community/adopt_community/apply_form.jsp"));
         mappings.put("/community/adopt_community/adopt_info", new ForwardController("/community/adopt_community/adopt_info.jsp"));
         mappings.put("/community/adopt_community/apply_form2", new ForwardController("/community/adopt_community/apply_form2.jsp"));
-
+        
+        mappings.put("/community/petstar_community/petstar_content", new ForwardController("/community/petstar_community/petstar_content.jsp"));
+        
         mappings.put("/main/main", new ForwardController("/main/main.jsp"));
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
