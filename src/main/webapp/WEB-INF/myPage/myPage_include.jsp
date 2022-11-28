@@ -15,7 +15,7 @@
 	    float:center;
 	    text-align:center;
 	    width:300px;
-	    height:450px;
+	    height:440px;
 	    font-family: 'Y_Spotlight';
 		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
 		font-weight: normal;
