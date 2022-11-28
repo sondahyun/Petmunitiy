@@ -122,11 +122,11 @@
 	    </tr> 
 	    <tr>
 	    	<%
-	    	if(session.getAttribute("userId") == null) {// 입양일 경우 %>
+	    	if(session.getAttribute("userId") != null) {// 입양일 경우 %>
 	    		<td class="adopt_info_td_1"><a class="adopt_info_1" href="<c:url value='/community/adopt_community/apply_form' />">입양 신청</a></td> 
 	    	<%
 			}
-	    	if(session.getAttribute("userId") == null) //임보일 경우
+	    	if(session.getAttribute("userId") != null) //임보일 경우
 			{  
 			%>
 	    		<td class="adopt_info_td_2"><a class="adopt_info_2" href="<c:url value='/community/adopt_community/apply_form2' />">임보 신청</a></td>

@@ -35,6 +35,7 @@ div {
 	font-size: 8pt; 
 	color: #333333;
 }
+/*입양 신청 폼*/
 .adopt_info_td_1, .adopt_info_td_2 {
 	width: 180px;
 	height: 40px;
@@ -47,10 +48,15 @@ div {
 	height: 20%;
 	font-size: 15pt; 
 	background-color: #e8e8e8; 
-/* 	color: Beige;
- */	border-radius : 10px;
+	border-radius : 10px;
 	text-align: center;
 	border : 6px;
+}
+.myPage_mini {
+	width: 20%;
+}
+.main {
+	width: 80%;
 }
 p {
   width: 100px; /* �����Ϸ��� ����� ���̸� �ݵ�� ���� */

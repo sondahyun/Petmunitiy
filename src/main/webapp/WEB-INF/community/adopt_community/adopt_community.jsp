@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>입양/임보 게시판 메인화면</title>
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <style>
@@ -16,12 +16,13 @@
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
-<table>
-	<td>
-	<%@include file="/WEB-INF/myPage/myPage_include.jsp" %>
+<table style="width:100%">
+<tr>
+	<td class="myPage_mini">
+		<%@include file="/WEB-INF/myPage/myPage_include.jsp" %>
 	</td>
 	
-	<td>
+	<td class="main">
 		<table>
 		<tr>
 			<%-- <td><a class="nav-link" href="<c:url value='/community/adopt_community/apply_form' />">입양 신청폼 작성하기</a></td> --%>
@@ -41,6 +42,7 @@
 		</tr>
 		</table>
 	</td>
+</tr>
 </table>
 
 <!-- 테이블 종료 -->

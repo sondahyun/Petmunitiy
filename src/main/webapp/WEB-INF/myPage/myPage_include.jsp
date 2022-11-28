@@ -27,8 +27,24 @@
 </style>
 <table class="adopt_main_table">
 	<tr class="pic">
-		<td class="pic_td" colspan=2> 사진 </td>
+		<td class="pic_td" colspan=2> 
+			<a><img src="<c:url value='/images/logo.png' />" style="width:100%"/> </a>
+		</td>
 	</tr>
+
+	<%
+	  	if(session.getAttribute("userId") != null) {// 입양일 경우 
+	%>
+	<tr>
+	    <td>
+	<%
+	   System.out.print(session.getAttribute("userId") + "님 환영합니다!");%>
+	    </td>
+	</tr>
+	<%
+	} 
+	%>
+		
 	<tr>
 		<td>
 			<!-- <input class="btn" type="button" value="ABOUT" onClick="location.href='/myPage/about.jsp';"> -->
