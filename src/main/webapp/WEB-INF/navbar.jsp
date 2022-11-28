@@ -45,8 +45,6 @@
 	    		<td class="nav-item">
 	    			<a class="nav-link" href="<c:url value='/user/login/form' />">로그인</a>
 	    		</td>
-	    	</th>
-	    	<th>
 	    		<td class="nav-item">
 	    			<a class="nav-link" href="<c:url value='/user/register' />">회원가입</a>
 	    		</td>
@@ -77,22 +75,22 @@
 	    <table class="navbar-nav mr-auto" style="width:100%">
 	    	<th>
 	    		<td class="nav-item">
-	    			<a class="nav-link" href="<c:url value='/community/adopt_community' />">입양/임보 게시판</a>
+	    			<a class="nav-link" href="<c:url value='/community/adopt_community/adopt_community' />">입양/임보 게시판</a>
 	    		</td>
 	    	</th>
 	    	<th>
 	    		<td class="nav-item">
-	    			<a class="nav-link" href="<c:url value='/community/petstar_community' />">펫스타그램</a>
+	    			<a class="nav-link" href="<c:url value='/community/petstar_community/petstar_community' />">펫스타그램</a>
 	    		</td>
 	    	</th>
 	    	<th>
 	    		<td class="nav-item">
-	    			<a class="nav-link" href="<c:url value='/community/group_community' />">그룹게시판</a>
+	    			<a class="nav-link" href="<c:url value='/community/group_community/group_community' />">그룹게시판</a>
 	    		</td>
 	    	</th>
 	    	<th>
 	    		<td class="nav-item">
-	    			<a class="nav-link" href="<c:url value='/community/info_community' />">정보게시판</a>
+	    			<a class="nav-link" href="<c:url value='/community/info_community/info_community' />">정보게시판</a>
 	    		</td>
 	    	</th>
 	    	<th>

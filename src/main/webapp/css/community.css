@@ -30,21 +30,3 @@ th, td {
    font-size: 8pt; 
    color: #333333;
 }
-
-table.commTable {
-  background: MediumBlue;
-}
-
-td.commHead, th.commHead {
-  height: 22px;
-  text-align: center;
-  background: PowderBlue; 
-  font-weight: bold; 
-}
-
-td.commCell {
-  text-align: left;
-  background: White;  
-  padding-left: 10px;
-  padding-right: 10px;
-}
