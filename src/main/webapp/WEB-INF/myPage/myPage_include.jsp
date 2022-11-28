@@ -11,8 +11,8 @@
 	.adopt_main_table{
 		border : 1px solid black;
 	  	border-collapse : collapse;
+		border-radius : 10px;
 	    margin:auto;
-	    float:center;
 	    text-align:center;
 	    width:300px;
 	    height:440px;
@@ -22,7 +22,7 @@
 		font-style: normal; 
 		font-size: 12pt; 
 		color: Black; 
-		background-color: Beige;
+		background-color: White;
 		line-height: 22px;
 	}
 	.pic {
@@ -40,18 +40,24 @@
 			<a><img src="<c:url value='/images/logo.png' />" style="width:150px"/> </a>
 		</td>
 	</tr>
-	<tr class="name">
-	    <td>
+	
 	<%
 	if(session.getAttribute("userId") != null) {// 입양일 경우 
 	%>
-	
-	<%out.print(session.getAttribute("userId") + "님 환영합니다!");%>  
+	<tr class="name">
+	    <td>
+			<%out.print(session.getAttribute("userId") + "님 환영합니다!");%> 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="<c:url value='/myPage/myPage' />">마이페이지</a>
+		</td>
+	</tr> 
 	<%
 	} 
 	%>
-		</td>
-	</tr>	
+			
 	<tr class="ABOUT">
 		<td>
 			<!-- <input class="btn" type="button" value="ABOUT" onClick="location.href='/myPage/about.jsp';"> -->

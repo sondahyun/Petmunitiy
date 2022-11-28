@@ -24,21 +24,21 @@
 	
 	<td class="main">
 		<table>
-		<tr>
-			<%-- <td><a class="nav-link" href="<c:url value='/community/adopt_community/apply_form' />">입양 신청폼 작성하기</a></td> --%>
+		<%-- <tr>
+			<td><a class="nav-link" href="<c:url value='/community/adopt_community/apply_form' />">입양 신청폼 작성하기</a></td>
 			<td><a class="nav-link" href="<c:url value='/community/adopt_community/adopt_info' />">입양 정보 보러가기</a></td>
+		</tr> --%>
+		<tr>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
 		</tr>
 		<tr>
-			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
 		</tr>
 		<tr>
-		</tr>
-		<tr>
-			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
-			<td><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></td>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
 		</tr>
 		</table>
 	</td>

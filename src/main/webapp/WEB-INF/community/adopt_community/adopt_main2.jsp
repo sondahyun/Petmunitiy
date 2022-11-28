@@ -18,7 +18,7 @@
       font-style: normal; 
       font-size: 12pt; 
       color: Black; 
-      background-color: Beige;
+      background-color: #e8e8e8;
       line-height: 22px;
    }
    .pic{

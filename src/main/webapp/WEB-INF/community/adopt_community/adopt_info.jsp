@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>임보/입양 신청</title>
+<title>임보/입양 정보</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
@@ -23,12 +23,12 @@
        </c:if>  
 <table>
 	<tr>
-	<td>
+	<td style="width:300px">
 	<!-- <a href="<c:url value='/main/main' />"> -->
 		<img src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px"/>		
 	</td>
 	
-	<td>
+	<td style="width:900px">
 	<br>
 	<h3>임보/입양 정보</h3>
 	   <table style="background-color: #848484" style="width: 100%">
