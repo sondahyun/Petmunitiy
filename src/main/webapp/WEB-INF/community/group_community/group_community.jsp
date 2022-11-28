@@ -12,8 +12,14 @@
 
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-
-<div class="post_list">
+<br>
+<table style="width:100%">
+<tr>
+	<td class="myPage_mini">
+		<%@include file="/WEB-INF/myPage/myPage_include.jsp" %>
+	</td>
+	
+	<td class="main">
 	<table class="list_table">
 		<colgroup>
 			<col width="15%" />
@@ -62,7 +68,9 @@
 			</tr>
 		</tbody>
 	</table>
-</div>
+	</td>
+</tr>
+</table>
 <!-- 테이블 종료 -->
 
 </body>

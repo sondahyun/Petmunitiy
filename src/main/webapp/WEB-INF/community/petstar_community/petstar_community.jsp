@@ -12,57 +12,35 @@
 
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-
-<div class="post_list">
-	<table class="list_table">
-		<colgroup>
-			<col width="15%" />
-			<col width="45%" />
-			<col width="20%" />
-			<col width="20%" />
-		</colgroup>
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>이름</th>
-				<th>등록일자</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>5</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕하세요!!</a></td>
-				<td>고양이(cat)</td>
-				<td>2022-11-19</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td><a href = "post.jsp" class = "postTitle">반가워요ㅎㅎ</a></td>
-				<td>사자(lion)</td>
-				<td>2022-11-12</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td><a href = "post.jsp" class = "postTitle">입양 원해요</a></td>
-				<td>토끼(rabbit)</td>
-				<td>2022-9-19</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕안녕</a></td>
-				<td>판다(panda)</td>
-				<td>2022-9-9</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕하세요</a></td>
-				<td>판다(panda)</td>
-				<td>2022-8-19</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+<br>
+<table style="width:100%">
+<tr>
+	<td class="myPage_mini">
+		<%@include file="/WEB-INF/myPage/myPage_include.jsp" %>
+	</td>
+	
+	<td class="main">
+		<table>
+		<%-- <tr>
+			<td><a class="nav-link" href="<c:url value='/community/adopt_community/apply_form' />">입양 신청폼 작성하기</a></td>
+			<td><a class="nav-link" href="<c:url value='/community/adopt_community/adopt_info' />">입양 정보 보러가기</a></td>
+		</tr> --%>
+		<tr>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+			<td><a href="<c:url value='/community/adopt_community/adopt_info' />"><%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %></a></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
 <!-- 테이블 종료 -->
 
 </body>

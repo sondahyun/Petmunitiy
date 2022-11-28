@@ -14,73 +14,69 @@
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
 <div>
-<div class="list-search">
-    <form name="frmSearch" action="" onsubmit="return false;">
-        <input type="hidden" name="searchdate" id="searchdate" value="all">
-        <div class="select_component    is_selected" style="width: 144px" id="divSearchDate">
-            <a href="#" onclick="nhn.search.toggleBoxLayer('divSearchDate');return false;" id="currentSearchDate" class="select_box">전체기간</a>
-            <ul class="select_list" style="width:291px;max-height:295px;">
-                <li><a href="#" onclick="applySearchOption('searchdate', 'all', 'currentSearchDate', this);nhn.search.toggleBoxLayer('divSearchDate');return false;">전체기간</a></li>
-                <li><a href="#" onclick="applySearchOption('searchdate', '1d', 'currentSearchDate', this);nhn.search.toggleBoxLayer('divSearchDate');return false;">1일</a></li>
-                <li><a href="#" onclick="applySearchOption('searchdate', '1w', 'currentSearchDate', this);nhn.search.toggleBoxLayer('divSearchDate');return false;">1주</a></li>
-                <li><a href="#" onclick="applySearchOption('searchdate', '1m', 'currentSearchDate', this);nhn.search.toggleBoxLayer('divSearchDate');return false;">1개월</a></li>
-                <li><a href="#" onclick="applySearchOption('searchdate', '6m', 'currentSearchDate', this);nhn.search.toggleBoxLayer('divSearchDate');return false;">6개월</a></li>
-                <li><a href="#" onclick="applySearchOption('searchdate', '1y', 'currentSearchDate', this);nhn.search.toggleBoxLayer('divSearchDate');return false;">1년</a></li>
-                <li id="date_input_area">
-                    <div id="date_enter" class="date_enter">
-                        <span id="explain_period" class="tit">기간 입력</span>
-
-                        
-                            
-                            
-                                <input type="text" id="input_1" maxlength="10" value="2017-12-26">
-                                <input type="text" id="input_2" maxlength="10" value="2018-01-12">
-                            
-                        
-                        <button id="btn_set" class="btn_set">설정</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-<div class="select_component" style="width: 144px" id="divSearchBy">
-            <a href="#" onclick="nhn.search.toggleBoxLayer('divSearchBy');return false;" id="currentSearchBy" class="select_box">게시글 + 댓글</a>
-                <ul class="select_list">
-                    <li><a href="#" onclick="applySearchOption('searchBy', '0', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'post_comment'});return false;">게시글 + 댓글</a></li>
-                    <li><a href="#" onclick="applySearchOption('searchBy', '1', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'title'});return false;">제목만</a></li>
-                    <li><a href="#" onclick="applySearchOption('searchBy', '3', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'writer'});return false;">글작성자</a></li>
-                    <li><a href="#" onclick="applySearchOption('searchBy', '4', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'comment'});return false;">댓글내용</a></li>
-                    <li><a href="#" onclick="applySearchOption('searchBy', '5', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'comment_writer'});return false;">댓글작성자</a></li>
-                </ul>
-            
-        </div>
-        <input type="hidden" name="searchBy" id="searchBy" value="0">
-        <div class="select_component" style="width: 144px" id="divSearchBy">
-               <a href="#" onclick="nhn.search.toggleBoxLayer('divSearchBy');return false;" id="currentSearchBy" class="select_box">게시글 + 댓글</a>
-                <ul class="select_list">
-                    <li><a href="#" onclick="applySearchOption('searchBy', '0', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'post_comment'});return false;">게시글 + 댓글</a></li>
-                    <li><a href="#" onclick="applySearchOption('searchBy', '1', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'title'});return false;">제목만</a></li>
-                    <li><a href="#" onclick="applySearchOption('searchBy', '3', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'writer'});return false;">글작성자</a></li>
-                    <li><a href="#" onclick="applySearchOption('searchBy', '4', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'comment'});return false;">댓글내용</a></li>
-                    <li><a href="#" onclick="applySearchOption('searchBy', '5', 'currentSearchBy', this);nhn.search.toggleBoxLayer('divSearchBy');oBAStatSender.sendByKey('PC_4161_254', {dropdown_menu: 'comment_writer'});return false;">댓글작성자</a></li>
-                </ul>
-            
-        </div>
-
-        <div class="input_search_area">
-            <div class="input_component" style="width: 200px">
-                <input type="text" id="query" name="query" placeholder="검색어를 입력해주세요" value="" onkeydown="if (event.keyCode == 13) {nhn.search.goSearch(this,false);clickcr(this, 'sch.bsearch','','',event)}">
-            </div>
-            <button onclick="nhn.search.goSearch(this,false);clickcr(this, 'sch.bsearch','','',event); return false;" class="btn-search-green">검색</button>
-        </div>
-    </form>
-</div>
-</div>
-<div>
 	<!-- <input type="date" style="width: 240" name="startDate" > -->
 	<button class="btn1" >날짜</button>
     <input class="srch" type="text" placeholder="검색어를 입력하세요.">
     <button class="btn" >검색</button>
 </div>
+<table style="width:100%">
+<tr>
+	<td class="myPage_mini">
+		<%@include file="/WEB-INF/myPage/myPage_include.jsp" %>
+	</td>
+	
+	<td class="main">
+	<table class="list_table">
+		<colgroup>
+			<col width="15%" />
+			<col width="45%" />
+			<col width="20%" />
+			<col width="20%" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>이름</th>
+				<th>등록일자</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>5</td>
+				<td><a href = "post.jsp" class = "postTitle">안녕하세요!!</a></td>
+				<td>고양이(cat)</td>
+				<td>2022-11-19</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><a href = "post.jsp" class = "postTitle">반가워요ㅎㅎ</a></td>
+				<td>사자(lion)</td>
+				<td>2022-11-12</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><a href = "post.jsp" class = "postTitle">입양 원해요</a></td>
+				<td>토끼(rabbit)</td>
+				<td>2022-9-19</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><a href = "post.jsp" class = "postTitle">안녕안녕</a></td>
+				<td>판다(panda)</td>
+				<td>2022-9-9</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td><a href = "post.jsp" class = "postTitle">안녕하세요</a></td>
+				<td>판다(panda)</td>
+				<td>2022-8-19</td>
+			</tr>
+		</tbody>
+	</table>
+	</td>
+</tr>
+</table>
 
 <!-- 테이블 종료 -->
 
