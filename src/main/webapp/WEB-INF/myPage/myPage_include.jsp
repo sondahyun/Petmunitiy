@@ -14,7 +14,8 @@
 	    margin:auto;
 	    float:center;
 	    text-align:center;
-	    width:150px;
+	    width:300px;
+	    height:450px;
 	    font-family: 'Y_Spotlight';
 		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
 		font-weight: normal;
@@ -24,28 +25,34 @@
 		background-color: Beige;
 		line-height: 22px;
 	}
+	.pic {
+	
+	}
+	.name, .ABOUT{
+		border : 1px solid black;
+	  	border-collapse : collapse;
+	    margin:auto;
+	}
 </style>
 <table class="adopt_main_table">
 	<tr class="pic">
 		<td class="pic_td" colspan=2> 
-			<a><img src="<c:url value='/images/logo.png' />" style="width:100%"/> </a>
+			<a><img src="<c:url value='/images/logo.png' />" style="width:150px"/> </a>
 		</td>
 	</tr>
-
-	<%
-	  	if(session.getAttribute("userId") != null) {// 입양일 경우 
-	%>
-	<tr>
+	<tr class="name">
 	    <td>
 	<%
-	   System.out.print(session.getAttribute("userId") + "님 환영합니다!");%>
-	    </td>
-	</tr>
+	if(session.getAttribute("userId") != null) {// 입양일 경우 
+	%>
+	
+	<%out.print(session.getAttribute("userId") + "님 환영합니다!");%>  
 	<%
 	} 
 	%>
-		
-	<tr>
+		</td>
+	</tr>	
+	<tr class="ABOUT">
 		<td>
 			<!-- <input class="btn" type="button" value="ABOUT" onClick="location.href='/myPage/about.jsp';"> -->
 			<a class="nav-link" href="<c:url value='/myPage/about' />">ABOUT</a>

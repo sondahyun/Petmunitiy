@@ -8,7 +8,7 @@
 	    font-weight: normal;
 	    font-style: normal;
 	}
-	.adopt_main_table{
+	.adopt_main_table1{
 		border : 1px solid black;
 	  	border-collapse : collapse;
 	    margin:auto;
@@ -24,42 +24,42 @@
 		background-color: Beige;
 		line-height: 22px;
 	}
-	.pic{
+	.pic1{
 		border : 1px solid black;
 	  	border-collapse : collapse;
 	  	float:center;
 		width:200px;
 		height:150px;
 	}
-	.pic_td, .spec_td, .gender_td, .age_td {
+	.pic_td1, .spec_td1, .gender_td1, .age_td1 {
 		border : 1px solid black;
 	  	border-collapse : collapse;
 	  	float:center;
 	}
-	.spec, .gender, .age {
+	.spec1, .gender1, .age1 {
 		width:50px;
 		border : 1px solid black;
 	  	border-collapse : collapse;
 	  	float:center;
 	}
 </style>
-<table class="adopt_main_table">
+<table class="adopt_main_table1">
 	<tr>
 		
 	</tr>
-	<tr class="pic">
-		<td class="pic_td" colspan=2> 사진 </td>
+	<tr class="pic1">
+		<td class="pic_td1" colspan=2> 사진 </td>
 	</tr>
-	<tr class="spec">
-		<td class="spec_td">종</td>
-		<td class="spec_td"></td>
+	<tr class="spec1">
+		<td class="spec_td1">종</td>
+		<td class="spec_td1"></td>
 	</tr>
 	<tr class="gender">
-		<td class="gender_td">성별</td>
-		<td class="gender_td"></td>
+		<td class="gender_td1">성별</td>
+		<td class="gender_td1"></td>
 	</tr>
-	<tr class="age">
-		<td class="age_td">나이</td>
-		<td class="age_td"></td>
+	<tr class="age1">
+		<td class="age_td1">나이</td>
+		<td class="age_td1"></td>
 	</tr>
 </table>
