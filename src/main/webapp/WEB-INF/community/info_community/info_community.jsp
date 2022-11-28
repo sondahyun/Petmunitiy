@@ -8,6 +8,8 @@
 <title>community</title>
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
+
 <!-- <style>
 table {
    width: 100%;

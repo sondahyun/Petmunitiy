@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>그룹게시판</title>
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
+
 </head>
 
 <body>

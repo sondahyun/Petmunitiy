@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
+
 </head>
 
 <body>
@@ -19,6 +21,7 @@
     <input class="srch" type="text" placeholder="검색어를 입력하세요.">
     <button class="btn" >검색</button>
 </div>
+<br>
 <table style="width:100%">
 <tr>
 	<td class="myPage_mini">
