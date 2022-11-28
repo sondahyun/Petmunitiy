@@ -32,13 +32,13 @@
 		/* border : 1px solid black;
 	  	border-collapse : collapse; */
 	  	float:center;
-		width:200px;
+		width:300px;
 		height:150px;
 	}
 	.pic_td2, .content_writer1, .content_say1 {
 		/* border : 1px solid black;
 	  	border-collapse : collapse; */
-	  	width:60px;
+	  	width:50px;
 	  	float:center;
 	  	height:20px;
 	}
@@ -55,7 +55,7 @@
 		text-overflow: ellipsis;
 		white-space: nowrap; 
 		overflow : hidden;
-		width: 40%;
+		width: 50%;
   	}
 </style>
 <table class="petstar_main_table1">
