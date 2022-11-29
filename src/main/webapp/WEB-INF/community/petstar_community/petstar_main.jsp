@@ -67,10 +67,10 @@
 	</tr>
 	<tr class="content_writer">
 		<td class="content_writer1">작성자</td>
-		<td class="content_writer2"><%out.print(session.getAttribute("userId"));%></td>
+		<td class="content_writer2"><%out.print(session.getAttribute("userId"));%></td> <!-- 작성자 나타내기 -->
 	</tr>
 	<tr class="content_say">
 		<td class="content_say1">글</td>
-		<td class="content_say2">안녕하세요 여러분 반갑습니다~ 펫스타그램 처음이라 떨려요~</td>
+		<td class="content_say2">안녕하세요 여러분 반갑습니다~ 펫스타그램 처음이라 떨려요~</td> <!-- 게시글 불러오기 -->
 	</tr>
 </table>
