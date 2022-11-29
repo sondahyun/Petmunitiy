@@ -65,14 +65,14 @@
 	</tr>
 	<tr class="spec1">
 		<td class="spec_td1">종</td>
-		<td class="spec_td2"></td>
+		<td class="spec_td2">	</td>
 	</tr>
 	<tr class="gender">
 		<td class="gender_td1">성별</td>
-		<td class="gender_td2"></td>
+		<td class="gender_td2">	   </td>
 	</tr>
 	<tr class="age1">
 		<td class="age_td1">나이</td>
-		<td class="age_td2"></td>
+		<td class="age_td2">	</td>
 	</tr>
 </table>
