@@ -19,7 +19,7 @@
          <c:if test="${registerFailed}">
          <font color="red"><c:out value="${exception.getMessage()}" /></font>
        </c:if>  
-<table>
+<table style="width:100%">
       <tr>		
 		<td style="width:100%">
 		<br>
