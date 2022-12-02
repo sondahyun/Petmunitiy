@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
+import model.AdoptionAnimal;
 import model.PostAdoption;
 import model.service.UserManager;
 
@@ -22,6 +23,8 @@ public class CreateP3Controller implements Controller {
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        	Object loginId = session.getAttribute("loginId");
     	session = request.getSession();
+    	
+    	AdoptionAnimal aa = new AdoptionAnimal();
        	
 		PostAdoption pA = new PostAdoption(
     		request.getParameter("postTitle"),
@@ -30,7 +33,8 @@ public class CreateP3Controller implements Controller {
 			Integer.parseInt(request.getParameter("approval")),
 			formatter.parse(request.getParameter("approvalDate")),
 			request.getParameter("postContent"),
-			String.valueOf(loginId)
+			String.valueOf(loginId),
+			aa
 			);
         
 		try {

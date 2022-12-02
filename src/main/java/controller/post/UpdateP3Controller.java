@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.Controller;
 import model.service.UserManager;
+import model.AdoptionAnimal;
 import model.PostAdoption;
 
 public class UpdateP3Controller implements Controller {
@@ -35,7 +36,16 @@ public class UpdateP3Controller implements Controller {
     	// POST request (커뮤니티 정보가 parameter로 전송됨)
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Object loginId = session.getAttribute("loginId");
-		
+		AdoptionAnimal aa = new AdoptionAnimal(
+                Integer.parseInt(request.getParameter("petId")),
+                request.getParameter("gender"),
+                Integer.parseInt(request.getParameter("age")),
+                request.getParameter("health"),
+                request.getParameter("vaccination"),
+                request.getParameter("kind"),
+                request.getParameter("fileName"),
+                Integer.parseInt(request.getParameter("postId"))          
+                );
 		PostAdoption pA = new PostAdoption(
 	    		request.getParameter("postTitle"),
 				formatter.parse(request.getParameter("postDate")),
@@ -43,7 +53,8 @@ public class UpdateP3Controller implements Controller {
 				Integer.parseInt(request.getParameter("approval")),
 				formatter.parse(request.getParameter("approvalDate")),
 				request.getParameter("postContent"),
-				String.valueOf(loginId)
+				String.valueOf(loginId),
+				aa
 				);
 
     	log.debug("Update postAdoption : {}", pA);

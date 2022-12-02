@@ -2,9 +2,10 @@
     pageEncoding="utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-@SuppressWarnings("unchecked")
+/* @SuppressWarnings("unchecked")
 ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
-Collections.sort(p3List);
+Collections.sort(p3List); */
+
 %>
 <style>
 	@font-face {
@@ -68,18 +69,18 @@ Collections.sort(p3List);
 	<tr class="pic1">
 		<td class="pic_td1" colspan=2> 사진 </td>
 	</tr>
-	<c:forEach var = "item" items = "${p3List}">
+<%-- 	<c:forEach var = "item" items = "${p3List}"> --%>
 		<tr class="spec1">
 			<td class="spec_td1">종</td>
-			<td class="spec_td2">${item.kind} </td>
+			<%-- <td class="spec_td2">${item.kind} </td> --%>
 		</tr>
-	<tr class="gender">
-		<td class="gender_td1">성별</td>
-		<td class="gender_td2">${item.gender}</td>
-	</tr>
-	<tr class="age1">
-		<td class="age_td1">나이</td>
-		<td class="age_td2">${item.age}</td>
-	</tr>
-	</c:forEach>
+		<tr class="gender">
+			<td class="gender_td1">성별</td>
+			<%-- <td class="gender_td2">${item.gender}</td> --%>
+		</tr>
+		<tr class="age1">
+			<td class="age_td1">나이</td>
+			<%-- <td class="age_td2">${item.age}</td> --%>
+		</tr>
+<%-- 	</c:forEach> --%>
 </table>

@@ -16,6 +16,6 @@ public class ListP3Controller implements Controller {
 		
 		// commList 객체를 request에 저장하여 커뮤니티 리스트 화면으로 이동(forwarding)
 		request.setAttribute("p3List", p3List);				
-		return "/community/adopt_community/adopt_main.jsp";        
+		return "/community/adopt_community/adopt_community.jsp";        
     }
 }
