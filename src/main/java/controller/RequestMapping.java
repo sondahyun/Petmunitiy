@@ -40,7 +40,7 @@ public class RequestMapping {
         
         //검색게시판
         mappings.put("/search/search", new ForwardController("/search/search.jsp"));
-
+        
 
         //정보게시판     
         mappings.put("/community/info_community/info_community", new ListP0Controller());
@@ -48,6 +48,10 @@ public class RequestMapping {
         mappings.put("/community/info_community/info_comment", new ForwardController("/community/info_community/info_comment.jsp"));
         mappings.put("/community/info_community/modal", new ForwardController("/community/info_community/modal.jsp"));
 
+        //myPage
+        mappings.put("/myPage/myPage", new ForwardController("/myPage/myPage.jsp"));
+        mappings.put("/myPage/content_zip", new ForwardController("/myPage/content_zip.jsp"));
+        mappings.put("/myPage/comment_zip", new ForwardController("/myPage/comment_zip.jsp"));
 
         //user
         mappings.put("/main/main", new ForwardController("/main/main.jsp"));
@@ -55,7 +59,9 @@ public class RequestMapping {
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/view", new ViewUserController());
+        mappings.put("/user/user_update", new ForwardController("/user/user_update.jsp"));
         
+ 
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
 //      mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
 //      mappings.put("/user/register", new RegisterUserController());

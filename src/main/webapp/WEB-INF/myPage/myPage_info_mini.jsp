@@ -34,24 +34,16 @@
    }
 </style>
 <table class="myPage_mini">
-   
-   <%
-   if(session.getAttribute("userId") != null) {// 입양일 경우 
-   %>
-   <tr>
+   <tr class="content">
       <td>
-         <a href="<c:url value='/myPage/myPage' />">작성글 모아보기</a> <!-- value 수정하기 -->
+         <a href="<c:url value='/myPage/content_zip' />">작성글 모아보기</a> <!-- value 수정하기 -->
       </td>
    </tr> 
    <tr class="comment">
       <td>
-         <a href="<c:url value='/myPage/myPage' />">댓글 모아보기</a> <!-- value 수정하기 -->
+         <a href="<c:url value='/myPage/comment_zip' />">댓글 모아보기</a> <!-- value 수정하기 -->
       </td>
-   </tr> 
-   <%
-   } 
-   %>
-         
+   </tr>  
    <tr class="correction">
       <td>
          <!-- <input class="btn" type="button" value="ABOUT" onClick="location.href='/myPage/about.jsp';"> -->
