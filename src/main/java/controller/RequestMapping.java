@@ -5,6 +5,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.post.ListP0Controller;
+import controller.post.ListP3Controller;
 import controller.user.*;
 
 public class RequestMapping {
@@ -18,25 +20,16 @@ public class RequestMapping {
     	// �� uri�� �����Ǵ� controller ��ü�� ���� �� ����
         mappings.put("/", new ForwardController("/index.jsp"));
         mappings.put("/navbar", new ForwardController("/navbar.jsp"));
-        mappings.put("/community/info_community/info_community", new ForwardController("/community/info_community/info_community.jsp"));
-        mappings.put("/community/adopt_community/adopt_community", new ForwardController("/community/adopt_community/adopt_community.jsp"));
-        mappings.put("/community/petstar_community/petstar_community", new ForwardController("/community/petstar_community/petstar_community.jsp"));
-        mappings.put("/community/group_community/group_community", new ForwardController("/community/group_community/group_community.jsp"));
-        mappings.put("/search", new ForwardController("/search/search.jsp"));
-        mappings.put("/myPage/about", new ForwardController("/myPage/about.jsp"));
-        mappings.put("/myPage/myPage", new ForwardController("/myPage/myPage.jsp"));
+        mappings.put("/community/info_community/info_community", new ListP0Controller());
+        mappings.put("/community/adopt_community/", new ListP3Controller());
+        //mappings.put("/community/petstar_community", new ForwardController("/community/petstar_community.jsp"));
+        //mappings.put("/community/group_community", new ForwardController("/community/group_community.jsp"));
+        //mappings.put("/search", new ForwardController("/search/search.jsp"));
 
-        mappings.put("/community/adopt_community/apply_form", new ForwardController("/community/adopt_community/apply_form.jsp"));
-        mappings.put("/community/adopt_community/adopt_info", new ForwardController("/community/adopt_community/adopt_info.jsp"));
-        mappings.put("/community/adopt_community/apply_form2", new ForwardController("/community/adopt_community/apply_form2.jsp"));
-        
-        mappings.put("/community/petstar_community/petstar_content", new ForwardController("/community/petstar_community/petstar_content.jsp"));
-        
         mappings.put("/main/main", new ForwardController("/main/main.jsp"));
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
-//        mappings.put("/user/list", new ListUserController());
         mappings.put("/user/view", new ViewUserController());
         
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)

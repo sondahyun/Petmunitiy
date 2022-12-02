@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class PostAdoption {
+public class PostAdoption implements Comparable {
 	private int postId;
 	private String postTitle;
 	private Date postDate;
@@ -95,6 +95,14 @@ public class PostAdoption {
 		return "PostAdoption [postId=" + postId + ", postTitle=" + postTitle + ", postDate=" + postDate
 				+ ", postContent=" + postContent + ", aType=" + aType + ", approval=" + approval + ", approvalDate="
 				+ approvalDate + ", loginId=" + loginId + "]";
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		PostInformation obj = (PostInformation)o;
+		if(this.postId - obj.getPostId() == 1)
+			return -1;
+		else return 1;
 	}
 
 }
