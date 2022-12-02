@@ -68,24 +68,24 @@ function userList(targetUri) {
    		<c:if test="${registerFailed}">
 	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
 	    </c:if>  
-   <table style="background-color: #848484" style="width: 100%">
+   <table style="background-color: #848484; width: 100%">
 	 <!--<center>-->
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td width="50%" align="center" bgcolor="#E6E6E6">이름</td>
+		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<input type="text" style="width: 240" name="userNickname" >
 				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">생일</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td width="50%" align="center" bgcolor="#E6E6E6">생일</td>
+		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<input type="date" style="width: 240" name="userBirth" >
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">성별</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td width="50%" align="center" bgcolor="#E6E6E6">성별</td>
+		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<input type="radio" name="gender" value="female"/> 여성
 			<input type="radio" name="gender" value="male"/> 남성
 		</td>
@@ -99,8 +99,8 @@ function userList(targetUri) {
 			</td>
 	 </tr> --%>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">전화번호</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td width="50%" align="center" bgcolor="#E6E6E6">전화번호</td>
+		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<select name=phone1>
 				<option value=0 selected>010</option>
 				<option value=1>080</option>
@@ -111,70 +111,70 @@ function userList(targetUri) {
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">사용자 ID</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td width="50%" align="center" bgcolor="#E6E6E6">사용자 ID</td>
+		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<input type="text" style="width: 240;" name="loginId">
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">비밀번호</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td width="50%" align="center" bgcolor="#E6E6E6">비밀번호</td>
+		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<input type="password" style="width: 240" name="loginPwd">
 		</td>
      </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">비밀번호 확인</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td width="50%" align="center" bgcolor="#E6E6E6">비밀번호 확인</td>
+		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<input type="password" style="width: 240" name="password2">
 		</td>
      </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">이메일 주소</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td width="50%" align="center" bgcolor="#E6E6E6">이메일 주소</td>
+		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<input type="text" style="width: 240" name="address" placeholder="you@example.com">
 				<%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%>
 		</td>
      </tr>
      <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">거주지 주소</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td width="50%" align="center" bgcolor="#E6E6E6">거주지 주소</td>
+		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<input type="text" style="width: 240" name="address" placeholder="주소지"
 				<c:if test="${registerFailed}">value="${user.address}"</c:if>>
 		</td>
 	 </tr>	
 	</table>
 	<h3>펫의 정보</h3>
-	<table style="background-color: #848484" style="width: 100%">
+	<table style="background-color: #848484; width: 100%">
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">이름</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td align="center" bgcolor="#E6E6E6">이름</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
 			<input type="text" style="width: 240" name="userNickname" >
 				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">생일</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td align="center" bgcolor="#E6E6E6">생일</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
 			<input type="date" style="width: 240" name="userBirth" >
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">성별</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td align="center" bgcolor="#E6E6E6">성별</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
 			<input type="radio" name="gender" value="female"/> 여성
 			<input type="radio" name="gender" value="male"/> 남성
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">건강상태</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td align="center" bgcolor="#E6E6E6">건강상태</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
 			<input type="text" style="width: 240" name="address" placeholder="건강상태"
 				<c:if test="${registerFailed}">value="${user.address}"</c:if>>
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="150" align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
-		<td width="250" bgcolor="ffffff" style="padding-left: 10">
+		<td align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
 			<input class="file_real" id="attached" type="file">
 			<input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1">
 		</td>

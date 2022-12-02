@@ -60,25 +60,25 @@ table2 {
 		<tbody>
 			<tr>
 				<td>5</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕하세요!!</a></td>
+				<td><a href = "<c:url value='/community/info_community/info_content' />" class = "postTitle">안녕하세요!!</a></td>
 				<td>고양이(cat)</td>
 				<td>2022-11-19</td>
 			</tr>
 			<tr>
 				<td>4</td>
-				<td><a href = "post.jsp" class = "postTitle">반가워요ㅎㅎ</a></td>
+				<td><a href = "<c:url value='/community/info_community/info_content' />" class = "postTitle" class = "postTitle">반가워요ㅎㅎ</a></td>
 				<td>사자(lion)</td>
 				<td>2022-11-12</td>
 			</tr>
 			<tr>
 				<td>3</td>
-				<td><a href = "post.jsp" class = "postTitle">입양 원해요</a></td>
+				<td><a href = "<c:url value='/community/info_community/info_content' />" class = "postTitle" class = "postTitle">입양 원해요</a></td>
 				<td>토끼(rabbit)</td>
 				<td>2022-9-19</td>
 			</tr>
 			<tr>
 				<td>2</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕안녕</a></td>
+				<td><a href = "<c:url value='/community/info_community/info_content' />" class = "postTitle" class = "postTitle">안녕안녕</a></td>
 				<td>판다(panda)</td>
 				<td>2022-9-9</td>
 			</tr>
