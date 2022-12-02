@@ -69,7 +69,6 @@ Collections.sort(p3List); */
 	<tr class="pic1">
 		<td class="pic_td1" colspan=2> 사진 </td>
 	</tr>
-<%-- 	<c:forEach var = "item" items = "${p3List}"> --%>
 		<tr class="spec1">
 			<td class="spec_td1">종</td>
 			<%-- <td class="spec_td2">${item.kind} </td> --%>
@@ -82,5 +81,4 @@ Collections.sort(p3List); */
 			<td class="age_td1">나이</td>
 			<%-- <td class="age_td2">${item.age}</td> --%>
 		</tr>
-<%-- 	</c:forEach> --%>
 </table>
