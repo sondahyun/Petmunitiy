@@ -3,10 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-@SuppressWarnings("unchecked")
-ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
-Collections.sort(p3List); 
-System.out.println(p3List.size());
+	@SuppressWarnings("unchecked")
+	ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
+	Collections.sort(p3List); 
+	System.out.println(p3List.size());
 %>
 
 <!DOCTYPE html>
