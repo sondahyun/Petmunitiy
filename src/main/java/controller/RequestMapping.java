@@ -21,7 +21,7 @@ public class RequestMapping {
         mappings.put("/", new ForwardController("/index.jsp"));
         mappings.put("/navbar", new ForwardController("/navbar.jsp"));
         mappings.put("/community/info_community/info_community", new ListP0Controller());
-        mappings.put("/community/adopt_community/", new ListP3Controller());
+        mappings.put("/community/adopt_community/adopt_community", new ListP3Controller());
         //mappings.put("/community/petstar_community", new ForwardController("/community/petstar_community.jsp"));
         //mappings.put("/community/group_community", new ForwardController("/community/group_community.jsp"));
         //mappings.put("/search", new ForwardController("/search/search.jsp"));
