@@ -17,8 +17,8 @@
 <br>
 <table style="width:100%">
 <tr>
-	<td>
-		<a href="<c:url value='/community/adopt_community/add_content' />">게시글 작성</a>
+	<td colspan="3">
+		<a style="float:right" href="<c:url value='/community/adopt_community/add_content' />">게시글 작성</a>
 	</td>
 </tr>
 <tr>
