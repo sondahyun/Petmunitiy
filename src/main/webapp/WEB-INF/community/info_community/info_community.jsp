@@ -4,7 +4,7 @@
 
 <%
 @SuppressWarnings("unchecked")
-List<PostInformation> p0List = (List<PostInformation>)request.getAttribute("p0List");
+ArrayList<PostInformation> p0List = (ArrayList<PostInformation>)request.getAttribute("p0List");
 Collections.sort(p0List);
 %>
    
