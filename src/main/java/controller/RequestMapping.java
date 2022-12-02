@@ -26,7 +26,9 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/apply_form", new ForwardController("/community/adopt_community/apply_form.jsp"));
         mappings.put("/community/adopt_community/adopt_info", new ForwardController("/community/adopt_community/adopt_info.jsp"));
         mappings.put("/community/adopt_community/apply_form2", new ForwardController("/community/adopt_community/apply_form2.jsp"));
-   
+        mappings.put("/community/adopt_community/apply_result", new ForwardController("/community/adopt_community/apply_result.jsp"));
+        mappings.put("/community/adopt_community/apply_result_closer", new ForwardController("/community/adopt_community/apply_result_closer.jsp"));
+
         //펫스타그램
         mappings.put("/community/petstar_community/petstar_community", new ForwardController("/community/petstar_community/petstar_community.jsp"));
         mappings.put("/community/petstar_community/petstar_content", new ForwardController("/community/petstar_community/petstar_content.jsp"));

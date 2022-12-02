@@ -3,7 +3,7 @@ td {
 	color: #333333; 
 	line-height: 18px;
 }
-table, form, h2 {
+table, form, h2, h3 {
     margin:auto;
     float:center;
     text-align: center; 
