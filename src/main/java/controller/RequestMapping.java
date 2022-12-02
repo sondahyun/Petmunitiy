@@ -33,11 +33,13 @@ public class RequestMapping {
         //펫스타그램
         mappings.put("/community/petstar_community/petstar_community", new ForwardController("/community/petstar_community/petstar_community.jsp"));
         mappings.put("/community/petstar_community/petstar_content", new ForwardController("/community/petstar_community/petstar_content.jsp"));
-        
+        mappings.put("/community/petstar_community/add_content", new ForwardController("/community/petstar_community/add_content.jsp"));
+
         
         //그룹게시판
         mappings.put("/community/group_community/group_community", new ForwardController("/community/group_community/group_community.jsp"));
-        
+        mappings.put("/community/group_community/add_content", new ForwardController("/community/group_community/add_content.jsp"));
+
         
         //검색게시판
         mappings.put("/search/search", new ForwardController("/search/search.jsp"));
@@ -48,6 +50,7 @@ public class RequestMapping {
         mappings.put("/community/info_community/info_content", new ForwardController("/community/info_community/info_content.jsp"));
         mappings.put("/community/info_community/info_comment", new ForwardController("/community/info_community/info_comment.jsp"));
         mappings.put("/community/info_community/modal", new ForwardController("/community/info_community/modal.jsp"));
+        mappings.put("/community/info_community/add_content", new ForwardController("/community/info_community/add_content.jsp"));
 
         //myPage
         mappings.put("/myPage/myPage", new ForwardController("/myPage/myPage.jsp"));

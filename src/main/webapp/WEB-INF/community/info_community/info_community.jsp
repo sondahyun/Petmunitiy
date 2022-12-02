@@ -3,9 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-@SuppressWarnings("unchecked")
-ArrayList<PostInformation> p0List = (ArrayList<PostInformation>)request.getAttribute("p0List");
-Collections.sort(p0List);
+	@SuppressWarnings("unchecked")
+	ArrayList<PostInformation> p0List = (ArrayList<PostInformation>)request.getAttribute("p0List");
+	Collections.sort(p0List);
 %>
    
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ Collections.sort(p0List);
 <table style="width:100%">
 	<tr>
 		<td colspan="3">
-			<a style="float:right" href="<c:url value='/community/adopt_community/add_content' />">게시글 작성</a>
+			<a style="float:right" href="<c:url value='/community/info_community/add_content' />">게시글 작성</a>
 		</td>
 	</tr>
 	<tr>
