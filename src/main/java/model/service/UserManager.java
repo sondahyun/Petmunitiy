@@ -5,10 +5,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Apply;
+import model.Pet;
 import model.PostAdoption;
 import model.PostInformation;
 import model.UserInfo;
 import model.dao.ApplyDAO;
+import model.dao.PetDAO;
 import model.dao.PostAdoptionDAO;
 import model.dao.PostInformationDAO;
 import model.dao.UserDAO;
@@ -26,12 +28,15 @@ public class UserManager {
 	private PostInformationDAO postInformationDAO;
 	private PostAdoptionDAO postAdoptionDAO;
 	private ApplyDAO applyDAO;
+	private PetDAO petDAO;
+
 	private UserManager() {
 		try {
 			userDAO = new UserDAO();
 			postInformationDAO = new PostInformationDAO();
 			postAdoptionDAO = new PostAdoptionDAO();
 			applyDAO = new ApplyDAO();
+			petDAO = new PetDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -139,4 +144,23 @@ public class UserManager {
 		return applyDAO.findApplyList();
 	} 
 	
+	//pet
+	public int createPet(Pet pet) throws SQLException {
+		return petDAO.create(pet);      
+	}
+	
+	public int updatePet(Pet pet) throws SQLException {
+		return petDAO.update(pet);            
+	}
+	
+	public int removePet(int petId) throws SQLException{
+		return petDAO.remove(petId);
+	}
+	
+	public Pet findPet(int petId) throws SQLException {
+		return petDAO.findPet(petId); 
+	}
+	public List<Pet> findPetList() throws SQLException {
+		return petDAO.findPetList();
+	}
 }

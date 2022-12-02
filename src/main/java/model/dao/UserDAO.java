@@ -24,9 +24,9 @@ public class UserDAO {
 	 */
 	public int create(UserInfo user) throws SQLException {
 		//
-		String sql = "INSERT INTO UserInfo (USERID, LOGINID, LOGINPWD, USERNICKNAME, USERBIRTH, PHONENUMBER, GENDER, ADDRESS, PET) VALUES (user_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO UserInfo (USERID, LOGINID, LOGINPWD, USERNICKNAME, USERBIRTH, PHONENUMBER, GENDER, ADDRESS) VALUES (user_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] { user.getLoginId(), user.getLoginPwd(), user.getUserNickname(),
-				new java.sql.Date( user.getUserBirth().getTime()), user.getPhoneNumber(), user.getGender(), user.getAddress(), user.getPet() };
+				new java.sql.Date( user.getUserBirth().getTime()), user.getPhoneNumber(), user.getGender(), user.getAddress() };
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		
 		try {
@@ -48,9 +48,9 @@ public class UserDAO {
 	 */
 	public int update(UserInfo user) throws SQLException {
 		String sql = "UPDATE UserInfo "
-				+ "SET loginPwd=?, userNickname=?, userBirth=?, phoneNumber=?, address=?, petList=?" + "WHERE userId=?";
+				+ "SET loginPwd=?, userNickname=?, userBirth=?, phoneNumber=?, address=? " + "WHERE userId=?";
 		Object[] param = new Object[] { user.getLoginPwd(), user.getUserNickname(),new java.sql.Date( user.getUserBirth().getTime()),
-				user.getPhoneNumber(), user.getAddress(), user.getPet(), user.getUserId() };
+				user.getPhoneNumber(), user.getAddress(), user.getUserId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {
@@ -94,7 +94,6 @@ public class UserDAO {
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
 			UserInfo user = null;
-			ArrayList<Integer> list = new ArrayList<>();// pet들의 리스트 생성
 			if(rs.next()) {// 학생 정보 발견
 				user = new UserInfo();// User 객체를 생성하여 학생 정보를 저장
 				user.setUserId(rs.getInt("userId"));
@@ -105,7 +104,6 @@ public class UserDAO {
 				user.setPhoneNumber(rs.getString("phoneNumber"));
 				user.setGender(rs.getString("gender"));
 				user.setAddress(rs.getString("address"));
-				user.setPet(rs.getInt("pet"));
 				//pet 객체들의 list를 준다
 				return user;
 			}

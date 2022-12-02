@@ -5,16 +5,16 @@ import java.util.Date;
 public class Pet {
 	private int petId;
 	private String name;
-	
 	private String gender;
 	private int age;
 	private String health;
 	private String vaccination;
 	private String kind;
-	private String filename;	//파일 경로
+	private String filename;	//파일 경로\
+	private String loginId;
 		
 	public Pet(int petId, String name, String gender, int age, String health, String vaccination, String kind,
-			String filename) {
+			String filename, String loginId) {
 		super();
 		this.petId = petId;
 		this.name = name;
@@ -24,6 +24,21 @@ public class Pet {
 		this.vaccination = vaccination;
 		this.kind = kind;
 		this.filename = filename;
+		this.loginId = loginId;
+	}
+	
+	public Pet() {}
+	public Pet(String name, String gender, int age, String health, String vaccination, String kind,
+			String filename, String loginId) {
+		super();
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.health = health;
+		this.vaccination = vaccination;
+		this.kind = kind;
+		this.filename = filename;
+		this.loginId = loginId;
 	}
 	
 	public int getPetId() {
@@ -74,12 +89,22 @@ public class Pet {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
+	
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
 
 	@Override
 	public String toString() {
-		return "Pet [petId=" + petId + ", name=" + name + ", gender=" + gender + ", age=" + age + ", health="
-				+ health + ", vaccination=" + vaccination + ", kind=" + kind + ", filename=" + filename + "]";
+		return "Pet [petId=" + petId + ", name=" + name + ", gender=" + gender + ", age=" + age + ", health=" + health
+				+ ", vaccination=" + vaccination + ", kind=" + kind + ", filename=" + filename + ", loginId=" + loginId
+				+ "]";
 	}
+
 	
 	
 }

@@ -1,4 +1,4 @@
-package controller.user;
+package controller.pet;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -6,77 +6,57 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
+import model.Pet;
 import model.UserInfo;
 import model.service.ExistingUserException;
 import model.service.UserManager;
 
-public class RegisterUserController implements Controller {
-    private static final Logger log = LoggerFactory.getLogger(RegisterUserController.class);
+public class RegisterPetController implements Controller {
+    private static final Logger log = LoggerFactory.getLogger(RegisterPetController.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
        	if (request.getMethod().equals("GET")) {	
        		// GET request: 회원정보 등록 form 요청	
-    		log.debug("RegisterForm Request");
+    		log.debug("RegisterPetForm Request");
     		//System.out.println("여기1");
 			return "/user/registerForm.jsp";   //  registerForm���� ����     	
 	    }	
 
      // POST request (회원정보가 parameter로 전송됨)
-       	log.debug("befor Create User : {}");
+       	log.debug("befor Create Pet : {}");
+    	HttpSession session = request.getSession();
+    	Object loginId = session.getAttribute("loginId");
        	
-       	String phone1= null;
-       	
-       	switch(request.getParameter("phone1")) {
-       	case "0":
-       		phone1 = "010";
-       		break;
-       	case "1":
-       		phone1 = "080";
-       		break;
-       	case "2":
-       		phone1 = "070";
-       		break;
-       	case "3":
-       		phone1 = "02";
-       		break;
-       	}
-       	String phoneNumber = phone1+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
-       	//
-       	ArrayList<Integer> list = new ArrayList<>();
-       	list.add(Integer.parseInt(request.getParameter("petList")));
-       	//list.add(0);
-       	
-       	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-       	
-       	
-       	UserInfo user = new UserInfo(
-			request.getParameter("loginId"),
-			request.getParameter("loginPwd"),
-			request.getParameter("userNickname"),
-			formatter.parse(request.getParameter("userBirth")),
-			phoneNumber,
+       	Pet pet = new Pet(
+			request.getParameter("name"),
 			request.getParameter("gender"),
-			request.getParameter("address")
+			Integer.parseInt(request.getParameter("age")),
+			request.getParameter("health"),
+			request.getParameter("vaccination"),
+			request.getParameter("kind"),
+			request.getParameter("filename"),
+			String.valueOf(loginId)
 			);
 		//user.setUserId(1);
 		
-        log.debug("Create User : {}", user);
+        log.debug("Create User : {}", pet);
 
 		try {
 			UserManager manager = UserManager.getInstance();
-			manager.create(user);
+			manager.create(pet);
 	        return "redirect:/user/login/form";	// ���� �� ����� ����Ʈ ȭ������ redirect
 	        
 		} catch (ExistingUserException e) {	// ���� �߻� �� ȸ������ form���� forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
-			request.setAttribute("user", user);
+			request.setAttribute("pet", pet);
 			
 			return "/user/registerForm.jsp";
 		}
