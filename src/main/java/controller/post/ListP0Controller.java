@@ -16,6 +16,6 @@ public class ListP0Controller implements Controller {
 		
 		// commList 객체를 request에 저장하여 커뮤니티 리스트 화면으로 이동(forwarding)
 		request.setAttribute("p0List", p0List);				
-		return "/community/info_community.jsp";        
+		return "/community/info_community/info_community.jsp";        
     }
 }
