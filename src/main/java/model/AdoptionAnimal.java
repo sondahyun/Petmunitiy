@@ -10,7 +10,7 @@ public class AdoptionAnimal {
 	private String vaccination;
 	private String kind;
 	private String filename;
-	private int postId;//파일 경로
+	private int postId;//�뙆�씪 寃쎈줈
 
 	public AdoptionAnimal() {
 		super();
