@@ -29,6 +29,7 @@
 	<td style="width:900px">
 	<br>
 	<h3>임보/입양 정보</h3>
+	<a style="float:right" href="<c:url value='/community/adopt_community/apply_result' />">모아보기</a><br><br>
 	   <table style="background-color: #848484" style="width: 100%">
 	    <!--<center>-->
 	    <tr height="40">

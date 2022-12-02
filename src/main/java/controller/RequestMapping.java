@@ -27,26 +27,37 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/apply_form", new ForwardController("/community/adopt_community/apply_form.jsp"));
         mappings.put("/community/adopt_community/adopt_info", new ForwardController("/community/adopt_community/adopt_info.jsp"));
         mappings.put("/community/adopt_community/apply_form2", new ForwardController("/community/adopt_community/apply_form2.jsp"));
-   
+        mappings.put("/community/adopt_community/apply_result", new ForwardController("/community/adopt_community/apply_result.jsp"));
+        mappings.put("/community/adopt_community/apply_result_closer", new ForwardController("/community/adopt_community/apply_result_closer.jsp"));
+        mappings.put("/community/adopt_community/add_content", new ForwardController("/community/adopt_community/add_content.jsp"));
+        
         //펫스타그램
         mappings.put("/community/petstar_community/petstar_community", new ForwardController("/community/petstar_community/petstar_community.jsp"));
         mappings.put("/community/petstar_community/petstar_content", new ForwardController("/community/petstar_community/petstar_content.jsp"));
-        
+        mappings.put("/community/petstar_community/add_content", new ForwardController("/community/petstar_community/add_content.jsp"));
+
         
         //그룹게시판
         mappings.put("/community/group_community/group_community", new ForwardController("/community/group_community/group_community.jsp"));
-        
+        mappings.put("/community/group_community/add_content", new ForwardController("/community/group_community/add_content.jsp"));
+
         
         //검색게시판
         mappings.put("/search/search", new ForwardController("/search/search.jsp"));
-
+        
 
         //정보게시판     
         mappings.put("/community/info_community/info_community", new ListP0Controller());
         mappings.put("/community/info_community/info_content", new ViewP0Controller());
         mappings.put("/community/info_community/info_comment", new ForwardController("/community/info_community/info_comment.jsp"));
         mappings.put("/community/info_community/modal", new ForwardController("/community/info_community/modal.jsp"));
+        mappings.put("/community/info_community/add_content", new ForwardController("/community/info_community/add_content.jsp"));
 
+        //myPage
+        mappings.put("/myPage/myPage", new ForwardController("/myPage/myPage.jsp"));
+        mappings.put("/myPage/about", new ForwardController("/myPage/about.jsp"));
+        mappings.put("/myPage/content_zip", new ForwardController("/myPage/content_zip.jsp"));
+        mappings.put("/myPage/comment_zip", new ForwardController("/myPage/comment_zip.jsp"));
 
         //user
         mappings.put("/main/main", new ForwardController("/main/main.jsp"));
@@ -54,7 +65,9 @@ public class RequestMapping {
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/view", new ViewUserController());
+        mappings.put("/user/user_update", new ForwardController("/user/user_update.jsp"));
         
+ 
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
 //      mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
 //      mappings.put("/user/register", new RegisterUserController());
