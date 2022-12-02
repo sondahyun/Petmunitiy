@@ -67,6 +67,7 @@ public class RequestMapping {
         
         mappings.put("/user/delete", new DeleteUserController());
         
+        mappings.put("/myPage/myPage", new ForwardController("/myPage/myPage.jsp"));
 		/*
 		 * // 커뮤니티 관련 request URI 추가 mappings.put("/community/list", new
 		 * ListCommunityController()); mappings.put("/community/view", new

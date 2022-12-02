@@ -50,10 +50,10 @@ public class RegisterPetController implements Controller {
 
 		try {
 			UserManager manager = UserManager.getInstance();
-			manager.create(pet);
+			manager.createPet(pet);
 	        return "redirect:/user/login/form";	// ���� �� ����� ����Ʈ ȭ������ redirect
 	        
-		} catch (ExistingUserException e) {	// ���� �߻� �� ȸ������ form���� forwarding
+		} catch (Exception e) {	// ���� �߻� �� ȸ������ form���� forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("pet", pet);

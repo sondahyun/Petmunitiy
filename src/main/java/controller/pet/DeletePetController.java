@@ -16,11 +16,11 @@ public class DeletePetController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-		String petId = request.getParameter("petId");
+		int petId = Integer.parseInt(request.getParameter("petId"));
     	log.debug("Delete User : {}", petId);
 
     	UserManager manager = UserManager.getInstance();			
-		manager.removePostInformation(petId);
-		return "redirect:/community/info_community";	// ����� ���� ȭ������ �̵� (forwarding)	
+		manager.removePet(petId);
+		return "redirect:/myPage/myPage.jsp";	// ����� ���� ȭ������ �̵� (forwarding)	
 	}
 }
