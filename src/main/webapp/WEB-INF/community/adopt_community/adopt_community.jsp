@@ -6,12 +6,7 @@
 @SuppressWarnings("unchecked")
 ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
 Collections.sort(p3List); 
-
-for(PostAdoption post : p3List){
-	System.out.println("postId "+post.getPostId());
-}
-
-
+System.out.println(p3List.size());
 %>
 
 <!DOCTYPE html>
@@ -104,18 +99,18 @@ for(PostAdoption post : p3List){
 				<tr class="pic1">
 					<td class="pic_td1" colspan=2> 사진 </td>
 				</tr>
-					<tr class="spec1">
-						<td class="spec_td1">종</td>
-						<td class="spec_td2">${item.kind} </td>
-					</tr>
-					<tr class="gender">
-						<td class="gender_td1">성별</td>
-						<td class="gender_td2">${item.gender}</td>
-					</tr>
-					<tr class="age1">
-						<td class="age_td1">나이</td>
-						<td class="age_td2">${item.age}</td>
-					</tr>
+				<tr class="spec1">
+					<td class="spec_td1">종</td>
+					<td class="spec_td2">${item.aa["kind"]} </td>
+				</tr>
+				<tr class="gender">
+					<td class="gender_td1">성별</td>
+					<td class="gender_td2">${item.postTitle}</td>
+				</tr>
+				<tr class="age1">
+					<td class="age_td1">나이</td>
+					<td class="age_td2">${item.postTitle}</td>
+				</tr>
 			</table>
 			
 			</a></td>
