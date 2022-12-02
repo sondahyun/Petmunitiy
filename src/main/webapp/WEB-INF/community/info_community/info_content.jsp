@@ -82,7 +82,7 @@
 								<tr>
 									<td style="border-bottom:none; width:10%" valign="middle"><br><br>이름<!-- 이름 --></td>
 									<td style="width:80%"><input type="text" style="width:100%; height:40px"></td>
-									<% if(session.getAttribute("userId") != null) {%> <!-- 작성자 = 로그인한 사람일 경우 -->
+									<% if(session.getAttribute("loginId") != null) {%> <!-- 작성자 = 로그인한 사람일 경우 -->
 										<td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
 										<td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>								
 									<%} %>
