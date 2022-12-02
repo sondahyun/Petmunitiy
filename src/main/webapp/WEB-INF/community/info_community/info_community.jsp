@@ -5,12 +5,6 @@
 <%
 @SuppressWarnings("unchecked")
 List<PostInformation> p0List = (List<PostInformation>)request.getAttribute("p0List");
-
-System.out.println(p0List.size());
-for(PostInformation post : p0List){
-	System.out.print("postId...");
-	System.out.println(post.getPostId());
-}
 Collections.sort(p0List);
 %>
    
