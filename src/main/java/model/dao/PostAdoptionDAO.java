@@ -187,9 +187,9 @@ public class PostAdoptionDAO {
     * 전체 커뮤니티 정보를 검색하여 List에 저장 및 반환
     */
    public List<PostAdoption> findP3List() throws SQLException {
-        String sql = "SELECT p.postId as pId, postTitle, postDate, aType, approval, approvalDate, postContent, loginId, petId, gender, age, health, vaccination, kind, fileName "
-                 + "FROM PostAdoption p, adoptionAnimal aa "
-              + "where p.postId = aa.postId ";
+        String sql = "SELECT p.postId AS pId, postTitle, postDate, aType, approval, approvalDate, postContent, loginId, petId, gender, age, health, vaccination, kind, fileName, aa.postId AS aId "
+                 + "FROM PostAdoption p, AdoptionAnimal aa "
+                 + "WHERE p.postId = aa.postId ";
         
       jdbcUtil.setSqlAndParameters(sql, null);      // JDBCUtil에 query문 설정
                
@@ -205,7 +205,7 @@ public class PostAdoptionDAO {
                   rs.getString("vaccination"),
                   rs.getString("kind"),
                   rs.getString("fileName"),
-                  rs.getInt("pId")                  
+                  rs.getInt("aId")                  
                   );
                   
             PostAdoption pAdoption = new PostAdoption(         // PostAdoption 객체를 생성하여 현재 행의 정보를 저장
