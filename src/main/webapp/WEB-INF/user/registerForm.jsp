@@ -161,8 +161,8 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">성별</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="radio" name="gender" value="female"/> 여성
-			<input type="radio" name="gender" value="male"/> 남성
+			<input type="radio" name="gender2" value="female"/> 여성
+			<input type="radio" name="gender2" value="male"/> 남성
 		</td>
 	 </tr>
 	 <tr height="40">
