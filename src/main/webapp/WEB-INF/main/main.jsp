@@ -69,7 +69,15 @@
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-   
+<table style="width:100%">
+	<tr>
+		<td class="myPage_mini" style="width:30%">
+			<%@include file="/WEB-INF/myPage/myPage_include.jsp" %>
+		</td> 
+		<td style="width:80%">
+		</td>
+	</tr>
+</table>  
 <%-- <div class="image" align="center">
 	<a href="../../main/main1.jsp">
 		  <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>	
