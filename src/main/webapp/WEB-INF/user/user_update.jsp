@@ -66,7 +66,7 @@ function userList(targetUri) {
 <!--<h2>회원가입</h2>  -->
 
 <form name="form" method="POST" action="<c:url value='/user/register' />">
-   <h4>회원 정보 수정</h4>
+   <h2>회원 정보 수정</h2>
    <h3>나의 정보</h3>
    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
    		<c:if test="${registerFailed}">
