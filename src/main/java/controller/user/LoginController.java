@@ -20,7 +20,7 @@ public class LoginController implements Controller {
 	
 			// ���ǿ� ����� ���̵� ����
 			HttpSession session = request.getSession();
-            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, loginId);
+            session.setAttribute("loginId", loginId);
             
             return "redirect:/";			
 		} catch (Exception e) {

@@ -40,7 +40,7 @@
 </style>
 	<header>
 		<table class="h" >
-			<%if(session.getAttribute("userId") == null) {%>
+			<%if(session.getAttribute("loginId") == null) {%>
 	    	<th>
 	    		<td class="nav-item">
 	    			<a class="nav-link" href="<c:url value='/user/login/form' />">로그인</a>
@@ -95,7 +95,7 @@
 	    	</th>
 	    	<th>
 	    		<td class="nav-item">
-	    			<a class="nav-link" href="<c:url value='/search' />">검색</a>
+	    			<a class="nav-link" href="<c:url value='/search/search' />">검색</a>
 	    		</td>
 	    	</th>
 	    <%-- <%if(session.getAttribute("userId") == null) {%>

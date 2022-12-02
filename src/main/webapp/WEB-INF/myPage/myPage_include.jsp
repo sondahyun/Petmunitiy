@@ -42,11 +42,11 @@
 	</tr>
 	
 	<%
-	if(session.getAttribute("userId") != null) {// 입양일 경우 
+	if(session.getAttribute("loginId") != null) {// 입양일 경우 
 	%>
 	<tr class="name">
 	    <td>
-			<%out.print(session.getAttribute("userId") + "님 환영합니다!");%> 
+			<%out.print(session.getAttribute("loginId") + "님 환영합니다!");%> 
 		</td>
 	</tr>
 	<tr>

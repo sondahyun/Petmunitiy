@@ -4,7 +4,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            display: flex;
+            display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -16,14 +16,14 @@
             border: 1px solid rgba(255, 255, 255, 0.18);
         }
 #modal .modal-window {
-            background: rgba( 69, 139, 197, 0.70 );
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 13.5px );
+            background: #e8e8e8;
+            box-shadow: 12 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 130.5px );
             -webkit-backdrop-filter: blur( 13.5px );
             border-radius: 10px;
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
-            width: 400px;
-            height: 500px;
+            border: 1px solid Black;
+            width: 700px;
+            height: 100px;
             position: relative;
             top: -100px;
             padding: 10px;
@@ -32,7 +32,7 @@
             padding-left: 10px;
             display: inline;
             text-shadow: 1px 1px 2px gray;
-            color: white;
+            color: Black;
             
 }
 #modal .title h2 {
@@ -44,12 +44,12 @@
             padding-right: 10px;
             cursor: pointer;
             text-shadow: 1px 1px 2px gray;
-            color: white;
+            color: Black;
 }
         
 #modal .content {
             margin-top: 20px;
             padding: 0px 10px;
             text-shadow: 1px 1px 2px gray;
-            color: white;
+            color: Black;
 }
