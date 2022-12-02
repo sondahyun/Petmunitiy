@@ -7,19 +7,19 @@ public class Pet {
 	private String name;
 	
 	private String gender;
-	private Date birth;
+	private int age;
 	private String health;
 	private String vaccination;
 	private String kind;
 	private String filename;	//파일 경로
 		
-	public Pet(int petId, String name, String gender, Date birth, String health, String vaccination, String kind,
+	public Pet(int petId, String name, String gender, int age, String health, String vaccination, String kind,
 			String filename) {
 		super();
 		this.petId = petId;
 		this.name = name;
 		this.gender = gender;
-		this.birth = birth;
+		this.age = age;
 		this.health = health;
 		this.vaccination = vaccination;
 		this.kind = kind;
@@ -44,11 +44,11 @@ public class Pet {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Date getBirth() {
-		return birth;
+	public int getAge() {
+		return age;
 	}
-	public void setBirth(Date birth) {
-		this.birth = birth;
+	public void setAge(int age) {
+		this.age = age;
 	}
 	public String getHealth() {
 		return health;
@@ -77,7 +77,7 @@ public class Pet {
 
 	@Override
 	public String toString() {
-		return "Pet [petId=" + petId + ", name=" + name + ", gender=" + gender + ", birth=" + birth + ", health="
+		return "Pet [petId=" + petId + ", name=" + name + ", gender=" + gender + ", age=" + age + ", health="
 				+ health + ", vaccination=" + vaccination + ", kind=" + kind + ", filename=" + filename + "]";
 	}
 	

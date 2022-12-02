@@ -99,7 +99,7 @@ public class PostAdoption implements Comparable {
 	
 	@Override
 	public int compareTo(Object o) {
-		PostInformation obj = (PostInformation)o;
+		PostAdoption obj = (PostAdoption)o;
 		if(this.postId - obj.getPostId() == 1)
 			return -1;
 		else return 1;
