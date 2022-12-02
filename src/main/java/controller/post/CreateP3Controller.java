@@ -24,7 +24,15 @@ public class CreateP3Controller implements Controller {
        	Object loginId = session.getAttribute("loginId");
     	session = request.getSession();
     	
-    	AdoptionAnimal aa = new AdoptionAnimal();
+    	AdoptionAnimal aa = new AdoptionAnimal(
+    			request.getParameter("gender"),
+    			Integer.parseInt(request.getParameter("age")),
+    			request.getParameter("health"),
+    			request.getParameter("vaccination"),
+    			request.getParameter("kind"),
+    			request.getParameter("fileName"),
+    			Integer.parseInt(request.getParameter("postId"))
+    	);
        	
 		PostAdoption pA = new PostAdoption(
     		request.getParameter("postTitle"),
