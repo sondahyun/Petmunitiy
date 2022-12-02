@@ -11,8 +11,10 @@ import model.PostInformation;
 public class ViewP0Controller implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
+    	System.out.println("loginId : "+request.getSession().getAttribute("loginId"));
+    	
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
-            return "redirect:/user/login/";		
+            return "/user/loginForm.jsp";		
         }
     	
 		UserManager manager = UserManager.getInstance();
