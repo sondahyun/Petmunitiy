@@ -49,7 +49,7 @@ Collections.sort(p0List);
 	         <td>${item.postId }</td>
 	           <td>
 	              <a href="<c:url value='/community/info_community/info_content'>
-	                     <%-- <c:param name='postId' value='${item.postId}'/> --%>
+	                    	<c:param name='postId' value='${item.postId}'/>
 	                   </c:url>">
 	              ${item.postTitle}</a>
 	           </td>

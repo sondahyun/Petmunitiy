@@ -101,7 +101,7 @@ System.out.println(p3List.size());
 				</tr>
 				<tr class="spec1">
 					<td class="spec_td1">종</td>
-					<td class="spec_td2">${item.aa["kind"]} </td>
+					<td class="spec_td2">${item.postTitle} </td>
 				</tr>
 				<tr class="gender">
 					<td class="gender_td1">성별</td>

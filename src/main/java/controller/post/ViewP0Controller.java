@@ -18,9 +18,11 @@ public class ViewP0Controller implements Controller {
 		UserManager manager = UserManager.getInstance();
 		int postId = Integer.parseInt(request.getParameter("postId"));
 		
+		System.out.println("postId "+postId);
+		
     	PostInformation post = null;
 		post = manager.findP0Information(postId);	
 		request.setAttribute("post", post);					
-		return "/user/view.jsp";				
+		return "/community/info_community/info_content.jsp";				
     }
 }
