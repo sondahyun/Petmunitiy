@@ -23,6 +23,11 @@ Collections.sort(p0List);
 <br>
 <table style="width:100%">
 	<tr>
+		<td>
+			<a href="<c:url value='/community/adopt_community/add_content' />">게시글 작성</a>
+		</td>
+	</tr>
+	<tr>
 		<td class="myPage_mini">
 			<%@include file="/WEB-INF/myPage/myPage_include.jsp" %>
 		</td>

@@ -21,6 +21,11 @@
 	
 	<td class="main">
 		<table>
+		<tr>
+			<td colspan="3">
+				<a style="float:right" href="<c:url value='/community/adopt_community/add_content' />">게시글 작성</a>
+			</td>
+		</tr>
 		<%-- <tr>
 			<td><a class="nav-link" href="<c:url value='/community/adopt_community/apply_form' />">입양 신청폼 작성하기</a></td>
 			<td><a class="nav-link" href="<c:url value='/community/adopt_community/adopt_info' />">입양 정보 보러가기</a></td>
