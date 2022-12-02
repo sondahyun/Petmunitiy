@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="java.util.*" import="model.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+@SuppressWarnings("unchecked")
+List<PostInformation> p0List = (List<PostInformation>)request.getAttribute("p0List");
+
+System.out.println(p0List.size());
+for(PostInformation post : p0List){
+	System.out.print("postId...");
+	System.out.println(post.getPostId());
+}
+Collections.sort(p0List);
+%>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,27 +22,6 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
-
-<!-- <style>
-table {
-   width: 100%;
-   border: 1px solid;
-}
-
-table1 {
-   width: 20%;
-   border: 1px solid;
-}
-
-table2 {
-   width: 70%;
-   border: 1px solid;
-}
-
-.td1 {
-   width: 20%;
-}
-</style> -->
 </head>
 
 <body>
@@ -43,125 +35,33 @@ table2 {
 	
 	<td class="main">
 	<table class="list_table">
-		<colgroup>
-			<col width="15%" />
-			<col width="45%" />
-			<col width="20%" />
-			<col width="20%" />
-		</colgroup>
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>이름</th>
-				<th>등록일자</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>5</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕하세요!!</a></td>
-				<td>고양이(cat)</td>
-				<td>2022-11-19</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td><a href = "post.jsp" class = "postTitle">반가워요ㅎㅎ</a></td>
-				<td>사자(lion)</td>
-				<td>2022-11-12</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td><a href = "post.jsp" class = "postTitle">입양 원해요</a></td>
-				<td>토끼(rabbit)</td>
-				<td>2022-9-19</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕안녕</a></td>
-				<td>판다(panda)</td>
-				<td>2022-9-9</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td><a href = "post.jsp" class = "postTitle">안녕하세요</a></td>
-				<td>판다(panda)</td>
-				<td>2022-8-19</td>
-			</tr>
-		</tbody>
-	</table>
-	</td>
-</tr>
-</table>
-   <!-- <table>
-      <td>
-         <table id="table1">
-            <tr>
-               <td><input style="width: 100%" type="button" value="채팅1"
-                  width="100%" /></td>
-            </tr>
-            <tr>
-               <td><input style="width: 100%" type="button" value="채팅2" /></td>
-            </tr>
-            <tr>
-               <td><input style="width: 100%" type="button" value="채팅3" /></td>
-            </tr>
-         </table>
-      <td>
-         <table id="table2">
-            <table>
-               <tr>
-                  <td><input style="width: 300px" type="text" value="제목1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="작성자1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="날짜1"
-                     readonly></td>
-               </tr>
-            </table>
-            <table>
-               <tr>
-                  <td><input style="width: 300px" type="text" value="제목1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="작성자1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="날짜1"
-                     readonly></td>
-               </tr>
-            </table>
-            <table>
-               <tr>
-                  <td><input style="width: 300px" type="text" value="제목1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="작성자1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="날짜1"
-                     readonly></td>
-               </tr>
-            </table>
-            <table>
-               <tr>
-                  <td><input style="width: 300px" type="text" value="제목1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="작성자1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="날짜1"
-                     readonly></td>
-               </tr>
-            </table>
-            <table>
-               <tr>
-                  <td><input style="width: 300px" type="text" value="제목1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="작성자1"
-                     readonly></td>
-                  <td><input style="width: 100px" type="text" value="날짜1"
-                     readonly></td>
-               </tr>
-            </table>
-         </table>
+      <tr>
+        <!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
+        <th>번호</th>
+		<th>제목</th>
+		<th>이름</th>
+		<th>등록일자</th>
+      </tr>
+      <c:forEach var="item" items="${p0List}">
+         <tr>
+         <td>${item.postId }</td>
+           <td>
+              <a href="<c:url value='/main/main'>
+                     <%-- <c:param name='postId' value='${item.postId}'/> --%>
+                   </c:url>">
+              ${item.postTitle}</a>
+           </td>
+           <td>
+             ${item.loginId}
+           </td>
+           <td>
+              ${item.postDate}
+           </td>
+         </tr>
+     </c:forEach>
+     </table>  
       </td>
-   </table> -->
+   </table>
 </body>
 
 </html>
