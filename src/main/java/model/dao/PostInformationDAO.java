@@ -104,6 +104,7 @@ public class PostInformationDAO {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();		// resource 반환
 		}
 		return post;

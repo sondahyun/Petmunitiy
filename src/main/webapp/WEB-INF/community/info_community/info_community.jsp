@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="java.util.*" import="model.*"%>
+    pageEncoding="utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -54,7 +54,7 @@
 	         <td>${item.postId }</td>
 	           <td>
 	              <a href="<c:url value='/community/info_community/info_content'>
-	                     <%-- <c:param name='postId' value='${item.postId}'/> --%>
+	                    	<c:param name='postId' value='${item.postId}'/>
 	                   </c:url>">
 	              ${item.postTitle}</a>
 	           </td>

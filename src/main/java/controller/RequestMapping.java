@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.post.ListP0Controller;
 import controller.post.ListP3Controller;
+import controller.post.ViewP0Controller;
 import controller.user.*;
 
 public class RequestMapping {
@@ -47,7 +48,7 @@ public class RequestMapping {
 
         //정보게시판     
         mappings.put("/community/info_community/info_community", new ListP0Controller());
-        mappings.put("/community/info_community/info_content", new ForwardController("/community/info_community/info_content.jsp"));
+        mappings.put("/community/info_community/info_content", new ViewP0Controller());
         mappings.put("/community/info_community/info_comment", new ForwardController("/community/info_community/info_comment.jsp"));
         mappings.put("/community/info_community/modal", new ForwardController("/community/info_community/modal.jsp"));
         mappings.put("/community/info_community/add_content", new ForwardController("/community/info_community/add_content.jsp"));

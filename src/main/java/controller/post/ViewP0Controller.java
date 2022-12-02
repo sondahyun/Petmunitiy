@@ -11,16 +11,20 @@ import model.PostInformation;
 public class ViewP0Controller implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
+    	System.out.println("loginId : "+request.getSession().getAttribute("loginId"));
+    	
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
-            return "redirect:/user/login/";		
+            return "/user/loginForm.jsp";		
         }
     	
 		UserManager manager = UserManager.getInstance();
 		int postId = Integer.parseInt(request.getParameter("postId"));
 		
+		System.out.println("postId "+postId);
+		
     	PostInformation post = null;
 		post = manager.findP0Information(postId);	
 		request.setAttribute("post", post);					
-		return "/user/view.jsp";				
+		return "/community/info_community/info_content.jsp";				
     }
 }

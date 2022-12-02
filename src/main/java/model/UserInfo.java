@@ -18,13 +18,13 @@ public class UserInfo {
 	//private int petList;
 	//private ArrayList<Pet> petList; //ArrayList<Integer> => Array(UserDAO findUser���� getArray�� ����
 	///private ArrayList<Pet> petList;
-	private int pet;
+	//private int pet;
 	
 	public UserInfo() {
 	}
 
 	public UserInfo(String loginId, String loginPwd, String userNickname, Date userBirth,
-			String phoneNumber, String gender, String address, int pet) {
+			String phoneNumber, String gender, String address) {
 		this.loginId = loginId;
 		this.loginPwd = loginPwd;
 		this.userNickname = userNickname;
@@ -32,7 +32,6 @@ public class UserInfo {
 		this.phoneNumber = phoneNumber;
 		this.gender = gender;
 		this.address = address;
-		this.pet = pet;
 	}
 
 	
@@ -131,18 +130,6 @@ public class UserInfo {
 	}
 
 
-
-	public int getPet() {
-		return pet;
-	}
-
-
-
-	public void setPet(int pet) {
-		this.pet = pet;
-	}
-
-
 	/* ��й�ȣ �˻� */
 	public boolean matchPassword(String password) {
 		if (password == null) {
@@ -159,7 +146,7 @@ public class UserInfo {
 	public String toString() {
 		return "UserInfo [userId=" + userId + ", loginId=" + loginId + ", loginPwd=" + loginPwd + ", userNickname="
 				+ userNickname + ", userBirth=" + userBirth + ", phoneNumber=" + phoneNumber + ", gender=" + gender
-				+ ", address=" + address + ", pet=" + pet + "]";
+				+ ", address=" + address + "]";
 	}
 	
 }

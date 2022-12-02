@@ -7,8 +7,8 @@ public class UserSessionUtils {
 
     /* 현재 로그인한 사용자의 ID를 구함 */
     public static String getLoginUserId(HttpSession session) {
-        String userId = (String)session.getAttribute(USER_SESSION_KEY);
-        return userId;
+        String loginId = (String)session.getAttribute("loginId");
+        return loginId;
     }
 
     /* 로그인한 상태인지를 검사 */

@@ -1,4 +1,4 @@
-package controller.user;
+package controller.pet;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,8 +14,8 @@ import controller.Controller;
 import model.service.UserManager;
 import model.UserInfo;
 
-public class UpdateUserController implements Controller {
-    private static final Logger log = LoggerFactory.getLogger(UpdateUserController.class);
+public class UpdatePetController implements Controller {
+    private static final Logger log = LoggerFactory.getLogger(UpdatePetController.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {

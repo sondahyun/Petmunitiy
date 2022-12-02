@@ -12,13 +12,14 @@ public class PostAdoption implements Comparable {
 	private Date approvalDate;
 	private String postContent;
 	private String loginId;
+	private AdoptionAnimal aa;
 	
 	
 	public PostAdoption() {
 		super();
 	}
 	
-	public PostAdoption(String postTitle, Date postDate, int aType, int approval, Date approvalDate, String postContent, String loginId) {
+	public PostAdoption(String postTitle, Date postDate, int aType, int approval, Date approvalDate, String postContent, String loginId, AdoptionAnimal aa) {
 		super();
 		this.postTitle = postTitle;
 		this.postDate = postDate;
@@ -27,9 +28,10 @@ public class PostAdoption implements Comparable {
 		this.approvalDate = approvalDate;
 		this.postContent = postContent;
 		this.loginId = loginId;
+		this.aa = aa;
 	}
 
-	public PostAdoption(int postId, String postTitle, Date postDate, int aType, int approval, Date approvalDate, String postContent, String loginId) {
+	public PostAdoption(int postId, String postTitle, Date postDate, int aType, int approval, Date approvalDate, String postContent, String loginId, AdoptionAnimal aa) {
 		super();
 		this.postId = postId;
 		this.postTitle = postTitle;
@@ -39,6 +41,7 @@ public class PostAdoption implements Comparable {
 		this.approvalDate = approvalDate;
 		this.postContent = postContent;
 		this.loginId = loginId;
+		this.aa = aa;
 	}
 	
 	public int getPostId() {
@@ -99,7 +102,7 @@ public class PostAdoption implements Comparable {
 	
 	@Override
 	public int compareTo(Object o) {
-		PostInformation obj = (PostInformation)o;
+		PostAdoption obj = (PostAdoption)o;
 		if(this.postId - obj.getPostId() == 1)
 			return -1;
 		else return 1;
