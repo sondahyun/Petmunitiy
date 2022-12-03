@@ -81,9 +81,9 @@ public class PetDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Pet findPet(int petId) throws SQLException {
-		String sql = "SELECT * " + "FROM Pet " + "WHERE petId=? ";	//Pet와 pet join해서..pet여럿이므로 while문으로 첫번째 레코드에서(null)만 user객체 pet객체 따로 생성, 아레쪽 while 추가 pet객체 llist에 add
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { petId }); // JDBCUtil에 query문과 매개 변수 설정
+	public Pet findPet(String loginId) throws SQLException {
+		String sql = "SELECT * " + "FROM Pet " + "WHERE loginId=? ";	//Pet와 pet join해서..pet여럿이므로 while문으로 첫번째 레코드에서(null)만 user객체 pet객체 따로 생성, 아레쪽 while 추가 pet객체 llist에 add
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행

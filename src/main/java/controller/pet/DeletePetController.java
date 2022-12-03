@@ -17,7 +17,7 @@ public class DeletePetController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
 		int petId = Integer.parseInt(request.getParameter("petId"));
-    	log.debug("Delete User : {}", petId);
+    	log.debug("Delete Pet : {}", petId);
 
     	UserManager manager = UserManager.getInstance();			
 		manager.removePet(petId);

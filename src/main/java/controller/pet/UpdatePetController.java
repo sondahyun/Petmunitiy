@@ -27,8 +27,8 @@ public class UpdatePetController implements Controller {
     		log.debug("UpdateForm Request : {}", updateId);
     		
     		UserManager manager = UserManager.getInstance();
-			UserInfo user = manager.findUser(updateId);	// �����Ϸ��� ����� ���� �˻�
-			request.setAttribute("user", user);			
+			Pet pet = manager.findPet(updateId);	// �����Ϸ��� ����� ���� �˻�
+			request.setAttribute("pet", pet);			
 
 			/*
 			 * HttpSession session = request.getSession(); if
@@ -41,7 +41,7 @@ public class UpdatePetController implements Controller {
 			request.setAttribute("updateFailed", true);
 			request.setAttribute("exception", 
 					new IllegalStateException("Ÿ���� ������ ������ �� �����ϴ�."));            
-			return "/user/view.jsp";	// ����� ���� ȭ������ �̵� (forwarding)
+			return "/myPage/myPage.jsp";	// ����� ���� ȭ������ �̵� (forwarding)
 	    }	
     	
     	//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

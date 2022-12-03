@@ -157,8 +157,8 @@ public class UserManager {
 		return petDAO.remove(petId);
 	}
 	
-	public Pet findPet(int petId) throws SQLException {
-		return petDAO.findPet(petId); 
+	public Pet findPet(String loginId) throws SQLException {
+		return petDAO.findPet(loginId); 
 	}
 	public List<Pet> findPetList() throws SQLException {
 		return petDAO.findPetList();
