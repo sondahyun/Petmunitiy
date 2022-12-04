@@ -4,6 +4,9 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import model.Apply;
 import model.Pet;
 import model.PostAdoption;
@@ -15,14 +18,9 @@ import model.dao.PostAdoptionDAO;
 import model.dao.PostInformationDAO;
 import model.dao.UserDAO;
 
-/**
- * ����� ���� API�� ����ϴ� �����ڵ��� ���� �����ϰ� �Ǵ� Ŭ����.
- * UserDAO�� �̿��Ͽ� �����ͺ��̽��� ������ ���� �۾��� �����ϵ��� �ϸ�,
- * �����ͺ��̽��� �����͵��� �̿��Ͽ� �����Ͻ� ������ �����ϴ� ������ �Ѵ�.
- * �����Ͻ� ������ ������ ��쿡�� �����Ͻ� �������� �����ϴ� Ŭ������ 
- * ������ �� �� �ִ�.
- */
 public class UserManager {
+	private static final Logger log = LoggerFactory.getLogger(PostAdoption.class);
+    
 	private static UserManager userMan = new UserManager();
 	private UserDAO userDAO;
 	private PostInformationDAO postInformationDAO;

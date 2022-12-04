@@ -47,11 +47,7 @@ public class RegisterUserController implements Controller {
        		break;
        	}
        	String phoneNumber = phone1+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
-       	//
-       	ArrayList<Integer> list = new ArrayList<>();
-       	list.add(Integer.parseInt(request.getParameter("petList")));
-       	//list.add(0);
-       	
+       	       	
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        	
        	
@@ -81,11 +77,5 @@ public class RegisterUserController implements Controller {
 			return "/user/register_person.jsp";
 		}
     }
-    
-	/*
-	 * public static ArrayList<Integer> stringToArrayList(String input){ String[] s
-	 * = input.split(","); ArrayList<Integer> list = new ArrayList<>(); for(int a =
-	 * 0; a<s.length; a++) { list.add(Integer.parseInt(s[a])); } return list; }
-	 */
 }
 
