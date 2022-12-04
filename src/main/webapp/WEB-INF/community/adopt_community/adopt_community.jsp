@@ -89,7 +89,6 @@
 			<%
 				if(cnt%3==1)
 					out.println("<tr>");
-			//pageContext.setAttribute("animal", item.aa);
 			%>
 			<td>
 			<table class="adopt_main_table1">
@@ -97,7 +96,10 @@
 					
 				</tr>
 				<tr class="pic1">
-					<td class="pic_td1" colspan=2><a href="<c:url value='/community/adopt_community/adopt_info' />"> 사진 </a></td>
+					<td class="pic_td1" colspan=2>
+						<a href="<c:url value='/community/adopt_community/adopt_info'>
+									<c:param name='postId' value='${item.postId}'/></c:url>"> 사진 </a>
+					</td>
 				</tr>
 				<tr class="spec1">
 					<td class="spec_td1">종</td>

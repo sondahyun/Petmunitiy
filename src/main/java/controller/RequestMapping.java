@@ -6,9 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.pet.RegisterPetController;
-import controller.post.ListP0Controller;
-import controller.post.ListP3Controller;
-import controller.post.ViewP0Controller;
+import controller.post.*;
 import controller.user.*;
 
 public class RequestMapping {
@@ -26,7 +24,7 @@ public class RequestMapping {
         //입양게시판
         mappings.put("/community/adopt_community/adopt_community", new ListP3Controller());
         mappings.put("/community/adopt_community/apply_form", new ForwardController("/community/adopt_community/apply_form.jsp"));
-        mappings.put("/community/adopt_community/adopt_info", new ForwardController("/community/adopt_community/adopt_info.jsp"));
+        mappings.put("/community/adopt_community/adopt_info", new ViewP3Controller());
         mappings.put("/community/adopt_community/apply_form2", new ForwardController("/community/adopt_community/apply_form2.jsp"));
         mappings.put("/community/adopt_community/apply_result", new ForwardController("/community/adopt_community/apply_result.jsp"));
         mappings.put("/community/adopt_community/apply_result_closer", new ForwardController("/community/adopt_community/apply_result_closer.jsp"));
