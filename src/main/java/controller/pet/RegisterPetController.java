@@ -58,7 +58,7 @@ public class RegisterPetController implements Controller {
 			request.setAttribute("exception", e);
 			request.setAttribute("pet", pet);
 			
-			return "/user/registerForm.jsp";
+			return "/user/register_pet.jsp";
 		}
     }
     

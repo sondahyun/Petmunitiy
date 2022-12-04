@@ -5,6 +5,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.pet.RegisterPetController;
 import controller.post.ListP0Controller;
 import controller.post.ListP3Controller;
 import controller.post.ViewP0Controller;
@@ -71,9 +72,10 @@ public class RequestMapping {
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
 //      mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
 //      mappings.put("/user/register", new RegisterUserController());
-        mappings.put("/user/register_person", new ForwardController("/user/register_person.jsp")); //사람 회원가입 끝나고 동물로 넘어가는 페이지
-        mappings.put("/user/register_pet", new ForwardController("/user/register_pet.jsp")); //사람 회원가입 끝나고 동물로 넘어가는 페이지
-        mappings.put("/user/register", new RegisterUserController()); //동물까지 회원가입 끝
+        mappings.put("/user/register_person/form", new ForwardController("/user/register_person.jsp")); //사람 회원가입 끝나고 동물로 넘어가는 페이지
+        mappings.put("/user/register_person", new RegisterUserController());
+        mappings.put("/user/register_pet/form", new ForwardController("/user/register_pet.jsp")); //사람 회원가입 끝나고 동물로 넘어가는 페이지
+        mappings.put("/user/register_pet", new RegisterPetController()); //동물까지 회원가입 끝
 
         // 사용자 정보 수정 폼 요청과 수정 요청 처리 병합
 //      mappings.put("/user/update/form", new UpdateUserFormController());

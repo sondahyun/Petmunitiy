@@ -62,7 +62,7 @@ function userList(targetUri) {
 
 <!--<h2>회원가입</h2>  -->
 
-<form name="form" method="POST" action="<c:url value='/user/register' />">
+<form name="form" method="POST" action="<c:url value='/user/register_pet' />">
 	<h3>펫의 정보</h3>
 	<table style="background-color: #848484; width: 100%">
 	 <tr height="40">
