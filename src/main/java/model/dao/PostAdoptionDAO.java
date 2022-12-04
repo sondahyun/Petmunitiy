@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import model.AdoptionAnimal;
 import model.Pet;
 import model.PostAdoption;
@@ -17,6 +20,8 @@ import model.PostAdoption;
  * PostAdoption 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
  */
 public class PostAdoptionDAO {
+	private static final Logger log = LoggerFactory.getLogger(PostAdoption.class);
+    
    private JDBCUtil jdbcUtil = null;
 
    public PostAdoptionDAO() {
@@ -95,13 +100,12 @@ public class PostAdoptionDAO {
    
    @SuppressWarnings("unchecked")
    public PostAdoption findPost(int postId) throws SQLException {
-      String sql = "SELECT * " + "FROM PostAdoption p, adoptionAnimal aa" + "WHERE p.postId = aa.postId, p.postId=? ";
+      String sql = "SELECT * " + "FROM PostAdoption p, adoptionAnimal aa" + "WHERE p.postId = aa.postId and p.postId=? ";
       jdbcUtil.setSqlAndParameters(sql, new Object[] { postId }); // JDBCUtil에 query문과 매개 변수 설정
 
       try {
          ResultSet rs = jdbcUtil.executeQuery(); // query 실행
          PostAdoption post = null;
-         
          if(rs.next()) {// 학생 정보 발견
         	 AdoptionAnimal aa = new AdoptionAnimal(
                      rs.getInt("petId"),
@@ -111,8 +115,8 @@ public class PostAdoptionDAO {
                      rs.getString("vaccination"),
                      rs.getString("kind"),
                      rs.getString("fileName"),
-                     rs.getInt("postId")                  
-                     );
+                     postId
+             );
             
             post = new PostAdoption(
                   postId,
@@ -207,7 +211,9 @@ public class PostAdoptionDAO {
                   rs.getString("fileName"),
                   rs.getInt("aId")                  
                   );
-                  
+
+       	 	log.debug("Create AdoptionAnimal : {}", aa);
+       	 	
             PostAdoption pAdoption = new PostAdoption(         // PostAdoption 객체를 생성하여 현재 행의 정보를 저장
                   rs.getInt("pId"),
                   rs.getString("postTitle"),
@@ -219,7 +225,8 @@ public class PostAdoptionDAO {
                   rs.getString("loginId"),
                   aa
                   );
-            
+            //pAdoption.setAnimal(aa);
+            log.debug("Create pAdoption : {}", pAdoption);
             adoptionList.add(pAdoption);            // List에 PostAdoption 객체 저장
          }
          return adoptionList;               
