@@ -8,7 +8,8 @@
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function userCreate() {
-	alert("실행");
+	alert("회원가입 완료");
+	
 	form.submit();
 }
 
@@ -42,7 +43,7 @@ function userList(targetUri) {
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">건강상태</td>
+		<td align="center" bgcolor="#E6E6E6">종</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
 			<input type="text" style="width: 240" name="kind" placeholder="종">
 		</td>
@@ -57,15 +58,13 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">예방접종 여부</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="radio" name="vaccination" value="yes"/> O
-			<input type="radio" name="vaccination" value="not"/> X
+			<input type="text" style="width: 240" name="vaccination" placeholder="ex) 어떤 예방 접종을 몇 차까지 맞았는지">
 		</td>
 	 </tr>
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">건강상태</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="health" placeholder="건강상태"
-				<c:if test="${registerFailed}">value="${pet.health}"</c:if>>
+			<input type="text" style="width: 240" name="health" placeholder="건강상태">
 		</td>
 	 </tr>
 	 <tr height="40">
