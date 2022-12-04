@@ -23,8 +23,8 @@ public class RegisterUserController implements Controller {
        	if (request.getMethod().equals("GET")) {	
        		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterForm Request");
-    		//System.out.println("여기1");
-			return "/user/registerForm.jsp";   //  registerForm���� ����     	
+    		System.out.println("여기1");
+			return "/user/register_person.jsp";   //  registerForm���� ����     	
 	    }	
 
      // POST request (회원정보가 parameter로 전송됨)
@@ -71,14 +71,15 @@ public class RegisterUserController implements Controller {
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.create(user);
-	        return "redirect:/user/login/form";	// ���� �� ����� ����Ʈ ȭ������ redirect
+			System.out.println("user 성공");
+	        return "redirect:/user/register_pet/form";	// ���� �� ����� ����Ʈ ȭ������ redirect
 	        
 		} catch (ExistingUserException e) {	// ���� �߻� �� ȸ������ form���� forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("user", user);
 			
-			return "/user/registerForm.jsp";
+			return "/user/register_person.jsp";
 		}
     }
     
