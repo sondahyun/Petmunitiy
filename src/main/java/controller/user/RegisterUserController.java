@@ -47,10 +47,6 @@ public class RegisterUserController implements Controller {
        		break;
        	}
        	String phoneNumber = phone1+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
-       	//
-       	ArrayList<Integer> list = new ArrayList<>();
-       	list.add(Integer.parseInt(request.getParameter("petList")));
-       	//list.add(0);
        	
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        	

@@ -26,7 +26,7 @@ public class RegisterPetController implements Controller {
        		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterPetForm Request");
     		//System.out.println("여기1");
-			return "/user/registerForm.jsp";   //  registerForm���� ����     	
+			return "/user/register_pet.jsp";   //  registerForm���� ����     	
 	    }	
 
      // POST request (회원정보가 parameter로 전송됨)
