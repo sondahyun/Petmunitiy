@@ -26,7 +26,7 @@ public class RegisterPetController implements Controller {
        		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterPetForm Request");
     		//System.out.println("여기1");
-			return "/user/registerForm.jsp";   //  registerForm���� ����     	
+			return "/user/register_pet.jsp";   //  registerForm���� ����     	
 	    }	
 
      // POST request (회원정보가 parameter로 전송됨)
@@ -50,15 +50,15 @@ public class RegisterPetController implements Controller {
 
 		try {
 			UserManager manager = UserManager.getInstance();
-			manager.create(pet);
+			manager.createPet(pet);
 	        return "redirect:/user/login/form";	// ���� �� ����� ����Ʈ ȭ������ redirect
 	        
-		} catch (ExistingUserException e) {	// ���� �߻� �� ȸ������ form���� forwarding
+		} catch (Exception e) {	// ���� �߻� �� ȸ������ form���� forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("pet", pet);
 			
-			return "/user/registerForm.jsp";
+			return "/user/register_pet.jsp";
 		}
     }
     

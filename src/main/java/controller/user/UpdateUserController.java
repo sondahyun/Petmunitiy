@@ -62,12 +62,9 @@ public class UpdateUserController implements Controller {
 		manager.update(updateUser);			
         return "redirect:/user/list";			
     }
-    public static ArrayList<Integer> stringToArrayList(String input){
-        String[] s = input.split(",");
-        ArrayList<Integer> list = new ArrayList<>();
-        for(int a = 0; a<s.length; a++) {
-           list.add(Integer.parseInt(s[a]));
-        }
-        return list;
-     }
+	/*
+	 * public static ArrayList<Integer> stringToArrayList(String input){ String[] s
+	 * = input.split(","); ArrayList<Integer> list = new ArrayList<>(); for(int a =
+	 * 0; a<s.length; a++) { list.add(Integer.parseInt(s[a])); } return list; }
+	 */
 }

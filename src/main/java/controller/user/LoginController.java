@@ -12,6 +12,7 @@ public class LoginController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	String loginId = request.getParameter("loginId");
 		String loginPwd = request.getParameter("password");
+		String userId = request.getParameter("userId");
 		
 		try {
 			// �𵨿� �α��� ó���� ����
@@ -21,6 +22,7 @@ public class LoginController implements Controller {
 			// ���ǿ� ����� ���̵� ����
 			HttpSession session = request.getSession();
             session.setAttribute("loginId", loginId);
+            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
             
             return "redirect:/";			
 		} catch (Exception e) {
