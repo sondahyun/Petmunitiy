@@ -8,7 +8,7 @@
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function userCreate() {
-	alert("실행");
+	alert("나의 정보 작성완료 -> 펫 정보 작성하기");
 	
 	if (form.loginId.value == "") {
 		alert("사용자 ID를 입력하십시오.");

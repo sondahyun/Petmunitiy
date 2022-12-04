@@ -8,7 +8,8 @@
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function userCreate() {
-	alert("실행");
+	alert("회원가입 완료");
+	
 	form.submit();
 }
 
@@ -27,32 +28,44 @@ function userList(targetUri) {
 
 <form name="form" method="POST" action="<c:url value='/user/register_pet' />">
 	<h3>펫의 정보</h3>
+	<h4>없으면 pass 가능</h4>
 	<table style="background-color: #848484; width: 100%">
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">이름</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="userNickname" >
-				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
+			<input type="text" style="width: 240" name=name >
+				 	<c:if test="${registerFailed}">value="${pet.name}"</c:if>
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">생일</td>
+		<td align="center" bgcolor="#E6E6E6">나이</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="date" style="width: 240" name="userBirth" >
+			<input type="text" style="width: 240" name="age" >
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td align="center" bgcolor="#E6E6E6">종</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="kind" placeholder="종">
 		</td>
 	 </tr>
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">성별</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="radio" name="gender2" value="female"/> 여성
-			<input type="radio" name="gender2" value="male"/> 남성
+			<input type="radio" name="gender" value="female"/> 여성
+			<input type="radio" name="gender" value="male"/> 남성
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td align="center" bgcolor="#E6E6E6">예방접종 여부</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="vaccination" placeholder="ex) 어떤 예방 접종을 몇 차까지 맞았는지">
 		</td>
 	 </tr>
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">건강상태</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="address" placeholder="건강상태"
-				<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+			<input type="text" style="width: 240" name="health" placeholder="건강상태">
 		</td>
 	 </tr>
 	 <tr height="40">
