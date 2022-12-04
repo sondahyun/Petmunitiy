@@ -31,28 +31,41 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">이름</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="userNickname" >
-				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
+			<input type="text" style="width: 240" name=name >
+				 	<c:if test="${registerFailed}">value="${pet.name}"</c:if>
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">생일</td>
+		<td align="center" bgcolor="#E6E6E6">나이</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="date" style="width: 240" name="userBirth" >
-		</td>
-	 </tr>
-	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">성별</td>
-		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="radio" name="gender2" value="female"/> 여성
-			<input type="radio" name="gender2" value="male"/> 남성
+			<input type="date" style="width: 240" name="age" >
 		</td>
 	 </tr>
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">건강상태</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="address" placeholder="건강상태"
-				<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+			<input type="text" style="width: 240" name="kind" placeholder="종">
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td align="center" bgcolor="#E6E6E6">성별</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
+			<input type="radio" name="gender" value="female"/> 여성
+			<input type="radio" name="gender" value="male"/> 남성
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td align="center" bgcolor="#E6E6E6">예방접종 여부</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
+			<input type="radio" name="vaccination" value="yes"/> O
+			<input type="radio" name="vaccination" value="not"/> X
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td align="center" bgcolor="#E6E6E6">건강상태</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="health" placeholder="건강상태"
+				<c:if test="${registerFailed}">value="${pet.health}"</c:if>>
 		</td>
 	 </tr>
 	 <tr height="40">
