@@ -1,6 +1,12 @@
 <!--입양, 임보 펫 정보-->
-<%@page contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=utf-8" import="model.*" import="java.util.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+	@SuppressWarnings("unchecked")
+	PostAdoption pA = (PostAdoption)request.getAttribute("pA");
+	System.out.println("aType : "+pA.getaType());
+%>
 <html>
 <head>
 <title>임보/입양 정보</title>
@@ -13,7 +19,7 @@
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/user/register' />">
+<form name="form" method="POST" action="<c:url value='/community/adopt_community/adopt_info' />">
    
    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
          <c:if test="${registerFailed}">
@@ -35,19 +41,22 @@
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">이름</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->
+	         <!-- 정보 가져오기${post.animal["name"]} -->
+	         ${pA.aType}
 	      </td>
 	    </tr>
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">신청(임보/입양)</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
 	         <!-- 정보 가져오기 -->
+	         ${pA.postTitle}
 	      </td>
 	    </tr>
 	    <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">생년</td>
+	      <td width="150" align="center" bgcolor="#E6E6E6">나이</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->         
+	         <!-- 정보 가져오기 -->       
+	         ${pA.animal["age"] }  
 	      </td>
 	    </tr>
 	    <%-- 
@@ -61,7 +70,7 @@
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">연락처</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->         
+	         <!-- 정보 가져오기 -->
 	         <%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
 	      </td>
 	    </tr>

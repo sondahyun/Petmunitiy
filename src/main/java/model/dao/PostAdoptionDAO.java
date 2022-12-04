@@ -100,7 +100,7 @@ public class PostAdoptionDAO {
    
    @SuppressWarnings("unchecked")
    public PostAdoption findPost(int postId) throws SQLException {
-      String sql = "SELECT * " + "FROM PostAdoption p, adoptionAnimal aa" + "WHERE p.postId = aa.postId and p.postId=? ";
+      String sql = "SELECT * " + "FROM PostAdoption p, adoptionAnimal aa " + "WHERE p.postId = aa.postId and p.postId=? ";
       jdbcUtil.setSqlAndParameters(sql, new Object[] { postId }); // JDBCUtil에 query문과 매개 변수 설정
 
       try {
@@ -134,7 +134,8 @@ public class PostAdoptionDAO {
       } catch (Exception ex) {
          ex.printStackTrace();
       } finally {
-         jdbcUtil.close(); // resource 반환
+    	  jdbcUtil.commit();
+          jdbcUtil.close(); // resource 반환
       }
       return null;
    }
@@ -182,6 +183,7 @@ public class PostAdoptionDAO {
       } catch (Exception ex) {
          ex.printStackTrace();
       } finally {
+    	  jdbcUtil.commit();
          jdbcUtil.close();      // resource 반환
       }
       return null;
