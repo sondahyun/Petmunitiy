@@ -12,14 +12,14 @@ public class PostAdoption implements Comparable {
 	private Date approvalDate;
 	private String postContent;
 	private String loginId;
-	private AdoptionAnimal aa;
+	private AdoptionAnimal animal;
 	
 	
 	public PostAdoption() {
 		super();
 	}
 	
-	public PostAdoption(String postTitle, Date postDate, int aType, int approval, Date approvalDate, String postContent, String loginId, AdoptionAnimal aa) {
+	public PostAdoption(String postTitle, Date postDate, int aType, int approval, Date approvalDate, String postContent, String loginId, AdoptionAnimal animal) {
 		super();
 		this.postTitle = postTitle;
 		this.postDate = postDate;
@@ -28,10 +28,10 @@ public class PostAdoption implements Comparable {
 		this.approvalDate = approvalDate;
 		this.postContent = postContent;
 		this.loginId = loginId;
-		this.aa = aa;
+		this.animal = animal;
 	}
 
-	public PostAdoption(int postId, String postTitle, Date postDate, int aType, int approval, Date approvalDate, String postContent, String loginId, AdoptionAnimal aa) {
+	public PostAdoption(int postId, String postTitle, Date postDate, int aType, int approval, Date approvalDate, String postContent, String loginId, AdoptionAnimal animal) {
 		super();
 		this.postId = postId;
 		this.postTitle = postTitle;
@@ -41,7 +41,7 @@ public class PostAdoption implements Comparable {
 		this.approvalDate = approvalDate;
 		this.postContent = postContent;
 		this.loginId = loginId;
-		this.aa = aa;
+		this.animal = animal;
 	}
 	
 	public int getPostId() {
@@ -93,6 +93,14 @@ public class PostAdoption implements Comparable {
 		this.loginId = loginId;
 	}
 	
+	public AdoptionAnimal getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(AdoptionAnimal animal) {
+		this.animal = animal;
+	}
+
 	@Override
 	public String toString() {
 		return "PostAdoption [postId=" + postId + ", postTitle=" + postTitle + ", postDate=" + postDate

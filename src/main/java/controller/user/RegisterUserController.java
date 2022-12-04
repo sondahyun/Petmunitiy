@@ -23,7 +23,7 @@ public class RegisterUserController implements Controller {
        	if (request.getMethod().equals("GET")) {	
        		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterForm Request");
-    		System.out.println("여기1");
+    		//System.out.println("여기1");
 			return "/user/register_person.jsp";   //  registerForm���� ����     	
 	    }	
 
@@ -47,7 +47,7 @@ public class RegisterUserController implements Controller {
        		break;
        	}
        	String phoneNumber = phone1+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
-       	
+       	       	
        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        	
        	
@@ -60,7 +60,6 @@ public class RegisterUserController implements Controller {
 			request.getParameter("gender"),
 			request.getParameter("address")
 			);
-		//user.setUserId(1);
 		
         log.debug("Create User : {}", user);
 
@@ -78,11 +77,5 @@ public class RegisterUserController implements Controller {
 			return "/user/register_person.jsp";
 		}
     }
-    
-	/*
-	 * public static ArrayList<Integer> stringToArrayList(String input){ String[] s
-	 * = input.split(","); ArrayList<Integer> list = new ArrayList<>(); for(int a =
-	 * 0; a<s.length; a++) { list.add(Integer.parseInt(s[a])); } return list; }
-	 */
 }
 

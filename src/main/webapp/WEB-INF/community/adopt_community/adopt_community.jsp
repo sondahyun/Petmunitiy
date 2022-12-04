@@ -85,35 +85,37 @@
 	<td class="main">
 		<table>
 			<%int cnt=0; %>
-			<c:forEach var = "item" items = "${p3List}">
+			<c:forEach var="item" varStatus="i" items="${p3List}">
 			<%
 				if(cnt%3==1)
 					out.println("<tr>");
 			%>
-			<td><a href="<c:url value='/community/adopt_community/adopt_info' />">
-			
+			<td>
 			<table class="adopt_main_table1">
 				<tr>
 					
 				</tr>
 				<tr class="pic1">
-					<td class="pic_td1" colspan=2> 사진 </td>
+					<td class="pic_td1" colspan=2>
+						<a href="<c:url value='/community/adopt_community/adopt_info'>
+									<c:param name='postId' value='${item.postId}'/></c:url>"> 사진 </a>
+					</td>
 				</tr>
 				<tr class="spec1">
 					<td class="spec_td1">종</td>
-					<td class="spec_td2">${item.postTitle} </td>
+					<td class="spec_td2">${item.animal["kind"]} </td>
 				</tr>
 				<tr class="gender">
 					<td class="gender_td1">성별</td>
-					<td class="gender_td2">${item.postTitle}</td>
+					<td class="gender_td2">${item.animal["gender"]}</td>
 				</tr>
 				<tr class="age1">
 					<td class="age_td1">나이</td>
-					<td class="age_td2">${item.postTitle}</td>
+					<td class="age_td2">${item.animal["age"]}</td>
 				</tr>
 			</table>
 			
-			</a></td>
+			</td>
 			<%
 				if(cnt%3==0 && cnt!=0)
 					out.println("</tr>");
