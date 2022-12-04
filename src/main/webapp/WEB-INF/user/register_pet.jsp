@@ -28,6 +28,7 @@ function userList(targetUri) {
 
 <form name="form" method="POST" action="<c:url value='/user/register_pet' />">
 	<h3>펫의 정보</h3>
+	<h4>없으면 pass 가능</h4>
 	<table style="background-color: #848484; width: 100%">
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">이름</td>
@@ -39,7 +40,7 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">나이</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="date" style="width: 240" name="age" >
+			<input type="text" style="width: 240" name="age" >
 		</td>
 	 </tr>
 	 <tr height="40">
