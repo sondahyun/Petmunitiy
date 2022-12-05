@@ -131,7 +131,7 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">이메일 주소</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="address" placeholder="you@example.com">
+			<input type="text" style="width: 240" name=email placeholder="you@example.com">
 				<%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%>
 		</td>
      </tr>
