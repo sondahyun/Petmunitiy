@@ -13,11 +13,11 @@ function userCreate() {
 		form.name.focus();
 		return false;
 	} 
-	if (form.age.value == "" || !(form.age.value < 20) || !(form.age.value >0))) {
+	if (form.age.value == "") {
 		alert("펫 나이를 입력하십시오.");
 		form.age.focus();
 		return false;
-	} 
+	}	
 	if (form.kind.value == "") {
 		alert("펫 종을 입력하십시오.");
 		form.kind.focus();
@@ -35,7 +35,7 @@ function userCreate() {
 	} 
 	if (form.health.value == "") {
 		alert("펫 건강상태를 입력하십시오.");
-		form.vaccination.focus();
+		form.health.focus();
 		return false;
 	}
 	
@@ -71,7 +71,7 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">나이</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="age" >
+			<input type="text" style="width: 240" name="age" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 		</td>
 	 </tr>
 	 <tr height="40">
