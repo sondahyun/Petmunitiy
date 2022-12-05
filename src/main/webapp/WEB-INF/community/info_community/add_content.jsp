@@ -81,7 +81,7 @@ function userList(targetUri) {
      <tr height="40">
       <td style="width: 20%" align="center" bgcolor="#E6E6E6">내용</td>
       <td style="width: 100%" bgcolor="ffffff" >
-         <input type="textarea" style="width: 100%; height:80px" name="postContent">
+         <textarea style="width: 100%; height:80px" name="postContent"></textarea>
       </td>
     </tr> 
     <tr height="40">
