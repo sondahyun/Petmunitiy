@@ -81,6 +81,7 @@ function userList(targetUri) {
 		<td align="left">
 		<input class="btn" type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
 		<input class="btn" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
+		<input class="btn" type="button" value="펫 정보 기입 안하기" onClick="userList('<c:url value='/user/login' />')">
 		</td>
 	 </tr>
 	 
