@@ -10,11 +10,17 @@
 function applyAdopt() {
    alert("실행");
 
-   if (form.userNickname.value == "") {
-      alert("이름을 입력하십시오.");
-      form.userNickname.focus();
+   if (form.postTitle.value == "") {
+      alert("제목을 입력하십시오.");
+      form.postTitle.focus();
       return false;
    }
+   
+   if (form.postContent.value == "") {
+	      alert("내용을 입력하십시오.");
+	      form.postContent.focus();
+	      return false;
+	}
    
    //프론트팀 전달
    /* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;   //""
@@ -48,35 +54,48 @@ function userList(targetUri) {
 <!--<h2>회원가입</h2>  -->
 <form name="form" method="POST" action="<c:url value='/user/register' />">
    
-   <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-         <c:if test="${registerFailed}">
+   <!-- 게시글 작성이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
+       <c:if test="${registerFailed}">
          <font color="red"><c:out value="${exception.getMessage()}" /></font>
        </c:if>  
-<table>
+<table style="width: 100%">
 <tr>
 <td>
 <br>
 <h3>게시글 작성</h3>
+<br><br>
    <table style="background-color: #848484" style="width: 100%">
     <!--<center>-->
     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">게시글</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240;" name="address">
+      <td style="width: 20%" align="center" bgcolor="#E6E6E6">제목</td>
+      <td style="width: 100%" bgcolor="ffffff" >
+         <input type="text" style="width: 100%; height:30px" name="postTitle">
       </td>
     </tr>
     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">사진</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="file" style="width: 240" name="hope">
+      <td style="width: 20%" align="center" bgcolor="#E6E6E6">사진</td>
+      <td style="width: 100%" bgcolor="ffffff" >
+         <input type="file" style="width: 240" name="fileName">
       </td>
-     </tr> 
+     </tr>
+     <tr height="40">
+      <td style="width: 20%" align="center" bgcolor="#E6E6E6">내용</td>
+      <td style="width: 100%" bgcolor="ffffff" >
+         <input type="text" style="width: 100%; height:80px" name="postContent">
+      </td>
+    </tr> 
+    <tr height="40">
+      <td style="width: 20%" align="center" bgcolor="#E6E6E6">종</td>
+      <td style="width: 100%" bgcolor="ffffff">
+         <input type="text" style="width: 100%; height:30px" name="kind">
+      </td>
+    </tr>
     </table>
     <br>
     </td>
  </tr>
  <tr>
- 	<td>
+ 	<td><br>
  		<input class="btn" type="button" value="게시글 작성완료" onClick="userCreate()"> &nbsp;
 	</td>
  </tr>
