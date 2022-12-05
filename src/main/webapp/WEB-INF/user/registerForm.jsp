@@ -60,6 +60,7 @@ function userCreate() {
 	}
 	/*
 	//동작?
+	/*
 	var phoneExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
 	if(phoneExp.test(form.phone.value)==false) {
 		alert("전화번호 형식이 올바르지 않습니다.");
