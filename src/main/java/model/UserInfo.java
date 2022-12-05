@@ -157,7 +157,7 @@ public class UserInfo {
 	public String toString() {
 		return "UserInfo [userId=" + userId + ", loginId=" + loginId + ", loginPwd=" + loginPwd + ", userNickname="
 				+ userNickname + ", userBirth=" + userBirth + ", phoneNumber=" + phoneNumber + ", gender=" + gender
-				+ ", address=" + address + "]";
+				+ ", address=" + address + "email"+email+"]";
 	}
 	
 }
