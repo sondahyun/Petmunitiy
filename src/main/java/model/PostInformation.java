@@ -112,7 +112,7 @@ public class PostInformation implements Comparable {
 	@Override
 	public int compareTo(Object o) {
 		PostInformation obj = (PostInformation)o;
-		if(this.postId - obj.getPostId() == 1)
+		if(this.postId > obj.getPostId())
 			return -1;
 		else return 1;
 	}
