@@ -81,7 +81,7 @@ function userList(targetUri) {
      <tr height="40">
       <td style="width: 20%" align="center" bgcolor="#E6E6E6">내용</td>
       <td style="width: 100%" bgcolor="ffffff" >
-         <input type="text" style="width: 100%; height:80px" name="postContent">
+         <input type="textarea" style="width: 100%; height:80px" name="postContent">
       </td>
     </tr> 
     <tr height="40">
@@ -96,7 +96,7 @@ function userList(targetUri) {
  </tr>
  <tr>
  	<td><br>
- 		<input class="btn" type="button" value="게시글 작성완료" onClick="applyInfo()"> &nbsp;
+ 		<input class="btn" type="button" value="폼 작성완료" onClick="applyInfo()"> &nbsp;
 	</td>
  </tr>
 </table>
