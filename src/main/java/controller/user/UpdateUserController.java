@@ -54,7 +54,8 @@ public class UpdateUserController implements Controller {
     			formatter.parse(request.getParameter("userBirth")),
     			request.getParameter("phoneNumber"),
     			request.getParameter("gender"),
-    			request.getParameter("address")
+    			request.getParameter("address"),
+    			request.getParameter("email")
     			);
     	log.debug("Update User : {}", updateUser);
 

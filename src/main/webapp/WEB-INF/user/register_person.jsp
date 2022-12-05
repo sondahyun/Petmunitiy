@@ -75,6 +75,7 @@ function userCreate() {
 }
 
 function userList(targetUri) {
+	form.method = "GET";
 	form.action = targetUri;
 	form.submit();	//get
 }

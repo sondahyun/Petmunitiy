@@ -24,9 +24,9 @@ public class UserDAO {
 	 */
 	public int create(UserInfo user) throws SQLException {
 		//
-		String sql = "INSERT INTO UserInfo (USERID, LOGINID, LOGINPWD, USERNICKNAME, USERBIRTH, PHONENUMBER, GENDER, ADDRESS) VALUES (user_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO UserInfo (USERID, LOGINID, LOGINPWD, USERNICKNAME, USERBIRTH, PHONENUMBER, GENDER, ADDRESS, email) VALUES (user_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] { user.getLoginId(), user.getLoginPwd(), user.getUserNickname(),
-				new java.sql.Date( user.getUserBirth().getTime()), user.getPhoneNumber(), user.getGender(), user.getAddress() };
+				new java.sql.Date( user.getUserBirth().getTime()), user.getPhoneNumber(), user.getGender(), user.getAddress(), user.getEmail() };
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		
 		try {
@@ -48,9 +48,9 @@ public class UserDAO {
 	 */
 	public int update(UserInfo user) throws SQLException {
 		String sql = "UPDATE UserInfo "
-				+ "SET loginPwd=?, userNickname=?, userBirth=?, phoneNumber=?, address=? " + "WHERE userId=?";
+				+ "SET loginPwd=?, userNickname=?, userBirth=?, phoneNumber=?, address=? email=? " + "WHERE userId=?";
 		Object[] param = new Object[] { user.getLoginPwd(), user.getUserNickname(),new java.sql.Date( user.getUserBirth().getTime()),
-				user.getPhoneNumber(), user.getAddress(), user.getUserId() };
+				user.getPhoneNumber(), user.getAddress(), user.getEmail(), user.getUserId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {
@@ -104,6 +104,7 @@ public class UserDAO {
 				user.setPhoneNumber(rs.getString("phoneNumber"));
 				user.setGender(rs.getString("gender"));
 				user.setAddress(rs.getString("address"));
+				user.setEmail(rs.getString("email"));
 				//pet 객체들의 list를 준다
 				return user;
 			}
