@@ -25,6 +25,15 @@ public class PostInformation implements Comparable {
 		this.kind = kind;
 		this.loginId = loginId;
 	}
+	
+	public PostInformation(String postTitle, String postContent, String fileName, String kind, String loginId) {
+		super();
+		this.postTitle = postTitle;
+		this.postContent = postContent;
+		this.fileName = fileName;
+		this.kind = kind;
+		this.loginId = loginId;
+	}
 
 	public PostInformation(String postTitle, Date postDate, String postContent,
 			String fileName, String kind, String loginId) {
