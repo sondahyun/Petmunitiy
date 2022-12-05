@@ -8,6 +8,37 @@
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function userCreate() {
+	if (form.name.value == "") {
+		alert("펫 이름을 입력하십시오.");
+		form.name.focus();
+		return false;
+	} 
+	if (form.age.value == "" || !(form.age.value < 20) || !(form.age.value >0))) {
+		alert("펫 나이를 입력하십시오.");
+		form.age.focus();
+		return false;
+	} 
+	if (form.kind.value == "") {
+		alert("펫 종을 입력하십시오.");
+		form.kind.focus();
+		return false;
+	} 
+	if (form.gender.value == "") {
+		alert("펫 성별을 입력하십시오.");
+		form.gender.focus();
+		return false;
+	} 
+	if (form.vaccination.value == "") {
+		alert("백신 접종 여부를 입력하십시오.");
+		form.vaccination.focus();
+		return false;
+	} 
+	if (form.health.value == "") {
+		alert("펫 건강상태를 입력하십시오.");
+		form.vaccination.focus();
+		return false;
+	}
+	
 	alert("회원가입 완료");
 	
 	form.submit();

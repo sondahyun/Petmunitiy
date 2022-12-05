@@ -25,9 +25,29 @@ function userCreate() {
 		form.password2.focus();
 		return false;
 	}
-	if (form.userNickname.value == "") {
-		alert("이름을 입력하십시오.");
+	if (form.userBirth.value == "") {
+		alert("생년월일을 입력하십시오.");
+		form.userBirth.focus();
+		return false;
+	}
+	if (form.gender.value == "") {
+		alert("성별을 입력하십시오.");
+		form.gender.focus();
+		return false;
+	}
+	if (form.address.value == "") {
+		alert("거주지 주소를 입력하십시오.");
+		form.address.focus();
+		return false;
+	}
+	if (form.email.value == "") {
+		alert("이메일 주소를 입력하십시오.");
 		form.userNickname.focus();
+		return false;
+	}
+	if (form.phone1.value == "" || form.phone2.value =="" || form.phone3.value=="") {
+		alert("전화번호를 입력하십시오.");
+		form.phone1.focus();
 		return false;
 	}
 	
@@ -78,7 +98,7 @@ function userList(targetUri) {
 		</td>
 	 </tr>
 	 <tr height="40">
-		<td width="50%" align="center" bgcolor="#E6E6E6">생일</td>
+		<td width="50%" align="center" bgcolor="#E6E6E6">생년월일</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 			<input type="date" style="width: 240" name="userBirth" >
 		</td>
