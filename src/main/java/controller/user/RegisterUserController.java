@@ -58,7 +58,8 @@ public class RegisterUserController implements Controller {
 			formatter.parse(request.getParameter("userBirth")),
 			phoneNumber,
 			request.getParameter("gender"),
-			request.getParameter("address")
+			request.getParameter("address"),
+			request.getParameter("email")
 			);
 		
         log.debug("Create User : {}", user);

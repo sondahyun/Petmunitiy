@@ -15,6 +15,7 @@ public class UserInfo {
 	private String phoneNumber;
 	private String gender;
 	private String address;
+	private String email;
 	//private int petList;
 	//private ArrayList<Pet> petList; //ArrayList<Integer> => Array(UserDAO findUser���� getArray�� ����
 	///private ArrayList<Pet> petList;
@@ -24,7 +25,7 @@ public class UserInfo {
 	}
 
 	public UserInfo(String loginId, String loginPwd, String userNickname, Date userBirth,
-			String phoneNumber, String gender, String address) {
+			String phoneNumber, String gender, String address, String email) {
 		this.loginId = loginId;
 		this.loginPwd = loginPwd;
 		this.userNickname = userNickname;
@@ -32,6 +33,7 @@ public class UserInfo {
 		this.phoneNumber = phoneNumber;
 		this.gender = gender;
 		this.address = address;
+		this.email = email;
 	}
 
 	
@@ -128,7 +130,16 @@ public class UserInfo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	/* ��й�ȣ �˻� */
 	public boolean matchPassword(String password) {
