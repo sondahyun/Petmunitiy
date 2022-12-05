@@ -84,7 +84,7 @@ function userCreate(targetUri) {
 			<td align="center">
 			<input class="btn" type="button" value="로그인" onClick="login()"> &nbsp;&nbsp;&nbsp;
 			<input class="btn" type="button" value="회원가입" onClick="userCreate(
-								'<c:url value='/user/register'/>')">
+								'<c:url value='/user/register_person/form'/>')">
 			</td>						
 		  </tr>
 		  <!--<center><tr height="40"><td>(관리자 로그인: admin/admin)</center></td></tr>-->

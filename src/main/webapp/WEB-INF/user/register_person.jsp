@@ -32,14 +32,14 @@ function userCreate() {
 	}
 	
 	//프론트팀 전달
-	/* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;	//""
+	var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;	//""
 	if(emailExp.test(form.email.value)==false) {
 		alert("이메일 형식이 올바르지 않습니다.");
 		form.email.focus();
 		return false;
 	}
 	//동작?
-	var phoneExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
+	/* var phoneExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
 	if(phoneExp.test(form.phone.value)==false) {
 		alert("전화번호 형식이 올바르지 않습니다.");
 		form.phone.focus();
@@ -131,7 +131,7 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">이메일 주소</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="address" placeholder="you@example.com">
+			<input type="text" style="width: 240" name="email" placeholder="you@example.com">
 				<%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%>
 		</td>
      </tr>
