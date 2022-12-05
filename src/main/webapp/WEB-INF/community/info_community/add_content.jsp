@@ -7,7 +7,7 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
-function applyAdopt() {
+function applyInfo() {
    alert("실행");
 
    if (form.postTitle.value == "") {
@@ -96,7 +96,7 @@ function userList(targetUri) {
  </tr>
  <tr>
  	<td><br>
- 		<input class="btn" type="button" value="게시글 작성완료" onClick="userCreate()"> &nbsp;
+ 		<input class="btn" type="button" value="게시글 작성완료" onClick="applyInfo()"> &nbsp;
 	</td>
  </tr>
 </table>
