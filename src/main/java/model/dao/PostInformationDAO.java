@@ -24,8 +24,8 @@ public class PostInformationDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public PostInformation create(PostInformation post) throws SQLException {
-		String sql = "INSERT INTO PostInformation VALUES (p0_seq.nextval,?,?,?,?,?,?)";
-		Object[] param = new Object[] {post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getPostContent(), post.getFileName(), post.getKind(), post.getLoginId() };
+		String sql = "INSERT INTO PostInformation VALUES (p0_seq.nextval,?,SYSDATE,?,?,?,?)";
+		Object[] param = new Object[] {post.getPostTitle(), post.getPostContent(), post.getFileName(), post.getKind(), post.getLoginId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		String key[] = {"postId"};	// PK 컬럼의 이름    
 		try {

@@ -18,13 +18,19 @@ public class CreateP0Controller implements Controller {
     private static final Logger log = LoggerFactory.getLogger(Apply.class);
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    	if (request.getMethod().equals("GET")) {	
+       		// GET request: 회원정보 등록 form 요청	
+    		log.debug("info_community add");
+    		//System.out.println("여기1");
+			return "/community/info_community/add_content.jsp";   //  registerForm���� ����     	
+	    }
+    	
     	HttpSession session = request.getSession();
-    	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    	//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        	Object loginId = session.getAttribute("loginId");
     	
 		PostInformation pi = new PostInformation(
     		request.getParameter("postTitle"),
-			formatter.parse(request.getParameter("postDate")),
 			request.getParameter("postContent"),
 			request.getParameter("fileName"),
 			request.getParameter("kind"),
@@ -36,13 +42,13 @@ public class CreateP0Controller implements Controller {
 			manager.createPostInformation(pi);
 			
 	    	log.debug("Create PostInformation : {}", pi);
-	        return "redirect:/community/info_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect
+	        return "redirect:/community/info_community/info_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect
 	        
 		} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
             request.setAttribute("creationFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("pi", pi);
-			return "/community/creationForm.jsp";
+			return "/community/info_community/info_community.jsp";
 		}
     }
 }
