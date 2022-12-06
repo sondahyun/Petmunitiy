@@ -46,7 +46,7 @@
 	%>
 	<tr class="name">
 	    <td>
-			<%out.print(session.getAttribute("UserNickname") + "님 환영합니다!");%> 
+			<%out.print(session.getAttribute("loginId") + "님 환영합니다!");%> 
 		</td>
 	</tr>
 	<tr>
