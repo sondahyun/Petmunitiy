@@ -23,17 +23,19 @@ public class LoginController implements Controller {
 	    }	
     	String loginId = request.getParameter("loginId");
 		String loginPwd = request.getParameter("password");
-		String userId = request.getParameter("userId");
+		
 		
 		try {
 			// �𵨿� �α��� ó���� ����
 			UserManager manager = UserManager.getInstance();
 			manager.login(loginId, loginPwd);
-	
+			int userId = manager.findUserId(loginId);
+			System.out.println(userId);
+			
 			// ���ǿ� ����� ���̵� ����
 			HttpSession session = request.getSession();
             session.setAttribute("loginId", loginId);
-            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
+            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, String.valueOf(userId));
             
             return "redirect:/";			
 		} catch (Exception e) {

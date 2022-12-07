@@ -30,7 +30,7 @@ public class CreateC0Controller implements Controller {
 
        	System.out.println("commentP0");
        	
-       	int userId = Integer.parseInt((String) session.getAttribute(UserSessionUtils.USER_SESSION_KEY));
+       	int userId = UserSessionUtils.getLoginUserId(session);
        	int postId = Integer.parseInt(request.getParameter("postId"));
        	
        	System.out.println("userId, postId : "+ userId+ postId);
@@ -40,6 +40,7 @@ public class CreateC0Controller implements Controller {
 			postId,
 			userId
 			);		
+		
         
 		try {
 			UserManager manager = UserManager.getInstance();

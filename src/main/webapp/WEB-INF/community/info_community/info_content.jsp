@@ -60,7 +60,7 @@
 				<div class="container">
 					<div class="form-group">
 						<%-- <form method="post" encType = "multipart/form-data" action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%>"> --%>
-						<form method="post" encType = "multipart/form-data" action="<c:url value='/community/info_community/add_comment'><c:param name='postId' value='${item.postId}'/></c:url>">
+						<form method="post" encType = "multipart/form-data" action="<c:url value='/community/info_community/add_comment'><c:param name='postId' value='${post.postId}'/></c:url>">
 							<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
 								<tr>
 									<td style="border-bottom:none; width:10%" valign="middle"><br><br>이름<!-- 이름 --></td>

@@ -71,6 +71,10 @@ public class UserManager {
 		return this.userDAO;
 	}
 	
+	public int findUserId(String loginId) throws SQLException{
+		return userDAO.findUserId(loginId);
+	}
+	
 	//pet
 
 	//pet

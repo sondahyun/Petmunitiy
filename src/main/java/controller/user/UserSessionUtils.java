@@ -10,8 +10,8 @@ public class UserSessionUtils {
         return loginId;
     }
     
-    public static String getLoginUserId(HttpSession session) {
-        String userId = (String)session.getAttribute(USER_SESSION_KEY);
+    public static int getLoginUserId(HttpSession session) {
+        int userId = Integer.parseInt((String)session.getAttribute(USER_SESSION_KEY));
         return userId;
     }
 
