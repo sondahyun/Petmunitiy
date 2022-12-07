@@ -6,23 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.CommentInformation;
-import model.Pet;
 import model.PostInformation;
-import model.Pet;
 
 public class CommentP0DAO {
 	private JDBCUtil jdbcUtil = null;
-
+	
 	public CommentP0DAO() {
 		jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성
 	}
 
-	/**
-	 * 사용자 관리 테이블에 새로운 사용자 생성.
-	 */
 	public int create(CommentInformation comment) throws SQLException {
 		//
-		String sql = "INSERT INTO Pet VALUES (c0_seq.nextval, SYSDATE, ?, ?, ?)";
+		String sql = "INSERT INTO commentInformation VALUES (c0_seq.nextval, SYSDATE, ?, ?, ?)";
 		Object[] param = new Object[] {comment.getCommentContent(), comment.getPostId(), comment.getUserId()};
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		
@@ -64,9 +59,9 @@ public class CommentP0DAO {
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.
 	 */
-	public int remove(int petId) throws SQLException {
-		String sql = "DELETE FROM Pet WHERE petId=?";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { petId }); // JDBCUtil에 delete문과 매개 변수 설정
+	public int remove(int commentId) throws SQLException {
+		String sql = "DELETE FROM commentInformation WHERE commentId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { commentId }); // JDBCUtil에 delete문과 매개 변수 설정
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // delete 문 실행
@@ -82,56 +77,49 @@ public class CommentP0DAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Pet findPet(String loginId) throws SQLException {
-		String sql = "SELECT * " + "FROM Pet " + "WHERE loginId=? ";	//Pet와 pet join해서..pet여럿이므로 while문으로 첫번째 레코드에서(null)만 user객체 pet객체 따로 생성, 아레쪽 while 추가 pet객체 llist에 add
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtil에 query문과 매개 변수 설정
+	public CommentInformation findC0(int commentId) throws SQLException {
+		String sql = "SELECT * " + "FROM commentinformation " + "WHERE commentId=? ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { commentId }); // JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
-			Pet pet = null;
+			CommentInformation comment = null;
 			if(rs.next()) {
-				pet = new Pet();
-				pet.setName(rs.getString("name"));
-				pet.setGender(rs.getString("gender"));
-				pet.setAge(rs.getInt("age"));
-				pet.setHealth(rs.getString("health"));
-				pet.setVaccination(rs.getString("vaccination"));
-				pet.setKind(rs.getString("kind"));
-				pet.setFilename(rs.getString("fileName"));
-				pet.setLoginId(rs.getString("loginId"));
-				return pet;
+				comment = new CommentInformation();
+				comment.setCommentDate(rs.getDate("commentDate"));
+				comment.setCommentContent(rs.getString("commentContent"));
+				comment.setPostId(rs.getInt("postId"));
+				comment.setUserId(rs.getInt("UserId"));
+				return comment;
 			}
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close(); // resource 반환
 		}
 		return null;
 	}
 	
-	public List<Pet> findPetList() throws SQLException {
-		String sql = "SELECT * FROM Pet ";
+	public List<CommentInformation> findC0List() throws SQLException {
+		String sql = "SELECT * FROM CommentInformation ";
 
 		jdbcUtil.setSqlAndParameters(sql, null);      // JDBCUtil에 query문 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
-			List<Pet> petList = new ArrayList<Pet>();   // PostInformation들의 리스트 생성
+			List<CommentInformation> c0List = new ArrayList<CommentInformation>();   // PostInformation들의 리스트 생성
 			while (rs.next()) {
-				Pet pet = new Pet(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
-						rs.getInt("petId"),
-						rs.getString("name"),
-						rs.getString("gender"),
-						rs.getInt("age"),
-						rs.getString("health"),
-						rs.getString("vaccination"),
-						rs.getString("kind"),
-						rs.getString("fileName"),
-						rs.getString("loginId"));
-				petList.add(pet);            // List에 PostInformation 객체 저장
+				CommentInformation co = new CommentInformation(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
+						rs.getInt("commentId"),
+						rs.getDate("commentDate"),
+						rs.getString("commentContent"),
+						rs.getInt("postId"),
+						rs.getInt("userId"));
+				c0List.add(co);            // List에 PostInformation 객체 저장
 			}      
-			return petList;               
+			return c0List;               
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

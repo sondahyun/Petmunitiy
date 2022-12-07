@@ -9,6 +9,7 @@ public class CommentInformation {
 	private int postId;
 	private int userId;
 	
+	public CommentInformation() {}
 	
 	public CommentInformation(int commentId, Date commentDate, String commentContent, int postId, int userId) {
 		super();
@@ -23,6 +24,13 @@ public class CommentInformation {
 	public CommentInformation(Date commentDate, String commentContent, int postId, int userId) {
 		super();
 		this.commentDate = commentDate;
+		this.commentContent = commentContent;
+		this.postId = postId;
+		this.userId = userId;
+	}
+	
+	public CommentInformation(String commentContent, int postId, int userId) {
+		super();
 		this.commentContent = commentContent;
 		this.postId = postId;
 		this.userId = userId;

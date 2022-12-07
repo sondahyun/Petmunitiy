@@ -7,16 +7,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import model.Apply;
-import model.Pet;
-import model.PostAdoption;
-import model.PostInformation;
-import model.UserInfo;
-import model.dao.ApplyDAO;
-import model.dao.PetDAO;
-import model.dao.PostAdoptionDAO;
-import model.dao.PostInformationDAO;
-import model.dao.UserDAO;
+import model.*;
+import model.dao.*;
 
 public class UserManager {
 	private static final Logger log = LoggerFactory.getLogger(PostAdoption.class);
@@ -24,6 +16,7 @@ public class UserManager {
 	private static UserManager userMan = new UserManager();
 	private UserDAO userDAO;
 	private PostInformationDAO postInformationDAO;
+	private CommentP0DAO commentP0DAO;
 	private PostAdoptionDAO postAdoptionDAO;
 	private ApplyDAO applyDAO;
 	private PetDAO petDAO;
@@ -31,10 +24,11 @@ public class UserManager {
 	private UserManager() {
 		try {
 			userDAO = new UserDAO();
+			petDAO = new PetDAO();
 			postInformationDAO = new PostInformationDAO();
+			commentP0DAO = new CommentP0DAO();
 			postAdoptionDAO = new PostAdoptionDAO();
 			applyDAO = new ApplyDAO();
-			petDAO = new PetDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -43,7 +37,8 @@ public class UserManager {
 	public static UserManager getInstance() {
 		return userMan;
 	}
-
+	
+	//userinfo
 	public int create(UserInfo user) throws SQLException, ExistingUserException {
 		if (userDAO.existingUser(user.getLoginId()) == true) {
 			throw new ExistingUserException(user.getLoginId() + "는 존재하는 아이디 입니다.");
@@ -75,6 +70,30 @@ public class UserManager {
 	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}
+	
+	//pet
+
+	//pet
+	public int createPet(Pet pet) throws SQLException {
+		return petDAO.create(pet);      
+	}
+	
+	public int updatePet(Pet pet) throws SQLException {
+		return petDAO.update(pet);            
+	}
+	
+	public int removePet(int petId) throws SQLException{
+		return petDAO.remove(petId);
+	}
+	
+	public Pet findPet(String loginId) throws SQLException {
+		return petDAO.findPet(loginId); 
+	}
+	public List<Pet> findPetList() throws SQLException {
+		return petDAO.findPetList();
+	}
+	
+	//information community
 	public PostInformation createPostInformation(PostInformation post) throws SQLException {
 		return postInformationDAO.create(post);      
 	}
@@ -98,8 +117,28 @@ public class UserManager {
 	public List<PostInformation> findP0List() throws SQLException {
 		return postInformationDAO.findP0List();
 	}
+	//c0
+	public int createC0(CommentInformation ci) throws SQLException {
+		return commentP0DAO.create(ci);
+	}
+	
+	public int updateC0(CommentInformation ci) throws SQLException {
+		return commentP0DAO.update(ci);
+	}
+	
+	public int removeC0(int commentId) throws SQLException {
+		return commentP0DAO.remove(commentId);
+	}
+	
+	public CommentInformation findC0(int commentId) throws SQLException{
+		return commentP0DAO.findC0(commentId);
+	}
+	public List<CommentInformation> findC0List() throws SQLException {
+		return commentP0DAO.findC0List();
+	}
+	
 
-	//adoptiondao
+	//adoption community
 	public int createP3Adoption(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.create(post);	
 	}
@@ -125,7 +164,7 @@ public class UserManager {
 	public int removeP3Adoption(int postId) throws SQLException{
 		return postAdoptionDAO.remove(postId);
 	}
-	
+	//apply
 	public int createApply(Apply apply) throws SQLException, ExistingUserException {
 		return applyDAO.create(apply);
 	}
@@ -142,23 +181,4 @@ public class UserManager {
 		return applyDAO.findApplyList();
 	} 
 	
-	//pet
-	public int createPet(Pet pet) throws SQLException {
-		return petDAO.create(pet);      
-	}
-	
-	public int updatePet(Pet pet) throws SQLException {
-		return petDAO.update(pet);            
-	}
-	
-	public int removePet(int petId) throws SQLException{
-		return petDAO.remove(petId);
-	}
-	
-	public Pet findPet(String loginId) throws SQLException {
-		return petDAO.findPet(loginId); 
-	}
-	public List<Pet> findPetList() throws SQLException {
-		return petDAO.findPetList();
-	}
 }
