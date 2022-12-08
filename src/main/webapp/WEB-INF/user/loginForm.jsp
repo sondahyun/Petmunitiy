@@ -87,9 +87,14 @@ function userCreate(targetUri) {
 								'<c:url value='/user/register_person/form'/>')">
 			</td>						
 		  </tr>
+		  <tr>
+			  <td>
+			  	<img id="kakao_login" src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_large_wide.png">
+			  </td>
+		  </tr>
 		  <!--<center><tr height="40"><td>(관리자 로그인: admin/admin)</center></td></tr>-->
 	    </table>
-	  </td>	  
+	    </td>	  
 	</tr>
   </table>  
 </form>
