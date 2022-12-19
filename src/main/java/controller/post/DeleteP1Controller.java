@@ -9,16 +9,16 @@ import org.slf4j.LoggerFactory;
 import controller.Controller;
 import model.service.UserManager;
 
-public class DeleteP0Controller implements Controller {
-    private static final Logger log = LoggerFactory.getLogger(DeleteP0Controller.class);
+public class DeleteP1Controller implements Controller {
+    private static final Logger log = LoggerFactory.getLogger(DeleteP1Controller.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
 		int postId = Integer.parseInt(request.getParameter("postId"));
-    	log.debug("Delete post0_Id : {}", postId);
+    	log.debug("Delete post1_Id : {}", postId);
 
 		UserManager manager = UserManager.getInstance();			
-		manager.removePostInformation(postId);
-		return "redirect:/community/info_community/info_community";
+		manager.removePostGroup(postId);
+		return "redirect:/community/group_community/group_community";
 	}
 }

@@ -38,8 +38,8 @@ public class RequestMapping {
 
         
         //그룹게시판
-        mappings.put("/community/group_community/group_community", new ForwardController("/community/group_community/group_community.jsp"));
-        mappings.put("/community/group_community/add_content", new ForwardController("/community/group_community/add_content.jsp"));
+        mappings.put("/community/group_community/group_community", new ListP1Controller());
+        mappings.put("/community/group_community/add_content", new CreateP1Controller());
 
         
         //검색게시판

@@ -23,9 +23,10 @@ public class PostGroupDAO {
 	/**
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
-	/*public PostGroup create(PostGroup post) throws SQLException {
-		String sql = "INSERT INTO PostGroup VALUES (p0_seq.nextval,?,SYSDATE,?,?,?,?)";
-		Object[] param = new Object[] {post.getPostTitle(), post.getPostContent(), post.getFileName(), post.getKind(), post.getLoginId() };
+	public PostGroup create(PostGroup post) throws SQLException {
+		String sql = "INSERT INTO PostGroup VALUES (p1_seq.nextval,?,SYSDATE,?,?,?,?,?,?)";
+		Object[] param = new Object[] {post.getPostTitle(), post.getPostContent(), post.getGroupPurpose(), post.getRegion(), 
+										post.getHeadCount(), post.getFileName(), post.getLoginId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		String key[] = {"postId"};	// PK 컬럼의 이름    
 		try {
@@ -44,15 +45,16 @@ public class PostGroupDAO {
 			jdbcUtil.close(); // resource 반환
 		}
 		return null;
-	}*/
+	}
 
 	/**
 	 * 기존의 사용자 정보를 수정.
 	 */
-	/*public int update(PostInformation post) throws SQLException {
-		String sql = "UPDATE PostInformation "
-				+ "SET postTitle=?, postDate=?, postContent=?, fileName=?, kind=?" + "WHERE postId=?";
-		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getPostContent(), post.getFileName(), post.getKind(), post.getPostId() };
+	public int update(PostGroup post) throws SQLException {
+		String sql = "UPDATE PostGroup "
+				+ "SET postTitle=?, postDate=?, postContent=?, groupPurpose=?, region=?, headCount=?, fileName=? " + "WHERE postId=?";
+		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getPostContent(), post.getGroupPurpose(), 
+										post.getRegion(), post.getHeadCount(), post.getFileName(), post.getPostId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {
@@ -69,7 +71,7 @@ public class PostGroupDAO {
 	}
 
 	public int remove(int postId) throws SQLException {
-		String sql = "DELETE FROM PostInformation WHERE postId=? ";
+		String sql = "DELETE FROM PostGroup WHERE postId=? ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { postId }); // JDBCUtil에 delete문과 매개 변수 설정
 
 		try {
@@ -85,20 +87,22 @@ public class PostGroupDAO {
 		return 0;
 	}
 
-	public PostInformation findPost(int postId) throws SQLException {
-		String sql = "SELECT * "+ "FROM PostInformation "+ "WHERE postId=? ";              
+	public PostGroup findPost(int postId) throws SQLException {
+		String sql = "SELECT * "+ "FROM PostGroup "+ "WHERE postId=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	
-		PostInformation post = null;// JDBCUtil에 query문과 매개 변수 설정
+		PostGroup post = null;// JDBCUtil에 query문과 매개 변수 설정
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			if (rs.next()) {						// 학생 정보 발견
-				post = new PostInformation(		// Community 객체를 생성하여 커뮤니티 정보를 저장
+				post = new PostGroup(		// Community 객체를 생성하여 커뮤니티 정보를 저장
 						postId,
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
 						rs.getString("postContent"),
+						rs.getString("groupPurpose"),
+						rs.getString("region"),
+						rs.getInt("headCount"),
 						rs.getString("fileName"),
-						rs.getString("kind"),
 						rs.getString("loginId"));
 			}
 		} catch (Exception ex) {
@@ -111,24 +115,26 @@ public class PostGroupDAO {
 	}
 
 
-	public List<PostInformation> searchP0List(String postTitle, Date start, Date end) throws SQLException {
-		String sql = "SELECT * " + "FROM PostInformation " + "WHERE POSTTITLE LIKE %?% AND POSTDATE BETWEEN ? AND ? ";
+	public List<PostGroup> searchP1List(String postTitle, Date start, Date end) throws SQLException {
+		String sql = "SELECT * " + "FROM PostGroup " + "WHERE POSTTITLE LIKE %?% AND POSTDATE BETWEEN ? AND ? ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { postTitle, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime()) }); // JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
-			ArrayList<PostInformation> informationList = new ArrayList<PostInformation>();// post들의 리스트 생성
+			ArrayList<PostGroup> groupList = new ArrayList<PostGroup>();// post들의 리스트 생성
 			while(rs.next()) {// 학생 정보 발견
-				PostInformation post = new PostInformation();// post 객체를 생성하여 정보를 저장
+				PostGroup post = new PostGroup();// post 객체를 생성하여 정보를 저장
 				post.setPostTitle(rs.getString("postTitle"));
 				post.setPostDate(rs.getDate("postDate"));
 				post.setPostContent(rs.getString("postContent"));
+				post.setGroupPurpose(rs.getString("groupPurpose"));
+				post.setRegion(rs.getString("region"));
+				post.setHeadCount(rs.getInt("headCount"));
 				post.setFileName(rs.getString("fileName"));
-				post.setKind(rs.getString("kind"));
 				post.setLoginId(rs.getString("loginId"));
-				informationList.add(post);
+				groupList.add(post);
 			}
-			return informationList;
+			return groupList;
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -138,26 +144,28 @@ public class PostGroupDAO {
 		return null;
 	}
 
-	public List<PostInformation> findP0List() throws SQLException {
-		String sql = "SELECT * "+ "FROM PostInformation ";
+	public List<PostGroup> findP1List() throws SQLException {
+		String sql = "SELECT * "+ "FROM PostGroup ";
 
 		jdbcUtil.setSqlAndParameters(sql, null);      // JDBCUtil에 query문 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
-			List<PostInformation> informationList = new ArrayList<PostInformation>();   // PostInformation들의 리스트 생성
+			List<PostGroup> groupList = new ArrayList<PostGroup>();   // PostInformation들의 리스트 생성
 			while (rs.next()) {
-				PostInformation post = new PostInformation(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
+				PostGroup post = new PostGroup(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
 						rs.getInt("postId"),
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
 						rs.getString("postContent"),
+						rs.getString("groupPurpose"),
+						rs.getString("region"),
+						rs.getInt("headCount"),
 						rs.getString("fileName"),
-						rs.getString("kind"),
 						rs.getString("loginId"));
-				informationList.add(post);            // List에 PostInformation 객체 저장
+				groupList.add(post);            // List에 PostInformation 객체 저장
 			}      
-			return informationList;               
+			return groupList;               
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -166,9 +174,5 @@ public class PostGroupDAO {
 			jdbcUtil.close();      // resource 반환
 		}
 		return null;
-	}*/
-
-
-
-
+	}
 }

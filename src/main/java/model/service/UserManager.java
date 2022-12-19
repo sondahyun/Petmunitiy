@@ -17,6 +17,7 @@ public class UserManager {
 	private UserDAO userDAO;
 	private PostInformationDAO postInformationDAO;
 	private CommentP0DAO commentP0DAO;
+	private PostGroupDAO postGroupDAO;
 	private PostAdoptionDAO postAdoptionDAO;
 	private ApplyDAO applyDAO;
 	private PetDAO petDAO;
@@ -27,6 +28,7 @@ public class UserManager {
 			petDAO = new PetDAO();
 			postInformationDAO = new PostInformationDAO();
 			commentP0DAO = new CommentP0DAO();
+			postGroupDAO = new PostGroupDAO();
 			postAdoptionDAO = new PostAdoptionDAO();
 			applyDAO = new ApplyDAO();
 		} catch (Exception e) {
@@ -141,7 +143,31 @@ public class UserManager {
 		return commentP0DAO.findC0List();
 	}
 	
+	//group community
+	public PostGroup createPostGroup(PostGroup post) throws SQLException {
+		return postGroupDAO.create(post);      
+	}
 
+	public int updatePostGroup(PostGroup post) throws SQLException {
+		return postGroupDAO.update(post);            
+	}
+	
+	public int removePostGroup(int postId) throws SQLException{
+		return postGroupDAO.remove(postId);
+	}
+	
+	public PostGroup findP1Group(int postId) throws SQLException {
+		return postGroupDAO.findPost(postId); 
+	}
+	
+	public List<PostGroup> searchP1List(String postTitle, Date start, Date end) throws SQLException {
+		return postGroupDAO.searchP1List(postTitle, start, end);
+	}
+	
+	public List<PostGroup> findP1List() throws SQLException {
+		return postGroupDAO.findP1List();
+	}
+	
 	//adoption community
 	public int createP3Adoption(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.create(post);	
