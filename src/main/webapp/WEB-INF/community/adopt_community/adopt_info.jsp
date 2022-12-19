@@ -39,24 +39,30 @@
 	   <table style="background-color: #848484" style="width: 100%">
 	    <!--<center>-->
 	    <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">이름</td>
+	      <td width="150" align="center" bgcolor="#E6E6E6">제목</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
 	         <!-- 정보 가져오기${post.animal["name"]} -->
-	         ${pA.aType}
+	         ${pA.postTitle}
+	      </td>
+	    </tr>
+	    <tr height="40">
+	      <td width="150" align="center" bgcolor="#E6E6E6">작성일</td>
+	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
+	         ${pA.postDate}
 	      </td>
 	    </tr>
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">신청(임보/입양)</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->
-	         ${pA.postTitle}
+	         <c:if test="${pA.aType==0}">입양</c:if>
+	         <c:if test="${pA.aType==1}">임보</c:if>
 	      </td>
 	    </tr>
 	    <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">나이</td>
+	      <td width="150" align="center" bgcolor="#E6E6E6">현 상태</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->       
-	         ${pA.animal["age"] }  
+	      	 <c:if test="${pA.approval==0}">신청 진행 중</c:if>
+	         <c:if test="${pA.approval==1}">입양(임보) 완료</c:if>
 	      </td>
 	    </tr>
 	    <%-- 
@@ -68,66 +74,47 @@
 	         </td>
 	    </tr> --%>
 	    <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">연락처</td>
+	      <td width="150" align="center" bgcolor="#E6E6E6">입양(임보)완료일</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->
+	      	<c:if test="${pA.approval==1}">${pA.approvalDate}</c:if>
 	         <%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
+	      </td>
+	    </tr><tr height="40">
+	      <td width="150" align="center" bgcolor="#E6E6E6">동물 종</td>
+	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
+	         ${pA.animal['kind']}
 	      </td>
 	    </tr>
 	    <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">주소</td>
+	      <td width="150" align="center" bgcolor="#E6E6E6">동물 성별</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->         
+	         ${pA.animal['gender']}
+	      </td>
+	    </tr>
+	    <tr height="40">
+	      <td width="150" align="center" bgcolor="#E6E6E6">동물 나이</td>
+	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
+	         ${pA.animal['age']}
+	      </td>
+	    </tr>
+	    <tr height="40">
+	      <td width="150" align="center" bgcolor="#E6E6E6">건강상태</td>
+	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
+	         ${pA.animal['health']}
+	      </td>
+	    </tr>
+	    <tr height="40">
+	      <td width="150" align="center" bgcolor="#E6E6E6">백신 접종 여부</td>
+	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
+	         ${pA.animal['vaccination']}
 	      </td>
 	    </tr>
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">작성자 희망 조건 사항</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->         
+	         ${pA.postContent}
 	      </td>
 	     </tr>
-	     <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">임보/입양에 대한 각오</td>
-	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->         
-	      </td>
-	     </tr>
-	     <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">알레르기 유무</td>
-	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->         
-	      </td>
-	     </tr>
-	     <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">특이사항</td>
-	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->        
-	      </td>
-	     </tr>
-	     <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">성별</td>
-	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->         
-	      </td>
-	     </tr>
-	     <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">종</td>
-	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->         
-	      </td>
-	     </tr>
-	     <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">거주지 주소</td>
-	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->        
-	      </td>
-	    </tr>   
-	    <tr height="40">
-	      <td width="150" align="center" bgcolor="#E6E6E6">기타사항</td>
-	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기 -->         
-	      </td>
-	    </tr> 
 	    	<% 
 	    	if(session.getAttribute("loginId") != null) {// 입양일 경우 %>
 	    	<tr>	<td class="adopt_info_td_1"><a class="adopt_info_1" href="<c:url value='/community/adopt_community/apply_form' />">입양 신청</a></td> 
