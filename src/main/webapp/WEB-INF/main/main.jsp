@@ -89,7 +89,7 @@
 		  <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>	  
 </div> --%>
   <div class="detail">
-      <br>copyright 2021. WH. All rights reserved.
+      <br>copyright 2022. Cloud.
    </div>
 </body>
 </html>

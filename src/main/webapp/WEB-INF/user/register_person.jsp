@@ -6,6 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
+<style>
+.input {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 18px;
+}
+</style>
 <script>
 function userCreate() {
 	alert("나의 정보 작성완료 -> 펫 정보 작성하기");
@@ -169,6 +177,15 @@ function userList(targetUri) {
 		</td>
 	 </tr>	
 	</table>
+	<div class="input">
+				<label>활동량</label>
+				<select name="activeRank" size="4" required="">
+					<option value="1">거의 활동하지 않음</option>
+					<option value="2">조금씩 활동함</option>
+					<option value="3">규칙적으로 활동함</option>
+					<option value="4">활발하게 활동함</option>
+				</select>
+			</div>
 	<table>
 	 <tr align="center">
 		<td align="left">
