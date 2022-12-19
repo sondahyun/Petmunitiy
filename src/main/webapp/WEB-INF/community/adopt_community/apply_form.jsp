@@ -62,7 +62,7 @@ function userList(targetUri) {
        </c:if>  
 <table>
 <td>
-<%@include file="/WEB-INF/community/adopt_community/adopt_main2.jsp" %>
+<%@include file="/WEB-INF/community/adopt_community/adopt_main.jsp" %>
 </td>
 <td>
 <br>
