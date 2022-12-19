@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,30 +17,38 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import controller.Controller;
-import model.Apply;
-import model.PostInformation;
+import model.PostGroup;
 import model.service.UserManager;
 
-public class CreateP0Controller implements Controller {
-	private static final Logger log = LoggerFactory.getLogger(Apply.class);
-	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if (request.getMethod().equals("GET")) {	
-			// GET request: 회원정보 등록 form 요청	
-			log.debug("info_community add");
-			//System.out.println("여기1");
-			return "/community/info_community/add_content.jsp";   //  registerForm���� ����     	
-		}
+public class UpdateP1Controller implements Controller {
+    private static final Logger log = LoggerFactory.getLogger(UpdateP1Controller.class);
 
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
+ 
+		int postId = Integer.parseInt(request.getParameter("postId"));
+		
+		if (request.getMethod().equals("GET")) {	
+    		// GET request: 커뮤니티 수정 form 요청	
+    		UserManager manager = UserManager.getInstance();
+			PostGroup post1 = manager.findP1Group(postId);
+			request.setAttribute("post1", post1);			
+				
+			return "/community/group_community/update_content.jsp";   // 검색한 정보를 update form으로 전송     
+	    }	
+		
+		// POST request (커뮤니티 정보가 parameter로 전송됨)
 		HttpSession session = request.getSession();
 		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Object loginId = session.getAttribute("loginId");
 		String postTitle = null;
 		String postContent = null;
+		String groupPurpose = null;
+		String region = null;
+		int headCount = -1;
 		String filename = null;  
-		String kind = null;
+		
 		boolean check = ServletFileUpload.isMultipartContent(request);    			
 		if(check) {    // 전송된 요청 메시지의 타입이 multipart 인지 여부를 체크한다. (multipart/form-data)
 
@@ -81,8 +90,10 @@ public class CreateP0Controller implements Controller {
 						// parameter 이름이 name이면 name 변수에 값을 저장한다.
 						else if(item.getFieldName().equals("postContent")) postContent = value;
 						// parameter 이름이 id이면 id 변수에 값을 저장한다.
-						else if(item.getFieldName().equals("kind")) kind = value;
+						else if(item.getFieldName().equals("groupPurpose")) groupPurpose = value;
 						// parameter 이름이 pw이면 pw 변수에 값을 저장한다.
+						else if(item.getFieldName().equals("region")) region = value;
+						else if(item.getFieldName().equals("headCount")) headCount = Integer.parseInt(value);
 					}
 					else {  // item이 파일인 경우   
 						if (item.getFieldName().equals("fileName")) {
@@ -125,26 +136,20 @@ public class CreateP0Controller implements Controller {
 			}
 		}
 
-		PostInformation pi = new PostInformation(
+		PostGroup pg = new PostGroup(
 				postTitle,
 				postContent,
+				groupPurpose,
+				region,
+				headCount,
 				filename,
-				kind,
 				String.valueOf(loginId)
-				);		
+		);
+		
+    	log.debug("Update Community P1 : {}", pg);
 
-		try {
-			UserManager manager = UserManager.getInstance();
-			manager.createPostInformation(pi);
-
-			log.debug("Create PostInformation : {}", pi);
-			return "redirect:/community/info_community/info_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect
-
-		} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
-			request.setAttribute("creationFailed", true);
-			request.setAttribute("exception", e);
-			request.setAttribute("pi", pi);
-			return "/community/info_community/add_content.jsp";
-		}
-	}
+		UserManager manager = UserManager.getInstance();
+		manager.updatePostGroup(pg);			
+        return "redirect:/community/group_community/group_community";			
+    }
 }

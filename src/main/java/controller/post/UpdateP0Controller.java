@@ -27,7 +27,7 @@ public class UpdateP0Controller implements Controller {
 			PostInformation post0 = manager.findP0Information(postId);
 			request.setAttribute("post0", post0);			
 				
-			return "/community/updateForm.jsp";   // 검색한 정보를 update form으로 전송     
+			return "/community/info_community/update_content.jsp";   // 검색한 정보를 update form으로 전송     
 	    }	
 		
 		// POST request (커뮤니티 정보가 parameter로 전송됨)
@@ -44,10 +44,10 @@ public class UpdateP0Controller implements Controller {
 				String.valueOf(loginId)
 		);	
 		
-    	log.debug("Update Community : {}", pi);
+    	log.debug("Update Community P0 : {}", pi);
 
 		UserManager manager = UserManager.getInstance();
 		manager.updatePostInformation(pi);			
-        return "redirect:/community/info_community";			
+        return "redirect:/community/info_community/info_community";			
     }
 }
