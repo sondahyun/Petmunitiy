@@ -17,7 +17,7 @@ public class CommentP0DAO {
 
 	public int create(CommentInformation comment) throws SQLException {
 		//
-		String sql = "INSERT INTO commentInformation VALUES (c0_seq.nextval, SYSDATE, ?, ?, ?)";
+		String sql = "INSERT INTO commentInformation VALUES (c0_seq.nextval, SYSDATE,?,?,?)";
 		Object[] param = new Object[] {comment.getCommentContent(), comment.getPostId(), comment.getUserId()};
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		

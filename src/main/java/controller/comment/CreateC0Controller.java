@@ -32,7 +32,8 @@ public class CreateC0Controller implements Controller {
        	
        	int userId = UserSessionUtils.getLoginUserId(session);
        	int postId = Integer.parseInt(request.getParameter("postId"));
-       	
+       	String content = request.getParameter("commentContent");
+       	System.out.println(content);
        	System.out.println("userId, postId : "+ userId+ postId);
        	
 		CommentInformation ci = new CommentInformation(
