@@ -29,7 +29,7 @@
 			    	<td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >이미지</td>
 			    	<td style="width:50%">
 				<!-- <a href="<c:url value='/main/main' />"> -->
-					<img src="<c:url value='/images/linkedin_profile_image.png' />" style="width:500px; height:500px"/>		
+					<img src="<c:url value='/upload/${post.fileName}'/>" />		
 				</td>
 				</tr>
 				<tr style="height:40%; width:100%">
@@ -60,11 +60,13 @@
 				<div class="container">
 					<div class="form-group">
 						<%-- <form method="post" encType = "multipart/form-data" action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%>"> --%>
-						<form method="post" encType = "multipart/form-data" action="<c:url value='/community/info_community/add_comment'><c:param name='postId' value='${post.postId}'/></c:url>">
+						<form method="post" encType = "multipart/form-data" action="<c:url value='/community/info_community/add_comment'>
+						<c:param name='postId' value='${post.postId}'/>
+						</c:url>">
 							<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
 								<tr>
 									<td style="border-bottom:none; width:10%" valign="middle"><br><br>이름<!-- 이름 --></td>
-									<td style="width:80%"><input type="text" style="width:100%; height:80px" class="form-control" placeholder="댓글을 입력하세요." name = "commentContent"></td>
+									<td style="width:80%"><input type="text" style="width:100%; height:80px" name = "commentContent" class="form-control" placeholder="댓글을 입력하세요."></td>
 									<td style="width:10%"><br><br><input type="submit" class="btn" value="댓글 작성"></td>
 								</tr>
 								<tr>
