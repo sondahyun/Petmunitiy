@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import controller.pet.RegisterPetController;
 import controller.post.*;
 import controller.user.*;
+import controller.comment.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -48,10 +49,16 @@ public class RequestMapping {
         //정보게시판     
         mappings.put("/community/info_community/info_community", new ListP0Controller());
         mappings.put("/community/info_community/info_content", new ViewP0Controller());
+        mappings.put("/community/info_community/add_content", new CreateP0Controller());
+        
+        //수정
         mappings.put("/community/info_community/info_comment", new ForwardController("/community/info_community/info_comment.jsp"));
         mappings.put("/community/info_community/modal", new ForwardController("/community/info_community/modal.jsp"));
-        mappings.put("/community/info_community/add_content", new CreateP0Controller());
-
+        
+        mappings.put("/community/info_community/add_comment", new CreateC0Controller());
+        
+        
+        
         //myPage
         mappings.put("/myPage/myPage", new ForwardController("/myPage/myPage.jsp"));
         mappings.put("/myPage/about", new ForwardController("/myPage/about.jsp"));

@@ -103,7 +103,7 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input class="file_real" id="attached" type="file">
+			<input class="file_real" id="attached" type="file" multiple="multiple">
 			<input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1">
 		</td>
 	 </tr>

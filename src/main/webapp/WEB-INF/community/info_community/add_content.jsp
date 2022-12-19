@@ -52,7 +52,7 @@ function userList(targetUri) {
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/community/info_community/add_content' />">
+<form name="form" method="POST" action="<c:url value='/community/info_community/add_content' />" enctype="multipart/form-data">
    
    <!-- 게시글 작성이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
        <c:if test="${registerFailed}">
@@ -75,7 +75,7 @@ function userList(targetUri) {
     <tr height="40">
       <td style="width: 20%" align="center" bgcolor="#E6E6E6">사진</td>
       <td style="width: 100%" bgcolor="ffffff" >
-         <input type="file" style="width: 240" name="fileName">
+         <input type="file" style="width: 240" name="fileName" size="11" multiple="multiple">
       </td>
      </tr>
      <tr height="40">

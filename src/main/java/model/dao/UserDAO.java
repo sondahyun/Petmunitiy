@@ -137,5 +137,22 @@ public class UserDAO {
 		}
 		return false;
 	}
+	
+	public int findUserId(String loginId) throws SQLException{
+		String sql = "SELECT userId FROM USERINFO WHERE loginId = ?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtil에 query문 설정
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query 실행	
+			if (rs.next()) {
+				int userId = rs.getInt("userId");
+				return userId;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close(); // resource ��ȯ
+		}
+		return 0;
+	}
 
 }
