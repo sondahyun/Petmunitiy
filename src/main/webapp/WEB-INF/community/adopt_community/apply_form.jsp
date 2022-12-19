@@ -1,6 +1,13 @@
 <!--입양 신청-->
-<%@page contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+@SuppressWarnings("unchecked")
+AdoptionAnimal aA = (AdoptionAnimal)session.getAttribute("adoptAnimal");
+if(aA != null)
+	System.out.println("aA");
+%>
+
 <html>
 <head>
 <title>입양 신청</title>
@@ -8,14 +15,14 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
-function applyAdopt() {
-   alert("실행");
+function applyAdopt1() {
+   /* alert("실행");
 
    if (form.userNickname.value == "") {
       alert("이름을 입력하십시오.");
       form.userNickname.focus();
       return false;
-   }
+   } */
    
    //프론트팀 전달
    /* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;   //""
@@ -144,6 +151,7 @@ function userList(targetUri) {
     <table>
 	    <tr>
 		    <td>
+   				<input type="hidden" name="aType" value="0">
 		    	<input class="btn" type="button" value="신청하기" onClick="applyAdopt1()">
 		    </td>
 	    </tr>

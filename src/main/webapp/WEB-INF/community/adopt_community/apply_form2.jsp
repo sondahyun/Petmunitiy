@@ -1,6 +1,13 @@
 <!--입양 신청-->
-<%@page contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+@SuppressWarnings("unchecked")
+AdoptionAnimal aA = (AdoptionAnimal)request.getAttribute("adoptAnimal");
+System.out.println("aA : "+aA.getGender());
+request.setAttribute("adoptAnimal", aA);
+%>
 <html>
 <head>
 <title>임보 신청</title>
@@ -9,13 +16,13 @@
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function userCreate() {
-   alert("실행");
+   /* alert("실행");
 
    if (form.userNickname.value == "") {
       alert("이름을 입력하십시오.");
       form.userNickname.focus();
       return false;
-   }
+   } */
    
    //프론트팀 전달
    /* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;   //""

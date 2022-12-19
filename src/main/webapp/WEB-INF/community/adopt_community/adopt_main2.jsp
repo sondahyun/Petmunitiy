@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+@SuppressWarnings("unchecked")
+AdoptionAnimal animal = (AdoptionAnimal)session.getAttribute("adoptAnimal");
+if(animal != null)
+	System.out.println("aA2");
+%>
 <style>
    @font-face {
       font-family: 'Y_Spotlight';
@@ -46,14 +52,14 @@
    </tr>
    <tr class="spec">
       <td class="spec_td">종</td>
-      <td class="spec_td"></td>
+      <td class="spec_td"><%=animal.getKind() %></td>
    </tr>
    <tr class="gender">
       <td class="gender_td">성별</td>
-      <td class="gender_td"></td>
+      <td class="gender_td"><%=animal.getGender() %></td>
    </tr>
    <tr class="age">
       <td class="age_td">나이</td>
-      <td class="age_td"></td>
+      <td class="age_td"><%=animal.getAge() %></td>
    </tr>
 </table>
