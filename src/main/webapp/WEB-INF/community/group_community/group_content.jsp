@@ -4,8 +4,6 @@
 <%
    @SuppressWarnings("unchecked")
    PostGroup post = (PostGroup)request.getAttribute("post");
-	ArrayList<PostGroup> p1List = (ArrayList<PostGroup>)request.getAttribute("p1List");
-	Collections.sort(p1List);
 %>
 <c:set var="pId" value="<%=post.getPostId() %>"/>
 <c:set var="uId" value="<%= UserSessionUtils.getLoginUserId(session) %>"/>
@@ -44,15 +42,15 @@
 					모임명
 				</td>
 				<td>
-					${post.loginId}
+					${post.postTitle}
 				</td>
-			</tr>]
+			</tr>
 			<tr>
 				<td>
 					모임 생성 일자
 				</td>
 				<td>
-					<!-- 모임명 -->
+					${post.postDate}
 				</td>
 			</tr>
 			<tr>
@@ -60,7 +58,15 @@
 					모임 설명
 				</td>
 				<td>
-					<!-- 모임 설명 -->
+					${post.postContent}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					모임 목적 
+				</td>
+				<td>
+					${post.groupPurpose}
 				</td>
 			</tr>
 			<tr>
@@ -68,7 +74,7 @@
 					지역
 				</td>
 				<td>
-					<!-- 지역 -->
+					${post.region}
 				</td>
 			</tr>
 			<tr>
@@ -76,7 +82,7 @@
 					관리자 이름
 				</td>
 				<td>
-					<!-- 관리자 이름 -->
+					${post.loginId}
 				</td>
 			</tr>
 			<tr>
@@ -84,7 +90,7 @@
 					인원수
 				</td>
 				<td>
-					<!-- 인원수 -->
+					${post.headCount}
 				</td>
 			</tr>
 					

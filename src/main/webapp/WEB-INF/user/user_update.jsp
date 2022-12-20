@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	UserInfo user = (UserInfo)request.getAttribute("user");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,15 +86,20 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">생일</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-			<input type="date" style="width: 240" name="userBirth" value=>
+			<input type="date" style="width: 240" name="userBirth" value="${user.userBirth}">
 			
 		</td>
 	 </tr>
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">성별</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-			<input type="radio" name="gender" value="female"/> 여성
+		<%if(user.getGender() == "female") {%>
+			<input type="radio" name="gender" value="female" checked /> 여성
 			<input type="radio" name="gender" value="male"/> 남성
+		<%} else{%>
+			<input type="radio" name="gender" value="female"  /> 여성
+			<input type="radio" name="gender" value="male" checked/> 남성
+		<%} %>
 		</td>
 	 </tr>
 	 <%-- 
@@ -105,25 +113,27 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">전화번호</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
+		<%
+		String phone[] = (user.getPhoneNumber()).split("-"); %>
 			<select name=phone1>
 				<option value=0 selected>010</option>
 				<option value=1>080</option>
 				<option value=2>070</option>
 				<option value=3>02</option>
-			</select> - <input type="text" name="phone2" value="" size="4" maxlength="4"> - <input type="text" name="phone3" value="" size="4" maxlength="4">
+			</select> - <input type="text" name="phone2" value="" size="4" maxlength="4" value="${phone[1]}"> - <input type="text" name="phone3" value="" size="4" maxlength="4" value="${phone[2]}">
 			<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
 		</td>
 	 </tr>
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">사용자 ID</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240;" name="loginId">
+			<input type="text" style="width: 240;" name="loginId" value="${user.loginId}">
 		</td>
 	 </tr>
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">비밀번호</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-			<input type="password" style="width: 240" name="loginPwd">
+			<input type="password" style="width: 240" name="loginPwd" value="${user.loginPwd}">
 		</td>
      </tr>
 	 <tr height="40">
@@ -135,15 +145,14 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">이메일 주소</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="address" placeholder="you@example.com">
+			<input type="text" style="width: 240" name="address" value="${user.email}">
 				<%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%>
 		</td>
      </tr>
      <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">거주지 주소</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="address" placeholder="주소지"
-				<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+			<input type="text" style="width: 240" name="address" value="${user.address}">
 		</td>
 	 </tr>	
 	</table>
