@@ -30,7 +30,7 @@
 		<table>
 		<tr>
 			<td style="width:100%; align:center;">
-				<h3>정보 게시글</h3> <br>
+				<h3>정보 폼</h3> <br>
 			</td>
 		<!-- a class="nav-link" href="<c:url value='/community/group_community/group_community' />">그룹 커뮤니티</a> -->
 		</tr>
@@ -39,7 +39,7 @@
 				<a class="nav-link" 
 				href="<c:url value='/community/info_community/info_content_update'> 
 				<c:param name='postId' value='${post.postId}'/> 
-				</c:url>">게시글 수정</a>
+				</c:url>">폼 수정</a>
 				<a class="nav-link" href="<c:url value='/community/info_community/info_content_delete' />">게시글 삭제</a>
 			</td>
 		</tr>

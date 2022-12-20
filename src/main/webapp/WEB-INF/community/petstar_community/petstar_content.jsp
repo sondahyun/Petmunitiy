@@ -15,7 +15,7 @@ if (c2List != null)
 <c:set var="uId" value="<%= UserSessionUtils.getLoginUserId(session) %>"/>
 <html>
 <head>
-<title>펫스타그램 게시글</title>
+<title>펫스타그램 폼</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />"
 	type="text/css">
@@ -29,7 +29,7 @@ if (c2List != null)
 	<table style="width: 100%">
 		<tr>
 			<td style="width: 100%"><br>
-				<h3>펫스타그램 게시글</h3>
+				<h3>펫스타그램 폼</h3>
 				<table
 					style="background-color: #848484; width: 100%; margin-top: 0px">
 					<tr>

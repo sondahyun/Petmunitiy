@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>그룹게시판</title>
+<title>그룹 커뮤니티</title>
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
