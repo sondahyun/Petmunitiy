@@ -1,6 +1,6 @@
 <!--입양, 임보 펫 정보-->
 <%@page contentType="text/html; charset=utf-8" import="model.*"
-	import="java.util.*"%>
+	import="java.util.*" import="controller.user.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
@@ -12,6 +12,7 @@ if (c2List != null)
 	Collections.sort(c2List);
 %>
 <c:set var="pId" value="${p2.postId}" />
+<c:set var="uId" value="<%= UserSessionUtils.getLoginUserId(session) %>"/>
 <html>
 <head>
 <title>펫스타그램 게시글</title>
@@ -114,7 +115,7 @@ if (c2List != null)
 											<%-- <% if(session.getAttribute("UserSessionUtils.USER_SESSION_KEY") == ${item.userId}) {%> --%>
 											<!-- 작성자 = 로그인한 사람일 경우 -->
 											<c:if
-												test="${param.UserSessionUtils.USER_SESSION_KEY == item.userId}">
+												test="${uId == item.userId}">
 												<td style="width: 10%;"><input type="submit"
 													class="btn" value="댓글 수정"></td>
 												<td style="width: 10%;"><input type="submit"
