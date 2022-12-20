@@ -9,6 +9,7 @@ import controller.pet.RegisterPetController;
 import controller.post.*;
 import controller.user.*;
 import controller.comment.*;
+import controller.apply.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -30,6 +31,8 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/apply_result", new ForwardController("/community/adopt_community/apply_result.jsp"));
         mappings.put("/community/adopt_community/apply_result_closer", new ForwardController("/community/adopt_community/apply_result_closer.jsp"));
         mappings.put("/community/adopt_community/add_content", new ForwardController("/community/adopt_community/add_content.jsp"));
+        
+        //mappings.put("/community/petstar_community/petstar_info/createApply", new CreateApplyController());
         
         //펫스타그램
         mappings.put("/community/petstar_community/petstar_community", new ListP2Controller());
