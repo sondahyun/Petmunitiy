@@ -19,6 +19,14 @@ public class CommentInformation implements Comparable{
 		this.postId = postId;
 		this.userId = userId;
 	}
+	
+	public CommentInformation(int commentId, String commentContent, int postId, int userId) {
+		super();
+		this.commentId = commentId;
+		this.commentContent = commentContent;
+		this.postId = postId;
+		this.userId = userId;
+	}
 
 
 	public CommentInformation(Date commentDate, String commentContent, int postId, int userId) {

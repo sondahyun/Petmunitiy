@@ -146,6 +146,7 @@ public class UserManager {
 	}
 	
 	public int updateC0(CommentInformation ci) throws SQLException {
+		System.out.println("updateC0 : "+ci.getCommentContent());
 		return commentP0DAO.update(ci);
 	}
 	
