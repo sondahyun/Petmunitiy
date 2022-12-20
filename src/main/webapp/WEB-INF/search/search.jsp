@@ -32,19 +32,23 @@
 					<option value=2>그룹 커뮤니티</option>
 					<option value=3>정보 커뮤니티</option>
 				</select> 
+				&nbsp;
 				<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
 				<!-- <input type="date" style="width: 240" name="startDate" > -->
-				<select name=phone1>
+				<%-- <select name=phone1>
 					<option value=0 selected>전체 기간</option>
 					<option value=0 selected>1일</option>
 					<option value=1>2일</option>
 					<option value=2>3일</option>
 					<option value=3>4일</option>
 					<option value=3>직접 기간 입력하기
-<%-- 	 						<input type="date" style="width: 5%" name="startDay >-<input type="date" style="width: 5%" name="endDay" >
- --%> 	 <!-- 제이쿼리 -->				
+	 						<input type="date" style="width: 5%" name="startDay >-<input type="date" style="width: 5%" name="endDay" >
+ 	 <!-- 제이쿼리 -->				
  					</option>
-				</select> 
+				</select> --%>
+				
+				<input type="date" style="width: 240" name="userBirth" >-<input type="date" style="width: 240" name="userBirth" >
+				&nbsp;
 			    <input class="srch" type="text" placeholder="검색어를 입력하세요.">
 			    <button class="btn" >검색</button>
 			</td>
