@@ -60,7 +60,7 @@ public class RequestMapping {
         
         
         //myPage
-        mappings.put("/myPage/myPage", new ForwardController("/myPage/myPage.jsp"));
+        mappings.put("/myPage/myPage", new ViewUserController());
         mappings.put("/myPage/about", new ForwardController("/myPage/about.jsp"));
         mappings.put("/myPage/content_zip", new ForwardController("/myPage/content_zip.jsp"));
         mappings.put("/myPage/comment_zip", new ForwardController("/myPage/comment_zip.jsp"));
@@ -89,7 +89,7 @@ public class RequestMapping {
         
         mappings.put("/user/delete", new DeleteUserController());
         
-        mappings.put("/myPage/myPage", new ForwardController("/myPage/myPage.jsp"));
+       // mappings.put("/myPage/myPage", new ForwardController("/myPage/myPage.jsp"));
 		/*
 		 * // 커뮤니티 관련 request URI 추가 mappings.put("/community/list", new
 		 * ListCommunityController()); mappings.put("/community/view", new
