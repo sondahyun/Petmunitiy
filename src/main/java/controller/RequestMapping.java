@@ -32,9 +32,9 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/add_content", new ForwardController("/community/adopt_community/add_content.jsp"));
         
         //펫스타그램
-        mappings.put("/community/petstar_community/petstar_community", new ForwardController("/community/petstar_community/petstar_community.jsp"));
-        mappings.put("/community/petstar_community/petstar_content", new ForwardController("/community/petstar_community/petstar_content.jsp"));
-        mappings.put("/community/petstar_community/add_content", new ForwardController("/community/petstar_community/add_content.jsp"));
+        mappings.put("/community/petstar_community/petstar_community", new ListP2Controller());
+        //mappings.put("/community/petstar_community/petstar_content", new ViewP2Controller());
+        //mappings.put("/community/petstar_community/add_content", new ForwardController("/community/petstar_community/add_content.jsp"));
 
         
         //그룹게시판
