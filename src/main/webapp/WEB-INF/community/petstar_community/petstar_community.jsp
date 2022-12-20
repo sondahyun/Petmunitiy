@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="java.util.*" import="model.*" %>
+    pageEncoding="utf-8" import="java.util.*" import="model.*" import="controller.user.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -91,12 +91,12 @@
 		
 		<td class="main">
 			<table>
-				<%-- <%int cnt=0; %> --%>
+				<% int index = 0; %>
 				<c:forEach var="item" varStatus="i" items="${p2List}">
-				<%-- <%
-					if(cnt%3==1)
-						out.println("<tr>");
-				%> --%>
+				<%
+					String findUser = p2List.get(index).getLoginId();									
+				%>
+				<c:set var="userName" value="<%=UserSessionUtils.getUserNickName(findUser) %>"/>
 				<c:if test="${i.index%3==0}"><tr></c:if>
 				<td>
 					<table class="petstar_main_table1">
@@ -109,7 +109,7 @@
 						</tr>
 						<tr class="content_writer">
 							<td class="content_writer1">작성자</td>
-							<td class="content_writer2">${item.loginId}</td> <!-- 작성자 나타내기 -->
+							<td class="content_writer2">${userName}</td> <!-- 작성자 나타내기 -->
 						</tr>
 						<tr class="content_say">
 							<td class="content_say1">글</td>
@@ -117,12 +117,8 @@
 						</tr>
 					</table>
 				</td>
-				<%-- <%
-					if(cnt%3==0 && cnt!=0)
-						out.println("</tr>");
-					cnt++;
-				%> --%>
 					<c:if test="${i.index%3==2 and i.index!=0}"></tr></c:if>
+					<%index++; %>
 				</c:forEach>
 			</table>
 		</td>

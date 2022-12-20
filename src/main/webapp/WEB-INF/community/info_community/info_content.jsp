@@ -111,10 +111,15 @@
 				<div class="container">
 					<div class="form-group">
 						<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
+								<% int index=0; %>
 								<c:forEach var="item" items="${c0List}">
+									<%
+										int findUser = c0List.get(index).getUserId();									
+									%>
+									<c:set var="userName" value="<%=UserSessionUtils.getUserNickName(findUser) %>"/>
 									<c:if test="${item.postId == pId}">
 										<tr>
-											<td style="border-bottom:none; width:10%" valign="middle"><br><br>${item.userId}</td>
+											<td style="border-bottom:none; width:10%" valign="middle"><br><br>${userName}</td>
 											<c:if test="${uId != item.userId}">
 												<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px" readonly></td>
 											</c:if>
@@ -132,6 +137,7 @@
 											<td colspan="3">작성일: ${item.commentDate}</td><td style="width:10%"><br><br></td>									
 										</tr>
 									</c:if>
+									<%index++; %>
 								</c:forEach>
 								
 								

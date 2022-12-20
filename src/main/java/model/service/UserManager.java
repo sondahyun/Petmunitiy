@@ -73,7 +73,11 @@ public class UserManager {
 		}
 		return true;
 	}
-
+	
+	public UserInfo findUser(int userId) throws SQLException {
+		return userDAO.findUser(userId);
+	}
+	
 	public UserInfo findUser(String loginId) throws SQLException {
 		return userDAO.findUser(loginId);
 	}
