@@ -1,6 +1,11 @@
 package controller.user;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpSession;
+
+import model.UserInfo;
+import model.service.UserManager;
 
 public class UserSessionUtils {
     public static final String USER_SESSION_KEY = "userId";
@@ -13,6 +18,18 @@ public class UserSessionUtils {
     public static int getLoginUserId(HttpSession session) {
         int userId = Integer.parseInt((String)session.getAttribute(USER_SESSION_KEY));
         return userId;
+    }
+    
+    public static String getUserNickName(int userId) {
+    	UserManager manager = UserManager.getInstance();
+    	try {
+			UserInfo user = manager.findUser(userId);
+			return user.getUserNickname();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return null;
     }
 
     /* 로그인한 상태인지를 검사 */

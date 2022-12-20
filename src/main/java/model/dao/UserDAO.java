@@ -85,6 +85,36 @@ public class UserDAO {
 		}
 		return 0;
 	}
+	
+	public UserInfo findUser(int userId) throws SQLException {
+		String sql = "SELECT * " + "FROM UserInfo " + "WHERE userId=? ";	//userinfo와 pet join해서..pet여럿이므로 while문으로 첫번째 레코드에서(null)만 user객체 pet객체 따로 생성, 아레쪽 while 추가 pet객체 llist에 add
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { userId }); // JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+			UserInfo user = null;
+			if(rs.next()) {// 학생 정보 발견
+				user = new UserInfo();// User 객체를 생성하여 학생 정보를 저장
+				user.setUserId(rs.getInt("userId"));
+				user.setLoginId(rs.getString("loginId"));
+				user.setLoginPwd(rs.getString("loginPwd"));
+				user.setUserNickname(rs.getString("userNickname"));
+				user.setUserBirth(rs.getDate("userBirth"));
+				user.setPhoneNumber(rs.getString("phoneNumber"));
+				user.setGender(rs.getString("gender"));
+				user.setAddress(rs.getString("address"));
+				user.setEmail(rs.getString("email"));
+				//pet 객체들의 list를 준다
+				return user;
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close(); // resource 반환
+		}
+		return null;
+	}
 
 	@SuppressWarnings("unchecked")
 	public UserInfo findUser(String loginId) throws SQLException {
