@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class CommentInformation {
+public class CommentInformation implements Comparable{
 	private int commentId;
 	private Date commentDate;
 	private String commentContent;
@@ -91,6 +91,15 @@ public class CommentInformation {
 	public String toString() {
 		return "CommentInformation [commentId=" + commentId + ", commentDate=" + commentDate + ", commentContent="
 				+ commentContent + ", postId=" + postId + ", userId=" + userId + "]";
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		CommentInformation cm = (CommentInformation) o;
+		
+		if(cm.commentId < this.commentId)
+			return -1;
+		else return 1;
 	}
 	
 	

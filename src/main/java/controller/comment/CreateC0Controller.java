@@ -24,9 +24,7 @@ public class CreateC0Controller implements Controller {
 		 * return "/community/info_community/add_content.jsp"; // registerForm���� ����
 		 * }
 		 */
-    	
     	HttpSession session = request.getSession();
-    	//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
        	System.out.println("commentP0");
        	
@@ -48,13 +46,12 @@ public class CreateC0Controller implements Controller {
 			userId
 			);		
 		
-        
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.createC0(ci);
 			
 	    	log.debug("Create CommentInformation : {}", ci);
-	        return "redirect:/community/info_community/info_content";	// 성공 시 커뮤니티 리스트 화면으로 redirect
+	        return "redirect:/community/info_community/info_content";	// 성공 시 커뮤니티 화면으로 redirect
 	        
 		} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
             request.setAttribute("creationFailed", true);

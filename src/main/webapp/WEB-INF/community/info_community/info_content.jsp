@@ -5,7 +5,10 @@
    @SuppressWarnings("unchecked")
    PostInformation post = (PostInformation)request.getAttribute("post");
 	ArrayList<CommentInformation> c0List = (ArrayList<CommentInformation>)request.getAttribute("c0List");
+	
+	Collections.sort(c0List);
 %>
+<% int pId = post.getPostId(); %>
 <html>
 <head>
 <title>정보 게시글</title>
@@ -59,8 +62,7 @@
 				 <h3>댓글 작성하기</h3>
 				<div class="container">
 					<div class="form-group">
-						<%-- <form method="post" encType = "multipart/form-data" action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%>"> --%>
-						<form method="post" encType = "multipart/form-data" action="<c:url value='/community/info_community/add_comment'>
+						<form name="cmForm" method="post" action="<c:url value='/community/info_community/add_comment'>
 						<c:param name='postId' value='${post.postId}'/>
 						</c:url>">
 							<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
@@ -84,22 +86,25 @@
 				 <h3>댓글 목록</h3>
 				<div class="container">
 					<div class="form-group">
-						<form method="post" encType = "multipart/form-data"<%--  action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%> --%>">
+						<form method="post"<%--  action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%> --%>>
+							<% System.out.println("pId : " +pId); %>
 							<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
 								<c:forEach var="item" items="${c0List}">
-									<tr>
-										<td style="border-bottom:none; width:10%" valign="middle"><br><br>${item.userId}</td>
-										<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px"></td>
-										<%-- <% if(session.getAttribute("UserSessionUtils.USER_SESSION_KEY") == ${item.userId}) {%> --%> <!-- 작성자 = 로그인한 사람일 경우 -->
-										<c:if test="${param.UserSessionUtils.USER_SESSION_KEY == item.userId}">
-											<td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
-											<td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>								
-										<%-- <%} %> --%>
-										</c:if>
-									</tr>
-									<tr>
-										<td colspan="3">작성일: ${item.commentDate}</td><td style="width:10%"><br><br></td>									
-									</tr>
+									<%-- <c:if test="${item.postId== pId}"> --%>
+										<tr>
+											<td style="border-bottom:none; width:10%" valign="middle"><br><br>${item.userId}</td>
+											<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px"></td>
+											<%-- <% if(session.getAttribute("UserSessionUtils.USER_SESSION_KEY") == ${item.userId}) {%> --%> <!-- 작성자 = 로그인한 사람일 경우 -->
+											<c:if test="${param.UserSessionUtils.USER_SESSION_KEY == item.userId}">
+												<td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
+												<td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>								
+											<%-- <%} %> --%>
+											</c:if>
+										</tr>
+										<tr>
+											<td colspan="3">작성일: ${item.commentDate}</td><td style="width:10%"><br><br></td>									
+										</tr>
+									<%-- </c:if> --%>
 								</c:forEach>
 								
 								
