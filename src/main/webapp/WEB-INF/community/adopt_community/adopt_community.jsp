@@ -93,10 +93,7 @@
 			<table>
 				<%int cnt=0; %>
 				<c:forEach var="item" varStatus="i" items="${p3List}">
-				<%
-					if(cnt%3==1)
-						out.println("<tr>");
-				%>
+				<c:if test="${i.index%3==0}"><tr></c:if>
 				<td>
 				<table class="adopt_main_table1">
 					<tr>
@@ -123,11 +120,7 @@
 				</table>
 				
 				</td>
-				<%
-					if(cnt%3==0 && cnt!=0)
-						out.println("</tr>");
-					cnt++;
-				%>
+				<c:if test="${i.index%3==2 and i.index!=0}"></tr></c:if>
 				</c:forEach>
 			</table>
 		</td>

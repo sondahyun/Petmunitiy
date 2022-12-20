@@ -31,6 +31,18 @@ public class UserSessionUtils {
     	
     	return null;
     }
+    
+    public static String getUserNickName(String loginId) {
+    	UserManager manager = UserManager.getInstance();
+    	try {
+			UserInfo user = manager.findUser(loginId);
+			return user.getUserNickname();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return null;
+    }
 
     /* 로그인한 상태인지를 검사 */
     public static boolean hasLogined(HttpSession session) {
