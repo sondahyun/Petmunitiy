@@ -40,7 +40,7 @@ public class RequestMapping {
         //그룹게시판
         mappings.put("/community/group_community/group_community", new ListP1Controller());
         mappings.put("/community/group_community/add_content", new CreateP1Controller());
-        mappings.put("/community/group_community/group_content", new ListP1Controller());
+        mappings.put("/community/group_community/group_content", new ViewP1Controller());
 
         
         //검색게시판
