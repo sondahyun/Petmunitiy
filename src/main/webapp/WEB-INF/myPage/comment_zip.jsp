@@ -33,6 +33,13 @@
 		<table style="margin-top:0px;">
 		<tr>
 			<td>
+			<select name=phone1>
+					<option value=0 selected>전체 커뮤니티</option>
+					<option value=0 <c:if test="${check == 입양/임보 커뮤니티}"> selected</c:if>>입양/임보 커뮤니티</option>
+					<option value=1 <c:if test="${check == 펫스타그램 커뮤니티}"> selected</c:if>>펫스타그램 커뮤니티</option>
+					<option value=2 <c:if test="${check == 그룹 커뮤니티}"> selected</c:if>>그룹 커뮤니티</option>
+					<option value=3 <c:if test="${check == 정보 커뮤니티}"> selected</c:if>>정보 커뮤니티</option>
+				</select> 
 				<!--  <select name=phone1>
 					<option value=0 selected>전체게시판</option>
 					<option value=0 selected>입양/임보 게시판</option>
