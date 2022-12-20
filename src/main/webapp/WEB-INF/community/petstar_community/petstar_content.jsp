@@ -1,6 +1,12 @@
 <!--입양, 임보 펫 정보-->
-<%@page contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=utf-8" import="model.*" import="java.util.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+	@SuppressWarnings("unchecked")
+	PostPetstargram p2 = (PostPetstargram)request.getAttribute("p2");
+%>
+
 <html>
 <head>
 <title>펫스타그램 게시글</title>
@@ -36,19 +42,21 @@
 			      <td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >작성자</td>
 			      <td style="height:40%; width:100%; align:center; background-color:#ffffff; padding-left: 10">
 			         <!-- 작성자 정보 가져오기 -->
+			         ${p2.loginId}
 			      </td>
 			    </tr>
 			    <tr style="height:40%; width:100%">
 			      <td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >작성일자</td>
 			      <td style="height:40%; width:100%; align:center; background-color:#ffffff; padding-left: 10">
 			         <!-- 작성일자 정보 가져오기 -->
+			         ${p2.postDate}
 			      </td>
 			    </tr>
 			    <tr style="height:40%; width:100%">
 			      <td style="height:40%; width:15%; align:center; background-color:E6E6E6;" >내용</td>
 			      <td style="height:40%; width:100%; align:center; background-color:ffffff; padding-left: 10">
 			         <!-- 내용 정보 가져오기 -->
-									         <a>팀명 : 뭉게구름</a>
+			         ${p2.postContent}
 			      </td>
 			    </tr>
 		    </table>
