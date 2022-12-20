@@ -129,5 +129,32 @@ public class CommentP0DAO {
 		}
 		return null;
 	}
+	
+	public List<CommentInformation> findC0WithUser(int userId) throws SQLException {
+		String sql = "SELECT * " + "FROM CommentInformation " + "WHERE userId=? ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { userId });
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
+			List<CommentInformation> c0List = new ArrayList<CommentInformation>();   // PostInformation들의 리스트 생성
+			while (rs.next()) {
+				CommentInformation co = new CommentInformation(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
+						rs.getInt("commentId"),
+						rs.getDate("commentDate"),
+						rs.getString("commentContent"),
+						rs.getInt("postId"),
+						userId);
+				c0List.add(co);            // List에 PostInformation 객체 저장
+			}      
+			return c0List;               
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();      // resource 반환
+		}
+		return null;
+	}
 
 }

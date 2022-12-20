@@ -197,7 +197,24 @@ public class PostInformationDAO {
 		return null;
 	}
 
-
+	public String findPostTitle(int postId) throws SQLException {
+		String sql = "SELECT POSTTITLE "+ "FROM PostInformation "+ "WHERE postId=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	
+		String postTitle = null;
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			if(rs.next()) {
+				postTitle = rs.getString("postTitle");// query 실행
+			}
+			return postTitle;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
 
 
 }

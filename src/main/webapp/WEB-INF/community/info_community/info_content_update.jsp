@@ -2,11 +2,9 @@
 <%@page contentType="text/html; charset=utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-    @SuppressWarnings("unchecked")
-    PostInformation post = (PostInformation)request.getAttribute("post");
-	ArrayList<CommentInformation> c0List = (ArrayList<CommentInformation>)request.getAttribute("c0List");
-	
-	Collections.sort(c0List);
+   // @SuppressWarnings("unchecked")
+	PostInformation post = (PostInformation)request.getAttribute("post0");
+	//Collections.sort(c0List);
 %>
 <c:set var="pId" value="<%=post.getPostId() %>"/>
 <html>
