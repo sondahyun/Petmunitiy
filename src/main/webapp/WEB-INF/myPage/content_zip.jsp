@@ -29,7 +29,6 @@
 			<tr>
 				<td>
 					<select name=phone1>
-							<option value=0 selected>전체 커뮤니티</option>
 							<option value=0 selected>입양/임보 커뮤니티</option>
 							<option value=1>펫스타그램 커뮤니티</option>
 							<option value=2>그룹 커뮤니티</option>
@@ -51,6 +50,7 @@
 				    <button class="btn" >검색</button>
 				</td>
 			</tr>
+			<%if(session.getAttribute("loginId") == null) {%> <!-- //정보게시판일 경우 -->
 			<tr>
 				<td>
 					정보 커뮤니티
@@ -91,6 +91,11 @@
 					<%}%>
 				</td>
 			</tr>
+			<%
+			}
+			else if(session.getAttribute("loginId") == null) //그룹 커뮤니티일때
+			{  
+			%>
 			<tr>
 				<td>
 					그룹 커뮤니티
@@ -131,6 +136,11 @@
 					<%}%>
 				</td>
 			</tr>
+			<%
+			}
+			else if(session.getAttribute("loginId") == null) //펫스타그램 커뮤니티일때
+			{  
+			%>
 			<tr>
 				<td>
 					펫스타그램 커뮤니티
@@ -171,6 +181,11 @@
 					<%}%>
 				</td>
 			</tr>
+			<%
+			}
+			else if(session.getAttribute("loginId") == null) //입양임보 커뮤니티일때
+			{  
+			%>
 			<tr>
 				<td>
 					입양/임보 커뮤니티
@@ -211,6 +226,7 @@
 					<%}%>
 				</td>
 			</tr>
+			<% } %>
 			</table>
 		</td>
 	</tr>
