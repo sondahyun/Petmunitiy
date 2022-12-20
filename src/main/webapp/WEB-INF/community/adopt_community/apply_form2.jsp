@@ -4,7 +4,7 @@
 
 <%
 @SuppressWarnings("unchecked")
-AdoptionAnimal aA = (AdoptionAnimal)request.getAttribute("adoptAnimal");
+AdoptionAnimal aA = (AdoptionAnimal)session.getAttribute("adoptAnimal");
 System.out.println("aA : "+aA.getGender());
 request.setAttribute("adoptAnimal", aA);
 %>
