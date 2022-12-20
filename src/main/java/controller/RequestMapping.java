@@ -52,6 +52,7 @@ public class RequestMapping {
         mappings.put("/community/info_community/info_content", new ViewP0Controller());
         mappings.put("/community/info_community/add_content", new CreateP0Controller());
         mappings.put("/community/info_community/add_comment", new CreateC0Controller());
+        mappings.put("/community/info_community/delete_comment", new DeleteC0Controller());
         mappings.put("/community/info_community/info_content_update", new UpdateP0Controller());
         mappings.put("/community/info_community/info_content_delete", new ForwardController("/community/info_community/info_content_delete.jsp"));
         
