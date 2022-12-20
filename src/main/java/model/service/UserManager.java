@@ -186,6 +186,9 @@ public class UserManager {
 		return postAdoptionDAO.update(post);
 	}
 	
+	public int removeP3Adoption(int postId) throws SQLException{
+		return postAdoptionDAO.remove(postId);
+	}
 	public PostAdoption findP3Adoption(int postId) throws SQLException {
 		PostAdoption post = postAdoptionDAO.findPost(postId); 
 		
@@ -200,9 +203,10 @@ public class UserManager {
 		return postAdoptionDAO.findP3List();
 	}
 	
-	public int removeP3Adoption(int postId) throws SQLException{
-		return postAdoptionDAO.remove(postId);
+	public List<PostAdoption> findP3WithUser(String loginId) throws SQLException {
+		return postAdoptionDAO.findP3WithUser(loginId);
 	}
+	
 	//apply
 	public int createApply(Apply apply) throws SQLException, ExistingUserException {
 		return applyDAO.create(apply);
