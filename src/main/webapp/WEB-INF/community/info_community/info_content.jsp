@@ -1,5 +1,5 @@
 <!--입양, 임보 펫 정보-->
-<%@page contentType="text/html; charset=utf-8" import="java.util.*" import="model.*" %>
+<%@page contentType="text/html; charset=utf-8" import="java.util.*" import="model.*" import="controller.user.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
    @SuppressWarnings("unchecked")
@@ -9,6 +9,7 @@
 	Collections.sort(c0List);
 %>
 <c:set var="pId" value="<%=post.getPostId() %>"/>
+<c:set var="uId" value="<%= UserSessionUtils.getLoginUserId(session) %>"/>
 <html>
 <head>
 <title>정보 게시글</title>
@@ -114,7 +115,7 @@
 											<td style="border-bottom:none; width:10%" valign="middle"><br><br>${item.userId}</td>
 											<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px"></td>
 											<%-- <% if(session.getAttribute("UserSessionUtils.USER_SESSION_KEY") == ${item.userId}) {%> --%> <!-- 작성자 = 로그인한 사람일 경우 -->
-											<c:if test="${param.UserSessionUtils.USER_SESSION_KEY == item.userId}">
+											<c:if test="${uId == item.userId}">
 												<td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
 												<td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>								
 											<%-- <%} %> --%>
