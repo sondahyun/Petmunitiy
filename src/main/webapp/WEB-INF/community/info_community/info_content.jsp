@@ -90,7 +90,7 @@
 							<% System.out.println("pId : " +pId); %>
 							<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
 								<c:forEach var="item" items="${c0List}">
-									<%-- <c:if test="${item.postId== pId}"> --%>
+									<%-- <c:if test="${item.postId== pId}"> --%> 
 										<tr>
 											<td style="border-bottom:none; width:10%" valign="middle"><br><br>${item.userId}</td>
 											<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px"></td>
