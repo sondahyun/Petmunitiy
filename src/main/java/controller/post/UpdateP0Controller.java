@@ -18,20 +18,27 @@ public class UpdateP0Controller implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
- 
-		int postId = Integer.parseInt(request.getParameter("postId"));
-		
+		HttpSession session = request.getSession();
+
 		if (request.getMethod().equals("GET")) {	
     		// GET request: 커뮤니티 수정 form 요청	
     		UserManager manager = UserManager.getInstance();
+    		int postId=-1;
+    		if(request.getParameter("postId")!=null)
+    	         postId = Integer.parseInt(request.getParameter("postId"));
+    	      else
+    	         postId = Integer.parseInt((String) session.getAttribute("postId"));
+
+    		
+    		System.out.println("postId "+postId);
+    		
 			PostInformation post0 = manager.findP0Information(postId);
 			request.setAttribute("post0", post0);			
 				
-			return "/community/info_community/update_content.jsp";   // 검색한 정보를 update form으로 전송     
+			return "/community/info_community/info_content_update.jsp";   // 검색한 정보를 update form으로 전송     
 	    }	
 		
 		// POST request (커뮤니티 정보가 parameter로 전송됨)
-		HttpSession session = request.getSession();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        	Object loginId = session.getAttribute("loginId"); 	
     	

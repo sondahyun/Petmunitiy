@@ -136,6 +136,10 @@ public class UserManager {
 		return postInformationDAO.findP0WithUser(loginId);
 	}
 	
+	public String findP0Title(int postId) throws SQLException {
+		return postInformationDAO.findPostTitle(postId); 
+	}
+	
 	//c0
 	public int createC0(CommentInformation ci) throws SQLException {
 		return commentP0DAO.create(ci);
@@ -154,6 +158,10 @@ public class UserManager {
 	}
 	public List<CommentInformation> findC0List() throws SQLException {
 		return commentP0DAO.findC0List();
+	}
+	
+	public List<CommentInformation> findC0WithUser(int userId) throws SQLException {
+		return commentP0DAO.findC0WithUser(userId);
 	}
 	
 	//group community
@@ -183,6 +191,11 @@ public class UserManager {
 	
 	public List<PostGroup> findP1WithUser(String loginId) throws SQLException {
 		return postGroupDAO.findP1WithUser(loginId);
+	}
+	
+	//c1
+	public List<CommentGroup> findC1WithUser(int userId) throws SQLException {
+		return commentP1DAO.findC1WithUser(userId);
 	}
 	/*
 	//c2
@@ -258,6 +271,10 @@ public class UserManager {
 		return commentP2DAO.findC2List();
 	}
 	
+	public List<CommentPetstargram> findC2WithUser(int userId) throws SQLException {
+		return commentP2DAO.findC2WithUser(userId);
+	}
+	
 	//adoption community
 	public int createP3Adoption(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.create(post);	
@@ -286,6 +303,10 @@ public class UserManager {
 	
 	public List<PostAdoption> findP3WithUser(String loginId) throws SQLException {
 		return postAdoptionDAO.findP3WithUser(loginId);
+	}
+	//c3
+	public List<CommentAdoption> findC3WithUser(int userId) throws SQLException {
+		return commentP3DAO.findC3WithUser(userId);
 	}
 	
 	/*

@@ -129,5 +129,32 @@ public class CommentP1DAO {
 		}
 		return null;
 	}
+	
+	public List<CommentGroup> findC1WithUser(int userId) throws SQLException {
+		String sql = "SELECT * " + "FROM commentGroup " + "WHERE userId=? ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { userId }); // JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
+			List<CommentGroup> c1List = new ArrayList<CommentGroup>();   // PostGroup들의 리스트 생성
+			while (rs.next()) {
+				CommentGroup co = new CommentGroup(         // PostGroup 객체를 생성하여 현재 행의 정보를 저장
+						rs.getInt("commentId"),
+						rs.getDate("commentDate"),
+						rs.getString("commentContent"),
+						rs.getInt("postId"),
+						userId);
+				c1List.add(co);            // List에 PostGroup 객체 저장
+			}      
+			return c1List;               
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();      // resource 반환
+		}
+		return null;
+	}
 
 }

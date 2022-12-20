@@ -129,5 +129,32 @@ public class CommentP3DAO {
 		}
 		return null;
 	}
+	
+	public List<CommentAdoption> findC3WithUser(int userId) throws SQLException {
+		String sql = "SELECT * " + "FROM commentAdoption " + "WHERE userId=? ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { userId }); // JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
+			List<CommentAdoption> c3List = new ArrayList<CommentAdoption>();   // PostAdoption들의 리스트 생성
+			while (rs.next()) {
+				CommentAdoption co = new CommentAdoption(         // PostAdoption 객체를 생성하여 현재 행의 정보를 저장
+						rs.getInt("commentId"),
+						rs.getDate("commentDate"),
+						rs.getString("commentContent"),
+						rs.getInt("postId"),
+						rs.getInt("userId"));
+				c3List.add(co);            // List에 PostAdoption 객체 저장
+			}      
+			return c3List;               
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();      // resource 반환
+		}
+		return null;
+	}
 
 }

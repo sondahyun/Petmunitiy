@@ -51,7 +51,7 @@ public class RequestMapping {
         mappings.put("/community/info_community/info_content", new ViewP0Controller());
         mappings.put("/community/info_community/add_content", new CreateP0Controller());
         mappings.put("/community/info_community/add_comment", new CreateC0Controller());
-        mappings.put("/community/info_community/info_content_update", new ForwardController("/community/info_community/info_content_update.jsp"));
+        mappings.put("/community/info_community/info_content_update", new UpdateP0Controller());
         mappings.put("/community/info_community/info_content_delete", new ForwardController("/community/info_community/info_content_delete.jsp"));
         
         //수정
@@ -66,7 +66,7 @@ public class RequestMapping {
         mappings.put("/myPage/myPage", new ViewUserController());
         mappings.put("/myPage/about", new ForwardController("/myPage/about.jsp"));
         mappings.put("/myPage/content_zip", new ListUserCreateController());
-        mappings.put("/myPage/comment_zip", new ForwardController("/myPage/comment_zip.jsp"));
+        mappings.put("/myPage/comment_zip", new ListCommentCreateController());
 
         //user
         mappings.put("/main/main", new ForwardController("/main/main.jsp"));

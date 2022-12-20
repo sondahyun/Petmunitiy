@@ -36,7 +36,10 @@
 		</tr>
 		<tr>
 			<td>
-				<a class="nav-link" href="<c:url value='/community/info_community/info_content_update' />">게시글 수정</a>
+				<a class="nav-link" 
+				href="<c:url value='/community/info_community/info_content_update'> 
+				<c:param name='postId' value='${post.postId}'/> 
+				</c:url>">게시글 수정</a>
 				<a class="nav-link" href="<c:url value='/community/info_community/info_content_delete' />">게시글 삭제</a>
 			</td>
 		</tr>
