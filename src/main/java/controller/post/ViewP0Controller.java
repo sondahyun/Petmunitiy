@@ -1,5 +1,7 @@
 package controller.post;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import controller.Controller;
 import controller.user.UserSessionUtils;
 import model.service.UserManager;
+import model.CommentInformation;
 import model.PostInformation;
 
 public class ViewP0Controller implements Controller {
@@ -32,7 +35,12 @@ public class ViewP0Controller implements Controller {
 		
     	PostInformation post = null;
 		post = manager.findP0Information(postId);	
-		request.setAttribute("post", post);					
+		request.setAttribute("post", post);
+		
+		List<CommentInformation> c0List = manager.findC0List();
+		request.setAttribute("c0List", c0List);
+		
+		//  /community/info_community/cmList
 		return "/community/info_community/info_content.jsp";				
     }
 }

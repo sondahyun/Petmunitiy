@@ -56,6 +56,7 @@ public class RequestMapping {
         mappings.put("/community/info_community/modal", new ForwardController("/community/info_community/modal.jsp"));
         
         mappings.put("/community/info_community/add_comment", new CreateC0Controller());
+        //mappings.put("/community/info_community/cmList", new ListC0Controller());
         
         
         
