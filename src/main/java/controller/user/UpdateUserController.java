@@ -23,28 +23,18 @@ public class UpdateUserController implements Controller {
     	if (request.getMethod().equals("GET")) {	
     		// GET request: ȸ������ ���� form ��û	
     		// ������ UpdateUserFormController�� ó���ϴ� �۾��� ���⼭ ����
-    		String updateId = request.getParameter("loginId");
+			HttpSession session = request.getSession();
+    		String updateId = UserSessionUtils.getLoginId(session);
 
     		log.debug("UpdateForm Request : {}", updateId);
     		
     		UserManager manager = UserManager.getInstance();
 			UserInfo user = manager.findUser(updateId);	// �����Ϸ��� ����� ���� �˻�
 			request.setAttribute("user", user);			
-
-			HttpSession session = request.getSession();
-			if (UserSessionUtils.isLoginUser(updateId, session)) {
-				// ���� �α����� ����ڰ� ���� ��� ������̰ų� �������� ��� -> ���� ����
-								
-				return "/user/updateForm.jsp";   // �˻��� ����� ���� �� Ŀ�´�Ƽ ����Ʈ�� updateForm���� ����     
-			}    
+			return "/user/user_update.jsp";
 			
-			// else (���� �Ұ����� ���) ����� ���� ȭ������ ���� �޼����� ����
-			request.setAttribute("updateFailed", true);
-			request.setAttribute("exception", 
-					new IllegalStateException("Ÿ���� ������ ������ �� �����ϴ�."));            
-			return "/user/view.jsp";	// ����� ���� ȭ������ �̵� (forwarding)
-	    }	
-    	
+    	}
+			
     	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     	// POST request (ȸ�������� parameter�� ���۵�)
     	UserInfo updateUser = new UserInfo(
@@ -61,7 +51,7 @@ public class UpdateUserController implements Controller {
 
 		UserManager manager = UserManager.getInstance();
 		manager.update(updateUser);			
-        return "redirect:/user/list";			
+        return "redirect:/";			
     }
 	/*
 	 * public static ArrayList<Integer> stringToArrayList(String input){ String[] s
