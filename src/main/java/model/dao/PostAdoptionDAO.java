@@ -32,8 +32,8 @@ public class PostAdoptionDAO {
     * 사용자 관리 테이블에 새로운 사용자 생성.
     */
    public int create(PostAdoption post) throws SQLException {
-      String sql = "INSERT INTO PostAdoption VALUES (p3_seq.nextval,?,?,?,?,?,?,?)";
-      Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getaType(), post.getApproval(), new java.sql.Date(post.getApprovalDate().getTime()), post.getPostContent(), post.getLoginId() };
+      String sql = "INSERT INTO PostAdoption VALUES (p3_seq.nextval,?,SYSDATE,?,?,?,?,?)";
+      Object[] param = new Object[] { post.getPostTitle(), post.getaType(), post.getApproval(), null, post.getPostContent(), post.getLoginId() };
       
       
       jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정

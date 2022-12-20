@@ -1,12 +1,21 @@
 package controller.post;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,32 +26,25 @@ import model.service.UserManager;
 
 public class CreateP3Controller implements Controller {
     private static final Logger log = LoggerFactory.getLogger(PostAdoption.class);
-    HttpSession session;
+    
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-       	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-       	Object loginId = session.getAttribute("loginId");
-    	session = request.getSession();
+    	if (request.getMethod().equals("GET")) {	
+			// GET request: 회원정보 등록 form 요청	
+			log.debug("adopt_community add");
+			//System.out.println("여기1");
+			return "/community/adopt_community/add_content.jsp";   //  registerForm���� ����     	
+		}
     	
-    	AdoptionAnimal aa = new AdoptionAnimal(
-    			request.getParameter("gender"),
-    			Integer.parseInt(request.getParameter("age")),
-    			request.getParameter("health"),
-    			request.getParameter("vaccination"),
-    			request.getParameter("kind"),
-    			request.getParameter("fileName"),
-    			Integer.parseInt(request.getParameter("postId"))
-    	);
+    	HttpSession session = request.getSession();
+       	Object loginId = session.getAttribute("loginId");
        	
 		PostAdoption pA = new PostAdoption(
     		request.getParameter("postTitle"),
-			formatter.parse(request.getParameter("postDate")),
 			Integer.parseInt(request.getParameter("aType")),
 			Integer.parseInt(request.getParameter("approval")),
-			formatter.parse(request.getParameter("approvalDate")),
 			request.getParameter("postContent"),
-			String.valueOf(loginId),
-			aa
+			String.valueOf(loginId)
 			);
         
 		try {
