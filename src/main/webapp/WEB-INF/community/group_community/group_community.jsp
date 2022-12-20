@@ -14,9 +14,63 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
-
 </head>
-
+<style>
+	@font-face {
+		font-family: 'Y_Spotlight';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	.group_main_table1{
+		border : none;
+	  	border-collapse : collapse;
+	  	border-radius : 10px;
+	    margin:auto;
+	    float:center;
+	    text-align:center;
+	    width:200px;
+	    height: 250px;
+	    font-family: 'Y_Spotlight';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+		font-weight: normal;
+		font-style: normal; 
+		font-size: 12pt; 
+		color: Black; 
+		background-color: #e8e8e8;
+		line-height: 22px;
+		table-layout: fixed;
+	}
+	.pic2{
+		/* border : 1px solid black;
+	  	border-collapse : collapse; */
+	  	float:center;
+		width:300px;
+		height:150px;
+	}
+	.pic_td2, .content_writer1, .content_say1 {
+		/* border : 1px solid black;
+	  	border-collapse : collapse; */
+	  	width:50px;
+	  	float:center;
+	  	height:20px;
+	}
+	.pic_td2, .content_writer2, .content_say2 {
+		/* border : 1px solid black;
+	  	border-collapse : collapse; */
+	  	width:140px;
+		height:20px;
+		float:center;
+		text-align:center;
+  	}
+  	.content_say2 {
+  		display : block;
+		text-overflow: ellipsis;
+		white-space: nowrap; 
+		overflow : hidden;
+		width: 50%;
+  	}
+</style>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
@@ -34,35 +88,41 @@
 		</td>
 		
 		<td class="main">
-		<table class="list_table">
-			<colgroup>
-				<col width="15%" />
-				<col width="45%" />
-				<col width="20%" />
-				<col width="20%" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>이름</th>
-					<th>등록일자</th>
-				</tr>
-			</thead>
-			<c:forEach var="item" items="${p1List}">
-				<tr>
-					<td>${item.postId}</td>
-					<td>
-		              	<a href="<c:url value='/community/group_community/group_content'>
-		              	<c:param name='postId' value='${item.postId}'/>
-		              	</c:url>">
-		              	${item.postTitle}</a>
-	           		</td>
-					<td>${item.loginId}</td>
-					<td>${item.postDate}</td>
-				</tr>
-			</c:forEach>
-		</table>
+			<table>
+				<%-- <%int cnt=0; %> --%>
+				<c:forEach var="item" varStatus="i" items="${p1List}">
+				<%-- <%
+					if(cnt%3==1)
+						out.println("<tr>");
+				%> --%>
+				<c:if test="${i.index%3==0}"><tr></c:if>
+				<td>
+					<table class="group_main_table1">
+						<tr></tr>
+						<tr class="pic2">
+							<td class="pic_td2" colspan=2>
+								<a href="<c:url value='/community/group_community/group_content'>
+										<c:param name='postId' value='${item.postId}'/></c:url>"> 사진 </a>
+							</td>
+						</tr>
+						<tr class="content_writer">
+							<td class="content_writer1">작성자</td>
+							<td class="content_writer2">${item.loginId}</td> <!-- 작성자 나타내기 -->
+						</tr>
+						<tr class="content_say">
+							<td class="content_say1">글</td>
+							<td class="content_say2">${item.postContent}</td> <!-- 게시글 불러오기 -->
+						</tr>
+					</table>
+				</td>
+				<%-- <%
+					if(cnt%3==0 && cnt!=0)
+						out.println("</tr>");
+					cnt++;
+				%> --%>
+					<c:if test="${i.index%3==2 and i.index!=0}"></tr></c:if>
+				</c:forEach>
+			</table>
 		</td>
 	</tr>
 </table>

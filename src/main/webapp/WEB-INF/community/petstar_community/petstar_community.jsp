@@ -124,6 +124,7 @@
 				%> --%>
 					<c:if test="${i.index%3==2 and i.index!=0}"></tr></c:if>
 				</c:forEach>
+			</table>
 		</td>
 	</tr>
 </table>
