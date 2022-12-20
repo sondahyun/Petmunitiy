@@ -27,6 +27,7 @@
 		<td style="width:100%">
 		<br>
 		<h3>정보 게시글</h3>
+		<br>
 		   <table style="background-color: #848484; width: 100%; margin-top:0px">
 			    <tr>
 			    	<td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >이미지</td>
@@ -58,8 +59,9 @@
 		</tr>
 		<tr>
 			<td>
-				<br>
+				<br><br><br>
 				 <h3>댓글 작성하기</h3>
+				 <br>
 				<div class="container">
 					<div class="form-group">
 						<form name="cmForm" method="post" action="<c:url value='/community/info_community/add_comment'>
@@ -82,8 +84,9 @@
 		</tr>
 		<tr>
 			<td>
-				<br>
+				<br><br><br>
 				 <h3>댓글 목록</h3>
+				 <br>
 				<div class="container">
 					<div class="form-group">
 						<form method="post"<%--  action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%> --%>>
