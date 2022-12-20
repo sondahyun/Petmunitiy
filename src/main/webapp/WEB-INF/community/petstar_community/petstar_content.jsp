@@ -58,7 +58,7 @@ if (c2List != null)
 					</tr>
 					<tr style="height: 40%; width: 100%">
 						<td
-							style="height: 40%; width: 15%; align: center; background-color: E6E6E6;">내용</td>
+							style="height: 40%; width: 15%; align: center; background-color: E6E6E6;">내용</td> 
 						<td
 							style="height: 40%; width: 100%; align: center; background-color: ffffff; padding-left: 10">
 							<!-- 내용 정보 가져오기 --> ${p2.postContent}
