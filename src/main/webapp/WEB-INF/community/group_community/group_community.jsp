@@ -111,7 +111,7 @@
 						</tr>
 						<tr class="content_say">
 							<td class="content_say1">모임명</td>
-							<td class="content_say2">${item.postContent}</td> <!-- 게시글 불러오기 -->
+							<td class="content_say2">${item.postTitle}</td> <!-- 게시글 불러오기 -->
 						</tr>
 						<tr>
 							<td colspan=2><input class="btn" type="button" value="모임 가입하기" onClick=""></td>

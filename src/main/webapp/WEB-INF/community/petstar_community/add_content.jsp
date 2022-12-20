@@ -8,13 +8,13 @@
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function applyAdopt() {
-   alert("실행");
+   //alert("실행");
 
-   if (form.userNickname.value == "") {
+   /* if (form.userNickname.value == "") {
       alert("이름을 입력하십시오.");
       form.userNickname.focus();
       return false;
-   }
+   } */
    
    //프론트팀 전달
    /* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;   //""
@@ -57,6 +57,7 @@ function userList(targetUri) {
 <td>
 <br>
 <h3>폼 작성</h3>
+<form method="post" action="/community/petstar_community/add_content">
    <table style="background-color: #848484" style="width: 100%">
     <!--<center>-->
     <tr height="40">
@@ -77,7 +78,7 @@ function userList(targetUri) {
  </tr>
  <tr>
  	<td>
- 		<input class="btn" type="button" value="폼 작성완료" onClick="userCreate()"> &nbsp;
+ 		<input class="btn" type="button" value="폼 작성완료" onClick="applyAdopt()"> &nbsp;
 	</td>
  </tr>
 </table>

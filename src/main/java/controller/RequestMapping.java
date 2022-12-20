@@ -34,7 +34,7 @@ public class RequestMapping {
         //펫스타그램
         mappings.put("/community/petstar_community/petstar_community", new ListP2Controller());
         mappings.put("/community/petstar_community/petstar_content", new ViewP2Controller());
-        //mappings.put("/community/petstar_community/add_content", new ForwardController("/community/petstar_community/add_content.jsp"));
+        mappings.put("/community/petstar_community/add_content", new CreateP2Controller());
         mappings.put("/community/petstar_community/add_comment", new CreateC2Controller());
                 
         //그룹게시판
@@ -77,7 +77,7 @@ public class RequestMapping {
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/view", new ViewUserController());
-        mappings.put("/user/user_update", new ForwardController("/user/user_update.jsp"));
+        mappings.put("/user/user_update", new UpdateUserController());
         
  
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
