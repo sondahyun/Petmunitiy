@@ -110,8 +110,7 @@
 				 <br>
 				<div class="container">
 					<div class="form-group">
-						<form method="post"<%--  action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%> --%>>
-							<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
+						<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
 								<c:forEach var="item" items="${c0List}">
 									<c:if test="${item.postId == pId}">
 										<tr>
@@ -120,8 +119,9 @@
 											<%-- <% if(session.getAttribute("UserSessionUtils.USER_SESSION_KEY") == ${item.userId}) {%> --%> <!-- 작성자 = 로그인한 사람일 경우 -->
 											<c:if test="${uId == item.userId}">
 												<td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
-												<td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>								
-											<%-- <%} %> --%>
+												<form name="frmD" method="post" action="<c:url value='/community/info_community/delete_comment'><c:param name="postId" value="${pId}"></c:param><c:param name='commentId' value='${item.commentId}'></c:param></c:url>">
+			                                       <td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>
+			                                    </form>
 											</c:if>
 										</tr>
 										<tr>
@@ -143,7 +143,6 @@
 									<td colspan="3">작성일:</td><td style="width:10%"><br><br></td>									
 								</tr> --%>
 							</table>
-						</form>
 					</div>
 				</div>
 			</td>
