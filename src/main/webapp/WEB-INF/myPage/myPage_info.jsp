@@ -3,8 +3,6 @@
 <%
 	UserInfo user = (UserInfo)request.getAttribute("user");
 	Pet pet = (Pet)request.getAttribute("pet");
-	String noPet= "pet이 등록되지 않았습니다.";
-	//System.out.println(pet.getName());
 %>
 <html>
 <head>
@@ -136,43 +134,45 @@ function userList(targetUri) {
    </table>
    
    <h3>마이펫</h3>
-   <table style="background-color: #848484; width: 100%">
-   		<tr height="40">
-	      <td align="center" bgcolor="#E6E6E6">이름</td>
-	      <td bgcolor="ffffff" style="padding-left: 10">
-	      	<% if(pet == null){%>
-	      		<%=noPet%>
-    	 	<%}%>
-	      	${pet.name}
-	      		
-	      </td>
-	   </tr>
-	    <tr height="40">
-	      <td align="center" bgcolor="#E6E6E6">나이</td>
-	      <td bgcolor="ffffff" style="padding-left: 10">
-			${pet.age}
-	      </td>
-	    </tr>
-	    <tr height="40">
-	      <td align="center" bgcolor="#E6E6E6">성별</td>
-	      <td bgcolor="ffffff" style="padding-left: 10">
-	         ${pet.gender}
-	      </td>
-	    </tr>
-	    <tr height="40">
-	      <td align="center" bgcolor="#E6E6E6">건강상태</td>
-	      <td bgcolor="ffffff" style="padding-left: 10">
-	         ${pet.health}
-	      </td>
-	    </tr>
-	    <tr height="40">
-	      <td align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
-	      <td bgcolor="ffffff" style="padding-left: 10">
-	         <!-- <input class="file_real" id="attached" type="file">
-	         <input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1"> -->
-	      </td>
-	    </tr>
-   </table>
+   <% if(pet == null){%>
+	   pet이 등록되지 않았습니다.
+   <%} else{%>
+	   <table style="background-color: #848484; width: 100%">
+	   		<tr height="40">
+		      <td align="center" bgcolor="#E6E6E6">이름</td>
+		      <td bgcolor="ffffff" style="padding-left: 10">
+		      	
+		      	${pet.name}
+		      		
+		      </td>
+		   </tr>
+		    <tr height="40">
+		      <td align="center" bgcolor="#E6E6E6">나이</td>
+		      <td bgcolor="ffffff" style="padding-left: 10">
+				${pet.age}
+		      </td>
+		    </tr>
+		    <tr height="40">
+		      <td align="center" bgcolor="#E6E6E6">성별</td>
+		      <td bgcolor="ffffff" style="padding-left: 10">
+		         ${pet.gender}
+		      </td>
+		    </tr>
+		    <tr height="40">
+		      <td align="center" bgcolor="#E6E6E6">건강상태</td>
+		      <td bgcolor="ffffff" style="padding-left: 10">
+		         ${pet.health}
+		      </td>
+		    </tr>
+		    <tr height="40">
+		      <td align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
+		      <td bgcolor="ffffff" style="padding-left: 10">
+		         <!-- <input class="file_real" id="attached" type="file">
+		         <input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1"> -->
+		      </td>
+		    </tr>
+	   </table>
+   <%} %>
 </table>
 </form>
 </body>

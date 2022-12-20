@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import model.PostGroup;
+import model.PostInformation;
 /**
  * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
  * PostInformation 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
@@ -163,6 +164,37 @@ public class PostGroupDAO {
 						rs.getInt("headCount"),
 						rs.getString("fileName"),
 						rs.getString("loginId"));
+				groupList.add(post);            // List에 PostInformation 객체 저장
+			}      
+			return groupList;               
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();      // resource 반환
+		}
+		return null;
+	}
+	
+	public List<PostGroup> findP1WithUser(String loginId) throws SQLException {
+		String sql = "SELECT * "+ "FROM PostGroup "+ "WHERE loginId=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {loginId});
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
+			List<PostGroup> groupList = new ArrayList<PostGroup>();   // PostInformation들의 리스트 생성
+			while (rs.next()) {
+				PostGroup post = new PostGroup(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
+						rs.getInt("postId"),
+						rs.getString("postTitle"),
+						rs.getDate("postDate"),
+						rs.getString("postContent"),
+						rs.getString("groupPurpose"),
+						rs.getString("region"),
+						rs.getInt("headCount"),
+						rs.getString("fileName"),
+						loginId);
 				groupList.add(post);            // List에 PostInformation 객체 저장
 			}      
 			return groupList;               

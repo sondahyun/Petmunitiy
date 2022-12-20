@@ -123,6 +123,11 @@ public class UserManager {
 	public List<PostInformation> findP0List() throws SQLException {
 		return postInformationDAO.findP0List();
 	}
+	
+	public List<PostInformation> findP0WithUser(String loginId) throws SQLException {
+		return postInformationDAO.findP0WithUser(loginId);
+	}
+	
 	//c0
 	public int createC0(CommentInformation ci) throws SQLException {
 		return commentP0DAO.create(ci);
@@ -166,6 +171,10 @@ public class UserManager {
 	
 	public List<PostGroup> findP1List() throws SQLException {
 		return postGroupDAO.findP1List();
+	}
+	
+	public List<PostGroup> findP1WithUser(String loginId) throws SQLException {
+		return postGroupDAO.findP1WithUser(loginId);
 	}
 	
 	//adoption community

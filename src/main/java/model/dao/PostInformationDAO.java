@@ -167,6 +167,35 @@ public class PostInformationDAO {
 		}
 		return null;
 	}
+	
+	public List<PostInformation> findP0WithUser(String loginId) throws SQLException {
+		String sql = "SELECT * "+ "FROM PostInformation "+ "WHERE loginId=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {loginId});
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
+			List<PostInformation> informationList = new ArrayList<PostInformation>();   // PostInformation들의 리스트 생성
+			while (rs.next()) {
+				PostInformation post = new PostInformation(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
+						rs.getInt("postId"),
+						rs.getString("postTitle"),
+						rs.getDate("postDate"),
+						rs.getString("postContent"),
+						rs.getString("fileName"),
+						rs.getString("kind"),
+						loginId);
+				informationList.add(post);            // List에 PostInformation 객체 저장
+			}      
+			return informationList;               
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();      // resource 반환
+		}
+		return null;
+	}
 
 
 

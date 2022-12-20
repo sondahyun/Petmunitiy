@@ -62,7 +62,7 @@ public class RequestMapping {
         //myPage
         mappings.put("/myPage/myPage", new ViewUserController());
         mappings.put("/myPage/about", new ForwardController("/myPage/about.jsp"));
-        mappings.put("/myPage/content_zip", new ForwardController("/myPage/content_zip.jsp"));
+        mappings.put("/myPage/content_zip", new ListUserCreateController());
         mappings.put("/myPage/comment_zip", new ForwardController("/myPage/comment_zip.jsp"));
 
         //user
