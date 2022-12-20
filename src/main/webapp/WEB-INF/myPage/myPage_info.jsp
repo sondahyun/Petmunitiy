@@ -1,5 +1,11 @@
-<%@page contentType="text/html; charset=utf-8" %> <!-- 변수 바꾸기 -->
+<%@page contentType="text/html; charset=utf-8" import="java.util.*" import="model.*" %> <!-- 변수 바꾸기 -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	UserInfo user = (UserInfo)request.getAttribute("user");
+	Pet pet = (Pet)request.getAttribute("pet");
+	String noPet= "pet이 등록되지 않았습니다.";
+	//System.out.println(pet.getName());
+%>
 <html>
 <head>
 <title>사용자 관리</title>
@@ -70,13 +76,11 @@ function userList(targetUri) {
        </c:if>
 <h3>마이페이지</h3>
 <table>
-  
    <tr>
    <td style="width:300px">
    <!-- <a href="<c:url value='/main/main' />"> -->
       <img src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px"/>      
    </td>
-   
    <td style="width:900px">
    <br>
    <table style="background-color: #848484; width: 100%">
@@ -84,121 +88,91 @@ function userList(targetUri) {
     <tr height="40">
       <td width="50%" align="center" bgcolor="#E6E6E6">이름</td>
       <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-          <!--<input type="text" style="width: 240" name="userNickname" >
-                <c:if test="${registerFailed}">value="${user.userNickname}"</c:if> -->
+         ${user.userNickname}
       </td>
     </tr>
     <tr height="40">
       <td width="50%" align="center" bgcolor="#E6E6E6">생일</td>
       <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-      <!-- <input type="date" style="width: 240" name="userBirth" > -->   
+		${user.userBirth}
       </td>
     </tr>
     <tr height="40">
       <td width="50%" align="center" bgcolor="#E6E6E6">성별</td>
       <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-
+		${user.gender}
       </td>
     </tr>
-    <%-- 
-    <tr height="40">
-       <td width="150" align="center" bgcolor="#E6E6E6">전화번호</td>
-       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="phone" 
-               <c:if test="${registerFailed}">value="${user.phone}"</c:if>>
-         </td>
-    </tr> --%>
     <tr height="40">
       <td width="50%" align="center" bgcolor="#E6E6E6">전화번호</td>
       <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-         <!-- <select name=phone1>
-            <option value=0 selected>010</option>
-            <option value=1>080</option>
-            <option value=2>070</option>
-            <option value=3>02</option>
-         </select> - <input type="text" name="phone2" value="" size="4" maxlength="4"> - <input type="text" name="phone3" value="" size="4" maxlength="4">
-         <%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%> -->
+		${user.phoneNumber}
       </td>
     </tr>
     <tr height="40">
       <td width="50%" align="center" bgcolor="#E6E6E6">사용자 ID</td>
       <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-         <!--  <input type="text" style="width: 240;" name="loginId">-->
+		${user.loginId}
       </td>
     </tr>
     <tr height="40">
       <td width="50%" align="center" bgcolor="#E6E6E6">비밀번호</td>
       <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-         <!--  <input type="password" style="width: 240" name="loginPwd">-->
+		${user.loginPwd}
       </td>
-     </tr>
-    <tr height="40">
-      <td width="50%" align="center" bgcolor="#E6E6E6">비밀번호 확인</td>
-      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-         <!--<input type="password" style="width: 240" name="password2">  -->
-      </td>
-     </tr>
+    </tr>
     <tr height="40">
       <td width="50%" align="center" bgcolor="#E6E6E6">이메일 주소</td>
       <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-         <!-- <input type="text" style="width: 240" name="address" placeholder="you@example.com">
-            <%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%> -->
+		${user.email}
       </td>
-     </tr>
-     <tr height="40">
+    </tr>
+    <tr height="40">
       <td width="50%" align="center" bgcolor="#E6E6E6">거주지 주소</td>
       <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-         <!--<input type="text" style="width: 240" name="address" placeholder="주소지"
-            <c:if test="${registerFailed}">value="${user.address}"</c:if>>  -->
+		${user.address}
       </td>
     </tr>   
    </table>
+   
    <h3>마이펫</h3>
    <table style="background-color: #848484; width: 100%">
-    <tr height="40">
-      <td align="center" bgcolor="#E6E6E6">이름</td>
-      <td bgcolor="ffffff" style="padding-left: 10">
-         <!-- <input type="text" style="width: 240" name="userNickname" >
-                <c:if test="${registerFailed}">value="${user.userNickname}"</c:if> -->
-      </td>
-    </tr>
-    <tr height="40">
-      <td align="center" bgcolor="#E6E6E6">생일</td>
-      <td bgcolor="ffffff" style="padding-left: 10">
-         <!--<input type="date" style="width: 240" name="userBirth" >  -->
-      </td>
-    </tr>
-    <tr height="40">
-      <td align="center" bgcolor="#E6E6E6">성별</td>
-      <td bgcolor="ffffff" style="padding-left: 10">
-         <!-- <input type="radio" name="gender" value="female"/> 여성
-         <input type="radio" name="gender" value="male"/> 남성 -->
-      </td>
-    </tr>
-    <tr height="40">
-      <td align="center" bgcolor="#E6E6E6">건강상태</td>
-      <td bgcolor="ffffff" style="padding-left: 10">
-         <!--  <input type="text" style="width: 240" name="address" placeholder="건강상태"
-            <c:if test="${registerFailed}">value="${user.address}"</c:if>>-->
-      </td>
-    </tr>
-    <tr height="40">
-      <td align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
-      <td bgcolor="ffffff" style="padding-left: 10">
-         <!-- <input class="file_real" id="attached" type="file">
-         <input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1"> -->
-      </td>
-    </tr>
+   		<tr height="40">
+	      <td align="center" bgcolor="#E6E6E6">이름</td>
+	      <td bgcolor="ffffff" style="padding-left: 10">
+	      	<% if(pet == null){%>
+	      		<%=noPet%>
+    	 	<%}%>
+	      	${pet.name}
+	      		
+	      </td>
+	   </tr>
+	    <tr height="40">
+	      <td align="center" bgcolor="#E6E6E6">나이</td>
+	      <td bgcolor="ffffff" style="padding-left: 10">
+			${pet.age}
+	      </td>
+	    </tr>
+	    <tr height="40">
+	      <td align="center" bgcolor="#E6E6E6">성별</td>
+	      <td bgcolor="ffffff" style="padding-left: 10">
+	         ${pet.gender}
+	      </td>
+	    </tr>
+	    <tr height="40">
+	      <td align="center" bgcolor="#E6E6E6">건강상태</td>
+	      <td bgcolor="ffffff" style="padding-left: 10">
+	         ${pet.health}
+	      </td>
+	    </tr>
+	    <tr height="40">
+	      <td align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
+	      <td bgcolor="ffffff" style="padding-left: 10">
+	         <!-- <input class="file_real" id="attached" type="file">
+	         <input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1"> -->
+	      </td>
+	    </tr>
    </table>
-   <!--<table>
-    <tr align="center">
-      <td align="left">
-      <input class="btn" type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-      <input class="btn" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
-      </td>
-    </tr>
-    
-   </table>  -->
 </table>
 </form>
 </body>
