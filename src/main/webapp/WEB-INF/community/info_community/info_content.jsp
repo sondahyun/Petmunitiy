@@ -22,24 +22,29 @@
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-<table style="width:100%">
+<table style="width:100%;">
 	<tr>		
 		<td style="width:100%">
 		<br>
 		<table>
 		<tr>
-		<th>
-		<h3>정보 게시글</h3> 
-		<br>
+			<td style="width:100%; align:center;">
+				<h3>정보 게시글</h3> <br>
+			</td>
 		<!-- a class="nav-link" href="<c:url value='/community/group_community/group_community' />">그룹 커뮤니티</a> -->
-		<a class="nav-link" href="<c:url value='/community/info_community/info_content_update' />">게시글 수정</a>
-		<a class="nav-link" href="<c:url value='/community/info_community/info_content_delete' />">게시글 삭제</a>
 		</tr>
 		<tr>
-		<th></th>
+			<td>
+				<a class="nav-link" href="<c:url value='/community/info_community/info_content_update' />">게시글 수정</a>
+				<a class="nav-link" href="<c:url value='/community/info_community/info_content_delete' />">게시글 삭제</a>
+			</td>
 		</tr>
 		</table>
 		<br>
+		</td>
+	</tr>
+	<tr>
+		<td>
 		   <table style="background-color: #848484; width: 100%; margin-top:0px">
 			    <tr>
 			    	<td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >이미지</td>
