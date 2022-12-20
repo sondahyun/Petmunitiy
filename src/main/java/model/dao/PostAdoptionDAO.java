@@ -242,4 +242,51 @@ public class PostAdoptionDAO {
       return null;
    }
    
+   public List<PostAdoption> findP3WithUser(String loginId) throws SQLException {
+       String sql = "SELECT p.postId AS pId, postTitle, postDate, aType, approval, approvalDate, postContent, loginId, petId, gender, age, health, vaccination, kind, fileName, aa.postId AS aId "
+                + "FROM PostAdoption p, AdoptionAnimal aa "
+                + "WHERE p.postId = aa.postId AND loginId = ? ";
+       
+       jdbcUtil.setSqlAndParameters(sql, new Object[] {loginId});      // JDBCUtil에 query문 설정
+              
+     try {
+        ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
+        List<PostAdoption> adoptionList = new ArrayList<PostAdoption>();   // PostAdoption들의 리스트 생성
+        while (rs.next()) {
+           AdoptionAnimal aa = new AdoptionAnimal(
+                 rs.getInt("petId"),
+                 rs.getString("gender"),
+                 rs.getInt("age"),
+                 rs.getString("health"),
+                 rs.getString("vaccination"),
+                 rs.getString("kind"),
+                 rs.getString("fileName"),
+                 rs.getInt("aId")                  
+                 );
+           
+           PostAdoption pAdoption = new PostAdoption(         // PostAdoption 객체를 생성하여 현재 행의 정보를 저장
+                 rs.getInt("pId"),
+                 rs.getString("postTitle"),
+                 rs.getDate("postDate"),
+                 rs.getInt("aType"),
+                 rs.getInt("approval"),
+                 rs.getDate("approvalDate"),
+                 rs.getString("postContent"),
+                 loginId,
+                 aa
+                 );
+           //pAdoption.setAnimal(aa);
+           adoptionList.add(pAdoption);            // List에 PostAdoption 객체 저장
+        }
+        return adoptionList;               
+        
+     } catch (Exception ex) {
+        ex.printStackTrace();
+     } finally {
+        jdbcUtil.commit();
+        jdbcUtil.close();      // resource 반환
+     }
+     return null;
+  }
+   
 }
