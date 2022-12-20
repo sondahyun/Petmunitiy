@@ -63,13 +63,13 @@
 		float:center;
 		text-align:center;
   	}
-  	.content_say2 {
+  	/* .content_say2 {
   		display : block;
 		text-overflow: ellipsis;
 		white-space: nowrap; 
 		overflow : hidden;
 		width: 50%;
-  	}
+  	} */
 </style>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
@@ -106,13 +106,15 @@
 							</td>
 						</tr>
 						<tr class="content_writer">
-							<td class="content_writer1">작성자</td>
+							<td class="content_writer1">모임 개설자</td>
 							<td class="content_writer2">${item.loginId}</td> <!-- 작성자 나타내기 -->
 						</tr>
 						<tr class="content_say">
-							<td class="content_say1">글</td>
+							<td class="content_say1">모임명</td>
 							<td class="content_say2">${item.postContent}</td> <!-- 게시글 불러오기 -->
 						</tr>
+						<tr>
+							<td colspan=2><input class="btn" type="button" value="모임 가입하기" onClick=""></td>
 					</table>
 				</td>
 				<%-- <%
