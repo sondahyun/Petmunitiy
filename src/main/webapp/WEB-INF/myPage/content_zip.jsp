@@ -3,6 +3,7 @@
 <%
 	ArrayList<PostInformation> p0List = (ArrayList<PostInformation>)request.getAttribute("p0List");
 	ArrayList<PostGroup> p1List = (ArrayList<PostGroup>)request.getAttribute("p1List");
+	ArrayList<PostPetstargram> p2List = (ArrayList<PostPetstargram>)request.getAttribute("p2List");
 	ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
 
 %>
@@ -125,6 +126,46 @@
 				           		</td>
 								<td>${p1.loginId}</td>
 								<td>${p1.postDate}</td>
+							</tr>
+						</c:forEach>		
+					</tbody>
+				</table>
+				<%}%>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				펫스타그램 커뮤니티
+				<%if (p2List.isEmpty()){%>
+					<p>작성글이 없습니다</p>
+				<% }else{ %>
+				<table class="list_table">
+					<colgroup>
+						<col width="15%" />
+						<col width="45%" />
+						<col width="20%" />
+						<col width="20%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>작성글</th>
+							<th>이름</th>
+							<th>등록일자</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="p2" items="${p2List}">
+							<tr>
+								<td>${p2.postId}</td>
+								<td>
+					              	<a href="<c:url value='/community/petstar_community/petstar_content'>
+					              	<c:param name='postId' value='${p2.postId}'/>
+					              	</c:url>">
+					              	${p2.postTitle}</a>
+				           		</td>
+								<td>${p2.loginId}</td>
+								<td>${p2.postDate}</td>
 							</tr>
 						</c:forEach>		
 					</tbody>

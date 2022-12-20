@@ -29,15 +29,15 @@ public class ListCommentCreateController implements Controller {
 		List<CommentInformation> c0List = null;
 		c0List = manager.findC0WithUser(userId);
 		
-		List<PostGroup> p1List = new ArrayList<PostGroup>();
+		List<String> p1List = new ArrayList<String>();
 		List<CommentGroup> c1List = null;
 		c1List = manager.findC1WithUser(userId);
 		
-		List<PostPetstargram> p2List = new ArrayList<PostPetstargram>();
+		List<String> p2List = new ArrayList<String>();
 		List<CommentPetstargram> c2List = null;
 		c2List = manager.findC2WithUser(userId);
 		
-		List<PostAdoption> p3List = new ArrayList<PostAdoption>();
+		List<String> p3List = new ArrayList<String>();
 		List<CommentAdoption> c3List = null;
 		c3List = manager.findC3WithUser(userId);
 		
@@ -50,21 +50,21 @@ public class ListCommentCreateController implements Controller {
 		
 		if(!c1List.isEmpty()) {
 			for(CommentGroup cg: c1List) {
-				PostGroup pg = manager.findP1Group(cg.getPostId());
+				String pg = manager.findP1Title(cg.getPostId());
 				p1List.add(pg);
 			}	
 		}
 		
 		if(!c2List.isEmpty()) {
 			for(CommentPetstargram cp: c2List) {
-				PostPetstargram pp = manager.findP2Petstargram(cp.getPostId());
+				String pp = manager.findP2Title(cp.getPostId());
 				p2List.add(pp);
 			}		
 		}
 		
 		if(!c3List.isEmpty()) {
 			for(CommentAdoption ca: c3List) {
-				PostAdoption pa = manager.findP3Adoption(ca.getPostId());
+				String pa = manager.findP3Title(ca.getPostId());
 				p3List.add(pa);
 			}		
 		}

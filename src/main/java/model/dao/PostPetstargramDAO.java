@@ -192,7 +192,24 @@ public class PostPetstargramDAO {
 		return null;
 	}
 
-
+	public String findPostTitle(int postId) throws SQLException {
+		String sql = "SELECT POSTTITLE "+ "FROM PostPetstargram "+ "WHERE postId=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	
+		String postTitle = null;// JDBCUtil에 query문과 매개 변수 설정
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {						// 학생 정보 발견
+				postTitle =rs.getString("postTitle");
+			}
+			return postTitle;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
 
 
 }

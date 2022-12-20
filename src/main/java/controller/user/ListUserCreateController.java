@@ -26,12 +26,15 @@ public class ListUserCreateController implements Controller {
 		p0List = manager.findP0WithUser(loginId);
 		List<PostGroup> p1List = null;
 		p1List = manager.findP1WithUser(loginId);
+		List<PostPetstargram> p2List = null;
+		p2List = manager.findP2WithUser(loginId);
 		List<PostAdoption> p3List = null;
 		p3List = manager.findP3WithUser(loginId);
 		
 		// commList 객체를 request에 저장하여 커뮤니티 리스트 화면으로 이동(forwarding)
 		request.setAttribute("p0List", p0List);		
 		request.setAttribute("p1List", p1List);
+		request.setAttribute("p2List", p2List);
 		request.setAttribute("p3List", p3List);
 		
 		return "/myPage/content_zip.jsp";        
