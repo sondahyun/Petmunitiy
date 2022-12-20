@@ -3,6 +3,8 @@
 <%
 	ArrayList<PostInformation> p0List = (ArrayList<PostInformation>)request.getAttribute("p0List");
 	ArrayList<PostGroup> p1List = (ArrayList<PostGroup>)request.getAttribute("p1List");
+	ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
+
 %>
 
 <!DOCTYPE html>
@@ -123,6 +125,46 @@
 				           		</td>
 								<td>${p1.loginId}</td>
 								<td>${p1.postDate}</td>
+							</tr>
+						</c:forEach>		
+					</tbody>
+				</table>
+				<%}%>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				입양/임보 커뮤니티
+				<%if (p3List.isEmpty()){%>
+					<p>작성글이 없습니다</p>
+				<% }else{ %>
+				<table class="list_table">
+					<colgroup>
+						<col width="15%" />
+						<col width="45%" />
+						<col width="20%" />
+						<col width="20%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>작성글</th>
+							<th>이름</th>
+							<th>등록일자</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="p3" items="${p3List}">
+							<tr>
+								<td>${p3.postId}</td>
+								<td>
+					              	<a href="<c:url value='/community/adopt_community/adopt_info'>
+					              	<c:param name='postId' value='${p3.postId}'/>
+					              	</c:url>">
+					              	${p3.postTitle}</a>
+				           		</td>
+								<td>${p3.loginId}</td>
+								<td>${p3.postDate}</td>
 							</tr>
 						</c:forEach>		
 					</tbody>
