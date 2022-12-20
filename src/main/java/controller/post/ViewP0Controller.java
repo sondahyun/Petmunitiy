@@ -40,7 +40,6 @@ public class ViewP0Controller implements Controller {
 		List<CommentInformation> c0List = manager.findC0List();
 		request.setAttribute("c0List", c0List);
 		
-		//  /community/info_community/cmList
 		return "/community/info_community/info_content.jsp";				
     }
 }

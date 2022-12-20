@@ -21,6 +21,9 @@ public class UserManager {
 	private PostPetstargramDAO postPetstargramDAO;
 	private PostInformationDAO postInformationDAO;
 	private CommentP0DAO commentP0DAO;
+	private CommentP1DAO commentP1DAO;
+	private CommentP2DAO commentP2DAO;
+	private CommentP3DAO commentP3DAO;
 	private ApplyDAO applyDAO;
 
 	private UserManager() {
@@ -30,8 +33,11 @@ public class UserManager {
 			postInformationDAO = new PostInformationDAO();
 			commentP0DAO = new CommentP0DAO();
 			postGroupDAO = new PostGroupDAO();
+			commentP1DAO = new CommentP1DAO();
 			postPetstargramDAO = new PostPetstargramDAO();
+			commentP2DAO = new CommentP2DAO();
 			postAdoptionDAO = new PostAdoptionDAO();
+			commentP3DAO = new CommentP3DAO();
 			applyDAO = new ApplyDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -178,6 +184,28 @@ public class UserManager {
 	public List<PostGroup> findP1WithUser(String loginId) throws SQLException {
 		return postGroupDAO.findP1WithUser(loginId);
 	}
+	/*
+	//c2
+		public int createC2(CommentPetstargram ci) throws SQLException {
+			return commentP2DAO.create(ci);
+		}
+		
+		public int updateC2(CommentPetstargram ci) throws SQLException {
+			return commentP2DAO.update(ci);
+		}
+		
+		public int removeC2(int commentId) throws SQLException {
+			return commentP2DAO.remove(commentId);
+		}
+		
+		public CommentPetstargram findC2(int commentId) throws SQLException{
+			return commentP2DAO.findC2(commentId);
+		}
+		
+		public List<CommentPetstargram> findC2List() throws SQLException {
+			return commentP2DAO.findC2List();
+		}
+	*/
 	
 	//petstargram community
 	public int createP2Petstargram(PostPetstargram post) throws SQLException {
@@ -207,6 +235,27 @@ public class UserManager {
 	
 	public List<PostPetstargram> findP2WithUser(String loginId) throws SQLException {
 		return postPetstargramDAO.findP2WithUser(loginId);
+	}
+	
+	//c2
+	public int createC2(CommentPetstargram ci) throws SQLException {
+		return commentP2DAO.create(ci);
+	}
+	
+	public int updateC2(CommentPetstargram ci) throws SQLException {
+		return commentP2DAO.update(ci);
+	}
+	
+	public int removeC2(int commentId) throws SQLException {
+		return commentP2DAO.remove(commentId);
+	}
+	
+	public CommentPetstargram findC2(int commentId) throws SQLException{
+		return commentP2DAO.findC2(commentId);
+	}
+	
+	public List<CommentPetstargram> findC2List() throws SQLException {
+		return commentP2DAO.findC2List();
 	}
 	
 	//adoption community
@@ -239,6 +288,29 @@ public class UserManager {
 		return postAdoptionDAO.findP3WithUser(loginId);
 	}
 	
+	/*
+	//c2
+		public int createC2(CommentPetstargram ci) throws SQLException {
+			return commentP2DAO.create(ci);
+		}
+		
+		public int updateC2(CommentPetstargram ci) throws SQLException {
+			return commentP2DAO.update(ci);
+		}
+		
+		public int removeC2(int commentId) throws SQLException {
+			return commentP2DAO.remove(commentId);
+		}
+		
+		public CommentPetstargram findC2(int commentId) throws SQLException{
+			return commentP2DAO.findC2(commentId);
+		}
+		
+		public List<CommentPetstargram> findC2List() throws SQLException {
+			return commentP2DAO.findC2List();
+		}
+	*/
+	
 	//apply
 	public int createApply(Apply apply) throws SQLException, ExistingUserException {
 		return applyDAO.create(apply);
@@ -254,6 +326,5 @@ public class UserManager {
 	
 	public List<Apply> findApplyList() throws SQLException {
 		return applyDAO.findApplyList();
-	} 
-	
+	}
 }
