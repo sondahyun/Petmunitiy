@@ -31,7 +31,7 @@ public class CreateP1Controller implements Controller {
 			// GET request: 회원정보 등록 form 요청	
 			log.debug("group_community add");
 			//System.out.println("여기1");
-			return "/community/info_community/add_content.jsp";   //  registerForm���� ����     	
+			return "/community/group_community/add_content.jsp";   //  registerForm���� ����     	
 		}
 
 		HttpSession session = request.getSession();

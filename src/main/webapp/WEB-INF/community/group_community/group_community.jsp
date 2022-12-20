@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	@SuppressWarnings("unchecked")
+	ArrayList<PostGroup> p1List = (ArrayList<PostGroup>)request.getAttribute("p1List");
+	Collections.sort(p1List);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,38 +49,19 @@
 					<th>등록일자</th>
 				</tr>
 			</thead>
-			<tbody>
+			<c:forEach var="item" items="${p1List}">
 				<tr>
-					<td>5</td>
-					<td><a href = "post.jsp" class = "postTitle">안녕하세요!!</a></td>
-					<td>고양이(cat)</td>
-					<td>2022-11-19</td>
+					<td>${item.postId}</td>
+					<td>
+		              	<a href="<c:url value='/community/group_community/group_content'>
+		              	<c:param name='postId' value='${item.postId}'/>
+		              	</c:url>">
+		              	${item.postTitle}</a>
+	           		</td>
+					<td>${item.loginId}</td>
+					<td>${item.postDate}</td>
 				</tr>
-				<tr>
-					<td>4</td>
-					<td><a href = "post.jsp" class = "postTitle">반가워요ㅎㅎ</a></td>
-					<td>사자(lion)</td>
-					<td>2022-11-12</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td><a href = "post.jsp" class = "postTitle">입양 원해요</a></td>
-					<td>토끼(rabbit)</td>
-					<td>2022-9-19</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td><a href = "post.jsp" class = "postTitle">안녕안녕</a></td>
-					<td>판다(panda)</td>
-					<td>2022-9-9</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td><a href = "post.jsp" class = "postTitle">안녕하세요</a></td>
-					<td>판다(panda)</td>
-					<td>2022-8-19</td>
-				</tr>
-			</tbody>
+			</c:forEach>
 		</table>
 		</td>
 	</tr>

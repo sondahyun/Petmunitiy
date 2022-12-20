@@ -54,12 +54,12 @@
 	      <c:forEach var="item" items="${p0List}">
 	         <tr>
 	         <td>${item.postId }</td>
-	           <td>
-	              <a href="<c:url value='/community/info_community/info_content'>
-	                    	<c:param name='postId' value='${item.postId}'/>
-	                   </c:url>">
-	              ${item.postTitle}</a>
-	           </td>
+	          <td>
+	             <a href="<c:url value='/community/info_community/info_content'>
+	                   	<c:param name='postId' value='${item.postId}'/>
+	                  </c:url>">
+	             ${item.postTitle}</a>
+	          </td>
 	           <td>
 	             ${item.loginId}
 	           </td>
