@@ -8,7 +8,7 @@
 	
 	Collections.sort(c0List);
 %>
-<% int pId = post.getPostId(); %>
+<c:set var="pId" value="<%=post.getPostId() %>"/>
 <html>
 <head>
 <title>정보 게시글</title>
@@ -87,10 +87,9 @@
 				<div class="container">
 					<div class="form-group">
 						<form method="post"<%--  action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%> --%>>
-							<% System.out.println("pId : " +pId); %>
 							<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
 								<c:forEach var="item" items="${c0List}">
-									<%-- <c:if test="${item.postId== pId}"> --%> 
+									<c:if test="${item.postId == pId}">
 										<tr>
 											<td style="border-bottom:none; width:10%" valign="middle"><br><br>${item.userId}</td>
 											<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px"></td>
@@ -104,7 +103,7 @@
 										<tr>
 											<td colspan="3">작성일: ${item.commentDate}</td><td style="width:10%"><br><br></td>									
 										</tr>
-									<%-- </c:if> --%>
+									</c:if>
 								</c:forEach>
 								
 								
