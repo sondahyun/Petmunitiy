@@ -33,13 +33,14 @@
 		<table style="margin-top:0px;">
 		<tr>
 			<td>
-			<select name=phone1>
+				<select name=phone1>
 					<option value=0 selected>전체 커뮤니티</option>
 					<option value=0 <c:if test="${check == 입양/임보 커뮤니티}"> selected</c:if>>입양/임보 커뮤니티</option>
 					<option value=1 <c:if test="${check == 펫스타그램 커뮤니티}"> selected</c:if>>펫스타그램 커뮤니티</option>
 					<option value=2 <c:if test="${check == 그룹 커뮤니티}"> selected</c:if>>그룹 커뮤니티</option>
 					<option value=3 <c:if test="${check == 정보 커뮤니티}"> selected</c:if>>정보 커뮤니티</option>
 				</select> 
+				&nbsp;
 				<!--  <select name=phone1>
 					<option value=0 selected>전체게시판</option>
 					<option value=0 selected>입양/임보 게시판</option>
@@ -49,17 +50,8 @@
 				</select> -->
 				<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
 				<!-- <input type="date" style="width: 240" name="startDate" > -->
-				<select name=phone1>
-					<option value=0 selected>전체 기간</option>
-					<option value=0 selected>1일</option>
-					<option value=1>2일</option>
-					<option value=2>3일</option>
-					<option value=3>4일</option>
-					<option value=3>직접 기간 입력하기
-<%-- 	 						<input type="date" style="width: 5%" name="startDay >-<input type="date" style="width: 5%" name="endDay" >
- --%> 	 <!-- 제이쿼리 -->				
- 					</option>
-				</select> 
+				<input type="date" style="width: 240" name="userBirth" >-<input type="date" style="width: 240" name="userBirth" >
+				&nbsp;
 			    <input class="srch" type="text" placeholder="검색어를 입력하세요.">
 			    <button class="btn" >검색</button>
 			</td>

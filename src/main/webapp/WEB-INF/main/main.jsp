@@ -28,7 +28,7 @@
 	    float:center;
 	    text-align:center;
 	    width:200px;
-	    height: 250px;
+	    height: 200px;
 	    font-family: 'Y_Spotlight';
 		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
 		font-weight: normal;
@@ -43,8 +43,8 @@
 		/* border : 1px solid black;
 	  	border-collapse : collapse; */
 	  	float:center;
-		width:300px;
-		height:150px;
+		width:200px;
+		height:130px;
 	}
 	.pic_td2, .content_writer1, .content_say1 {
 		/* border : 1px solid black;
@@ -56,7 +56,7 @@
 	.pic_td2, .content_writer2, .content_say2 {
 		/* border : 1px solid black;
 	  	border-collapse : collapse; */
-	  	width:140px;
+	  	width:50px;
 		height:20px;
 		float:center;
 		text-align:center;

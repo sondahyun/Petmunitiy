@@ -14,8 +14,8 @@
         border-collapse : collapse;
       border-radius : 10px;
        text-align:center;
-       width:90px;
-       height:150px;
+       width:250px;
+       height:300px;
        font-family: 'Y_Spotlight';
       src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
       font-weight: normal;
