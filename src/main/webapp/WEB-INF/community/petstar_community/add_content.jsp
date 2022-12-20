@@ -56,11 +56,11 @@ function userList(targetUri) {
 <tr>
 <td>
 <br>
-<h3>게시글 작성</h3>
+<h3>폼 작성</h3>
    <table style="background-color: #848484" style="width: 100%">
     <!--<center>-->
     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">게시글</td>
+      <td width="150" align="center" bgcolor="#E6E6E6">폼</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
          <input type="text" style="width: 240;" name="address">
       </td>
@@ -77,7 +77,7 @@ function userList(targetUri) {
  </tr>
  <tr>
  	<td>
- 		<input class="btn" type="button" value="게시글 작성완료" onClick="userCreate()"> &nbsp;
+ 		<input class="btn" type="button" value="폼 작성완료" onClick="userCreate()"> &nbsp;
 	</td>
  </tr>
 </table>
