@@ -73,13 +73,13 @@ function userList(targetUri) {
          <font color="red"><c:out value="${exception.getMessage()}" /></font>
        </c:if>
 <h3>마이페이지</h3>
-<table>
+<table style="width:100%">
    <tr>
-   <td style="width:300px">
+   <td style="width:200px">
    <!-- <a href="<c:url value='/main/main' />"> -->
       <img src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px"/>      
    </td>
-   <td style="width:900px">
+   <td style="width:1200px">
    <br>
    <table style="background-color: #848484; width: 100%">
     <!--<center>-->
