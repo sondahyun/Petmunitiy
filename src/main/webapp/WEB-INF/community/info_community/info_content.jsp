@@ -119,9 +119,11 @@
 												<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px" readonly></td>
 											</c:if>
 											<c:if test="${uId == item.userId}">
-												<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px"></td>
-												<td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
-												<form name="frmD" method="post" action="<c:url value='/community/info_community/delete_comment'><c:param name="postId" value="${pId}"></c:param><c:param name='commentId' value='${item.commentId}'></c:param></c:url>">
+												<form name="frmU" method="post" action="<c:url value='/community/info_community/update_comment'><c:param name="postId" value="${pId}"></c:param><c:param name='commentId' value='${item.commentId}'></c:param></c:url>">
+		                                             <td style="width:80%"><input name="commentContent" type="text" value="${item.commentContent}" style="width:100%; height:40px"></td>
+		                                             <td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
+		                                    	</form>
+                                    			<form name="frmD" method="post" action="<c:url value='/community/info_community/delete_comment'><c:param name="postId" value="${pId}"></c:param><c:param name='commentId' value='${item.commentId}'></c:param></c:url>">
 			                                       <td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>
 			                                    </form>
 											</c:if>

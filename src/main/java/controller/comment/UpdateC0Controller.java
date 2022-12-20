@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.Controller;
+import controller.user.UserSessionUtils;
 import model.CommentInformation;
 import model.service.UserManager;
 
@@ -20,29 +21,37 @@ public class UpdateC0Controller implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
  
 		int commentId = Integer.parseInt(request.getParameter("commentId"));
-		
-		/*
-		 * if (request.getMethod().equals("GET")) { // GET request: 커뮤니티 수정 form 요청
-		 * UserManager manager = UserManager.getInstance(); CommentInformation commentP0
-		 * = manager.findC0(commentId); request.setAttribute("commentP0", commentP0);
-		 * 
-		 * //return "/community/updateForm.jsp"; // 검색한 정보를 update form으로 전송 }
-		 * 
-		 * // POST request (커뮤니티 정보가 parameter로 전송됨) HttpSession session =
-		 * request.getSession(); SimpleDateFormat formatter = new
-		 * SimpleDateFormat("yyyy-MM-dd"); Object loginId =
-		 * session.getAttribute("loginId");
-		 * 
-		 * PostInformation pi = new PostInformation( request.getParameter("postTitle"),
-		 * formatter.parse(request.getParameter("postDate")),
-		 * request.getParameter("postContent"), request.getParameter("fileName"),
-		 * request.getParameter("kind"), String.valueOf(loginId) );
-		 * 
-		 * log.debug("Update Community : {}", pi);
-		 * 
-		 * UserManager manager = UserManager.getInstance();
-		 * manager.updatePostInformation(pi);
-		 */	
-        return "redirect:/community/info_community";			
+		HttpSession session = request.getSession();
+
+       	System.out.println("commentP0 update");
+       	
+       	int userId = UserSessionUtils.getLoginUserId(session);
+       	int postId = Integer.parseInt(request.getParameter("postId"));
+       	String content = request.getParameter("commentContent");
+       	
+        if(content == null)
+           content = "댓글 작성 실패";
+
+       	System.out.println("userId, postId, content : "+ userId+" "+postId+" "+content);
+
+    	session.setAttribute("postId", String.valueOf(postId));
+
+		try {
+			UserManager manager = UserManager.getInstance();
+			CommentInformation ci = new CommentInformation(
+					commentId,
+					content,
+					postId,
+					userId);	
+			manager.updateC0(ci);
+			
+	    	log.debug("Update CommentInformation : {}", ci);
+	        return "redirect:/community/info_community/info_content";	// 성공 시 커뮤니티 화면으로 redirect
+	        
+		} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
+            request.setAttribute("creationFailed", true);
+			request.setAttribute("exception", e);
+			return "/community/info_community/info_content.jsp";
+		}		
     }
 }
