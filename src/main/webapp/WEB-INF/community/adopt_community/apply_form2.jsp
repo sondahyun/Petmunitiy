@@ -4,7 +4,7 @@
 
 <%
 @SuppressWarnings("unchecked")
-AdoptionAnimal aA = (AdoptionAnimal)request.getAttribute("adoptAnimal");
+AdoptionAnimal aA = (AdoptionAnimal)session.getAttribute("adoptAnimal");
 System.out.println("aA : "+aA.getGender());
 request.setAttribute("adoptAnimal", aA);
 %>
@@ -15,7 +15,7 @@ request.setAttribute("adoptAnimal", aA);
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
-function userCreate() {
+function applyAdopt() {
    /* alert("실행");
 
    if (form.userNickname.value == "") {
@@ -54,7 +54,7 @@ function userList(targetUri) {
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/user/register' />">
+<form name="form" method="POST" action="<c:url value='/community/petstar_community/petstar_info/createApply' />">
    
    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
          <c:if test="${registerFailed}">
@@ -103,11 +103,12 @@ function userList(targetUri) {
       </td>
     </tr>
     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">주소</td>
+      <td width="150" align="center" bgcolor="#E6E6E6">거주지 주소</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240;" name="address">
+         <input type="text" style="width: 240" name="address" placeholder="주소지"
+            <c:if test="${registerFailed}">value="${user.address}"</c:if>>
       </td>
-    </tr>
+    </tr> 
     <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">작성자 희망 조건 사항</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
@@ -133,13 +134,6 @@ function userList(targetUri) {
          <input type="text" style="width: 240" name="uniqueness">
       </td>
      </tr>
-     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">거주지 주소</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="address" placeholder="주소지"
-            <c:if test="${registerFailed}">value="${user.address}"</c:if>>
-      </td>
-    </tr>   
     <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">기타사항</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
@@ -152,7 +146,7 @@ function userList(targetUri) {
 	    <tr>
 		    <td>
 		    	<input type="hidden" name="aType" value="1">
-		    	<input class="btn" type="button" value="신청하기" onClick="userCreate()">
+		    	<input class="btn" type="button" value="신청하기" onClick="applyAdopt()">
 		    </td>
 	    </tr>
 	</table>
