@@ -4,11 +4,11 @@
 	ArrayList<CommentInformation> c0List = (ArrayList<CommentInformation>)request.getAttribute("c0List");
 	ArrayList<String> p0List = (ArrayList<String>)request.getAttribute("p0List");
 	ArrayList<CommentGroup> c1List = (ArrayList<CommentGroup>)request.getAttribute("c1List");
-	ArrayList<PostGroup> p1List = (ArrayList<PostGroup>)request.getAttribute("p1List");
+	ArrayList<String> p1List = (ArrayList<String>)request.getAttribute("p1List");
 	ArrayList<CommentPetstargram> c2List = (ArrayList<CommentPetstargram>)request.getAttribute("c2List");
-	ArrayList<PostPetstargram> p2List = (ArrayList<PostPetstargram>)request.getAttribute("p2List");
+	ArrayList<String> p2List = (ArrayList<String>)request.getAttribute("p2List");
 	ArrayList<CommentAdoption> c3List = (ArrayList<CommentAdoption>)request.getAttribute("c3List");
-	ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
+	ArrayList<String> p3List = (ArrayList<String>)request.getAttribute("p3List");
 	String loginId = (String)request.getAttribute("loginId");
 %>
 <!DOCTYPE html>
@@ -125,7 +125,7 @@
 								<td>
 									<a href="<c:url value='/community/group_community/group_content'>
 						              	<c:param name='postId' value='${c1.postId}'/>
-						              	</c:url>">${p1List[status.index].postTitle}
+						              	</c:url>">${p1List[status.index]}
 						            </a>
 						        </td>					        
 								<td>${loginId}</td>
@@ -165,7 +165,7 @@
 								<td>
 									<a href="<c:url value='/community/petstar_community/petstar_content'>
 						              	<c:param name='postId' value='${c2.postId}'/>
-						              	</c:url>">${p2List[status.index].postTitle}
+						              	</c:url>">${p2List[status.index]}
 						            </a>
 						        </td>					        
 								<td>${loginId}</td>
@@ -205,7 +205,7 @@
 								<td>
 									<a href="<c:url value='/community/adopt_community/adopt_info'>
 						              	<c:param name='postId' value='${c3.postId}'/>
-						              	</c:url>">${p3List[status.index].postTitle}
+						              	</c:url>">${p3List[status.index]}
 						            </a>
 						        </td>					        
 								<td>${loginId}</td>

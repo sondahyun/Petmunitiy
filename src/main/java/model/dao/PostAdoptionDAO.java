@@ -289,4 +289,24 @@ public class PostAdoptionDAO {
      return null;
   }
    
+   public String findPostTitle(int postId) throws SQLException {
+	      String sql = "SELECT POSTTITLE " + "FROM PostAdoption " + "WHERE postId = ? ";
+	      jdbcUtil.setSqlAndParameters(sql, new Object[] { postId }); // JDBCUtil에 query문과 매개 변수 설정
+
+	      try {
+	         ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+	         String postTitle = null;
+	         if(rs.next()) {// 학생 정보 발견
+	        	 postTitle = rs.getString("postTitle");
+	         }
+	         return postTitle;
+	      } catch (Exception ex) {
+	         ex.printStackTrace();
+	      } finally {
+	    	  jdbcUtil.commit();
+	          jdbcUtil.close(); // resource 반환
+	      }
+	      return null;
+	   }
+   
 }

@@ -193,6 +193,10 @@ public class UserManager {
 		return postGroupDAO.findP1WithUser(loginId);
 	}
 	
+	public String findP1Title(int postId) throws SQLException {
+		return postGroupDAO.findPostTitle(postId); 
+	}
+	
 	//c1
 	public List<CommentGroup> findC1WithUser(int userId) throws SQLException {
 		return commentP1DAO.findC1WithUser(userId);
@@ -250,6 +254,10 @@ public class UserManager {
 		return postPetstargramDAO.findP2WithUser(loginId);
 	}
 	
+	public String findP2Title(int postId) throws SQLException {
+		return postPetstargramDAO.findPostTitle(postId); 
+	}
+	
 	//c2
 	public int createC2(CommentPetstargram ci) throws SQLException {
 		return commentP2DAO.create(ci);
@@ -303,6 +311,10 @@ public class UserManager {
 	
 	public List<PostAdoption> findP3WithUser(String loginId) throws SQLException {
 		return postAdoptionDAO.findP3WithUser(loginId);
+	}
+	
+	public String findP3Title(int postId) throws SQLException {
+		return postAdoptionDAO.findPostTitle(postId); 
 	}
 	//c3
 	public List<CommentAdoption> findC3WithUser(int userId) throws SQLException {
