@@ -8,34 +8,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import model.PostInformation;
+import model.PostPetstargram;
 /**
  * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
- * PostInformation 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
+ * PostPetstargram 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
  */
-public class PostInformationDAO {
+public class PostPetstargramDAO {
 	private JDBCUtil jdbcUtil = null;
 
-	public PostInformationDAO() {
+	public PostPetstargramDAO() {
 		jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성
 	}
 
 	/**
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
-	public PostInformation create(PostInformation post) throws SQLException {
-		String sql = "INSERT INTO PostInformation VALUES (p0_seq.nextval,?,SYSDATE,?,?,?,?)";
+	public int create(PostPetstargram post) throws SQLException {
+		String sql = "INSERT INTO PostPetstargram VALUES (p2_seq.nextval,?,SYSDATE,?,?,?,?)";
 		Object[] param = new Object[] {post.getPostTitle(), post.getPostContent(), post.getFileName(), post.getKind(), post.getLoginId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		String key[] = {"postId"};	// PK 컬럼의 이름    
 		try {
-			jdbcUtil.executeUpdate(key); // insert 문 실행
-			ResultSet rs = jdbcUtil.getGeneratedKeys();
-			if(rs.next()) {
-				int generatedKey = rs.getInt(1);   // 생성된 PK 값
-				post.setPostId(generatedKey); 	// id필드에 저장  
-			}
-			return post;
+			int result = jdbcUtil.executeUpdate(); // insert 문 실행
+	         return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
@@ -43,14 +38,14 @@ public class PostInformationDAO {
 			jdbcUtil.commit();
 			jdbcUtil.close(); // resource 반환
 		}
-		return null;
+		return 0;
 	}
 
 	/**
 	 * 기존의 사용자 정보를 수정.
 	 */
-	public int update(PostInformation post) throws SQLException {
-		String sql = "UPDATE PostInformation "
+	public int update(PostPetstargram post) throws SQLException {
+		String sql = "UPDATE PostPetstargram "
 				+ "SET postTitle=?, postDate=?, postContent=?, fileName=?, kind=? " + "WHERE postId=?";
 		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getPostContent(), post.getFileName(), post.getKind(), post.getPostId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
@@ -69,7 +64,7 @@ public class PostInformationDAO {
 	}
 
 	public int remove(int postId) throws SQLException {
-		String sql = "DELETE FROM PostInformation WHERE postId=? ";
+		String sql = "DELETE FROM PostPetstargram WHERE postId=? ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { postId }); // JDBCUtil에 delete문과 매개 변수 설정
 
 		try {
@@ -85,14 +80,14 @@ public class PostInformationDAO {
 		return 0;
 	}
 
-	public PostInformation findPost(int postId) throws SQLException {
-		String sql = "SELECT * "+ "FROM PostInformation "+ "WHERE postId=? ";              
+	public PostPetstargram findPost(int postId) throws SQLException {
+		String sql = "SELECT * "+ "FROM PostPetstargram "+ "WHERE postId=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	
-		PostInformation post = null;// JDBCUtil에 query문과 매개 변수 설정
+		PostPetstargram post = null;// JDBCUtil에 query문과 매개 변수 설정
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			if (rs.next()) {						// 학생 정보 발견
-				post = new PostInformation(		// Community 객체를 생성하여 커뮤니티 정보를 저장
+				post = new PostPetstargram(		// Community 객체를 생성하여 커뮤니티 정보를 저장
 						postId,
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
@@ -111,24 +106,24 @@ public class PostInformationDAO {
 	}
 
 
-	public List<PostInformation> searchP0List(String postTitle, Date start, Date end) throws SQLException {
-		String sql = "SELECT * " + "FROM PostInformation " + "WHERE POSTTITLE LIKE %?% AND POSTDATE BETWEEN ? AND ? ";
+	public List<PostPetstargram> searchP2List(String postTitle, Date start, Date end) throws SQLException {
+		String sql = "SELECT * " + "FROM PostPetstargram " + "WHERE POSTTITLE LIKE %?% AND POSTDATE BETWEEN ? AND ? ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { postTitle, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime()) }); // JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
-			ArrayList<PostInformation> InformationList = new ArrayList<PostInformation>();// post들의 리스트 생성
+			ArrayList<PostPetstargram> PetstargramList = new ArrayList<PostPetstargram>();// post들의 리스트 생성
 			while(rs.next()) {// 학생 정보 발견
-				PostInformation post = new PostInformation();// post 객체를 생성하여 정보를 저장
+				PostPetstargram post = new PostPetstargram();// post 객체를 생성하여 정보를 저장
 				post.setPostTitle(rs.getString("postTitle"));
 				post.setPostDate(rs.getDate("postDate"));
 				post.setPostContent(rs.getString("postContent"));
 				post.setFileName(rs.getString("fileName"));
 				post.setKind(rs.getString("kind"));
 				post.setLoginId(rs.getString("loginId"));
-				InformationList.add(post);
+				PetstargramList.add(post);
 			}
-			return InformationList;
+			return PetstargramList;
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -138,16 +133,16 @@ public class PostInformationDAO {
 		return null;
 	}
 
-	public List<PostInformation> findP0List() throws SQLException {
-		String sql = "SELECT * "+ "FROM PostInformation ";
+	public List<PostPetstargram> findP2List() throws SQLException {
+		String sql = "SELECT * "+ "FROM PostPetstargram ";
 
 		jdbcUtil.setSqlAndParameters(sql, null);      // JDBCUtil에 query문 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
-			List<PostInformation> InformationList = new ArrayList<PostInformation>();   // PostInformation들의 리스트 생성
+			List<PostPetstargram> PetstargramList = new ArrayList<PostPetstargram>();   // PostPetstargram들의 리스트 생성
 			while (rs.next()) {
-				PostInformation post = new PostInformation(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
+				PostPetstargram post = new PostPetstargram(         // PostPetstargram 객체를 생성하여 현재 행의 정보를 저장
 						rs.getInt("postId"),
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
@@ -155,9 +150,9 @@ public class PostInformationDAO {
 						rs.getString("fileName"),
 						rs.getString("kind"),
 						rs.getString("loginId"));
-				InformationList.add(post);            // List에 PostInformation 객체 저장
+				PetstargramList.add(post);            // List에 PostPetstargram 객체 저장
 			}      
-			return InformationList;               
+			return PetstargramList;               
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -168,15 +163,15 @@ public class PostInformationDAO {
 		return null;
 	}
 	
-	public List<PostInformation> findP0WithUser(String loginId) throws SQLException {
-		String sql = "SELECT * "+ "FROM PostInformation "+ "WHERE loginId=? ";              
+	public List<PostPetstargram> findP2WithUser(String loginId) throws SQLException {
+		String sql = "SELECT * "+ "FROM PostPetstargram "+ "WHERE loginId=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {loginId});
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();         // query 실행         
-			List<PostInformation> InformationList = new ArrayList<PostInformation>();   // PostInformation들의 리스트 생성
+			List<PostPetstargram> petstarList = new ArrayList<PostPetstargram>();   // PostPetstargram들의 리스트 생성
 			while (rs.next()) {
-				PostInformation post = new PostInformation(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
+				PostPetstargram post = new PostPetstargram(         // PostPetstargram 객체를 생성하여 현재 행의 정보를 저장
 						rs.getInt("postId"),
 						rs.getString("postTitle"),
 						rs.getDate("postDate"),
@@ -184,9 +179,9 @@ public class PostInformationDAO {
 						rs.getString("fileName"),
 						rs.getString("kind"),
 						loginId);
-				InformationList.add(post);            // List에 PostInformation 객체 저장
+				petstarList.add(post);            // List에 PostPetstargram 객체 저장
 			}      
-			return InformationList;               
+			return petstarList;               
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -15,12 +15,13 @@ public class UserManager {
     
 	private static UserManager userMan = new UserManager();
 	private UserDAO userDAO;
+	private PetDAO petDAO;
+	private PostAdoptionDAO postAdoptionDAO;
+	private PostGroupDAO postGroupDAO;
+	private PostPetstargramDAO postPetstargramDAO;
 	private PostInformationDAO postInformationDAO;
 	private CommentP0DAO commentP0DAO;
-	private PostGroupDAO postGroupDAO;
-	private PostAdoptionDAO postAdoptionDAO;
 	private ApplyDAO applyDAO;
-	private PetDAO petDAO;
 
 	private UserManager() {
 		try {
@@ -29,6 +30,7 @@ public class UserManager {
 			postInformationDAO = new PostInformationDAO();
 			commentP0DAO = new CommentP0DAO();
 			postGroupDAO = new PostGroupDAO();
+			postPetstargramDAO = new PostPetstargramDAO();
 			postAdoptionDAO = new PostAdoptionDAO();
 			applyDAO = new ApplyDAO();
 		} catch (Exception e) {
@@ -175,6 +177,36 @@ public class UserManager {
 	
 	public List<PostGroup> findP1WithUser(String loginId) throws SQLException {
 		return postGroupDAO.findP1WithUser(loginId);
+	}
+	
+	//petstargram community
+	public int createP2Petstargram(PostPetstargram post) throws SQLException {
+		return postPetstargramDAO.create(post);	
+	}
+	
+	public int updateP2Petstargram(PostPetstargram post) throws SQLException {
+		return postPetstargramDAO.update(post);
+	}
+	
+	public int removeP2Petstargram(int postId) throws SQLException{
+		return postPetstargramDAO.remove(postId);
+	}
+	public PostPetstargram findP2Petstargram(int postId) throws SQLException {
+		PostPetstargram post = postPetstargramDAO.findPost(postId); 
+		
+		return post;
+	}
+	
+	public List<PostPetstargram> searchP2List(String postTitle, Date start, Date end) throws SQLException {
+		return postPetstargramDAO.searchP2List(postTitle, start, end);
+	}
+	
+	public List<PostPetstargram> findP2List() throws SQLException {
+		return postPetstargramDAO.findP2List();
+	}
+	
+	public List<PostPetstargram> findP2WithUser(String loginId) throws SQLException {
+		return postPetstargramDAO.findP2WithUser(loginId);
 	}
 	
 	//adoption community
