@@ -81,7 +81,7 @@ Collections.sort(aList);
 	      		<%exist = true; %>
 	      		<tr>
 					<td>${item.applyId }</td>
-					<td>${item.name}</td>
+					<td><a href="<c:url value='/community/adopt_community/apply_result_closer'><c:param name='applyId' value='${item.applyId}'></c:param></c:url>">${item.name}</a></td>
 					<c:if test="${item.aType==0}">
 						<td>임보</td>
 					</c:if>
