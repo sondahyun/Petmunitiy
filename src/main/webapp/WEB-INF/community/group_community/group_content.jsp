@@ -106,30 +106,29 @@
 					${post.headCount}
 				</td>
 			</tr>
-			<!-- if) 모임 가입하지 않은 사람들한테 보이는 버튼 -->
-				<tr>
-					<td class="btn" colspan=2>
-						<a class="nav-link" href="<c:url value='/community/group_community/group_join'>
-						<c:param name='headCount' value='${post.headCount}'/>
-						<c:param name='postId' value='${post.postId}'/> 
-						<c:param name='postTitle' value='${post.postTitle}'/> 
-						</c:url>">모임 가입하기</a>
-					</td>
-				</tr>	
-			<!--  -->	
+			<% int flag = 0; 
+				for(int joinId:joinUser){
+					if(joinId==userId){
+						flag = 1;
+						break;
+					}
+				}
+				if(flag == 0){%>
+					<tr>
+						<td class="btn" colspan=2>
+							<a class="nav-link" href="<c:url value='/community/group_community/group_join'>
+							<c:param name='headCount' value='${post.headCount}'/>
+							<c:param name='postId' value='${post.postId}'/> 
+							<c:param name='postTitle' value='${post.postTitle}'/> 
+							</c:url>">모임 가입하기</a>
+						</td>
+					</tr>	
+				<%} %>
 			</table>
 		<br>
 		</td>
 	</tr>
-	<% int flag = 0; 
-	for(int joinId:joinUser){
-		if(joinId==userId){
-			flag = 1;
-			break;
-		}
-	}
-	
-	if(flag==1){%>
+	<% if(flag==1){%>
 		<tr>
 			<td>
 				<table style="background-color: #848484; width: 80%; margin-top:0px">
@@ -137,12 +136,12 @@
 						<td style="height:50%; width:10%; align:center; background-color:#E6E6E6;">
 							모임 팀원					
 						</td>
-						<c:forEach var="user" items="${joinUser}" varStatus = "i">
+						<% for(int jId:joinUser){%>
 							<td style="height:50%; width:90%; align:center; background-color:#E6E6E6;">
-								
-				
+								<% String userNickName = UserSessionUtils.getUserNickName(jId); %>
+								<%=userNickName%>
 							</td>
-						</c:forEach>
+						<%} %>
 					</tr>
 				</table>
 			</td>
