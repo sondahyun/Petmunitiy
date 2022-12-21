@@ -33,7 +33,7 @@ function petstarUpdate() {
    
    if (form.kind.value == "") {
 	      alert("종을 입력하십시오.");
-	      form.postContent.focus();
+	      form.kind.focus();
 	      return false;
 	}
    

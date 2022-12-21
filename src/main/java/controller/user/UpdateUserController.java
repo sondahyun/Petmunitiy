@@ -184,19 +184,24 @@ public class UpdateUserController implements Controller {
     	log.debug("Update User : {}", updateUser.toString());
     	log.debug("Update Pet : {}", updatePet.toString());
 
-		UserManager manager = UserManager.getInstance();
-		manager.update(updateUser);
-		if(filename == null) {
-			manager.updatePet(updatePet);
+    	try {
+			UserManager manager = UserManager.getInstance();
+			manager.update(updateUser);
+			if(filename == null) {
+				manager.updatePet(updatePet);
+			}
+			else {
+				manager.updatePetWithFile(updatePet);
+			}
+	        return "redirect:/";		
+    	}
+    	catch(Exception e) {	// ���� �߻� �� ȸ������ form���� forwarding
+            request.setAttribute("registerFailed", true);
+			request.setAttribute("exception", e);
+			request.setAttribute("user", updateUser);
+			request.setAttribute("pet", updatePet);
+			
+			return "/user/user_update.jsp";  // 검색한 정보를 update form으로 전송     
 		}
-		else {
-			manager.updatePetWithFile(updatePet);
-		}
-        return "redirect:/";			
     }
-	/*
-	 * public static ArrayList<Integer> stringToArrayList(String input){ String[] s
-	 * = input.split(","); ArrayList<Integer> list = new ArrayList<>(); for(int a =
-	 * 0; a<s.length; a++) { list.add(Integer.parseInt(s[a])); } return list; }
-	 */
 }
