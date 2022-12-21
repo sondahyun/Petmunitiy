@@ -76,8 +76,11 @@ function userList(targetUri) {
 <table style="width:100%">
    <tr>
    <td style="width:200px">
-   <!-- <a href="<c:url value='/main/main' />"> -->
-      <img src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px"/>      
+   		<%if(pet.getFilename() == null){ %>
+			<img src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px"/>	
+		<%}else{ %>
+			<img src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px" />	
+			<%} %>	 
    </td>
    <td style="width:1200px">
    <br>
@@ -165,10 +168,15 @@ function userList(targetUri) {
 		      </td>
 		    </tr>
 		    <tr height="40">
-		      <td align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
+		      <td align="center" bgcolor="#E6E6E6">접종여부</td>
 		      <td bgcolor="ffffff" style="padding-left: 10">
-		         <!-- <input class="file_real" id="attached" type="file">
-		         <input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1"> -->
+		         ${pet.vaccination}
+		      </td>
+		    </tr>
+		    <tr height="40">
+		      <td align="center" bgcolor="#E6E6E6">종</td>
+		      <td bgcolor="ffffff" style="padding-left: 10">
+		         ${pet.kind}
 		      </td>
 		    </tr>
 	   </table>

@@ -8,7 +8,6 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
-
 <style>
 
   /*.container {
@@ -128,48 +127,59 @@
         text-align: center; /* Quirks Mode                  
    }*/
 </style>
+<script>
+function messageCreate() {
+	alert("보내기");
+   if (form.mTitle.value == "") {
+      alert("제목을 입력하십시오.");
+      form.mTitle.focus();
+      return false;
+   }
+   
+   if (form.receiver.value == "") {
+	   alert("수신자를 입력하십시오.");
+	   form.receiver.focus();
+	   return false;
+	}
+   if (form.content.value == "") {
+	   alert("내용을 입력하십시오.");
+	   form.content.focus();
+	   return false;
+	}
+   form.submit();
+}
+</script>
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
-  <h3>쪽지쓰기</h3>
+<form name="form" method="POST" action="<c:url value='/message/message_write' />">
+<h3>쪽지쓰기</h3>
 <br>
-<table style="width:100%; height:500px" border="1">
-    <tr>
-      <th style="width:10%; height:50px">제목</th>
-      <td style="width:100%; height:50px"><input id="wrtTitle" type="text" class="txttype02" name="txtTitle" style="width:80%" maxlength="256" value=""></td>
-    </tr>
-    <tr>
-      <th style="width:10%; height:50px">받는 사람</th>
-      <td style="width:100%; height:50px">
-         <input id="wrtTitle" type="text" class="txttype02" name="txtTitle" style="width:80%" maxlength="256" value="">
-      </td>
-    </tr>          
-    <tr style="width:100%; height:400px">
-      <th style="width:10%; height:400px">내용</th>
-      <td style="width:100%; height:400px"><textarea id="wrtContent" name="content"style="font-size: 12px; width:80%; height:300px"></textarea></td>
-    </tr>
-</table>
-<table>
-	 <tr align="center">
-		<td align="left">
-		<input class="btn" type="button" value="전송하기" onClick="userCreate()"> &nbsp;
-		<input class="btn" type="button" value="목록보기" onClick="userList('<c:url value='/message/message' />')">
-		</td>
-	 </tr> 
-</table>   
-<%-- <div class="image" align="center">
-   <a href="../../main/main1.jsp">
-        <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>   
-   <a href="../../main/main1.jsp">
-        <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>   
-   <a href="../../main/main1.jsp">
-        <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>   
-   <a href="../../main/main1.jsp">
-        <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>     
-</div> --%>
-  <div class="detail">
-      <br>copyright 2022. Cloud.
-   </div>
+	<table style="width:100%; height:500px" border="1">
+	    <tr>
+	      <th style="width:10%; height:50px">제목</th>
+	      <td style="width:100%; height:50px"><input id="wrtTitle" type="text" class="txttype02" name="mTitle" style="width:80%" maxlength="256" value=""></td>
+	    </tr>
+	    <tr>
+	      <th style="width:10%; height:50px">받는 사람</th>
+	      <td style="width:100%; height:50px">
+	         <input id="wrtTitle" type="text" class="txttype02" name="userNickname" style="width:80%" maxlength="256">
+	      </td>
+	    </tr>          
+	    <tr style="width:100%; height:400px">
+	      <th style="width:10%; height:400px">내용</th>
+	      <td style="width:100%; height:400px"><textarea id="wrtContent" name="content" style="font-size: 12px; width:80%; height:300px"></textarea></td>
+	    </tr>
+	</table>
+	<table>
+		 <tr align="center">
+			<td align="left">
+			<input class="btn" type="button" value="전송하기" onClick="messageCreate()"> &nbsp;
+			<input class="btn" type="button" value="목록보기" onClick="userList('<c:url value='/message/message' />')">
+			</td>
+		 </tr> 
+	</table>   
+</form>
 </body>
 </html>

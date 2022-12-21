@@ -14,6 +14,19 @@ public class Pet {
 	private String loginId;
 		
 	public Pet(int petId, String name, String gender, int age, String health, String vaccination, String kind,
+			String loginId) {
+		super();
+		this.petId = petId;
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.health = health;
+		this.vaccination = vaccination;
+		this.kind = kind;
+		this.loginId = loginId;
+	}
+
+	public Pet(int petId, String name, String gender, int age, String health, String vaccination, String kind,
 			String filename, String loginId) {
 		super();
 		this.petId = petId;
@@ -41,6 +54,17 @@ public class Pet {
 		this.loginId = loginId;
 	}
 	
+	public Pet(String name, String gender, int age, String health, String vaccination, String kind, String loginId) {
+		super();
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.health = health;
+		this.vaccination = vaccination;
+		this.kind = kind;
+		this.loginId = loginId;
+	}
+
 	public int getPetId() {
 		return petId;
 	}

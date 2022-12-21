@@ -9,6 +9,7 @@ import controller.pet.RegisterPetController;
 import controller.post.*;
 import controller.user.*;
 import controller.comment.*;
+import controller.message.*;
 import controller.apply.*;
 
 public class RequestMapping {
@@ -75,7 +76,7 @@ public class RequestMapping {
         
         //message
         mappings.put("/message/message", new ForwardController("/message/message.jsp"));
-        mappings.put("/message/message_write", new ForwardController("/message/message_write.jsp"));
+        mappings.put("/message/message_write", new CreateMessageController());
         
         //myPage
         mappings.put("/myPage/myPage", new ViewUserController());
