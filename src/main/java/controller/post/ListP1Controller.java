@@ -15,7 +15,10 @@ public class ListP1Controller implements Controller {
 		List<PostGroup> p1List = manager.findP1List();
 		
 		// commList 객체를 request에 저장하여 커뮤니티 리스트 화면으로 이동(forwarding)
-		request.setAttribute("p1List", p1List);				
+		request.setAttribute("p1List", p1List);
+		for(PostGroup pg :p1List) {
+			System.out.println(pg.toString());
+		}
 		return "/community/group_community/group_community.jsp";        
     }
 }
