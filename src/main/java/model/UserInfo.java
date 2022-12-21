@@ -35,8 +35,21 @@ public class UserInfo {
 		this.address = address;
 		this.email = email;
 	}
-
 	
+	public UserInfo(int userId, String loginId, String loginPwd, String userNickname, Date userBirth,
+			String phoneNumber, String gender, String address, String email) {
+		super();
+		this.userId = userId;
+		this.loginId = loginId;
+		this.loginPwd = loginPwd;
+		this.userNickname = userNickname;
+		this.userBirth = userBirth;
+		this.phoneNumber = phoneNumber;
+		this.gender = gender;
+		this.address = address;
+		this.email = email;
+	}
+
 	public int getUserId() {
 		return userId;
 	}
