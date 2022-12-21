@@ -29,7 +29,15 @@ if (c2List != null)
 	<table style="width: 100%">
 		<tr>
 			<td style="width: 100%"><br>
-				<h3>펫스타그램 폼</h3>
+				<h3>펫스타그램 폼</h3><br>
+				
+				<!-- 작성자 == 방문자일때 폼 수정 버튼 뜸 -->
+				<a class="nav-link" 
+				href="<c:url value='/community/petstar_community/petstar_content_update'>
+				<c:param name='postId' value='${p2.postId}'/> 
+				</c:url>">폼 수정</a>
+				
+				<br>
 				<table
 					style="background-color: #848484; width: 100%; margin-top: 0px">
 					<tr>
