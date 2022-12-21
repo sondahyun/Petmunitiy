@@ -10,7 +10,7 @@ import controller.Controller;
 import model.service.UserManager;
 
 public class DeleteP3Controller implements Controller {
-    private static final Logger log = LoggerFactory.getLogger(DeleteP0Controller.class);
+    private static final Logger log = LoggerFactory.getLogger(DeleteP3Controller.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
@@ -19,6 +19,6 @@ public class DeleteP3Controller implements Controller {
 
 		UserManager manager = UserManager.getInstance();			
 		manager.removeP3Adoption(postId);
-		return "redirect:/community/adopt_community";
+		return "redirect:/community/adopt_community/adopt_community";
 	}
 }

@@ -181,6 +181,10 @@ public class UserManager {
 		return postGroupDAO.update(post);            
 	}
 	
+	public int updateWithFilePostGroup(PostGroup post) throws SQLException {
+		return postGroupDAO.updateWithFile(post);            
+	}
+	
 	public int removePostGroup(int postId) throws SQLException{
 		return postGroupDAO.remove(postId);
 	}

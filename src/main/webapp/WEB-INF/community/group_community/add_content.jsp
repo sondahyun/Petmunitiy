@@ -10,27 +10,26 @@
 function applyAdopt() {
    alert("실행");
 
-   if (form.userNickname.value == "") {
-      alert("이름을 입력하십시오.");
-      form.userNickname.focus();
+   if (form.postTitle.value == "") {
+      alert("모임명을 입력하십시오.");
+      form.postTitle.focus();
       return false;
    }
-   
-   //프론트팀 전달
-   /* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;   //""
-   if(emailExp.test(form.email.value)==false) {
-      alert("이메일 형식이 올바르지 않습니다.");
-      form.email.focus();
-      return false;
-   }
-   //동작?
-   var phoneExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
-   if(phoneExp.test(form.phone.value)==false) {
-      alert("전화번호 형식이 올바르지 않습니다.");
-      form.phone.focus();
-      return false;
-   } */
-   //form.method="post";
+   if (form.postContent.value == "") {
+	   alert("모임 설명을 입력하십시오.");
+	   form.postContent.focus();
+	   return false;
+	}
+   if (form.groupPurpose.value == "") {
+	   alert("모임 목적을 입력하십시오.");
+	   form.groupPurpose.focus();
+	   return false;
+	}
+   if (form.region.value == "") {
+	   alert("지역을 입력하십시오.");
+	   form.region.focus();
+	   return false;
+	}
    form.submit();
 }
 
@@ -46,7 +45,7 @@ function userList(targetUri) {
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/user/register' />">
+<form name="form" method="POST" action="<c:url value='/community/group_community/add_content' />" enctype="multipart/form-data">
    
    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
          <c:if test="${registerFailed}">
@@ -86,7 +85,7 @@ function userList(targetUri) {
      <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">모임 대표 배경 사진</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="file" style="width: 240" name="filename">
+         <input type="file" style="width: 240" name="fileName">
       </td>
      </tr> 
     </table>
@@ -95,7 +94,7 @@ function userList(targetUri) {
  </tr>
  <tr>
  	<td>
- 		<input class="btn" type="button" value="모임 생성완료" onClick="userCreate()"> &nbsp;
+ 		<input class="btn" type="button" value="모임 생성완료" onClick="applyAdopt()"> &nbsp;
 	</td>
  </tr>
 </table>

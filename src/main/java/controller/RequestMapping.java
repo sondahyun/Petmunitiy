@@ -47,7 +47,8 @@ public class RequestMapping {
         mappings.put("/community/group_community/group_community", new ListP1Controller());
         mappings.put("/community/group_community/add_content", new CreateP1Controller());
         mappings.put("/community/group_community/group_content", new ViewP1Controller());
-
+        mappings.put("/community/group_community/group_content_update", new UpdateP1Controller());
+        mappings.put("/community/group_community/group_content_delete", new DeleteP1Controller());
         
         //검색게시판
         mappings.put("/search/search", new ForwardController("/search/search.jsp"));
