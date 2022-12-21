@@ -40,7 +40,7 @@
 	<c:set var="lui" value="<%=logId%>"/>
 	
 	
-	<table style="background-color: #848484" style="width: 100%">
+	<table style="background-color: #848484; width: 100%">
 	    <!--<center>-->
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">제목</td>
@@ -122,6 +122,12 @@
 	    </table>
 	 </td>
     </tr>
+     <tr>
+	 	<td colspan=2>
+	 	<br><br>
+	 		<input class="btn" type="button" value="폼 수정완료" onClick="userCreate()"> &nbsp;
+		</td>
+	 </tr>
  </table>
 </form>
 </body>
