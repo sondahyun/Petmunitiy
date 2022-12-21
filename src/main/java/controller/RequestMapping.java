@@ -54,7 +54,7 @@ public class RequestMapping {
         mappings.put("/community/group_community/group_content_delete", new DeleteP1Controller());
         
         //검색게시판
-        mappings.put("/search/search", new ForwardController("/search/search.jsp"));
+        mappings.put("/search/search", new ListSearchController());
         
 
         //정보게시판     
