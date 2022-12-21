@@ -27,7 +27,7 @@ public class ViewApplyController implements Controller {
 		UserManager manager = UserManager.getInstance();
 		
 		AdoptionAnimal aA = (AdoptionAnimal)request.getAttribute("adoptAnimal");
-		request.setAttribute("adoptAnimal", aA);		// ����� ���� ����				
+		request.setAttribute("adoptAnimal", aA);		// ����� ���� ����
 		return "/community/adopt_community/adopt_info.jsp";				// ����� ���� ȭ������ �̵�
  	
     }

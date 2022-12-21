@@ -145,7 +145,7 @@ function userList(targetUri) {
     <table>
 	    <tr>
 		    <td>
-		    	<input type="hidden" name="aType" value="1">
+		    	<input type="hidden" name="aType" value="0">
 		    	<input class="btn" type="button" value="신청하기" onClick="applyAdopt()">
 		    </td>
 	    </tr>
