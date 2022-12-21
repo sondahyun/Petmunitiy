@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="java.util.*" import="model.*" %>
+    pageEncoding="utf-8" import="java.util.*" import="model.*" import="controller.user.UserSessionUtils" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -51,7 +51,10 @@
 			<th>등록일자</th>
 	      </tr>
 	      </thead>
+	      <% int index = 0; %>
 	      <c:forEach var="item" items="${p0List}">
+	      	<%String findUser = p0List.get(index).getLoginId();%>
+	      	<c:set var="userName" value="<%=UserSessionUtils.getUserNickName(findUser) %>"/>
 	         <tr>
 	         <td>${item.postId }</td>
 	          <td>
@@ -61,12 +64,13 @@
 	             ${item.postTitle}</a>
 	          </td>
 	           <td>
-	             ${item.loginId}
+	           ${userName}
 	           </td>
 	           <td>
 	              ${item.postDate}
 	           </td>
 	         </tr>
+	         <%index++; %>
 	     </c:forEach> 
 		</table>
 		</td>
