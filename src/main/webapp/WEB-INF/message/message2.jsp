@@ -2,13 +2,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%
-String check="Y";
+String check="N";
 if(request.getMethod().equals("POST")){
 	check = request.getParameter("newMessgeChk");
 	System.out.println(check);
 }
 
 List<Message> mList = (List<Message>)request.getAttribute("mList");
+
 %>
 <html>
 <head>
@@ -186,28 +187,22 @@ List<Message> mList = (List<Message>)request.getAttribute("mList");
 				<th>날짜</th>
 		      </tr>
 		      </thead>
-		      <% int index = 0; %>
-		      <c:forEach var="message" items="${mList}" varStatus = "i">
-		      	<% int findSender = mList.get(index).getSender();%>
+		      <c:forEach var="item" items="${p0List}">
 		         <tr>
-		         <td>${message.messageId}</td>
+		         <td>${item.postId }</td>
 		          <td>
-		             <a href="<c:url value='/message/info_community/info_content'>
-		                   	<c:param name='messageId' value='${message.messageId}'/>
+		             <a href="<c:url value='/community/info_community/info_content'>
+		                   	<c:param name='postId' value='${item.postId}'/>
 		                  </c:url>">
-		             ${message.mTitle}</a>
+		             ${item.postTitle}</a>
 		          </td>
 		           <td>
-		           <% 
-		             String userNickName = UserSessionUtils.getUserNickName(findSender);
-		           %>
-		           <%=userNickName %>
+		             ${item.loginId}
 		           </td>
 		           <td>
-		             ${message.sendDate}
+		             ${item.postDate}
 		           </td>
 		         </tr>
-		         <%index++; %>
 		     </c:forEach> 
 			</table>
 		</td>
@@ -235,22 +230,28 @@ else if(check=="N"){ System.out.println("보낸 쪽지입니다.");%>
 				<th>날짜</th>
 		      </tr>
 		      </thead>
-		      <c:forEach var="item" items="${p0List}">
+		      <% int index = 0; %>
+		      <c:forEach var="message" items="${mList}" varStatus = "i">
+		      	<% int findSender = mList.get(index).getSender();%>
 		         <tr>
-		         <td>${item.postId }</td>
+		         <td>${message.messageId}</td>
 		          <td>
-		             <a href="<c:url value='/community/info_community/info_content'>
-		                   	<c:param name='postId' value='${item.postId}'/>
+		             <a href="<c:url value='/message/info_community/info_content'>
+		                   	<c:param name='messageId' value='${message.messageId}'/>
 		                  </c:url>">
-		             ${item.postTitle}</a>
+		             ${message.mTitle}</a>
 		          </td>
 		           <td>
-		             ${item.loginId}
+		           <% 
+		             String userNickName = UserSessionUtils.getUserNickName(findSender);
+		           %>
+		           <%=userNickName %>
 		           </td>
 		           <td>
-		             ${item.postDate}
+		             ${message.sendDate}
 		           </td>
 		         </tr>
+		         <%index++; %>
 		     </c:forEach> 
 			</table>
 		</td>

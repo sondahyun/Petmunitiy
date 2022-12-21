@@ -29,6 +29,6 @@ public class ListMSenderController implements Controller {
 		request.setAttribute("mList", mList);				
 
 		// 사용자 리스트 화면으로 이동(forwarding)
-		return "/message/message.jsp";        
+		return "/message/message2.jsp";        
     }
 }
