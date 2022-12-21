@@ -32,10 +32,10 @@ public class UpdateP2Controller implements Controller {
 		if (request.getMethod().equals("GET")) {	
     		// GET request: 커뮤니티 수정 form 요청	
     		UserManager manager = UserManager.getInstance();
-			PostPetstargram post2 = manager.findP2Petstargram(postId);
-			request.setAttribute("post2", post2);			
+			PostPetstargram p2 = manager.findP2Petstargram(postId);
+			request.setAttribute("p2", p2);			
 				
-			return "/community/petstar_community/update_content.jsp";   // 검색한 정보를 update form으로 전송     
+			return "/community/petstar_community/petstar_content_update.jsp";   // 검색한 정보를 update form으로 전송     
 	    }	
 		
 		// POST request (커뮤니티 정보가 parameter로 전송됨)
