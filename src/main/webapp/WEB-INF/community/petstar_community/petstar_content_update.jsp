@@ -4,15 +4,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-@SuppressWarnings("unchecked")
-PostPetstargram p2 = (PostPetstargram) request.getAttribute("p2");
-
-ArrayList<CommentPetstargram> c2List = (ArrayList<CommentPetstargram>) request.getAttribute("c2List");
-if (c2List != null)
-	Collections.sort(c2List);
+	@SuppressWarnings("unchecked")
+	PostPetstargram p2 = (PostPetstargram) request.getAttribute("p2");
 %>
-<c:set var="pId" value="${p2.postId}" />
-<c:set var="uId" value="<%= UserSessionUtils.getLoginUserId(session) %>"/>
 <html>
 <head>
 <title>펫스타그램 폼</title>
@@ -21,11 +15,39 @@ if (c2List != null)
 	type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />"
 	type="text/css">
+<script>
+function petstarUpdate() {
+   alert("실행");
+
+   if (form.postTitle.value == "") {
+      alert("제목을 입력하십시오.");
+      form.postTitle.focus();
+      return false;
+   }
+   
+   if (form.postContent.value == "") {
+	      alert("내용을 입력하십시오.");
+	      form.postContent.focus();
+	      return false;
+	}
+   
+   if (form.kind.value == "") {
+	      alert("종을 입력하십시오.");
+	      form.kind.focus();
+	      return false;
+	}
+   
+   form.submit();
+}
+
+</script>
 </head>
 <body>
 	<%@include file="/WEB-INF/navbar.jsp"%><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 	<!-- registration form  -->
-
+<form name="form" method="POST" action="<c:url value='/community/petstar_community/petstar_content_update' />" enctype="multipart/form-data">
+	<input type="hidden" name="postId" value="${p2.postId}"/>	  
+	
 	<table style="width: 100%">
 		<tr>
 			<td style="width: 100%"><br>
@@ -38,9 +60,15 @@ if (c2List != null)
 						<td
 							style="height: 40%; width: 15%; align: center; background-color: #E6E6E6;">이미지</td>
 						<td style="width: 50%">
-							<!-- <a href="<c:url value='/main/main' />"> --> <img
-							src="<c:url value='/images/linkedin_profile_image.png' />"
-							style="width: 500px; height: 500px" />
+							<% if(p2.getFileName() == null){%>
+								<img src="<c:url value='/images/linkedin_profile_image.png' />"
+								style="width: 500px; height: 500px" />
+							<%} 
+							else{%>
+								<img src="<c:url value='/upload/${p2.fileName}'/>"
+								style="width: 500px; height: 500px" />
+							<%} %>
+							<input type="file" style="width: 60%" name="fileName" >
 						</td>
 					</tr>
 					<tr style="height: 40%; width: 100%">
@@ -48,7 +76,7 @@ if (c2List != null)
 							style="height: 40%; width: 15%; align: center; background-color: #E6E6E6;">제목</td>
 						<td
 							style="height: 40%; width: 100%; align: center; background-color: #ffffff; padding-left: 10">
-							<input type="text" style="width: 240" name="name" value="${p2.postTitle}">
+							<input type="text" style="width: 240" name="postTitle" value="${p2.postTitle}">
 						</td>
 					</tr>
 					<tr style="height: 40%; width: 100%">
@@ -67,7 +95,7 @@ if (c2List != null)
 							style="height: 40%; width: 15%; align: center; background-color: #E6E6E6;">종</td>
 						<td
 							style="height: 40%; width: 100%; align: center; background-color: #ffffff; padding-left: 10">
-							<input type="text" style="width: 240" name="name" value="${p2.kind}">
+							<input type="text" style="width: 240" name="kind" value="${p2.kind}">
 						</td>
 					</tr>
 					<tr style="height: 40%; width: 100%">
@@ -83,7 +111,7 @@ if (c2List != null)
 							style="height: 40%; width: 15%; align: center; background-color: E6E6E6;">내용</td> 
 						<td
 							style="height: 40%; width: 100%; align: center; background-color: ffffff; padding-left: 10">
-							<input type="text" style="width: 240" name="name" value="${p2.postContent}">
+							<input type="text" style="width: 240" name="postContent" value="${p2.postContent}">
 						</td>
 					</tr>
 				</table>
@@ -92,9 +120,10 @@ if (c2List != null)
 		<tr>
 		 	<td colspan=2>
 		 	<br><br>
-		 		<input class="btn" type="button" value="폼 수정완료" onClick="userCreate()"> &nbsp;
+		 		<input class="btn" type="button" value="폼 수정완료" onClick="petstarUpdate()"> &nbsp;
 			</td>
 		 </tr>
 	</table>
+	</form>
 </body>
 </html>

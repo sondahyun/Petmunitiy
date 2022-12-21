@@ -56,8 +56,8 @@ public class PostAdoptionDAO {
     */
    public int update(PostAdoption post) throws SQLException {
       String sql = "UPDATE PostAdotpion "
-            + "SET postTitle=?, postDate=?, aType=?, approval=?, approvaldate=?, postcontent=?, loginid=? " + "WHERE postId=?";
-      Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date( post.getPostDate().getTime()), post.getaType(), post.getApproval(), new java.sql.Date( post.getApprovalDate().getTime()),post.getPostContent(), post.getLoginId(), post.getPostId() };
+            + "SET postTitle=?, postDate=SYSDATE, postcontent=?, loginId=?, animal=? " + "WHERE postId=?";
+      Object[] param = new Object[] { post.getPostTitle(), post.getPostContent(), post.getLoginId(), post.getAnimal(), post.getPostId() };
       jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
       try {
@@ -72,7 +72,6 @@ public class PostAdoptionDAO {
       }
       return 0;
    }
-
    /**
     * 사용자 ID에 해당하는 사용자를 삭제.
     */

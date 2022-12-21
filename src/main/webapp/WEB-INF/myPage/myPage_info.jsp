@@ -76,8 +76,8 @@ function userList(targetUri) {
 <table style="width:100%">
    <tr>
    <td style="width:200px">
-   		<%if(pet.getFilename() == null){ %>
-			<img src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px"/>	
+   		<%if(pet!=null && pet.getFilename() == null){ %>
+			<img src="<c:url value='/images/linkedin_profile_image.png' />" style="width:200px; height:200px"/>	
 		<%}else{ %>
 			<img src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px" />	
 			<%} %>	 
@@ -137,16 +137,15 @@ function userList(targetUri) {
    </table>
    
    <h3>마이펫</h3>
-   <% if(pet == null){%>
-	   pet이 등록되지 않았습니다.
-   <%} else{%>
+   <% if(pet == null){ %>
+	    pet이 등록되지 않았습니다.
+   <% }%>
+   <% if(pet != null) {%>
 	   <table style="background-color: #848484; width: 100%">
 	   		<tr height="40">
 		      <td align="center" bgcolor="#E6E6E6">이름</td>
 		      <td bgcolor="ffffff" style="padding-left: 10">
-		      	
-		      	${pet.name}
-		      		
+		      	${pet.name}  		
 		      </td>
 		   </tr>
 		    <tr height="40">
@@ -180,7 +179,7 @@ function userList(targetUri) {
 		      </td>
 		    </tr>
 	   </table>
-   <%} %>
+	    <%} %>
 </table>
 </form>
 </body>

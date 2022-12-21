@@ -46,8 +46,27 @@ public class PostPetstargramDAO {
 	 */
 	public int update(PostPetstargram post) throws SQLException {
 		String sql = "UPDATE PostPetstargram "
-				+ "SET postTitle=?, postDate=?, postContent=?, fileName=?, kind=? " + "WHERE postId=?";
-		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getPostContent(), post.getFileName(), post.getKind(), post.getPostId() };
+				+ "SET postTitle=?, postDate=SYSDATE, postContent=?, kind=? " + "WHERE postId=?";
+		Object[] param = new Object[] { post.getPostTitle(), post.getPostContent(), post.getKind(), post.getPostId() };
+		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // update 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); //  resource 반환
+		}
+		return 0;
+	}
+	
+	public int updateWithFile(PostPetstargram post) throws SQLException {
+		String sql = "UPDATE PostPetstargram "
+				+ "SET postTitle=?, postDate=SYSDATE, postContent=?, fileName=?, kind=? " + "WHERE postId=?";
+		Object[] param = new Object[] { post.getPostTitle(), post.getPostContent(), post.getFileName(), post.getKind(), post.getPostId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {

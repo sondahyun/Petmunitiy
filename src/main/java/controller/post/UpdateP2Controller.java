@@ -22,16 +22,15 @@ import model.PostPetstargram;
 import model.service.UserManager;
 
 public class UpdateP2Controller implements Controller {
-    private static final Logger log = LoggerFactory.getLogger(UpdateP1Controller.class);
+    private static final Logger log = LoggerFactory.getLogger(UpdateP2Controller.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
- 
-		int postId = Integer.parseInt(request.getParameter("postId"));
 		
 		if (request.getMethod().equals("GET")) {	
     		// GET request: 커뮤니티 수정 form 요청	
     		UserManager manager = UserManager.getInstance();
+    		int postId = Integer.parseInt(request.getParameter("postId"));
 			PostPetstargram p2 = manager.findP2Petstargram(postId);
 			request.setAttribute("p2", p2);			
 				
@@ -42,11 +41,10 @@ public class UpdateP2Controller implements Controller {
 		HttpSession session = request.getSession();
 		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Object loginId = session.getAttribute("loginId");
+		int postId = -1;
 		String postTitle = null;
+		String kind = null;
 		String postContent = null;
-		String groupPurpose = null;
-		String region = null;
-		int headCount = -1;
 		String filename = null;  
 		
 		boolean check = ServletFileUpload.isMultipartContent(request);    			
@@ -85,15 +83,15 @@ public class UpdateP2Controller implements Controller {
 
 					String value = item.getString("utf-8"); // 넘어온 값에 대한 한글 처리를 한다.               	
 
-					if (item.isFormField()) {  // item이 일반 데이터인 경우                		
-						if(item.getFieldName().equals("postTitle")) postTitle = value;
+					if (item.isFormField()) {  // item이 일반 데이터인 경우       
+						if(item.getFieldName().equals("postId")) postId = Integer.parseInt(value);
+						else if(item.getFieldName().equals("postTitle")) postTitle = value;
 						// parameter 이름이 name이면 name 변수에 값을 저장한다.
+						else if(item.getFieldName().equals("kind")) kind = value;
 						else if(item.getFieldName().equals("postContent")) postContent = value;
 						// parameter 이름이 id이면 id 변수에 값을 저장한다.
-						else if(item.getFieldName().equals("groupPurpose")) groupPurpose = value;
 						// parameter 이름이 pw이면 pw 변수에 값을 저장한다.
-						else if(item.getFieldName().equals("region")) region = value;
-						else if(item.getFieldName().equals("headCount")) headCount = Integer.parseInt(value);
+						
 					}
 					else {  // item이 파일인 경우   
 						if (item.getFieldName().equals("fileName")) {
@@ -135,21 +133,42 @@ public class UpdateP2Controller implements Controller {
 				e.printStackTrace();
 			}
 		}
-
-		/*PostGroup pg = new PostGroup(
+		
+		PostPetstargram pp;
+		if(filename == null) {
+			pp = new PostPetstargram(
+					postId,
+					postTitle,
+					postContent,
+					kind,
+					String.valueOf(loginId)
+			);
+		}
+		else {
+			pp = new PostPetstargram(
+				postId,
 				postTitle,
 				postContent,
-				groupPurpose,
-				region,
-				headCount,
 				filename,
+				kind,
 				String.valueOf(loginId)
-		);*/
+			);
+		}
 		
-    	//log.debug("Update Community P1 : {}", pg);
-
-		UserManager manager = UserManager.getInstance();
-		//manager.updatePostGroup(pg);			
-        return "redirect:/community/group_community/group_community";			
+		try {
+			UserManager manager = UserManager.getInstance();
+			if(filename == null)
+				manager.updateP2Petstargram(pp);	
+			else
+				manager.updateWithFilePetstargram(pp);
+	        return "redirect:/community/petstar_community/petstar_community";			
+    	}
+    	catch(Exception e) {	// ���� �߻� �� ȸ������ form���� forwarding
+            request.setAttribute("registerFailed", true);
+			request.setAttribute("exception", e);
+			request.setAttribute("post2", pp);
+			
+			return "/community/petstar_community/petstar_content_update.jsp";   // 검색한 정보를 update form으로 전송     
+		}			
     }
 }

@@ -13,6 +13,26 @@ public class PostPetstargram implements Comparable {
 	
 	public PostPetstargram() { }
 	
+	public PostPetstargram(int postId, String postTitle, String postContent, String kind, String loginId) {
+		super();
+		this.postId = postId;
+		this.postTitle = postTitle;
+		this.postContent = postContent;
+		this.kind = kind;
+		this.loginId = loginId;
+	}
+
+	public PostPetstargram(int postId, String postTitle, String postContent, String fileName, String kind,
+			String loginId) {
+		super();
+		this.postId = postId;
+		this.postTitle = postTitle;
+		this.postContent = postContent;
+		this.fileName = fileName;
+		this.kind = kind;
+		this.loginId = loginId;
+	}
+
 	public PostPetstargram(int postId, String postTitle, Date postDate, String postContent, String fileName,
 			String kind, String loginId) {
 		super();
