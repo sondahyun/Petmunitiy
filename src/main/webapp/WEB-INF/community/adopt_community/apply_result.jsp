@@ -76,6 +76,7 @@ Collections.sort(aList);
 	      </tr>
 	      </thead>
 	      <tbody>
+<<<<<<< HEAD
 	      <% boolean exist = false; %>
 	      	<c:forEach var="item" varStatus="i" items="${aList}">
 	      	<c:if test="${item.petId == adoptAnimal.petId}">
@@ -98,6 +99,54 @@ Collections.sort(aList);
 		      		out.println("<tr><td colspan='3'><B>아직 신청자가 없습니다.</B></td></tr>");
 	      	%>
 		</tbody>
+=======
+						<tr>
+							<td>5</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">고양이</a></td>
+							<td>2022-11-19</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">사자</a></td>
+							<td>2022-11-12</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
+							
+						</tr>
+						<tr>
+							<td>3</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">토끼</a></td>
+							<td>2022-9-19</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
+							
+						</tr>
+						<tr>
+							<td>2</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">판다</a></td>
+							<td>2022-9-9</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
+							
+						</tr>
+						<tr>
+							<td>1</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">오리</a></td>
+							<td>2022-8-19</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
+							
+						</tr>
+					</tbody>
+		      <c:forEach var="item" items="${p0List}">
+		         <tr>
+		         <td>${item.postId }</td>
+		           <td>
+		             ${item.loginId}
+		           </td>
+		           <td>
+		              ${item.postDate}
+		           </td>
+		         </tr>
+		     </c:forEach> 
+>>>>>>> fe_yon1
 		</table>
 		</td>
 		</tr>

@@ -116,6 +116,16 @@ System.out.println("applyId : "+applyA.getApplyId());
 		</td>
 	 </tr>	
 	</table>
+	<table>
+	 <tr align="center">
+		<td align="left">
+		
+		<input class="btn" type="button" value="승인" onClick="userCreate()"> &nbsp;
+		<input class="btn" type="button" value="삭제" onClick="userList()">
+		</td>
+	 </tr>
+	 
+	</table>
 	</td>
 </tr>
 </table>
