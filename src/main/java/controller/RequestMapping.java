@@ -32,6 +32,7 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/apply_result", new ListApplyController());
         mappings.put("/community/adopt_community/apply_result_closer", new ViewApplyController());
         mappings.put("/community/adopt_community/add_content", new ForwardController("/community/adopt_community/add_content.jsp"));
+        mappings.put("/community/adopt_community/adopt_info_update", new ForwardController("/community/adopt_community/adopt_info_update.jsp"));
         
         mappings.put("/community/adopt_community/adopt_info/createApply", new CreateApplyController());
         
@@ -54,7 +55,7 @@ public class RequestMapping {
         mappings.put("/community/group_community/group_content_delete", new DeleteP1Controller());
         
         //검색게시판
-        mappings.put("/search/search", new ForwardController("/search/search.jsp"));
+        mappings.put("/search/search", new ListSearchController());
         
 
         //정보게시판     
