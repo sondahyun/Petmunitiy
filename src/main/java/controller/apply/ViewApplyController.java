@@ -14,7 +14,7 @@ import model.PostAdoption;
 import model.PostInformation;
 import model.UserInfo;
 
-public class ViewA0Controller implements Controller {
+public class ViewApplyController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(PostAdoption.class);
     
 	
@@ -23,7 +23,7 @@ public class ViewA0Controller implements Controller {
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
     		return "/user/loginForm.jsp"; 
     	}
-    	log.debug("여긴 신청서 작성 controller : {}");
+    	log.debug("등록된 신청서 상세보기 controller : {}");
 		UserManager manager = UserManager.getInstance();
 		
 		AdoptionAnimal aA = (AdoptionAnimal)request.getAttribute("adoptAnimal");
