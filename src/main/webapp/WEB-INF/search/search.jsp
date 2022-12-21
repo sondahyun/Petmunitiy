@@ -230,7 +230,7 @@ function search()
 							<col width="20%" />
 							<col width="20%" />
 						</colgroup>
-						<thead>
+						<thead> 
 							<tr>
 								<th>번호</th>
 								<th>작성글</th>
