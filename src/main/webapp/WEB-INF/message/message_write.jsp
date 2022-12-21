@@ -136,9 +136,9 @@ function messageCreate() {
       return false;
    }
    
-   if (form.receiver.value == "") {
+   if (form.loginId.value == "") {
 	   alert("수신자를 입력하십시오.");
-	   form.receiver.focus();
+	   form.loginId.focus();
 	   return false;
 	}
    if (form.content.value == "") {
@@ -164,7 +164,7 @@ function messageCreate() {
 	    <tr>
 	      <th style="width:10%; height:50px">받는 사람</th>
 	      <td style="width:100%; height:50px">
-	         <input id="wrtTitle" type="text" class="txttype02" name="userNickname" style="width:80%" maxlength="256">
+	         <input id="wrtTitle" type="text" class="txttype02" name="loginId" style="width:80%" maxlength="256">
 	      </td>
 	    </tr>          
 	    <tr style="width:100%; height:400px">

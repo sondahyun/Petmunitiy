@@ -30,8 +30,8 @@ public class CreateMessageController implements Controller {
 		UserManager manager = UserManager.getInstance();
 
     	int userId = UserSessionUtils.getLoginUserId(session);
-    	String userNickname=request.getParameter("userNickname");
-    	int receiver = manager.findUserIdWithNickName(userNickname);
+    	String loginId=request.getParameter("loginId");
+    	int receiver = manager.findUserId(loginId);
     	
        	Message message = new Message(
 			userId,

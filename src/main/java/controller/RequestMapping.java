@@ -77,7 +77,9 @@ public class RequestMapping {
         
         
         //message
-        mappings.put("/message/message", new ForwardController("/message/message.jsp"));
+        mappings.put("/message/message", new ListMReceiverController());
+        mappings.put("/message/message2", new ListMSenderController());
+
         mappings.put("/message/message_write", new CreateMessageController());
         
         //myPage

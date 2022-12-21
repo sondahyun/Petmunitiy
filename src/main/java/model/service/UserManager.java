@@ -91,10 +91,6 @@ public class UserManager {
 		return userDAO.findUserId(loginId);
 	}
 	
-	public int findUserIdWithNickName(String userNickname) throws SQLException{
-		return userDAO.findUserIdWithN(userNickname);
-	}
-	
 	public int updateJoinGroup(String joinGroup, int userId) throws SQLException{
 		return userDAO.updateJoinGroup(joinGroup, userId);
 	}
