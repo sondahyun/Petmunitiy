@@ -46,42 +46,50 @@ function userList(targetUri) {
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/user/register' />">
-   
-   <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-         <c:if test="${registerFailed}">
-         <font color="red"><c:out value="${exception.getMessage()}" /></font>
-       </c:if>  
-<table>
-<tr>
-<td>
 <br>
 <h3>폼 작성</h3>
 <form method="post" action="/community/petstar_community/add_content">
-   <table style="background-color: #848484" style="width: 100%">
+  <table style="background-color: ffffff" style="width: 100%">
     <!--<center>-->
-    <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">폼</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240;" name="address">
-      </td>
-    </tr>
-    <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">사진</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="file" style="width: 240" name="hope">
-      </td>
-     </tr> 
-    </table>
-    <br>
-    </td>
- </tr>
- <tr>
- 	<td>
- 		<input class="btn" type="button" value="폼 작성완료" onClick="applyAdopt()"> &nbsp;
-	</td>
- </tr>
-</table>
+    <tr>
+		<td>
+		<br><br>
+		   <table style="background-color: #848484" style="width: 100%">
+		    <!--<center>-->
+		    <tr height="40">
+		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">제목</td>
+		      <td style="width: 100%" bgcolor="ffffff" >
+		         <input type="text" style="width: 100%; height:30px" name="postTitle">
+		      </td>
+		    </tr>
+		    <tr height="40">
+		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">사진</td>
+		      <td style="width: 100%" bgcolor="ffffff" >
+		         <input type="file" style="width: 240" name="fileName" size="11" multiple="multiple">
+		      </td>
+		     </tr>
+		     <tr height="40">
+		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">내용</td>
+		      <td style="width: 100%" bgcolor="ffffff" >
+		         <textarea style="width: 100%; height:80px" name="postContent"></textarea>
+		      </td>
+		    </tr> 
+		    <!-- <tr height="40">
+		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">종</td>
+		      <td style="width: 100%" bgcolor="ffffff">
+		         <input type="text" style="width: 100%; height:30px" name="kind">
+		      </td>
+		    </tr> -->
+		    </table>
+	    <br>
+	    </td>
+	 </tr>
+	 <tr>
+	 	<td><br>
+	 		<input class="btn" type="button" value="폼 작성완료" onClick="applyInfo()"> &nbsp;
+		</td>
+	 </tr>
+	</table>
 </form>
 </body>
 </html>
