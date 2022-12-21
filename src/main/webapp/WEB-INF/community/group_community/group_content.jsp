@@ -101,35 +101,34 @@
 					${post.headCount}
 				</td>
 			</tr>
-					
+			<!-- if) 모임 가입하지 않은 사람들한테 보이는 버튼 -->
+				<tr>
+					<td class="btn" colspan=2>
+						<a class="nav-link" href="<c:url value='/community/group_community/group_content_update' />">모임 가입하기</a>
+					</td>
+				</tr>	
+			<!--  -->	
 			</table>
 		<br>
 		</td>
 	</tr>
+	<!-- if) 모임에 가입한 사람만 보이는 화면 -->
 	<tr>
 		<td>
-			<table>
+			<table style="background-color: #848484; width: 80%; margin-top:0px">
 				<tr>
-					<td>
+					<td style="height:50%; width:10%; align:center; background-color:#E6E6E6;">
 						모임 팀원					
 					</td>
+					<td style="height:50%; width:90%; align:center; background-color:#E6E6E6;">
+						<!-- 팀원 나열 -->
 					</td>
-					
 				</tr>
 			</table>
 		</td>
 	</tr>
-	<tr>
-		<td>
-				
-		</td>
-	</tr>
-	<tr>
-		<td>
-				
-		</td>
-	</tr>
-		
+	<!--  -->
+	
 		<%-- 모달 이용 
 		<tr>
 		 <td style="width:100%">
