@@ -5,6 +5,9 @@
 <head>
 <title>Petmunity</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
+<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
 <style>
   /*.container {
      position: absolute;
@@ -123,290 +126,72 @@
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<div id="popwrap03">
-  <div></div>
-  <div ox">
-  
-    <div id="pop_container" class="">
-      <ul>
-        <li rel="tab1" onclick="location.href='/ilos/message/received_list_pop_form.acl'">쪽지</li>
-      
-      
-        
-      </ul>
-      
-      <div>
-        <div id="tab1" class="tab_content" style="display: block;">
-          <ul>
-            
-            <li><span style="font-weight: bold;">받은쪽지</span></li>
-            <li><span><a href="/ilos/message/sent_list_pop_form.acl">보낸쪽지</a></span></li>
-            <li style="float: right; padding: 5px 0px;">             
-                <span><a href="/ilos/message/insert_pop_form.acl">쪽지쓰기</a></span>
-                                 
-            </li>
-          </ul>
-        </div>
-      
-      </div>
-    </div>
-    <div>
-      <select name="newMessgeChk" id="newMessgeChk" style="width:80px; margin-right: 10px;">
-        <option value="" selected="">전체</option>
-        <option value="N">읽음</option>
-        <option value="Y">읽지않음</option>
-      </select>
-      <input type="text" id="SCH_VAL" name="SCH_VAL" class="txttype" title="검색어를 입력하세요." value="" style="width: 134px;">
-      
-      <div id="sch_btn" title="검색">search</div>
-      
-      <div>
-        <div onclick="msgCntChange();">
-          <div>목록 개수 <img src="/ilos/images/common/lnb/arrow_bottom.png" style="float: right; width: 8px; margin: 6px 3px 0 5px;"></div>
-        </div>
-        <div id="messageCnt" style="display:none;">
-        
-          <div>10</div>
-        
-          <div>20</div>
-        
-          <div>30</div>
-        
-          <div>50</div>
-        
-          <div>100</div>
-              
-        </div>
-      </div>     
-       
-    </div>
-    
-    <div>
-      <table border="1" summary="받은쪽지 목록(아이디,이름,제목,날짜 항목)">
-        <caption>받은쪽지 목록</caption>
-        <colgroup>
-          <col style="width:40px;">
-          <col style="width:80px;">
-          <col>
-          <col style="width:120px;">
-        </colgroup>
-        <thead>
-          <tr>
-            <th scope="col" class="first"><label style="display: inline;"><input type="checkbox" id="allchk" name="allchk" value="Y" class="chktype01"></label></th>
-            <th scope="col">보낸사람</th>
-            <th scope="col">제목</th>
-            <th scope="col" class="last">날짜</th>
-          </tr>
-        </thead>
-        <tbody>
-        
-          <tr>
-            <td><input type="checkbox" id="wrtInform" name="wrtInform" value="1047829" class="chktype01"></td>
-            <td></td>
-            <td style="letter-spacing:-1px;">
-              <a href="javascript:viewPage('1047829', 'L6FDUYT4Z4DEU');" style="font-weight:normal"></a>
-            </td>
-            <td>
-            
-            </td>
-          </tr>
-        
-          <tr>
-            <td><input type="checkbox" id="wrtInform" name="wrtInform" value="1030660" class="chktype01"></td>
-            <td></td>
-            <td style="letter-spacing:-1px;">
-              <a href="javascript:viewPage('1030660', 'L6FDUYT4Z4DEU');" style="font-weight:normal"></a>
-            </td>
-            <td>
-            
-            
-            </td>
-          </tr>
-        
-          <tr>
-            <td class="chk"><input type="checkbox" id="wrtInform" name="wrtInform" value="1029025" class="chktype01"></td>
-            <td></td>
-            <td class="left " style="letter-spacing:-1px;">
-              <a class="site-link " href="javascript:viewPage('1029025', 'L6FDUYT4Z4DEU');" style="font-weight:normal"></a>
-            </td>
-            <td class="number last">
-            </td>
-          </tr>
-        
-          <tr>
-            <td class="chk"><input type="checkbox" id="wrtInform" name="wrtInform" value="1029019" class="chktype01"></td>
-            <td></td>
-            <td class="left msg-cancel" style="letter-spacing:-1px;">
-              <a class="site-link " href="javascript:viewPage('1029019', 'L6FDUYT4Z4DEU');" style="font-weight:normal"></a>
-            </td>
-            <td class="number last">
-            
-              <span class="site-color"> </span>
-            
-            </td>
-          </tr>
-        
-          <tr>
-            <td><input type="checkbox" id="wrtInform" name="wrtInform" value="1029012" class="chktype01"></td>
-            <td></td>
-            <td style="letter-spacing:-1px;">
-              <a href="javascript:viewPage('1029012', 'L6FDUYT4Z4DEU');" style="font-weight:normal"></a>
-            </td>
-            <td>
-            </td>
-          </tr>
-        
-          <tr>
-            <td><input type="checkbox" id="wrtInform" name="wrtInform" value="1005350" class="chktype01"></td>
-            <td></td>
-            <td style="letter-spacing:-1px;">
-              <a href="javascript:viewPage('1005350', 'L6FDUYT4Z4DEU');" style="font-weight:normal"></a>
-            </td>
-            <td>
-            </td>
-          </tr>
-        
-          <tr>
-            <td ><input type="checkbox" id="wrtInform" name="wrtInform" value="997764" class="chktype01"></td>
-            <td></td>
-            <td style="letter-spacing:-1px;">
-              <a  href="javascript:viewPage('997764', 'QETFSZYMA6WY2');" style="font-weight:normal"></a>
-            </td>
-            <td>
-            </td>
-          </tr>
-        
-          <tr>
-            <td><input type="checkbox" id="wrtInform" name="wrtInform" value="901797" class="chktype01"></td>
-            <td></td>
-            <td style="letter-spacing:-1px;">
-              <a href="javascript:viewPage('901797', 'B6XVV2UGCCVYU');" style="font-weight:normal"></a>
-            </td>
-            <td>
-            </td>
-          </tr>
-        
-          <tr>
-            <td><input type="checkbox" id="wrtInform" name="wrtInform" value="899106" class="chktype01"></td>
-            <td></td>
-            <td style="letter-spacing:-1px;">
-              <a href="javascript:viewPage('899106', 'NE4PIHPNAXJGC');" style="font-weight:normal"></a>
-            </td>
-            <td>
-            </td>
-          </tr>
-        
-          <tr>
-            <td><input type="checkbox" id="wrtInform" name="wrtInform" value="896350" class="chktype01"></td>
-            <td></td>
-            <td style="letter-spacing:-1px;">
-              <a href="javascript:viewPage('896350', 'B6XVV2UGCCVYU');" style="font-weight:normal"></a>
-            </td>
-            <td>
-            
-            </td>
-          </tr>
-           
-           
- 
-        </tbody>
-      </table>
-    </div>
-    <!-- [S]Paging -->
-     
+<br>
 
-
-
-
-
- 
-
-
- 
-  <div class="paging"> 
-
-
-<span class="prev">
+<table style="width:80%" align="center">
+	<tr>
+		<td colspan=2>
+			<h3>쪽지</h3><br>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2 align="left">
+			<select name="newMessgeChk" id="newMessgeChk" style="width:100px">
+		        <option value="N">보낸쪽지</option>
+		        <option value="Y">받은쪽지</option>
+		     </select>
+			<input class="srch" type="text" placeholder="검색어를 입력하세요.">
+			<button class="btn" >검색</button>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td align="right"><br>
+			<a class="btn" href="<c:url value='/message/message_write' />">쪽지쓰기</a>
+		</td>
+	</tr>
+</table>
+<br>
+<table style="width:80%" align="center" summary="받은쪽지 목록(아이디,이름,제목,날짜 항목)">
+  <tr>
+  	<td class="main">
+		<table class="list_table">
+	      <colgroup>
+	         <col width="15%" />
+	         <col width="45%" />
+	         <col width="20%" />
+	         <col width="20%" />
+	      </colgroup>
+	      <thead>
+	      <tr>
+	        <!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
+	        <th>번호</th>
+			<th>제목</th>
+			<th>보낸사람</th>
+			<th>날짜</th>
+	      </tr>
+	      </thead>
+	      <c:forEach var="item" items="${p0List}">
+	         <tr>
+	         <td>${item.postId }</td>
+	          <td>
+	             <a href="<c:url value='/community/info_community/info_content'>
+	                   	<c:param name='postId' value='${item.postId}'/>
+	                  </c:url>">
+	             ${item.postTitle}</a>
+	          </td>
+	           <td>
+	             ${item.loginId}
+	           </td>
+	           <td>
+	             ${item.postDate}
+	           </td>
+	         </tr>
+	     </c:forEach> 
+		</table>
+	</td>
+  </tr>
   
-  <img src="/ilos/images/common/btn/paging_first.gif" alt="처음 목록으로">
-  
-  <img src="/ilos/images/common/btn/paging_prev.gif" alt="이전 10페이지 보기">
-&nbsp;</span> 
-
-  
-    
-      <em title="현재 선택 목록"> <strong class="site-font-color">1</strong> </em> 
-    
-  
-    
-      &nbsp;<a class="site-link" href="javascript:listPage('11')">2</a>&nbsp;
-    
-  
-    
-      &nbsp;<a class="site-link" href="javascript:listPage('21')">3</a>&nbsp;
-    
-  
-    
-      &nbsp;<a class="site-link" href="javascript:listPage('31')">4</a>&nbsp;
-    
-  
-    
-      &nbsp;<a class="site-link" href="javascript:listPage('41')">5</a>&nbsp;
-    
-  
-    
-      &nbsp;<a class="site-link" href="javascript:listPage('51')">6</a>&nbsp;
-    
-  
-    
-      &nbsp;<a class="site-link" href="javascript:listPage('61')">7</a>&nbsp;
-    
-  
-    
-      &nbsp;<a class="site-link" href="javascript:listPage('71')">8</a>&nbsp;
-    
-  
-    
-      &nbsp;<a class="site-link" href="javascript:listPage('81')">9</a>&nbsp;
-    
-  
-    
-      &nbsp;<a class="site-link" href="javascript:listPage('91')">10</a>&nbsp;
-    
-  
-
-
-  <span class="next">&nbsp;
-  <a href="javascript:listPage('101');"><img src="/ilos/images/common/btn/paging_next.gif" alt="다음 10페이지 보기"></a>&nbsp;
-  
-  <a href="javascript:listPage('121')"><img src="/ilos/images/common/btn/paging_last.gif" alt="마지막 목록으로"></a>
-  
-  </span>
-
-  </div>
-  
-                   
-    <!-- [E]Paging -->
-    <div class="bbs-rbutton-paging" style="margin-top:10px">
-      <div class="site_button" id="deleteBtn" style="display: none;">삭제</div>
-      <div class="site_button" id="closeBtn">닫기</div>
-    </div>
-  </div>
-  <div class="pop-team-inbtm mt20"></div>
-</div>
-
-<%-- <div class="image" align="center">
-   <a href="../../main/main1.jsp">
-        <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>   
-   <a href="../../main/main1.jsp">
-        <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>   
-   <a href="../../main/main1.jsp">
-        <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>   
-   <a href="../../main/main1.jsp">
-        <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>     
-</div> --%>
-  <div class="detail">
-      <br>copyright 2022. Cloud.
-   </div>
+</table>
 </body>
 </html>
