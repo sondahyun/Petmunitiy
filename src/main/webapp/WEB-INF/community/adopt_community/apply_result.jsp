@@ -68,7 +68,6 @@ Collections.sort(aList);
 	      <tr>
 	        <!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
 	        <th>번호</th>
-			<th>제목</th>
 			<th>이름</th>
 			<th>등록일자</th>
 	      </tr>
@@ -76,31 +75,30 @@ Collections.sort(aList);
 	      <tbody>
 						<tr>
 							<td>5</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">안녕하세요!!</a></td>
+							
 							<td>고양이(cat)</td>
 							<td>2022-11-19</td>
 						</tr>
 						<tr>
 							<td>4</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">반가워요ㅎㅎ</a></td>
+							
 							<td>사자(lion)</td>
 							<td>2022-11-12</td>
 						</tr>
 						<tr>
 							<td>3</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">입양 원해요</a></td>
+			
 							<td>토끼(rabbit)</td>
 							<td>2022-9-19</td>
 						</tr>
 						<tr>
 							<td>2</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">안녕안녕</a></td>
+							
 							<td>판다(panda)</td>
 							<td>2022-9-9</td>
 						</tr>
 						<tr>
 							<td>1</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">안녕하세요</a></td>
 							<td>판다(panda)</td>
 							<td>2022-8-19</td>
 						</tr>
@@ -108,12 +106,6 @@ Collections.sort(aList);
 		      <c:forEach var="item" items="${p0List}">
 		         <tr>
 		         <td>${item.postId }</td>
-		           <td>
-		              <a href="<c:url value='/community/adopt_community/apply_result_closer'>
-		                     <%-- <c:param name='postId' value='${item.postId}'/> --%>
-		                   </c:url>">
-		              ${item.postTitle}</a>
-		           </td>
 		           <td>
 		             ${item.loginId}
 		           </td>
