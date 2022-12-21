@@ -265,6 +265,10 @@ public class UserManager {
 		return postPetstargramDAO.update(post);
 	}
 	
+	public int updateWithFilePetstargram(PostPetstargram post) throws SQLException {
+		return postPetstargramDAO.updateWithFile(post);
+	}
+	
 	public int removeP2Petstargram(int postId) throws SQLException{
 		return postPetstargramDAO.remove(postId);
 	}
