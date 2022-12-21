@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Apply {
+public class Apply implements Comparable {
 	private int applyId;
 	private String name;
 	private int aType;
@@ -132,6 +132,14 @@ public class Apply {
 				+ ", phoneNumber=" + phoneNumber + ", hopeConditions=" + hopeConditions + ", allergy=" + allergy
 				+ ", address=" + address + ", housingType=" + housingType + ", resolution=" + resolution + ", etc="
 				+ etc + ", petId=" + petId + "]";
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		Apply apply = (Apply) o;
+		if(this.applyId < apply.applyId)
+			return -1;
+		else return 1;
 	}	
 	
 }
