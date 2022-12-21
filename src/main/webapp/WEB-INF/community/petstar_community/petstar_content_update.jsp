@@ -86,8 +86,15 @@ if (c2List != null)
 							<input type="text" style="width: 240" name="name" value="${p2.postContent}">
 						</td>
 					</tr>
-				</table></td>
+				</table>
+			</td>
 		</tr>
+		<tr>
+		 	<td colspan=2>
+		 	<br><br>
+		 		<input class="btn" type="button" value="폼 수정완료" onClick="userCreate()"> &nbsp;
+			</td>
+		 </tr>
 	</table>
 </body>
 </html>
