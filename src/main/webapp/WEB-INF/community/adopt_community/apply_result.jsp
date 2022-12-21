@@ -3,7 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 @SuppressWarnings("unchecked")
+AdoptionAnimal adoptAnimal = (AdoptionAnimal)session.getAttribute("adoptAnimal");
 ArrayList<Apply> aList = (ArrayList<Apply>)request.getAttribute("aList");
+System.out.println(aList.size());
 Collections.sort(aList);
 %>
 <!DOCTYPE html>
@@ -69,51 +71,31 @@ Collections.sort(aList);
 	        <!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
 	        <th>번호</th>
 			<th>이름</th>
-			<th>등록일자</th>
+			<th>신청타입</th>
 	      </tr>
 	      </thead>
 	      <tbody>
-						<tr>
-							<td>5</td>
-							
-							<td>고양이(cat)</td>
-							<td>2022-11-19</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							
-							<td>사자(lion)</td>
-							<td>2022-11-12</td>
-						</tr>
-						<tr>
-							<td>3</td>
-			
-							<td>토끼(rabbit)</td>
-							<td>2022-9-19</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							
-							<td>판다(panda)</td>
-							<td>2022-9-9</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>판다(panda)</td>
-							<td>2022-8-19</td>
-						</tr>
-					</tbody>
-		      <c:forEach var="item" items="${p0List}">
-		         <tr>
-		         <td>${item.postId }</td>
-		           <td>
-		             ${item.loginId}
-		           </td>
-		           <td>
-		              ${item.postDate}
-		           </td>
-		         </tr>
-		     </c:forEach> 
+	      <% boolean exist = false; %>
+	      	<c:forEach var="item" varStatus="i" items="${aList}">
+	      	<c:if test="${item.petId == adoptAnimal.petId}">
+	      		<%exist = true; %>
+	      		<tr>
+					<td>${item.applyId }</td>
+					<td>${item.name}</td>
+					<c:if test="${item.aType==0}">
+						<td>임보</td>
+					</c:if>
+					<c:if test="${item.aType==1}">
+						<td>입양</td>
+					</c:if>
+				</tr>
+				</c:if>
+	      	</c:forEach>
+	      	<%
+	      		if(exist == false)
+		      		out.println("<tr><td colspan='3'><B>아직 신청자가 없습니다.</B></td></tr>");
+	      	%>
+		</tbody>
 		</table>
 		</td>
 		</tr>
