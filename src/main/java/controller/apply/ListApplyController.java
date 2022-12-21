@@ -17,7 +17,8 @@ public class ListApplyController implements Controller {
 		List<Apply> aList = manager.findApplyList();
 		
 		// commList 객체를 request에 저장하여 커뮤니티 리스트 화면으로 이동(forwarding)
-		request.setAttribute("aList", aList);				
+		request.setAttribute("aList", aList);
+		request.setAttribute("adoptId", request.getParameter("postId"));
 		return "/community/adopt_community/apply_result.jsp";        
     }
 }

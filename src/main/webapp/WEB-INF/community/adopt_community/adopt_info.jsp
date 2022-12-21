@@ -39,7 +39,7 @@
 	<% String logId = (String)session.getAttribute("loginId"); %>
 	<c:set var="lui" value="<%=logId%>"/>
 	<c:if test="${lui == pA.loginId}">
-		<a style="float:right" href="<c:url value='/community/adopt_community/apply_result' />">모아보기</a><br><br>
+		<a style="float:right" href="<c:url value='/community/adopt_community/apply_result'/>">모아보기</a><br><br>
 	</c:if>
 	<table style="background-color: #848484" style="width: 100%">
 	    <!--<center>-->

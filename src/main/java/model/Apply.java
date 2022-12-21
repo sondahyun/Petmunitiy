@@ -138,8 +138,8 @@ public class Apply implements Comparable {
 	public int compareTo(Object o) {
 		Apply apply = (Apply) o;
 		if(this.applyId < apply.applyId)
-			return -1;
-		else return 1;
+			return 1;
+		else return -1;
 	}	
 	
 }
