@@ -119,6 +119,9 @@ public class UserManager {
 	public int updatePostInformation(PostInformation post) throws SQLException {
 		return postInformationDAO.update(post);            
 	}
+	public int updateWithFilePostInformation(PostInformation post) throws SQLException {
+		return postInformationDAO.updateWithFile(post);            
+	}
 	
 	public int removePostInformation(int postId) throws SQLException{
 		return postInformationDAO.remove(postId);
