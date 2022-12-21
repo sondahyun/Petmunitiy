@@ -62,25 +62,31 @@ function userList(targetUri) {
     <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">모임명</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240;" name="address">
+         <input type="text" style="width: 240;" name="postTitle">
       </td>
     </tr>
     <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">모임 설명</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="hope">
+         <input type="text" style="width: 240" name="postContent">
       </td>
      </tr> 
      <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">모임 목적</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="hope">
+         <input type="text" style="width: 240" name="groupPurpose">
       </td>
      </tr> 
      <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">지역</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="hope">
+         <input type="text" style="width: 240" name="region">
+      </td>
+     </tr> 
+     <tr height="40">
+      <td width="150" align="center" bgcolor="#E6E6E6">모임 대표 배경 사진</td>
+      <td width="250" bgcolor="ffffff" style="padding-left: 10">
+         <input type="file" style="width: 240" name="filename">
       </td>
      </tr> 
     </table>
