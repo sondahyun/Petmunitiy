@@ -59,10 +59,20 @@
 					<img src="<c:url value='/upload/${post.fileName}'/>" />		
 				</td>
 				</tr>
+				<tr style="height: 40%; width: 100%">
+						<td
+							style="height: 40%; width: 15%; align: center; background-color: #E6E6E6;">제목</td>
+						<td
+							style="height: 40%; width: 100%; align: center; background-color: #ffffff; padding-left: 10">
+							<!-- 제목 정보 가져오기 --> ${post.postTitle}
+						</td>
+					</tr>
 				<tr style="height:40%; width:100%">
 			      <td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >작성자</td>
 			      <td style="height:40%; width:100%; align:center; background-color:#ffffff; padding-left: 10">
-			        ${post.loginId}
+			        <% String logName = post.getLoginId(); %>
+					<c:set var="loginName" value="<%=UserSessionUtils.getUserNickName(logName) %>"/>
+					${loginName}
 			      </td>
 			    </tr>
 			    <tr style="height:40%; width:100%">
