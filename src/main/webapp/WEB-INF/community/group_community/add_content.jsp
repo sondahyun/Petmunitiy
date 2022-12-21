@@ -56,19 +56,31 @@ function userList(targetUri) {
 <tr>
 <td>
 <br>
-<h3>게시글 작성</h3>
+<h3>모임 생성</h3><br>
    <table style="background-color: #848484" style="width: 100%">
     <!--<center>-->
     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">게시글</td>
+      <td width="150" align="center" bgcolor="#E6E6E6">모임명</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
          <input type="text" style="width: 240;" name="address">
       </td>
     </tr>
     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">사진</td>
+      <td width="150" align="center" bgcolor="#E6E6E6">모임 설명</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="file" style="width: 240" name="hope">
+         <input type="text" style="width: 240" name="hope">
+      </td>
+     </tr> 
+     <tr height="40">
+      <td width="150" align="center" bgcolor="#E6E6E6">모임 목적</td>
+      <td width="250" bgcolor="ffffff" style="padding-left: 10">
+         <input type="text" style="width: 240" name="hope">
+      </td>
+     </tr> 
+     <tr height="40">
+      <td width="150" align="center" bgcolor="#E6E6E6">지역</td>
+      <td width="250" bgcolor="ffffff" style="padding-left: 10">
+         <input type="text" style="width: 240" name="hope">
       </td>
      </tr> 
     </table>
@@ -77,7 +89,7 @@ function userList(targetUri) {
  </tr>
  <tr>
  	<td>
- 		<input class="btn" type="button" value="게시글 작성완료" onClick="userCreate()"> &nbsp;
+ 		<input class="btn" type="button" value="모임 생성완료" onClick="userCreate()"> &nbsp;
 	</td>
  </tr>
 </table>

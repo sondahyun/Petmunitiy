@@ -78,7 +78,7 @@
 	<% if(session.getAttribute("loginId") != null) {%>
 	<tr>
 		<td colspan="3">
-			<a style="float:right" href="<c:url value='/community/group_community/add_content' />">폼 작성</a>
+			<a style="float:right" href="<c:url value='/community/group_community/add_content' />">모임 생성</a>
 		</td>
 	</tr>
 	<%} %>
