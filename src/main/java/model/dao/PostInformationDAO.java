@@ -130,21 +130,24 @@ public class PostInformationDAO {
 	}
 
 
-	public List<PostInformation> searchP0List(String postTitle, Date start, Date end) throws SQLException {
-		String sql = "SELECT * " + "FROM PostInformation " + "WHERE POSTTITLE LIKE %?% AND POSTDATE BETWEEN ? AND ? ";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { postTitle, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime()) }); // JDBCUtil에 query문과 매개 변수 설정
-
+	public List<PostInformation> searchP0List(String word, Date start, Date end) throws SQLException {
+		//String sql = "SELECT * " + "FROM PostInformation " + "WHERE postContent LIKE '%?%' or postTitle like '%?%' AND postDate BETWEEN ? AND ? ";
+		//jdbcUtil.setSqlAndParameters(sql, new Object[] { word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime()) }); // JDBCUtil에 query문과 매개 변수 설정
+		String sql = "SELECT * "+ "FROM PostInformation "+"where (postTitle like ? or postContent like ?) and (postDate between ? and ?) ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});
+		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
 			ArrayList<PostInformation> InformationList = new ArrayList<PostInformation>();// post들의 리스트 생성
-			while(rs.next()) {// 학생 정보 발견
-				PostInformation post = new PostInformation();// post 객체를 생성하여 정보를 저장
-				post.setPostTitle(rs.getString("postTitle"));
-				post.setPostDate(rs.getDate("postDate"));
-				post.setPostContent(rs.getString("postContent"));
-				post.setFileName(rs.getString("fileName"));
-				post.setKind(rs.getString("kind"));
-				post.setLoginId(rs.getString("loginId"));
+			while(rs.next()) {
+				PostInformation post = new PostInformation(         // PostInformation 객체를 생성하여 현재 행의 정보를 저장
+						rs.getInt("postId"),
+						rs.getString("postTitle"),
+						rs.getDate("postDate"),
+						rs.getString("postContent"),
+						rs.getString("fileName"),
+						rs.getString("kind"),
+						rs.getString("loginId"));
 				InformationList.add(post);
 			}
 			return InformationList;

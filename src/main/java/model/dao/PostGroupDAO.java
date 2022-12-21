@@ -136,10 +136,10 @@ public class PostGroupDAO {
 	}
 
 
-	public List<PostGroup> searchP1List(String postTitle, Date start, Date end) throws SQLException {
-		String sql = "SELECT * " + "FROM PostGroup " + "WHERE POSTTITLE LIKE %?% AND POSTDATE BETWEEN ? AND ? ";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { postTitle, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime()) }); // JDBCUtil에 query문과 매개 변수 설정
-
+	public List<PostGroup> searchP1List(String word, Date start, Date end) throws SQLException {
+		String sql = "SELECT * "+ "FROM PostGroup "+"where (postTitle like ? or postContent like ?) and (postDate between ? and ?) ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});
+		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
 			ArrayList<PostGroup> groupList = new ArrayList<PostGroup>();// post들의 리스트 생성

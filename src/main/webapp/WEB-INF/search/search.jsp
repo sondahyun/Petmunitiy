@@ -6,10 +6,10 @@
 	ArrayList<PostPetstargram> p2List = (ArrayList<PostPetstargram>)request.getAttribute("p2List");
 	ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
 	
-	Collections.sort(p0List);
-	Collections.sort(p1List);
-	Collections.sort(p2List);
-	Collections.sort(p3List);
+	if(p0List != null) Collections.sort(p0List);
+	if(p1List != null) Collections.sort(p1List);
+	if(p2List != null) Collections.sort(p2List);
+	if(p3List != null) Collections.sort(p3List);
 %>
 
 <!DOCTYPE html>
@@ -20,12 +20,28 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
+<script>
+function search()
+{
+	if(searchForm.word.value==""){
+		alert("검색어를 입력하세요");
+		return false;
+	}
+	if(searchForm.start.value=="" || searchForm.end.value==""){
+		alert("날짜조건을 입력하세요");
+		return false;
+	}
+	searchForm.submit();
+	
+}
 
+</script>
 </head>
 
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
+<form name="searchForm" action="<c:url value='/search/search'/>">
 <table style="width:100%">
 <tr>
 	<td class="myPage_mini">
@@ -36,11 +52,12 @@
 		<table style="margin-top:0px;">
 		<tr>
 			<td>
-				<select name=phone1>
-					<option value=0 selected>입양/임보 커뮤니티</option>
-					<option value=1>펫스타그램 커뮤니티</option>
-					<option value=2>그룹 커뮤니티</option>
-					<option value=3>정보 커뮤니티</option>
+				<select name=community>
+					<option value=0 selected>전체 커뮤니티</option>
+					<option value=1>입양/임보 커뮤니티</option>
+					<option value=2>펫스타그램 커뮤니티</option>
+					<option value=3>그룹 커뮤니티</option>
+					<option value=4>정보 커뮤니티</option>
 				</select> 
 				&nbsp;
 				<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
@@ -57,19 +74,19 @@
  					</option>
 				</select> --%>
 				
-				<input type="date" style="width: 240" name="userBirth" >-<input type="date" style="width: 240" name="userBirth" >
+				<input type="date" style="width: 240" name="start" >-<input type="date" style="width: 240" name="end" >
 				&nbsp;
-			    <input class="srch" type="text" placeholder="검색어를 입력하세요.">
-			    <button class="btn" >검색</button>
+			    <input class="srch" type="text" placeholder="검색어를 입력하세요." name="word">
+			    <button class="btn" onClick="search()" >검색</button>
 			</td>
 		<tr>
 		<tr>
 			<td>
 				<tr>
 				<td>
-					정보 커뮤니티
-					<%if (p0List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+					<br>정보 커뮤니티
+					<%if (p0List == null || p0List.size()==0){%>
+						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
 					<% }else{ %>
 					<table class="list_table">
 						<colgroup>
@@ -112,9 +129,9 @@
 			</tr>
 				<tr>
 				<td>
-					그룹 커뮤니티
-					<%if (p1List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+					<br>그룹 커뮤니티
+					<%if (p1List == null || p1List.size()==0){%>
+						<tr><td>작성글이 없습니다<br><br></td></tr>
 					<% }else{ %>
 					<table class="list_table">
 						<colgroup>
@@ -157,9 +174,9 @@
 			</tr>
 			<tr>
 				<td>
-					펫스타그램 커뮤니티
-					<%if (p2List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+					<br>펫스타그램 커뮤니티
+					<%if (p2List == null || p2List.size()==0){%>
+						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
 					<% }else{ %>
 					<table class="list_table">
 						<colgroup>
@@ -202,9 +219,9 @@
 			</tr>
 			<tr>
 				<td>
-					입양/임보 커뮤니티
-					<%if (p3List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+					<br>입양/임보 커뮤니티
+					<%if (p3List == null || p3List.size()==0){%>
+						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
 					<% }else{ %>
 					<table class="list_table">
 						<colgroup>
@@ -213,7 +230,7 @@
 							<col width="20%" />
 							<col width="20%" />
 						</colgroup>
-						<thead>
+						<thead> 
 							<tr>
 								<th>번호</th>
 								<th>작성글</th>
@@ -254,7 +271,7 @@
 	</td>
 </tr>
 </table>
-
+</form>
 <!-- 테이블 종료 -->
 
 </body>

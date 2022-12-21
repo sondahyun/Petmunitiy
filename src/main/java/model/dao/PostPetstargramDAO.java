@@ -125,10 +125,10 @@ public class PostPetstargramDAO {
 	}
 
 
-	public List<PostPetstargram> searchP2List(String postTitle, Date start, Date end) throws SQLException {
-		String sql = "SELECT * " + "FROM PostPetstargram " + "WHERE POSTTITLE LIKE %?% AND POSTDATE BETWEEN ? AND ? ";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { postTitle, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime()) }); // JDBCUtil에 query문과 매개 변수 설정
-
+	public List<PostPetstargram> searchP2List(String word, Date start, Date end) throws SQLException {
+		String sql = "SELECT * "+ "FROM PostPetstargram "+"where (postTitle like ? or postContent like ?) and (postDate between ? and ?) ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});
+		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
 			ArrayList<PostPetstargram> PetstargramList = new ArrayList<PostPetstargram>();// post들의 리스트 생성
