@@ -127,8 +127,8 @@ function userList(targetUri) {
      <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">알레르기 유무</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="radio" name="allergy" value="allergyNo"/> 없음
-         <input type="radio" name="allergy" value="allergyYes"/> 있음
+         <input type="radio" name="allergy" value="없음"/> 없음
+         <input type="radio" name="allergy" value="있음"/> 있음
       </td>
      </tr>
      <!-- <tr height="40">
