@@ -32,7 +32,7 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/apply_result_closer", new ForwardController("/community/adopt_community/apply_result_closer.jsp"));
         mappings.put("/community/adopt_community/add_content", new ForwardController("/community/adopt_community/add_content.jsp"));
         
-        mappings.put("/community/petstar_community/petstar_info/createApply", new CreateApplyController());
+        mappings.put("/community/adopt_community/adopt_info/createApply", new CreateApplyController());
         
         //펫스타그램
         mappings.put("/community/petstar_community/petstar_community", new ListP2Controller());
