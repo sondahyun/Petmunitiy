@@ -56,7 +56,8 @@
 			%>
 			<th>
 	    		<td>
-	    			<a class="nav-link" href="<c:url value='/user/logout' />">로그아웃 </a>
+	    			<a class="nav-link" href="<c:url value='/user/logout' />">로그아웃 </a>&nbsp;&nbsp;&nbsp;
+	    			<a class="nav-link" href="<c:url value='/message/message' />">쪽지하기 </a>
 	    		</td>
 	    	</th>
 	 	  <%
