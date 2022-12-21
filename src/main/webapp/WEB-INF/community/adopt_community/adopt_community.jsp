@@ -7,6 +7,9 @@
 	ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
 	Collections.sort(p3List); 
 	System.out.println(p3List.size());
+	
+	if(session.getAttribute("postId")!=null)
+		session.removeAttribute("postId");
 %>
 
 <!DOCTYPE html>

@@ -323,6 +323,9 @@ public class UserManager {
 	public int updateP3Adoption(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.update(post);
 	}
+	public int updateP3Approval(PostAdoption post) throws SQLException {
+		return postAdoptionDAO.updateApproval(post);
+	}
 	
 	public int removeP3Adoption(int postId) throws SQLException{
 		return postAdoptionDAO.remove(postId);
@@ -348,6 +351,7 @@ public class UserManager {
 	public String findP3Title(int postId) throws SQLException {
 		return postAdoptionDAO.findPostTitle(postId); 
 	}
+	
 	//c3
 	public List<CommentAdoption> findC3WithUser(int userId) throws SQLException {
 		return commentP3DAO.findC3WithUser(userId);

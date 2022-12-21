@@ -1,37 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="model.*" import="java.util.*" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="utf-8" import="model.*" import="java.util.*"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 @SuppressWarnings("unchecked")
-AdoptionAnimal adoptAnimal = (AdoptionAnimal)session.getAttribute("adoptAnimal");
-ArrayList<Apply> aList = (ArrayList<Apply>)request.getAttribute("aList");
+AdoptionAnimal adoptAnimal = (AdoptionAnimal) session.getAttribute("adoptAnimal");
+ArrayList<Apply> aList = (ArrayList<Apply>) request.getAttribute("aList");
 System.out.println(aList.size());
 Collections.sort(aList);
+
+pageContext.setAttribute("adoptId", request.getAttribute("adoptId"));
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>신청 폼 모아보기</title>
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/user.css' />"
+	type="text/css">
+<link rel=stylesheet href="<c:url value='/css/btn.css' />"
+	type="text/css">
+<link rel=stylesheet href="<c:url value='/css/list.css' />"
+	type="text/css">
 
 </head>
 
 <body>
-<%@include file="/WEB-INF/navbar.jsp" %>
-<br>
-<h2>신청자 모아보기</h2>
-<table style="width:100%">
-<tr>
-	<td class="myPage_mini">
-		<%@include file="/WEB-INF/community/adopt_community/adopt_main2.jsp" %>
-	</td>
-	
-	<td class="main">
-		<table style="margin-top:0px;">
-		<%-- <tr>
+	<%@include file="/WEB-INF/navbar.jsp"%>
+	<br>
+	<h2>신청자 모아보기</h2>
+	<table style="width: 100%">
+		<tr>
+			<td class="myPage_mini"><%@include
+					file="/WEB-INF/community/adopt_community/adopt_main2.jsp"%>
+			</td>
+
+			<td class="main">
+				<table style="margin-top: 0px;">
+					<%-- <tr>
 			<td>
 				<!--  <select name=phone1>
 					<option value=0 selected>전체게시판</option>
@@ -57,102 +62,65 @@ Collections.sort(aList);
 			    <button class="btn" >검색</button>
 			</td>
 		</tr> --%>
-		<tr>
-			<td class="main">
-		<table class="list_table">
-	      <colgroup>
-	         <col width="15%" />
-	         <col width="45%" />
-	         <col width="20%" />
-	         <col width="20%" />
-	      </colgroup>
-	      <thead>
-	      <tr>
-	        <!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
-	        <th>번호</th>
-			<th>이름</th>
-			<th>신청타입</th>
-			<th>승인</th>
-	      </tr>
-	      </thead>
-	      <tbody>
-	      <% boolean exist = false; %>
-	      	<c:forEach var="item" varStatus="i" items="${aList}">
-	      	<c:if test="${item.petId == adoptAnimal.petId}">
-	      		<%exist = true; %>
-	      		<tr>
-					<td>${item.applyId }</td>
-					<td><a href="<c:url value='/community/adopt_community/apply_result_closer'><c:param name='applyId' value='${item.applyId}'></c:param></c:url>">${item.name}</a></td>
-					<c:if test="${item.aType==0}">
-						<td>임보</td>
-					</c:if>
-					<c:if test="${item.aType==1}">
-						<td>입양</td>
-					</c:if>
-					<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
-				</tr>
-				</c:if>
-	      	</c:forEach>
-	      	<%
-	      		if(exist == false)
-		      		out.println("<tr><td colspan='3'><B>아직 신청자가 없습니다.</B></td></tr>");
-	      	%>
-		</tbody>
-						<tr>
-							<td>5</td>
-							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">고양이</a></td>
-							<td>2022-11-19</td>
-							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">사자</a></td>
-							<td>2022-11-12</td>
-							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
-							
-						</tr>
-						<tr>
-							<td>3</td>
-							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">토끼</a></td>
-							<td>2022-9-19</td>
-							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
-							
-						</tr>
-						<tr>
-							<td>2</td>
-							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">판다</a></td>
-							<td>2022-9-9</td>
-							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
-							
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">오리</a></td>
-							<td>2022-8-19</td>
-							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
-							
-						</tr>
-					</tbody>
-		      <c:forEach var="item" items="${p0List}">
-		         <tr>
-		         <td>${item.postId }</td>
-		           <td>
-		             ${item.loginId}
-		           </td>
-		           <td>
-		              ${item.postDate}
-		           </td>
-		         </tr>
-		     </c:forEach> 
-		</table>
-		</td>
+					<tr>
+						<td class="main">
+							<table class="list_table">
+								<colgroup>
+									<col width="15%" />
+									<col width="45%" />
+									<col width="20%" />
+									<col width="20%" />
+								</colgroup>
+								<thead>
+									<tr>
+										<!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
+										<th>번호</th>
+										<th>이름</th>
+										<th>신청타입</th>
+										<th>승인</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+									boolean exist = false;
+									%>
+									<c:set var="size" value="${aList.size()}"/>
+									<c:forEach var="item" varStatus="i" items="${aList}">
+										<c:if test="${item.petId == adoptAnimal.petId}">
+											<%
+											exist = true;
+											%>
+											<tr>
+												<td>${size-i.index}</td>
+												<td><a
+													href="<c:url value='/community/adopt_community/apply_result_closer'><c:param name='applyId' value='${item.applyId}'></c:param></c:url>">${item.name}</a></td>
+												<c:if test="${item.aType==0}">
+													<td>임보</td>
+												</c:if>
+												<c:if test="${item.aType==1}">
+													<td>입양</td>
+												</c:if>
+												<%-- <td><a class="nav-link" href="<c:url value='/community/adopt_community/adopt_info'><c:param></c:param></c:url>">승인</a> --%>
+												<td><a class="nav-link"
+													href="<c:url value='/community/adopt_community/adopt_info'><c:param name='applyId' value='${item.applyId}'></c:param><c:param name='adoptId' value='${adoptId}'></c:param></c:url>">승인</a>
+											</tr>
+										</c:if>
+									</c:forEach>
+									<%
+									if (exist == false)
+										out.println("<tr><td colspan='3'><B>아직 신청자가 없습니다.</B></td></tr>");
+									%>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
 		</tr>
-		</table>
-	</td>
-</tr> <!-- 쪽지하기 -->
-</table>
+		<!-- 쪽지하기 -->
+	</table>
 
-<!-- 테이블 종료 -->
+	<!-- 테이블 종료 -->
 
 </body>
 </html>
