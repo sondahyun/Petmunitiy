@@ -103,108 +103,28 @@
 	</tr>
 	<tr>
 		<td>
-		   <table style="background-color: #848484; width: 100%; margin-top:0px">
-			    <tr>
-			    	<td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >이미지</td>
-			    	<td style="width:50%">
-				<!-- <a href="<c:url value='/main/main' />"> -->
-					<img src="<c:url value='/upload/${post.fileName}'/>" />		
-				</td>
+			<table>
+				<tr>
+					<td>
+						모임 팀원					
+					</td>
+					</td>
+					
 				</tr>
-				<tr style="height:40%; width:100%">
-			      <td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >작성자</td>
-			      <td style="height:40%; width:100%; align:center; background-color:#ffffff; padding-left: 10">
-			        ${post.loginId}
-			      </td>
-			    </tr>
-			    <tr style="height:40%; width:100%">
-			      <td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >작성일자</td>
-			      <td style="height:40%; width:100%; align:center; background-color:#ffffff; padding-left: 10">
-			        ${post.postDate}
-			      </td>
-			    </tr>
-			    <tr style="height:40%; width:100%">
-			      <td style="height:40%; width:15%; align:center; background-color:E6E6E6;" >내용</td>
-			      <td style="height:40%; width:100%; align:center; background-color:ffffff; padding-left: 10">
-			         ${post.postContent}
-			      </td>
-			    </tr>
-		    </table>
-		 </td>
-		</tr>
-		<tr>
-			<td>
-				<br><br><br>
-				 <h3>댓글 작성하기</h3>
-				 <br>
-				<div class="container">
-					<div class="form-group">
-						<form name="cmForm" method="post" action="<c:url value='/community/info_community/add_comment'>
-						<c:param name='postId' value='${post.postId}'/>
-						</c:url>">
-							<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
-								<tr>
-									<td style="border-bottom:none; width:10%" valign="middle"><br><br>이름<!-- 이름 --></td>
-									<td style="width:80%"><input type="text" style="width:100%; height:80px" name = "commentContent" class="form-control" placeholder="댓글을 입력하세요."></td>
-									<td style="width:10%"><br><br><input type="submit" class="btn" value="댓글 작성"></td>
-								</tr>
-								<tr>
-									<td colspan="3"><input type="file" name="fileName"></td>
-								</tr>
-							</table>
-						</form>
-					</div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<br><br><br>
-				 <h3>댓글 목록</h3>
-				 <br>
-				<div class="container">
-					<div class="form-group">
-						<form method="post"<%--  action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%> --%>>
-							<table class="table table-striped" style="text-align: center; width:100%; border: 1px solid #dddddd">
-								<c:forEach var="item" items="${c0List}">
-									<c:if test="${item.postId == pId}">
-										<tr>
-											<td style="border-bottom:none; width:10%" valign="middle"><br><br>${item.userId}</td>
-											<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px"></td>
-											<%-- <% if(session.getAttribute("UserSessionUtils.USER_SESSION_KEY") == ${item.userId}) {%> --%> <!-- 작성자 = 로그인한 사람일 경우 -->
-											<c:if test="${uId == item.userId}">
-												<td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
-												<td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>								
-											<%-- <%} %> --%>
-											</c:if>
-										</tr>
-										<tr>
-											<td colspan="3">작성일: ${item.commentDate}</td><td style="width:10%"><br><br></td>									
-										</tr>
-									</c:if>
-								</c:forEach>
-								
-								
-								<%-- <tr>
-									<td style="border-bottom:none; width:10%" valign="middle"><br><br>이름<!-- 이름 --></td>
-									<td style="width:80%"><input type="text" style="width:100%; height:40px"></td>
-									<% if(session.getAttribute("loginId") != null) {%> <!-- 작성자 = 로그인한 사람일 경우 -->
-										<td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
-										<td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>								
-									<%} %>
-								</tr>
-								<tr>
-									<td colspan="3">작성일:</td><td style="width:10%"><br><br></td>									
-								</tr> --%>
-							</table>
-						</form>
-					</div>
-				</div>
-			</td>
-		</tr>
-		<script>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+				
+		</td>
+	</tr>
+	<tr>
+		<td>
+				
+		</td>
+	</tr>
 		
-		</script>
 		<%-- 모달 이용 
 		<tr>
 		 <td style="width:100%">
