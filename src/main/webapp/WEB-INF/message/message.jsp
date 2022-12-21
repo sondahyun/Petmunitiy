@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Petmunity</title>
+<title>쪽지 목록</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
@@ -152,6 +152,7 @@
 	</tr>
 </table>
 <br>
+<!-- if) 쪽지 목록 (받은 쪽지 선택시) -->
 <table style="width:80%" align="center" summary="받은쪽지 목록(아이디,이름,제목,날짜 항목)">
   <tr>
   	<td class="main">
@@ -193,5 +194,48 @@
   </tr>
   
 </table>
+<!--  -->
+<!-- if) 쪽지 목록 -> 보낸쪽지 선택시 -->
+<table style="width:80%" align="center" summary="보낸쪽지 목록(아이디,이름,제목,날짜 항목)">
+  <tr>
+  	<td class="main">
+		<table class="list_table">
+	      <colgroup>
+	         <col width="15%" />
+	         <col width="45%" />
+	         <col width="20%" />
+	         <col width="20%" />
+	      </colgroup>
+	      <thead>
+	      <tr>
+	        <!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
+	        <th>번호</th>
+			<th>제목</th>
+			<th>받는 사람</th>
+			<th>날짜</th>
+	      </tr>
+	      </thead>
+	      <c:forEach var="item" items="${p0List}">
+	         <tr>
+	         <td>${item.postId }</td>
+	          <td>
+	             <a href="<c:url value='/community/info_community/info_content'>
+	                   	<c:param name='postId' value='${item.postId}'/>
+	                  </c:url>">
+	             ${item.postTitle}</a>
+	          </td>
+	           <td>
+	             ${item.loginId}
+	           </td>
+	           <td>
+	             ${item.postDate}
+	           </td>
+	         </tr>
+	     </c:forEach> 
+		</table>
+	</td>
+  </tr> 
+</table>
+<!--  -->
 </body>
 </html>
