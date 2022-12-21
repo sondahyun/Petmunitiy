@@ -38,17 +38,17 @@ public class CreateApplyController implements Controller {
        	}
        	String phoneNumber = phone1+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
        	
-       	//System.out.println("name : "+request.getParameter("name"));
-       	//System.out.println("aType : "+request.getParameter("aType"));
-       	//System.out.println("birth : "+request.getParameter("birth"));
-       	//System.out.println("phoneNumber : "+phoneNumber);
-       	//System.out.println("hopeConditions : "+request.getParameter("hopeConditions"));
-       	//System.out.println("allergy : "+request.getParameter("allergy"));
-       	//System.out.println("address : "+request.getParameter("address"));
-       	//System.out.println("housingType"+request.getParameter("housingType"));
-       	//System.out.println("resolution : "+request.getParameter("resolution"));
-       	//System.out.println("etc : "+request.getParameter("etc"));
-       	//System.out.println("petId : "+request.getParameter("petId"));
+       	System.out.println("name : "+request.getParameter("name"));
+       	System.out.println("aType : "+request.getParameter("aType"));
+       	System.out.println("birth : "+request.getParameter("birth"));
+       	System.out.println("phoneNumber : "+phoneNumber);
+       	System.out.println("hopeConditions : "+request.getParameter("hopeConditions"));
+       	System.out.println("allergy : "+request.getParameter("allergy"));
+       	System.out.println("address : "+request.getParameter("address"));
+       	System.out.println("housingType"+request.getParameter("housingType"));
+       	System.out.println("resolution : "+request.getParameter("resolution"));
+       	System.out.println("etc : "+request.getParameter("etc"));
+       	System.out.println("petId : "+request.getParameter("petId"));
        	
        	log.debug("before Create Apply : {}");
        	System.out.println("postId : "+request.getParameter("postId"));
