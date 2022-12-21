@@ -5,7 +5,11 @@
 	ArrayList<PostGroup> p1List = (ArrayList<PostGroup>)request.getAttribute("p1List");
 	ArrayList<PostPetstargram> p2List = (ArrayList<PostPetstargram>)request.getAttribute("p2List");
 	ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
-
+	
+	Collections.sort(p0List);
+	Collections.sort(p1List);
+	Collections.sort(p2List);
+	Collections.sort(p3List);
 %>
 
 <!DOCTYPE html>
@@ -61,54 +65,6 @@
 		<tr>
 		<tr>
 			<td>
-				<table class="list_table">
-					<colgroup>
-						<col width="15%" />
-						<col width="45%" />
-						<col width="20%" />
-						<col width="20%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>이름</th>
-							<th>등록일자</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>5</td>
-							<td><a href = "post.jsp" class = "postTitle">안녕하세요!!</a></td>
-							<td>고양이(cat)</td>
-							<td>2022-11-19</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td><a href = "post.jsp" class = "postTitle">반가워요ㅎㅎ</a></td>
-							<td>사자(lion)</td>
-							<td>2022-11-12</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td><a href = "post.jsp" class = "postTitle">입양 원해요</a></td>
-							<td>토끼(rabbit)</td>
-							<td>2022-9-19</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td><a href = "post.jsp" class = "postTitle">안녕안녕</a></td>
-							<td>판다(panda)</td>
-							<td>2022-9-9</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><a href = "post.jsp" class = "postTitle">안녕하세요</a></td>
-							<td>판다(panda)</td>
-							<td>2022-8-19</td>
-						</tr>
-					</tbody>
-				</table>
 				<tr>
 				<td>
 					정보 커뮤니티
@@ -131,9 +87,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="p0" items="${p0List}">
+						<c:set var="size" value="${p0List.size()}"/>
+							<c:forEach var="p0" items="${p0List}" varStatus="i">
 								<tr>
-									<td>${p0.postId}</td>
+									<td>${size-i.index}</td>
 									<td>
 						              	<a href="<c:url value='/community/info_community/info_content'>
 						              	<c:param name='postId' value='${p0.postId}'/>
@@ -171,9 +128,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="p1" items="${p1List}">
+						<c:set var="size" value="${p1List.size()}"/>
+							<c:forEach var="p1" items="${p1List}" varStatus="i">
 								<tr>
-									<td>${p1.postId}</td>
+									<td>${size-i.index}</td>
 									<td>
 						              	<a href="<c:url value='/community/group_community/group_content'>
 						              	<c:param name='postId' value='${p1.postId}'/>
@@ -211,9 +169,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="p2" items="${p2List}">
+						<c:set var="size" value="${p2List.size()}"/>
+							<c:forEach var="p2" items="${p2List}" varStatus="i">
 								<tr>
-									<td>${p2.postId}</td>
+									<td>${size-i.index}</td>
 									<td>
 						              	<a href="<c:url value='/community/petstar_community/petstar_content'>
 						              	<c:param name='postId' value='${p2.postId}'/>
@@ -251,9 +210,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="p3" items="${p3List}">
+						<c:set var="size" value="${p3List.size()}"/>
+							<c:forEach var="p3" items="${p3List}" varStatus="i">
 								<tr>
-									<td>${p3.postId}</td>
+									<td>${size-i.index}</td>
 									<td>
 						              	<a href="<c:url value='/community/adopt_community/adopt_info'>
 						              	<c:param name='postId' value='${p3.postId}'/>
