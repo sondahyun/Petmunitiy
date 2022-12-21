@@ -27,10 +27,7 @@ public class PostAdoptionDAO {
    public PostAdoptionDAO() {
       jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성
    }
-
-   /**
-    * 사용자 관리 테이블에 새로운 사용자 생성.
-    */
+  
    public int create(PostAdoption post) throws SQLException {
       String sql = "INSERT INTO PostAdoption VALUES (p3_seq.nextval,?,SYSDATE,?,?,?,?,?)";
       Object[] param = new Object[] { post.getPostTitle(), post.getaType(), post.getApproval(), null, post.getPostContent(), post.getLoginId() };
@@ -55,7 +52,7 @@ public class PostAdoptionDAO {
     * 기존의 사용자 정보를 수정.
     */
    public int update(PostAdoption post) throws SQLException {
-      String sql = "UPDATE PostAdotpion "
+      String sql = "UPDATE PostAdoption "
             + "SET postTitle=?, postDate=SYSDATE, postcontent=?, loginId=?, animal=? " + "WHERE postId=?";
       Object[] param = new Object[] { post.getPostTitle(), post.getPostContent(), post.getLoginId(), post.getAnimal(), post.getPostId() };
       jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
@@ -72,6 +69,25 @@ public class PostAdoptionDAO {
       }
       return 0;
    }
+   public int updateApproval(PostAdoption post) throws SQLException {
+	   System.out.println("updateApproval: "+post.getPostId());
+	      String sql = "update postAdoption "
+	            + "SET approval=1, approvalDate=sysdate " + "WHERE postId=? ";
+	      Object[] param = new Object[] { post.getPostId() };
+	      jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
+
+	      try {
+	         int result = jdbcUtil.executeUpdate(); // update 문 실행
+	         return result;
+	      } catch (Exception ex) {
+	         jdbcUtil.rollback();
+	         ex.printStackTrace();
+	      } finally {
+	         jdbcUtil.commit();
+	         jdbcUtil.close(); //  resource 반환
+	      }
+	      return 0;
+	   }
    /**
     * 사용자 ID에 해당하는 사용자를 삭제.
     */

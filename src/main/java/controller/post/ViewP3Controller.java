@@ -1,5 +1,9 @@
 package controller.post;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -30,12 +34,18 @@ public class ViewP3Controller implements Controller {
 		int postId = -1;
 		if(request.getParameter("postId") != null)
 			postId = Integer.parseInt(request.getParameter("postId"));
+		else if(request.getParameter("adoptId")!=null)
+			postId = Integer.parseInt(request.getParameter("adoptId"));
 		else
 			postId = Integer.parseInt((String)session.getAttribute("postId"));
-		
+				
     	PostAdoption pA = null;
 		pA = manager.findP3Adoption(postId);
 		log.debug("findP3 : {}", pA);
+		
+		if(request.getParameter("applyId")!=null) {
+			manager.updateP3Approval(pA);
+		}
 		request.setAttribute("pA", pA);
 		return "/community/adopt_community/adopt_info.jsp";				// ����� ���� ȭ������ �̵�
  	

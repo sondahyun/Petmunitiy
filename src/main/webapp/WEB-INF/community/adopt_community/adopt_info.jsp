@@ -7,6 +7,7 @@
 	System.out.println("aType : "+pA.getaType());
 	
 	session.setAttribute("adoptAnimal", pA.getAnimal());
+	pageContext.setAttribute("apv", request.getAttribute("apId"));
 %>
 <html>
 <head>
@@ -47,14 +48,13 @@
 
 
 	<c:if test="${lui == pA.loginId}">
-		<a style="float:right" href="<c:url value='/community/adopt_community/apply_result'/>">모아보기</a><br><br>
+		<a style="float:right" href="<c:url value='/community/adopt_community/apply_result'><c:param name="postId" value="${pA.postId}"></c:param></c:url>">모아보기</a><br><br>
 	</c:if>
 	<table style="background-color: #848484" style="width: 100%">
 	    <!--<center>-->
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">제목</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <!-- 정보 가져오기${post.animal["name"]} -->
 	         ${pA.postTitle}
 	      </td>
 	    </tr>
@@ -128,7 +128,6 @@
 	         ${pA.postContent}
 	      </td>
 	     </tr>
-	    
 	    	<% 
 	    	if(session.getAttribute("loginId") != null) {// 입양일 경우 %>
 	    	<tr>	<td class="adopt_info_td_1"><a class="adopt_info_1" href="<c:url value='/community/adopt_community/apply_form'><c:param name="postId" value="${pA.postId}"></c:param></c:url>">입양 신청</a></td> 

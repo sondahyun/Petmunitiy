@@ -24,7 +24,7 @@ public class PostPetstargramDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(PostPetstargram post) throws SQLException {
-		String sql = "INSERT INTO PostPetstargram VALUES (p2_seq.nextval,?,SYSDATE,?,?,?,?)";
+		String sql = "INSERT INTO PostPetstargram VALUES (p2_seq.nextval,?,null,?,?,?,?)";
 		Object[] param = new Object[] {post.getPostTitle(), post.getPostContent(), post.getFileName(), post.getKind(), post.getLoginId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		String key[] = {"postId"};	// PK 컬럼의 이름    
