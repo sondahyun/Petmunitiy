@@ -1,11 +1,15 @@
 <%@page contentType="text/html; charset=utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	ArrayList<PostInformation> p0List = (ArrayList<PostInformation>)request.getAttribute("p0List");
-	ArrayList<PostGroup> p1List = (ArrayList<PostGroup>)request.getAttribute("p1List");
-	ArrayList<PostPetstargram> p2List = (ArrayList<PostPetstargram>)request.getAttribute("p2List");
-	ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
-
+	ArrayList<CommentInformation> c0List = (ArrayList<CommentInformation>)request.getAttribute("c0List");
+	ArrayList<String> p0List = (ArrayList<String>)request.getAttribute("p0List");
+	ArrayList<CommentGroup> c1List = (ArrayList<CommentGroup>)request.getAttribute("c1List");
+	ArrayList<String> p1List = (ArrayList<String>)request.getAttribute("p1List");
+	ArrayList<CommentPetstargram> c2List = (ArrayList<CommentPetstargram>)request.getAttribute("c2List");
+	ArrayList<String> p2List = (ArrayList<String>)request.getAttribute("p2List");
+	ArrayList<CommentAdoption> c3List = (ArrayList<CommentAdoption>)request.getAttribute("c3List");
+	ArrayList<String> p3List = (ArrayList<String>)request.getAttribute("p3List");
+	String loginId = (String)request.getAttribute("loginId");
 %>
 
 <!DOCTYPE html>
@@ -53,10 +57,10 @@
 			</tr>
 			<tr>
 				<td>
-					정보 커뮤니티
-					<%if (p0List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
-					<% }else{ %>
+				정보 커뮤니티 댓글
+				<%if (c0List.isEmpty()){%>
+					<p>작성한 댓글이 없습니다</p>
+				<% }else{ %>
 					<table class="list_table">
 						<colgroup>
 							<col width="15%" />
@@ -73,141 +77,141 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="p0" items="${p0List}">
-								<tr>
-									<td>${p0.postId}</td>
-									<td>
-						              	<a href="<c:url value='/community/info_community/info_content'>
-						              	<c:param name='postId' value='${p0.postId}'/>
-						              	</c:url>">
-						              	${p0.postTitle}</a>
-					           		</td>
-									<td>${p0.loginId}</td>
-									<td>${p0.postDate}</td>
-								</tr>
+							<c:forEach var="c0" items="${c0List}" varStatus = "status">
+							<tr>
+								<td>${c0.commentId}</td>
+								<td>
+									<a href="<c:url value='/community/info_community/info_content'>
+						              	<c:param name='postId' value='${c0.postId}'/>
+						              	</c:url>">${p0List[status.index]}
+						            </a>
+						        </td>					        
+								<td>${loginId}</td>
+								<td>${c0.commentDate}</td>
+							</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+				<%}%>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					그룹 커뮤니티 댓글
+					<%if (c1List.isEmpty()){%>
+						<p>작성한 댓글이 없습니다</p>
+					<% }else{ %>
+						<table class="list_table">
+							<colgroup>
+								<col width="15%" />
+								<col width="45%" />
+								<col width="20%" />
+								<col width="20%" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>작성글</th>
+									<th>이름</th>
+									<th>등록일자</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="c1" items="${c1List}" varStatus = "status">
+								<tr>
+									<td>${c1.commentId}</td>
+									<td>
+										<a href="<c:url value='/community/group_community/group_content'>
+							              	<c:param name='postId' value='${c1.postId}'/>
+							              	</c:url>">${p1List[status.index]}
+							            </a>
+							        </td>					        
+									<td>${loginId}</td>
+									<td>${c1.commentDate}</td>
+								</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					<%}%>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					그룹 커뮤니티
-					<%if (p1List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+					펫스타그램 커뮤니티 댓글
+					<%if (c2List.isEmpty()){%>
+						<p>작성한 댓글이 없습니다</p>
 					<% }else{ %>
-					<table class="list_table">
-						<colgroup>
-							<col width="15%" />
-							<col width="45%" />
-							<col width="20%" />
-							<col width="20%" />
-						</colgroup>
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>작성글</th>
-								<th>이름</th>
-								<th>등록일자</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="p1" items="${p1List}">
+						<table class="list_table">
+							<colgroup>
+								<col width="15%" />
+								<col width="45%" />
+								<col width="20%" />
+								<col width="20%" />
+							</colgroup>
+							<thead>
 								<tr>
-									<td>${p1.postId}</td>
-									<td>
-						              	<a href="<c:url value='/community/group_community/group_content'>
-						              	<c:param name='postId' value='${p1.postId}'/>
-						              	</c:url>">
-						              	${p1.postTitle}</a>
-					           		</td>
-									<td>${p1.loginId}</td>
-									<td>${p1.postDate}</td>
+									<th>번호</th>
+									<th>작성글</th>
+									<th>이름</th>
+									<th>등록일자</th>
 								</tr>
-							</c:forEach>		
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach var="c2" items="${c2List}" varStatus = "status">
+								<tr>
+									<td>${c2.commentId}</td>
+									<td>
+										<a href="<c:url value='/community/petstar_community/petstar_content'>
+							              	<c:param name='postId' value='${c2.postId}'/>
+							              	</c:url>">${p2List[status.index]}
+							            </a>
+							        </td>					        
+									<td>${loginId}</td>
+									<td>${c2.commentDate}</td>
+								</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					<%}%>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					펫스타그램 커뮤니티
-					<%if (p2List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+					입양/임보 커뮤니티 댓글
+					<%if (c3List.isEmpty()){%>
+						<p>작성한 댓글이 없습니다</p>
 					<% }else{ %>
-					<table class="list_table">
-						<colgroup>
-							<col width="15%" />
-							<col width="45%" />
-							<col width="20%" />
-							<col width="20%" />
-						</colgroup>
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>작성글</th>
-								<th>이름</th>
-								<th>등록일자</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="p2" items="${p2List}">
+						<table class="list_table">
+							<colgroup>
+								<col width="15%" />
+								<col width="45%" />
+								<col width="20%" />
+								<col width="20%" />
+							</colgroup>
+							<thead>
 								<tr>
-									<td>${p2.postId}</td>
-									<td>
-						              	<a href="<c:url value='/community/petstar_community/petstar_content'>
-						              	<c:param name='postId' value='${p2.postId}'/>
-						              	</c:url>">
-						              	${p2.postTitle}</a>
-					           		</td>
-									<td>${p2.loginId}</td>
-									<td>${p2.postDate}</td>
+									<th>번호</th>
+									<th>작성글</th>
+									<th>이름</th>
+									<th>등록일자</th>
 								</tr>
-							</c:forEach>		
-						</tbody>
-					</table>
-					<%}%>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					입양/임보 커뮤니티
-					<%if (p3List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
-					<% }else{ %>
-					<table class="list_table">
-						<colgroup>
-							<col width="15%" />
-							<col width="45%" />
-							<col width="20%" />
-							<col width="20%" />
-						</colgroup>
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>작성글</th>
-								<th>이름</th>
-								<th>등록일자</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="p3" items="${p3List}">
+							</thead>
+							<tbody>
+								<c:forEach var="c3" items="${c3List}" varStatus = "status">
 								<tr>
-									<td>${p3.postId}</td>
+									<td>${c3.commentId}</td>
 									<td>
-						              	<a href="<c:url value='/community/adopt_community/adopt_info'>
-						              	<c:param name='postId' value='${p3.postId}'/>
-						              	</c:url>">
-						              	${p3.postTitle}</a>
-					           		</td>
-									<td>${p3.loginId}</td>
-									<td>${p3.postDate}</td>
+										<a href="<c:url value='/community/adopt_community/adopt_info'>
+							              	<c:param name='postId' value='${c3.postId}'/>
+							              	</c:url>">${p3List[status.index]}
+							            </a>
+							        </td>					        
+									<td>${loginId}</td>
+									<td>${c3.commentDate}</td>
 								</tr>
-							</c:forEach>		
-						</tbody>
-					</table>
+								</c:forEach>
+							</tbody>
+						</table>
 					<%}%>
 				</td>
 			</tr>

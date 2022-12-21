@@ -43,7 +43,9 @@ public class ListCommentCreateController implements Controller {
 		
 		if(!c0List.isEmpty()) {
 			for(CommentInformation ci: c0List) {
+				System.out.println(ci.getPostId());
 				String pi = manager.findP0Title(ci.getPostId());
+				System.out.println(pi);
 				p0List.add(pi);
 			}
 		}
