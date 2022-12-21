@@ -38,7 +38,10 @@ public class RequestMapping {
         mappings.put("/community/petstar_community/petstar_community", new ListP2Controller());
         mappings.put("/community/petstar_community/petstar_content", new ViewP2Controller());
         mappings.put("/community/petstar_community/add_content", new CreateP2Controller());
+        
         mappings.put("/community/petstar_community/add_comment", new CreateC2Controller());
+        mappings.put("/community/petstar_community/update_comment", new UpdateC2Controller());
+        mappings.put("/community/petstar_community/delete_comment", new DeleteC2Controller());
                 
         //그룹게시판
         mappings.put("/community/group_community/group_community", new ListP1Controller());
