@@ -126,7 +126,7 @@ public class PostPetstargramDAO {
 
 
 	public List<PostPetstargram> searchP2List(String word, Date start, Date end) throws SQLException {
-		String sql = "SELECT * "+ "FROM PostPetstargram "+"where (postTitle like ? or postContent like ?) and (postDate between ? and ?) ";
+		String sql = "SELECT * "+ "FROM PostPetstargram "+"where (postTitle like ? or postContent like ?) and (postDate between ?-1 and ?+1) ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});
 		
 		try {

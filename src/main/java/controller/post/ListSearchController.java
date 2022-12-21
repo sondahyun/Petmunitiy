@@ -19,7 +19,12 @@ public class ListSearchController implements Controller {
     	List<PostPetstargram> p2List = null;
     	List<PostAdoption> p3List = null;
     	
-
+    	int community = 0;
+    	if(request.getParameter("community") != null) community = Integer.parseInt(request.getParameter("community"));
+    	System.out.println(community);
+    	
+    	request.setAttribute("comm", String.valueOf(community));
+    	
 		if(request.getParameter("word")==null) {
 	    	p0List = manager.findP0List();
 			p1List = manager.findP1List();
@@ -33,6 +38,7 @@ public class ListSearchController implements Controller {
 			p1List = manager.searchP1List(word, formatter.parse(request.getParameter("start")), formatter.parse(request.getParameter("end")));
 			p2List = manager.searchP2List(word, formatter.parse(request.getParameter("start")), formatter.parse(request.getParameter("end")));
 			p3List = manager.searchP3List(word, formatter.parse(request.getParameter("start")), formatter.parse(request.getParameter("end")));
+			
 			System.out.println(p0List.size()+" "+p1List.size()+" "+p2List.size()+" "+p3List.size()+" ");
 		}
 		

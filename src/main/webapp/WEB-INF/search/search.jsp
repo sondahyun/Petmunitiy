@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=utf-8" import="java.util.*" import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
+	int comm = Integer.parseInt((String)request.getAttribute("comm"));
 	ArrayList<PostInformation> p0List = (ArrayList<PostInformation>)request.getAttribute("p0List");
 	ArrayList<PostGroup> p1List = (ArrayList<PostGroup>)request.getAttribute("p1List");
 	ArrayList<PostPetstargram> p2List = (ArrayList<PostPetstargram>)request.getAttribute("p2List");
@@ -85,9 +86,9 @@ function search()
 				<tr>
 				<td>
 					<br>정보 커뮤니티
-					<%if (p0List == null || p0List.size()==0){%>
+					<%if (p0List == null || (p0List!=null && p0List.size()==0) || (comm!=0&&comm!=4)){%>
 						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
-					<% }else{ %>
+					<% }else if(comm==0 || comm==4){ %>
 					<table class="list_table">
 						<colgroup>
 							<col width="15%" />
@@ -130,9 +131,9 @@ function search()
 				<tr>
 				<td>
 					<br>그룹 커뮤니티
-					<%if (p1List == null || p1List.size()==0){%>
+					<%if (p1List == null || (p1List != null && p1List.size()==0) || (comm!=0&&comm!=3)){%>
 						<tr><td>작성글이 없습니다<br><br></td></tr>
-					<% }else{ %>
+					<% }else if (comm==0||comm==3){ %>
 					<table class="list_table">
 						<colgroup>
 							<col width="15%" />
@@ -175,9 +176,9 @@ function search()
 			<tr>
 				<td>
 					<br>펫스타그램 커뮤니티
-					<%if (p2List == null || p2List.size()==0){%>
+					<%if (p2List == null || (p2List == null && p2List.size()==0) || (comm!=0&&comm!=2)){%>
 						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
-					<% }else{ %>
+					<% }else if (comm==0||comm==2){ %>
 					<table class="list_table">
 						<colgroup>
 							<col width="15%" />
@@ -220,9 +221,9 @@ function search()
 			<tr>
 				<td>
 					<br>입양/임보 커뮤니티
-					<%if (p3List == null || p3List.size()==0){%>
+					<%if (p3List == null || (p3List == null && p3List.size()==0) || (comm!=0&&comm!=1)){%>
 						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
-					<% }else{ %>
+					<% }else if (comm==0||comm==1){ %>
 					<table class="list_table">
 						<colgroup>
 							<col width="15%" />
