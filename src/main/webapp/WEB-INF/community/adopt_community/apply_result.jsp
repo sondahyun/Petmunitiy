@@ -70,37 +70,43 @@ Collections.sort(aList);
 	        <th>번호</th>
 			<th>이름</th>
 			<th>등록일자</th>
+			<th>승인</th>
 	      </tr>
 	      </thead>
 	      <tbody>
 						<tr>
 							<td>5</td>
-							
 							<td>고양이(cat)</td>
 							<td>2022-11-19</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
 						</tr>
 						<tr>
 							<td>4</td>
-							
 							<td>사자(lion)</td>
 							<td>2022-11-12</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
+							
 						</tr>
 						<tr>
 							<td>3</td>
-			
 							<td>토끼(rabbit)</td>
 							<td>2022-9-19</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
+							
 						</tr>
 						<tr>
 							<td>2</td>
-							
 							<td>판다(panda)</td>
 							<td>2022-9-9</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
+							
 						</tr>
 						<tr>
 							<td>1</td>
 							<td>판다(panda)</td>
 							<td>2022-8-19</td>
+							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
+							
 						</tr>
 					</tbody>
 		      <c:forEach var="item" items="${p0List}">
