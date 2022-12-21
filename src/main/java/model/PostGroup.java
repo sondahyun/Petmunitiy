@@ -18,6 +18,29 @@ public class PostGroup implements Comparable {
 		super();
 	}
 
+	public PostGroup(int postId, String postTitle, String postContent, String groupPurpose, String region,
+			String loginId) {
+		super();
+		this.postId = postId;
+		this.postTitle = postTitle;
+		this.postContent = postContent;
+		this.groupPurpose = groupPurpose;
+		this.region = region;
+		this.loginId = loginId;
+	}
+
+	public PostGroup(int postId, String postTitle, String postContent, String groupPurpose, String region,
+			String fileName, String loginId) {
+		super();
+		this.postId = postId;
+		this.postTitle = postTitle;
+		this.postContent = postContent;
+		this.groupPurpose = groupPurpose;
+		this.region = region;
+		this.fileName = fileName;
+		this.loginId = loginId;
+	}
+
 	public PostGroup(String postTitle, String postContent, String groupPurpose, String region, int headCount,
 			String fileName, String loginId) {
 		super();
@@ -127,6 +150,14 @@ public class PostGroup implements Comparable {
 
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "PostGroup [postId=" + postId + ", postTitle=" + postTitle + ", postDate=" + postDate + ", postContent="
+				+ postContent + ", groupPurpose=" + groupPurpose + ", region=" + region + ", headCount=" + headCount
+				+ ", fileName=" + fileName + ", loginId=" + loginId + "]";
 	}
 
 	@Override

@@ -18,35 +18,35 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.Controller;
-import model.PostGroup;
+import model.PostPetstargram;
 import model.service.UserManager;
 
-public class UpdateP1Controller implements Controller {
+public class UpdateP2Controller implements Controller {
     private static final Logger log = LoggerFactory.getLogger(UpdateP1Controller.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
+ 
+		int postId = Integer.parseInt(request.getParameter("postId"));
 		
 		if (request.getMethod().equals("GET")) {	
     		// GET request: 커뮤니티 수정 form 요청	
     		UserManager manager = UserManager.getInstance();
-    		int postId = Integer.parseInt(request.getParameter("postId"));
-    		
-			PostGroup post1 = manager.findP1Group(postId);
-			request.setAttribute("post1", post1);			
+			PostPetstargram post2 = manager.findP2Petstargram(postId);
+			request.setAttribute("post2", post2);			
 				
-			return "/community/group_community/group_content_update.jsp";   // 검색한 정보를 update form으로 전송     
+			return "/community/petstar_community/update_content.jsp";   // 검색한 정보를 update form으로 전송     
 	    }	
 		
 		// POST request (커뮤니티 정보가 parameter로 전송됨)
 		HttpSession session = request.getSession();
 		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Object loginId = session.getAttribute("loginId");
-		int postId = -1;
 		String postTitle = null;
 		String postContent = null;
 		String groupPurpose = null;
 		String region = null;
+		int headCount = -1;
 		String filename = null;  
 		
 		boolean check = ServletFileUpload.isMultipartContent(request);    			
@@ -86,14 +86,14 @@ public class UpdateP1Controller implements Controller {
 					String value = item.getString("utf-8"); // 넘어온 값에 대한 한글 처리를 한다.               	
 
 					if (item.isFormField()) {  // item이 일반 데이터인 경우                		
-						if(item.getFieldName().equals("postId")) postId = Integer.parseInt(value);
-						else if(item.getFieldName().equals("postTitle")) postTitle = value;
+						if(item.getFieldName().equals("postTitle")) postTitle = value;
 						// parameter 이름이 name이면 name 변수에 값을 저장한다.
 						else if(item.getFieldName().equals("postContent")) postContent = value;
 						// parameter 이름이 id이면 id 변수에 값을 저장한다.
 						else if(item.getFieldName().equals("groupPurpose")) groupPurpose = value;
 						// parameter 이름이 pw이면 pw 변수에 값을 저장한다.
 						else if(item.getFieldName().equals("region")) region = value;
+						else if(item.getFieldName().equals("headCount")) headCount = Integer.parseInt(value);
 					}
 					else {  // item이 파일인 경우   
 						if (item.getFieldName().equals("fileName")) {
@@ -136,44 +136,20 @@ public class UpdateP1Controller implements Controller {
 			}
 		}
 
-		PostGroup pg;
-		if(filename == null) {
-			pg= new PostGroup(
-					postId,
-					postTitle,
-					postContent,
-					groupPurpose,
-					region,
-					String.valueOf(loginId)
-			);
-		}
-		else {
-			pg= new PostGroup(
-					postId,
-					postTitle,
-					postContent,
-					groupPurpose,
-					region,
-					filename,
-					String.valueOf(loginId)
-			);
-		}
-		System.out.println("수정 그룹:"+pg.toString());
+		/*PostGroup pg = new PostGroup(
+				postTitle,
+				postContent,
+				groupPurpose,
+				region,
+				headCount,
+				filename,
+				String.valueOf(loginId)
+		);*/
+		
+    	//log.debug("Update Community P1 : {}", pg);
 
-    	try {
-			UserManager manager = UserManager.getInstance();
-			if(filename == null)
-				manager.updatePostGroup(pg);	
-			else
-				manager.updateWithFilePostGroup(pg);
-	        return "redirect:/community/group_community/group_community";			
-    	}
-    	catch(Exception e) {	// ���� �߻� �� ȸ������ form���� forwarding
-            request.setAttribute("registerFailed", true);
-			request.setAttribute("exception", e);
-			request.setAttribute("post1", pg);
-			
-			return "/community/group_community/group_content_update.jsp";   // 검색한 정보를 update form으로 전송     
-		}
+		UserManager manager = UserManager.getInstance();
+		//manager.updatePostGroup(pg);			
+        return "redirect:/community/group_community/group_community";			
     }
 }

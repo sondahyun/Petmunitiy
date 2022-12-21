@@ -53,9 +53,29 @@ public class PostGroupDAO {
 	 */
 	public int update(PostGroup post) throws SQLException {
 		String sql = "UPDATE PostGroup "
-				+ "SET postTitle=?, postDate=?, postContent=?, groupPurpose=?, region=?, headCount=?, fileName=? " + "WHERE postId=?";
-		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getPostContent(), post.getGroupPurpose(), 
-										post.getRegion(), post.getHeadCount(), post.getFileName(), post.getPostId() };
+				+ "SET postTitle=?, postDate=SYSDATE, postContent=?, groupPurpose=?, region=? " + "WHERE postId=?";
+		Object[] param = new Object[] { post.getPostTitle(), post.getPostContent(), post.getGroupPurpose(), 
+										post.getRegion(), post.getPostId() };
+		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // update 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); //  resource 반환
+		}
+		return 0;
+	}
+	
+	public int updateWithFile(PostGroup post) throws SQLException {
+		String sql = "UPDATE PostGroup "
+				+ "SET postTitle=?, postDate=SYSDATE, postContent=?, groupPurpose=?, region=?, fileName=? " + "WHERE postId=?";
+		Object[] param = new Object[] { post.getPostTitle(), post.getPostContent(), post.getGroupPurpose(), 
+										post.getRegion(), post.getFileName(), post.getPostId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {
