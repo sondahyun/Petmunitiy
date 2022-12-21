@@ -57,7 +57,7 @@ function userList(targetUri) {
 
 <!--<h2>회원가입</h2>  -->
 <form name="form" method="POST" action="<c:url value='/community/petstar_community/petstar_info/createApply'><c:param name="postId" value="${param.postId}"></c:param></c:url>">
-    
+   
    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
          <c:if test="${registerFailed}">
          <font color="red"><c:out value="${exception.getMessage()}" /></font>
