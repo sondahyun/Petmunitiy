@@ -73,6 +73,7 @@ public class RequestMapping {
         
         //message
         mappings.put("/message/message", new ForwardController("/message/message.jsp"));
+        mappings.put("/message/message_write", new ForwardController("/message/message_write.jsp"));
         
         //myPage
         mappings.put("/myPage/myPage", new ViewUserController());
