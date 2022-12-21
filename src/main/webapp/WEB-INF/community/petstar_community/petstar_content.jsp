@@ -80,7 +80,11 @@ if (c2List != null)
 								style="text-align: center; width: 100%; border: 1px solid #dddddd">
 								<tr>
 									<td style="border-bottom: none; width: 10%" valign="middle"><br>
-									<br>이름<!-- 이름 --></td>
+									<%
+										int loginUserId = UserSessionUtils.getLoginUserId(session);								
+									%>
+									<c:set var="lui" value="<%=UserSessionUtils.getUserNickName(loginUserId) %>"/>
+									<br>${lui}</td>
 									<td style="width: 80%"><input type="text"
 										style="width: 100%; height: 80px" name="commentContent"
 										class="form-control" placeholder="댓글을 입력하세요."></td>
@@ -101,26 +105,28 @@ if (c2List != null)
 				<h3>댓글 목록</h3>
 				<div class="container">
 					<div class="form-group">
-						<form method="post"<%--  action="commentAction.jsp?bbsID=<%= bbsID %>&boardID=<%=boardID%> --%>>
-							<table class="table table-striped"
+						<table class="table table-striped"
 								style="text-align: center; width: 100%; border: 1px solid #dddddd">
+								<% int index=0; %>
 								<c:forEach var="item" items="${c2List}">
+									<%
+										int findUser = c2List.get(index).getUserId();									
+									%>
+									<c:set var="userName" value="<%=UserSessionUtils.getUserNickName(findUser) %>"/>
 									<c:if test="${item.postId == pId}">
 										<tr>
-											<td style="border-bottom: none; width: 10%" valign="middle"><br>
-											<br>${item.userId}</td>
-											<td style="width: 80%"><input type="text"
-												value="${item.commentContent}"
-												style="width: 100%; height: 40px"></td>
-											<%-- <% if(session.getAttribute("UserSessionUtils.USER_SESSION_KEY") == ${item.userId}) {%> --%>
-											<!-- 작성자 = 로그인한 사람일 경우 -->
-											<c:if
-												test="${uId == item.userId}">
-												<td style="width: 10%;"><input type="submit"
-													class="btn" value="댓글 수정"></td>
-												<td style="width: 10%;"><input type="submit"
-													class="btn" value="댓글 삭제"></td>
-												<%-- <%} %> --%>
+											<td style="border-bottom: none; width: 10%" valign="middle"><br><br>${userName}</td>
+											<c:if test="${uId != item.userId}">
+												<td style="width:80%"><input type="text" value="${item.commentContent}" style="width:100%; height:40px" readonly></td>
+											</c:if>
+											<c:if test="${uId == item.userId}">
+												<form name="frmU" method="post" action="<c:url value='/community/petstar_community/update_comment'><c:param name="postId" value="${pId}"></c:param><c:param name='commentId' value='${item.commentId}'></c:param></c:url>">
+		                                             <td style="width:80%"><input name="commentContent" type="text" value="${item.commentContent}" style="width:100%; height:40px"></td>
+		                                             <td style="width:10%;"><input type="submit" class="btn" value="댓글 수정"></td>
+		                                    	</form>
+                                    			<form name="frmD" method="post" action="<c:url value='/community/petstar_community/delete_comment'><c:param name="postId" value="${pId}"></c:param><c:param name='commentId' value='${item.commentId}'></c:param></c:url>">
+			                                       <td style="width:10%;"><input type="submit" class="btn" value="댓글 삭제"></td>
+			                                    </form>
 											</c:if>
 										</tr>
 										<tr>
@@ -129,9 +135,9 @@ if (c2List != null)
 											<br></td>
 										</tr>
 									</c:if>
+									<%index++; %>
 								</c:forEach>
 							</table>
-						</form>
 					</div>
 				</div>
 			</td>
