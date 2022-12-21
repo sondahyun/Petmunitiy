@@ -45,7 +45,6 @@ public class UpdateP0Controller implements Controller {
        	Object loginId = session.getAttribute("loginId");
        	int postId = -1;
        	String postTitle = null;
-       	String postFile = null;
 		String postContent = null;
 		String filename = null;  
 		String kind = null;
@@ -88,24 +87,18 @@ public class UpdateP0Controller implements Controller {
 
 					if (item.isFormField()) {  // item이 일반 데이터인 경우      
 						if(item.getFieldName().equals("postId")) postId = Integer.parseInt(value);
-						else if(item.getFieldName().equals("postFile")) postFile = value;
 						else if(item.getFieldName().equals("postTitle")) postTitle = value;
 						// parameter 이름이 name이면 name 변수에 값을 저장한다.
 						else if(item.getFieldName().equals("postContent")) postContent = value;
 						// parameter 이름이 id이면 id 변수에 값을 저장한다.
 						else if(item.getFieldName().equals("kind")) kind = value;
 						
-						System.out.println("uploaded file: " + postFile);
-
 						// parameter 이름이 pw이면 pw 변수에 값을 저장한다.
 					}
 					else {  // item이 파일인 경우   
 						if (item.getFieldName().equals("fileName")) {
 							// parameter 이름이 picture이면 파일 저장을 한다.
 							String oriFilename = item.getName();	// 파일 이름 획득 (자동 한글 처리 됨)
-							if(oriFilename == null) {
-								oriFilename = postFile;
-							};
 							if (oriFilename == null || oriFilename.trim().length() == 0) continue;
 							// 파일이 전송되어 오지 않았다면 건너뜀
 
@@ -142,29 +135,33 @@ public class UpdateP0Controller implements Controller {
 				e.printStackTrace();
 			}
 		}
-    	log.debug("Update Community P0 : {}", request.getParameter("fileName"));
-    	
-    	PostInformation pi = new PostInformation(
-				postId,
-	    		postTitle,
-				postContent,
-				filename,
-				kind,
-				String.valueOf(loginId)
-		);	
-		/*PostInformation pi = new PostInformation(
-				postId,
-	    		request.getParameter("postTitle"),
-				request.getParameter("postContent"),
-				null,
-				request.getParameter("kind"),
-				String.valueOf(loginId)
-		);	*/
+		PostInformation pi;
+		if(filename == null) {
+	    	pi = new PostInformation(
+					postId,
+		    		postTitle,
+					postContent,
+					kind,
+					String.valueOf(loginId)
+			);
+		}
+		else {
+			pi = new PostInformation(
+					postId,
+		    		postTitle,
+					postContent,
+					filename,
+					kind,
+					String.valueOf(loginId)
+			);
+		}
 		
-    	log.debug("Update Community P0 : {}", pi);
     	try {
 			UserManager manager = UserManager.getInstance();
-			manager.updatePostInformation(pi);			
+			if(filename == null)
+				manager.updatePostInformation(pi);	
+			else
+				manager.updateWithFilePostInformation(pi);
 	        return "redirect:/community/info_community/info_community";			
     	}
     	catch(Exception e) {	// ���� �߻� �� ȸ������ form���� forwarding

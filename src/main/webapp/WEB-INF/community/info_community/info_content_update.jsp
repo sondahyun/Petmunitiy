@@ -3,8 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	PostInformation post0 = (PostInformation)request.getAttribute("post0");
-	System.out.println("jsp file: " + post0.getFileName());
-
 %>
 <html>
 <head>
@@ -58,7 +56,7 @@ function userList(targetUri) {
 			    	<td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >이미지</td>
 			    	<td style="width:50%">
 				<!-- <a href="<c:url value='/main/main' />"> -->
-					<!-- <img src="<c:url value='/upload/${post0.fileName}'/>" /> -->
+					<img src="<c:url value='/upload/${post0.fileName}'/>" />
 					<input type="file" style="width: 60%" name="fileName" >			
 					</td>
 				</tr>
