@@ -246,4 +246,21 @@ public class PostGroupDAO {
 		}
 		return null;
 	}
+	
+	public int joinButtonClick(int headCount, int postId)throws SQLException {
+		String sql = "UPDATE PostGroup "+ "SET headCount=? " + "WHERE postId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {headCount, postId});	
+		
+		try {
+			int result = jdbcUtil.executeUpdate();		// query 실행
+			return result;
+
+	} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();		// resource 반환
+		}
+		return 0;
+	}
 }

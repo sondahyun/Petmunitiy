@@ -4,6 +4,8 @@
 <%
    @SuppressWarnings("unchecked")
    PostGroup post = (PostGroup)request.getAttribute("post");
+	int headCount = (int)request.getAttribute("headCount");
+
 %>
 <c:set var="pId" value="<%=post.getPostId() %>"/>
 <c:set var="uId" value="<%= UserSessionUtils.getLoginUserId(session) %>"/>
@@ -104,7 +106,10 @@
 			<!-- if) 모임 가입하지 않은 사람들한테 보이는 버튼 -->
 				<tr>
 					<td class="btn" colspan=2>
-						<a class="nav-link" href="<c:url value='/community/group_community/group_content_update' />">모임 가입하기</a>
+						<a class="nav-link" href="<c:url value='/community/group_community/group_join'>
+						<c:param name='headCount' value='${post.headCount}'/>
+						<c:param name='postId' value='${post.postId}'/> 
+						</c:url>">모임 가입하기</a>
 					</td>
 				</tr>	
 			<!--  -->	

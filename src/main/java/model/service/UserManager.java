@@ -209,6 +209,10 @@ public class UserManager {
 		return postGroupDAO.findPostTitle(postId); 
 	}
 	
+	public int joinPostGroup(int headCount, int postId) throws SQLException {
+		return postGroupDAO.joinButtonClick(headCount, postId);            
+	}
+	
 	//c1
 	public List<CommentGroup> findC1WithUser(int userId) throws SQLException {
 		return commentP1DAO.findC1WithUser(userId);
