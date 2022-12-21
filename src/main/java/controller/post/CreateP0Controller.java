@@ -29,7 +29,6 @@ public class CreateP0Controller implements Controller {
 		if (request.getMethod().equals("GET")) {	
 			// GET request: 회원정보 등록 form 요청	
 			log.debug("info_community add");
-			//System.out.println("여기1");
 			return "/community/info_community/add_content.jsp";   //  registerForm���� ����     	
 		}
 
