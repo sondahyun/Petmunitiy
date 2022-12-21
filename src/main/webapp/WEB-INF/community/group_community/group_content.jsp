@@ -5,6 +5,9 @@
    @SuppressWarnings("unchecked")
    PostGroup post = (PostGroup)request.getAttribute("post");
 	int headCount = (int)request.getAttribute("headCount");
+	List<Integer> joinUser = (List<Integer>)request.getAttribute("joinUser");
+	int userId= UserSessionUtils.getLoginUserId(session);
+
 
 %>
 <c:set var="pId" value="<%=post.getPostId() %>"/>
@@ -109,6 +112,7 @@
 						<a class="nav-link" href="<c:url value='/community/group_community/group_join'>
 						<c:param name='headCount' value='${post.headCount}'/>
 						<c:param name='postId' value='${post.postId}'/> 
+						<c:param name='postTitle' value='${post.postTitle}'/> 
 						</c:url>">모임 가입하기</a>
 					</td>
 				</tr>	
@@ -117,21 +121,33 @@
 		<br>
 		</td>
 	</tr>
-	<!-- if) 모임에 가입한 사람만 보이는 화면 -->
-	<tr>
-		<td>
-			<table style="background-color: #848484; width: 80%; margin-top:0px">
-				<tr>
-					<td style="height:50%; width:10%; align:center; background-color:#E6E6E6;">
-						모임 팀원					
-					</td>
-					<td style="height:50%; width:90%; align:center; background-color:#E6E6E6;">
-						<!-- 팀원 나열 -->
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
+	<% int flag = 0; 
+	for(int joinId:joinUser){
+		if(joinId==userId){
+			flag = 1;
+			break;
+		}
+	}
+	
+	if(flag==1){%>
+		<tr>
+			<td>
+				<table style="background-color: #848484; width: 80%; margin-top:0px">
+					<tr>
+						<td style="height:50%; width:10%; align:center; background-color:#E6E6E6;">
+							모임 팀원					
+						</td>
+						<c:forEach var="user" items="${joinUser}" varStatus = "i">
+							<td style="height:50%; width:90%; align:center; background-color:#E6E6E6;">
+								
+				
+							</td>
+						</c:forEach>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	<%} %>
 	<!--  -->
 	
 		<%-- 모달 이용 

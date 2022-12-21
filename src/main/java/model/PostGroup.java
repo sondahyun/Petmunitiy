@@ -153,6 +153,13 @@ public class PostGroup implements Comparable {
 	}
 
 	@Override
+	public String toString() {
+		return "PostGroup [postId=" + postId + ", postTitle=" + postTitle + ", postDate=" + postDate + ", postContent="
+				+ postContent + ", groupPurpose=" + groupPurpose + ", region=" + region + ", headCount=" + headCount
+				+ ", fileName=" + fileName + ", loginId=" + loginId + "]";
+	}
+
+	@Override
 	public int compareTo(Object o) {
 		PostGroup obj = (PostGroup)o;
 		if(this.postId > obj.getPostId())

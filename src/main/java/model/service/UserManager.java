@@ -95,6 +95,12 @@ public class UserManager {
 		return userDAO.findUserIdWithN(userNickname);
 	}
 	
+	public int updateJoinGroup(String joinGroup, int userId) throws SQLException{
+		return userDAO.updateJoinGroup(joinGroup, userId);
+	}
+	public List<Integer> findUserWithGroup(String joinGroup) throws SQLException{
+		return userDAO.findUserWithGroup(joinGroup);
+	}
 	//pet
 
 	//pet
