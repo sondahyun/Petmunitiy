@@ -19,6 +19,15 @@ public class PostAdoption implements Comparable {
 		super();
 	}
 	
+	public PostAdoption(int postId, String postTitle, String postContent, String loginId, AdoptionAnimal animal) {
+		super();
+		this.postId = postId;
+		this.postTitle = postTitle;
+		this.postContent = postContent;
+		this.loginId = loginId;
+		this.animal = animal;
+	}
+
 	public PostAdoption(String postTitle, int aType, int approval, String postContent, String loginId) {
 		super();
 		this.postTitle = postTitle;
