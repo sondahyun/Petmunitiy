@@ -35,7 +35,7 @@
 	
 	<td style="width:900px">
 	<br>
-	<h3>임보/입양 정보</h3>
+	<h3>임보/입양 정보</h3><br>
 	<% String logId = (String)session.getAttribute("loginId"); %>
 	<c:set var="lui" value="<%=logId%>"/>
 	<c:if test="${lui == pA.loginId}">
