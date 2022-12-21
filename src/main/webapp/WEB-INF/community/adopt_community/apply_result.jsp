@@ -76,7 +76,6 @@ Collections.sort(aList);
 	      </tr>
 	      </thead>
 	      <tbody>
-<<<<<<< HEAD
 	      <% boolean exist = false; %>
 	      	<c:forEach var="item" varStatus="i" items="${aList}">
 	      	<c:if test="${item.petId == adoptAnimal.petId}">
@@ -99,7 +98,6 @@ Collections.sort(aList);
 		      		out.println("<tr><td colspan='3'><B>아직 신청자가 없습니다.</B></td></tr>");
 	      	%>
 		</tbody>
-=======
 						<tr>
 							<td>5</td>
 							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">고양이</a></td>
@@ -146,7 +144,6 @@ Collections.sort(aList);
 		           </td>
 		         </tr>
 		     </c:forEach> 
->>>>>>> fe_yon1
 		</table>
 		</td>
 		</tr>
