@@ -76,34 +76,34 @@ Collections.sort(aList);
 	      <tbody>
 						<tr>
 							<td>5</td>
-							<td>고양이(cat)</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">고양이</a></td>
 							<td>2022-11-19</td>
 							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
 						</tr>
 						<tr>
 							<td>4</td>
-							<td>사자(lion)</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">사자</a></td>
 							<td>2022-11-12</td>
 							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
 							
 						</tr>
 						<tr>
 							<td>3</td>
-							<td>토끼(rabbit)</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">토끼</a></td>
 							<td>2022-9-19</td>
 							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
 							
 						</tr>
 						<tr>
 							<td>2</td>
-							<td>판다(panda)</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">판다</a></td>
 							<td>2022-9-9</td>
 							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
 							
 						</tr>
 						<tr>
 							<td>1</td>
-							<td>판다(panda)</td>
+							<td><a href="/Petmunity/community/adopt_community/apply_result_closer">오리</a></td>
 							<td>2022-8-19</td>
 							<td><a class="nav-link" href="<c:url value='/user/logout' />">승인</a>
 							
