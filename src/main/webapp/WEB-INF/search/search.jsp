@@ -85,7 +85,7 @@ function search()
 				<tr>
 				<td>
 					<br>정보 커뮤니티
-					<%if (p0List == null){%>
+					<%if (p0List == null || p0List.size()==0){%>
 						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
 					<% }else{ %>
 					<table class="list_table">
@@ -130,7 +130,7 @@ function search()
 				<tr>
 				<td>
 					<br>그룹 커뮤니티
-					<%if (p1List == null){%>
+					<%if (p1List == null || p1List.size()==0){%>
 						<tr><td>작성글이 없습니다<br><br></td></tr>
 					<% }else{ %>
 					<table class="list_table">
@@ -175,7 +175,7 @@ function search()
 			<tr>
 				<td>
 					<br>펫스타그램 커뮤니티
-					<%if (p2List == null){%>
+					<%if (p2List == null || p2List.size()==0){%>
 						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
 					<% }else{ %>
 					<table class="list_table">
@@ -220,7 +220,7 @@ function search()
 			<tr>
 				<td>
 					<br>입양/임보 커뮤니티
-					<%if (p3List == null){%>
+					<%if (p3List == null || p3List.size()==0){%>
 						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
 					<% }else{ %>
 					<table class="list_table">

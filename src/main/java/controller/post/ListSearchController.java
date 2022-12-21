@@ -30,7 +30,10 @@ public class ListSearchController implements Controller {
 			String word = request.getParameter("word");
 			
 			p0List = manager.searchP0List(word, formatter.parse(request.getParameter("start")), formatter.parse(request.getParameter("end")));
-			System.out.println("p0List : "+p0List.size());
+			p1List = manager.searchP1List(word, formatter.parse(request.getParameter("start")), formatter.parse(request.getParameter("end")));
+			p2List = manager.searchP2List(word, formatter.parse(request.getParameter("start")), formatter.parse(request.getParameter("end")));
+			p3List = manager.searchP3List(word, formatter.parse(request.getParameter("start")), formatter.parse(request.getParameter("end")));
+			System.out.println(p0List.size()+" "+p1List.size()+" "+p2List.size()+" "+p3List.size()+" ");
 		}
 		
 		
