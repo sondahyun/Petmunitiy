@@ -1,7 +1,6 @@
 <!--입양, 임보 펫 정보-->
-<%@page contentType="text/html; charset=utf-8" import="model.*" import="java.util.*"%>
+<%@page contentType="text/html; charset=utf-8" import="model.*" import="java.util.*" import="controller.user.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%
 	@SuppressWarnings("unchecked")
 	PostAdoption pA = (PostAdoption)request.getAttribute("pA");
@@ -37,8 +36,12 @@
 	<td style="width:900px">
 	<br>
 	<h3>임보/입양 정보</h3>
-	<a style="float:right" href="<c:url value='/community/adopt_community/apply_result' />">모아보기</a><br><br>
-	   <table style="background-color: #848484" style="width: 100%">
+	<% String logId = (String)session.getAttribute("loginId"); %>
+	<c:set var="lui" value="<%=logId%>"/>
+	<c:if test="${lui == pA.loginId}">
+		<a style="float:right" href="<c:url value='/community/adopt_community/apply_result' />">모아보기</a><br><br>
+	</c:if>
+	<table style="background-color: #848484" style="width: 100%">
 	    <!--<center>-->
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">제목</td>
