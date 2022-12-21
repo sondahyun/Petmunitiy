@@ -87,19 +87,23 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:set var="topN" value="false"/>
 						<c:set var="size" value="${p0List.size()}"/>
 							<c:forEach var="p0" items="${p0List}" varStatus="i">
-								<tr>
-									<td>${size-i.index}</td>
-									<td>
-						              	<a href="<c:url value='/community/info_community/info_content'>
-						              	<c:param name='postId' value='${p0.postId}'/>
-						              	</c:url>">
-						              	${p0.postTitle}</a>
-					           		</td>
-									<td>${p0.loginId}</td>
-									<td>${p0.postDate}</td>
-								</tr>
+								<c:if test="${i.index > 9}"><c:set var="topN" value="true"/></c:if>
+								<c:if test="${topN==false}">
+									<tr>
+										<td>${size-i.index}</td>
+										<td>
+							              	<a href="<c:url value='/community/info_community/info_content'>
+							              	<c:param name='postId' value='${p0.postId}'/>
+							              	</c:url>">
+							              	${p0.postTitle}</a>
+						           		</td>
+										<td>${p0.loginId}</td>
+										<td>${p0.postDate}</td>
+									</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -128,19 +132,23 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:set var="topN" value="false"/>
 						<c:set var="size" value="${p1List.size()}"/>
 							<c:forEach var="p1" items="${p1List}" varStatus="i">
-								<tr>
-									<td>${size-i.index}</td>
-									<td>
-						              	<a href="<c:url value='/community/group_community/group_content'>
-						              	<c:param name='postId' value='${p1.postId}'/>
-						              	</c:url>">
-						              	${p1.postTitle}</a>
-					           		</td>
-									<td>${p1.loginId}</td>
-									<td>${p1.postDate}</td>
-								</tr>
+								<c:if test="${i.index > 9}"><c:set var="topN" value="true"/></c:if>
+								<c:if test="${topN==false}">
+									<tr>
+										<td>${size-i.index}</td>
+										<td>
+							              	<a href="<c:url value='/community/group_community/group_content'>
+							              	<c:param name='postId' value='${p1.postId}'/>
+							              	</c:url>">
+							              	${p1.postTitle}</a>
+						           		</td>
+										<td>${p1.loginId}</td>
+										<td>${p1.postDate}</td>
+									</tr>
+								</c:if>
 							</c:forEach>		
 						</tbody>
 					</table>
@@ -169,19 +177,23 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:set var="topN" value="false"/>
 						<c:set var="size" value="${p2List.size()}"/>
 							<c:forEach var="p2" items="${p2List}" varStatus="i">
-								<tr>
-									<td>${size-i.index}</td>
-									<td>
-						              	<a href="<c:url value='/community/petstar_community/petstar_content'>
-						              	<c:param name='postId' value='${p2.postId}'/>
-						              	</c:url>">
-						              	${p2.postTitle}</a>
-					           		</td>
-									<td>${p2.loginId}</td>
-									<td>${p2.postDate}</td>
-								</tr>
+								<c:if test="${i.index > 4}"><c:set var="topN" value="true"/></c:if>
+								<c:if test="${topN==false}">
+									<tr>
+										<td>${size-i.index}</td>
+										<td>
+							              	<a href="<c:url value='/community/petstar_community/petstar_content'>
+							              	<c:param name='postId' value='${p2.postId}'/>
+							              	</c:url>">
+							              	${p2.postTitle}</a>
+						           		</td>
+										<td>${p2.loginId}</td>
+										<td>${p2.postDate}</td>
+									</tr>
+								</c:if>
 							</c:forEach>		
 						</tbody>
 					</table>
@@ -210,19 +222,23 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:set var="topN" value="false"/>
 						<c:set var="size" value="${p3List.size()}"/>
 							<c:forEach var="p3" items="${p3List}" varStatus="i">
-								<tr>
-									<td>${size-i.index}</td>
-									<td>
-						              	<a href="<c:url value='/community/adopt_community/adopt_info'>
-						              	<c:param name='postId' value='${p3.postId}'/>
-						              	</c:url>">
-						              	${p3.postTitle}</a>
-					           		</td>
-									<td>${p3.loginId}</td>
-									<td>${p3.postDate}</td>
-								</tr>
+								<c:if test="${i.index > 9}"><c:set var="topN" value="true"/></c:if>
+								<c:if test="${topN==false}">
+									<tr>
+										<td>${size-i.index}</td>
+										<td>
+							              	<a href="<c:url value='/community/adopt_community/adopt_info'>
+							              	<c:param name='postId' value='${p3.postId}'/>
+							              	</c:url>">
+							              	${p3.postTitle}</a>
+						           		</td>
+										<td>${p3.loginId}</td>
+										<td>${p3.postDate}</td>
+									</tr>
+								</c:if>
 							</c:forEach>		
 						</tbody>
 					</table>
