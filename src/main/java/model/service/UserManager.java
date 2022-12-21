@@ -11,7 +11,7 @@ import model.*;
 import model.dao.*;
 
 public class UserManager {
-	private static final Logger log = LoggerFactory.getLogger(PostAdoption.class);
+	private static final Logger log = LoggerFactory.getLogger(UserManager.class);
     
 	private static UserManager userMan = new UserManager();
 	private UserDAO userDAO;
@@ -25,6 +25,7 @@ public class UserManager {
 	private CommentP2DAO commentP2DAO;
 	private CommentP3DAO commentP3DAO;
 	private ApplyDAO applyDAO;
+	private MessageDAO messageDAO;
 
 	private UserManager() {
 		try {
@@ -39,6 +40,7 @@ public class UserManager {
 			postAdoptionDAO = new PostAdoptionDAO();
 			commentP3DAO = new CommentP3DAO();
 			applyDAO = new ApplyDAO();
+			messageDAO = new MessageDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -89,6 +91,10 @@ public class UserManager {
 		return userDAO.findUserId(loginId);
 	}
 	
+	public int findUserIdWithNickName(String userNickname) throws SQLException{
+		return userDAO.findUserIdWithN(userNickname);
+	}
+	
 	//pet
 
 	//pet
@@ -98,6 +104,10 @@ public class UserManager {
 	
 	public int updatePet(Pet pet) throws SQLException {
 		return petDAO.update(pet);            
+	}
+	
+	public int updatePetWithFile(Pet pet) throws SQLException {
+		return petDAO.updateWithFile(pet);            
 	}
 	
 	public int removePet(int petId) throws SQLException{
@@ -376,4 +386,28 @@ public class UserManager {
 	public List<Apply> findApplyList() throws SQLException {
 		return applyDAO.findApplyList();
 	}
+	
+	//message
+	public int createMessage(Message message) throws SQLException, ExistingUserException {
+		return messageDAO.create(message);
+	}
+	public int removeMessage(int messageId) throws SQLException{
+		return messageDAO.remove(messageId);
+	}
+	public Message findMessage(int messageId) throws SQLException {
+		return messageDAO.findMessage(messageId); 
+	}
+	
+	public List<Message> findMessageList() throws SQLException {
+		return messageDAO.findMessageList();
+	}
+	
+	public List<Message> findMessageWithSender(int userId) throws SQLException {
+		return messageDAO.findMessageWithSender(userId);
+	}
+	
+	public List<Message> findMessageWithReceiver(int userId) throws SQLException {
+		return messageDAO.findMessageWithReceiver(userId);
+	}
+	
 }

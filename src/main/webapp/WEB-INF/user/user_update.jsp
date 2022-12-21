@@ -3,7 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	UserInfo user = (UserInfo)request.getAttribute("user");
-	
+	Pet pet = (Pet)request.getAttribute("pet");
+	System.out.println(pet.toString());
+
 %>
 <!DOCTYPE html>
 <html>
@@ -37,22 +39,12 @@ function userCreate() {
 		form.userNickname.focus();
 		return false;
 	}
-	
-	//프론트팀 전달
-	/* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;	//""
-	if(emailExp.test(form.email.value)==false) {
-		alert("이메일 형식이 올바르지 않습니다.");
-		form.email.focus();
+	if (form.name.value == "") {
+		alert("펫 이름을 입력하십시오.");
+		form.name.focus();
 		return false;
 	}
-	//동작?
-	var phoneExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
-	if(phoneExp.test(form.phone.value)==false) {
-		alert("전화번호 형식이 올바르지 않습니다.");
-		form.phone.focus();
-		return false;
-	} */
-	//form.method="post";
+	
 	form.submit();
 }
 
@@ -69,7 +61,8 @@ function userList(targetUri) {
 
 <!--<h2>회원가입</h2>  -->
 
-<form name="form" method="POST" action="<c:url value='/user/register' />">
+<form name="form" method="POST" action="<c:url value='/user/user_update' />" enctype="multipart/form-data">
+   <input type ="hidden" name="petId" value = "${pet.petId}">
    <h2>회원 정보 수정</h2>
    <h3>나의 정보</h3>
    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
@@ -119,37 +112,37 @@ function userList(targetUri) {
 		String phone[] = (user.getPhoneNumber()).split("-"); 
 		if(phone[0].equals("010")){%>
 			<select name=phone1>
-				<option value=0 selected>010</option>
-				<option value=1>080</option>
-				<option value=2>070</option>
-				<option value=3>02</option>
+				<option value=010 selected>010</option>
+				<option value=080>080</option>
+				<option value=070>070</option>
+				<option value=02>02</option>
 			</select>
 		<%}
 		else if(phone[0].equals("080")){ %> 
 			<select name=phone1>
-				<option value=0>010</option>
-				<option value=1 selected>080</option>
-				<option value=2>070</option>
-				<option value=3>02</option>
+				<option value=010>010</option>
+				<option value=080 selected>080</option>
+				<option value=070>070</option>
+				<option value=02>02</option>
 			</select>
 		<%}
 		else if(phone[0].equals("070")){%>
 			<select name=phone1>
-				<option value=0>010</option>
-				<option value=1>080</option>
-				<option value=2 selected>070</option>
-				<option value=3>02</option>
+				<option value=010>010</option>
+				<option value=080>080</option>
+				<option value=070 selected>070</option>
+				<option value=02>02</option>
 			</select>
 		<%} 
 		else{%>
 			<select name=phone1>
-				<option value=0>010</option>
-				<option value=1>080</option>
-				<option value=2>070</option>
-				<option value=3 selected>02</option>
+				<option value=010>010</option>
+				<option value=080>080</option>
+				<option value=070>070</option>
+				<option value=02 selected>02</option>
 			</select>
 		<%} %>
-			- <input type="text" name="phone2" value="" size="4" maxlength="4" value="${phone[1]}"> - <input type="text" name="phone3" value="" size="4" maxlength="4" value="${phone[2]}">
+			- <input type="text" name="phone2" size="4" maxlength="4" value=<%=phone[1]%>> - <input type="text" name="phone3" size="4" maxlength="4" value=<%=phone[2]%>>
 			<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
 		</td>
 	 </tr>
@@ -174,7 +167,7 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">이메일 주소</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="address" value="${user.email}">
+			<input type="text" style="width: 240" name="email" value="${user.email}">
 				<%-- <c:if test="${registerFailed}">value="${user.address}"</c:if>> --%>
 		</td>
      </tr>
@@ -190,46 +183,63 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">이름</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="userNickname" >
-				 	<c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
-		</td>
-	 </tr>
-	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">생일</td>
-		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="date" style="width: 240" name="userBirth" >
+			<input type="text" style="width: 240" name="name" value = "${pet.name}">
 		</td>
 	 </tr>
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">성별</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="radio" name="gender" value="female"/> 여성
-			<input type="radio" name="gender" value="male"/> 남성
+			<%
+			if(pet.getGender().equals("female")) {%>
+				<input type="radio" name="pGender" value="female" checked /> 여성
+				<input type="radio" name="pGender" value="male"/> 남성
+			<%} else{%>
+				<input type="radio" name="pGender" value="female"  /> 여성
+				<input type="radio" name="pGender" value="male" checked/> 남성
+		<%} %>
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td align="center" bgcolor="#E6E6E6">나이</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="age" value = "${pet.age}">
 		</td>
 	 </tr>
 	 <tr height="40">
 		<td align="center" bgcolor="#E6E6E6">건강상태</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="address" placeholder="건강상태"
-				<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+			<input type="text" style="width: 240" name="health" value="${pet.health}">
 		</td>
 	 </tr>
 	 <tr height="40">
-	
-		<td align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
+		<td align="center" bgcolor="#E6E6E6">접종상태</td>
 		<td bgcolor="ffffff" style="padding-left: 10">
-				<img src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px"/>	
-			<input class="file_real" id="attached" type="file">
-			<input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1">
+			<input type="text" style="width: 240" name="vaccination" value="${pet.vaccination}" >
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td align="center" bgcolor="#E6E6E6">종</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
+			<input type="text" style="width: 240" name="kind" value="${pet.kind}">
+		</td>
+	 </tr>
+	 <tr height="40">
+		<td align="center" bgcolor="#E6E6E6">사진</td>
+		<td bgcolor="ffffff" style="padding-left: 10">
+		<%if(pet.getFilename() == null){ %>
+			<img src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px"/>	
+		<%}else{ %>
+			<img src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px" />	
+			<%} %>	
+		<input type="file" style="width: 60%" name="filename" >			
+			
 		</td>
 	 </tr>
 	</table>
 	<table>
 	 <tr align="center">
 		<td align="left">
-		
-		<input class="btn" type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-		<input class="btn" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
+		<input class="btn" type="button" value="수정하기" onClick="userCreate()"> &nbsp;
 		</td>
 	 </tr>
 	 
