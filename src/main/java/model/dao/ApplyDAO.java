@@ -27,7 +27,7 @@ public class ApplyDAO {
 	 */
 	public int create(Apply apply) throws SQLException {
 		String sql = "INSERT INTO APPLYFORADOPTION VALUES (apply_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
-		Object[] param = new Object[] { apply.getName(), apply.getaType(), new java.sql.Date(apply.getBirth().getTime()), apply.getPhoneNumber(), apply.getHopeConditions(), 
+		Object[] param = new Object[] { apply.getName(), apply.getaType(), new java.sql.Date( apply.getBirth().getTime()), apply.getPhoneNumber(), apply.getHopeConditions(), 
 										apply.getAllergy(), apply.getAddress(), apply.getHousingType(), apply.getResolution(), apply.getEtc(), apply.getPetId()};
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 

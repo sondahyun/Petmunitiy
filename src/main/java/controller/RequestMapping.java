@@ -9,6 +9,7 @@ import controller.pet.RegisterPetController;
 import controller.post.*;
 import controller.user.*;
 import controller.comment.*;
+import controller.message.*;
 import controller.apply.*;
 
 public class RequestMapping {
@@ -29,10 +30,11 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/adopt_info", new ViewP3Controller());
         mappings.put("/community/adopt_community/apply_form2", new ForwardController("/community/adopt_community/apply_form2.jsp"));
         mappings.put("/community/adopt_community/apply_result", new ListApplyController());
-        mappings.put("/community/adopt_community/apply_result_closer", new ForwardController("/community/adopt_community/apply_result_closer.jsp"));
+        mappings.put("/community/adopt_community/apply_result_closer", new ViewApplyController());
         mappings.put("/community/adopt_community/add_content", new ForwardController("/community/adopt_community/add_content.jsp"));
+        mappings.put("/community/adopt_community/adopt_info_update", new UpdateP3Controller());
         
-        //mappings.put("/community/petstar_community/petstar_info/createApply", new CreateApplyController());
+        mappings.put("/community/adopt_community/adopt_info/createApply", new CreateApplyController());
         
         //펫스타그램
         mappings.put("/community/petstar_community/petstar_community", new ListP2Controller());
@@ -47,11 +49,13 @@ public class RequestMapping {
         mappings.put("/community/group_community/group_community", new ListP1Controller());
         mappings.put("/community/group_community/add_content", new CreateP1Controller());
         mappings.put("/community/group_community/group_content", new ViewP1Controller());
+        mappings.put("/community/group_community/group_join", new UpdateP1JoinController());
+        
         mappings.put("/community/group_community/group_content_update", new UpdateP1Controller());
         mappings.put("/community/group_community/group_content_delete", new DeleteP1Controller());
         
         //검색게시판
-        mappings.put("/search/search", new ForwardController("/search/search.jsp"));
+        mappings.put("/search/search", new ListSearchController());
         
 
         //정보게시판     
@@ -73,6 +77,7 @@ public class RequestMapping {
         
         //message
         mappings.put("/message/message", new ForwardController("/message/message.jsp"));
+        mappings.put("/message/message_write", new CreateMessageController());
         
         //myPage
         mappings.put("/myPage/myPage", new ViewUserController());

@@ -113,7 +113,7 @@
 						</tr>
 						<tr class="content_say">
 							<td class="content_say1">글</td>
-							<td class="content_say2">${item.postContent}</td> <!-- 게시글 불러오기 -->
+							<td class="content_say2">${item.postTitle}</td> <!-- 게시글 불러오기 -->
 						</tr>
 					</table>
 				</td>

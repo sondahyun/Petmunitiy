@@ -43,6 +43,25 @@ public class PetDAO {
 	 */
 	public int update(Pet pet) throws SQLException {
 		String sql = "UPDATE Pet "
+				+ "SET name=?, gender=?, age=?, health=?, vaccination=?, kind=?, loginId=? " + "WHERE petId=?";
+		Object[] param = new Object[] { pet.getName(), pet.getGender(), pet.getAge(), pet.getHealth(), pet.getVaccination(), pet.getKind(), pet.getLoginId(),pet.getPetId() };
+		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // update 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); //  resource 반환
+		}
+		return 0;
+	}
+	
+	public int updateWithFile(Pet pet) throws SQLException {
+		String sql = "UPDATE Pet "
 				+ "SET name=?, gender=?, age=?, health=?, vaccination=?, kind=?,fileName=?,loginId=? " + "WHERE petId=?";
 		Object[] param = new Object[] { pet.getName(), pet.getGender(), pet.getAge(), pet.getHealth(), pet.getVaccination(), pet.getKind(),pet.getFilename(),pet.getLoginId(),pet.getPetId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
@@ -90,6 +109,7 @@ public class PetDAO {
 			Pet pet = null;
 			if(rs.next()) {
 				pet = new Pet();
+				pet.setPetId(rs.getInt("petId"));
 				pet.setName(rs.getString("name"));
 				pet.setGender(rs.getString("gender"));
 				pet.setAge(rs.getInt("age"));

@@ -20,7 +20,7 @@
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/community/adopt_community/adopt_info' />">
+<form name="form" method="POST" action="<c:url value='/community/adopt_community/adopt_info_update' />">
    
    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
          <c:if test="${registerFailed}">
@@ -39,23 +39,14 @@
 	<% String logId = (String)session.getAttribute("loginId"); %>
 	<c:set var="lui" value="<%=logId%>"/>
 	
-	<!-- 작성자 ==방문자일경우에 모임 수정 버튼 보임 -->
-	<a class="nav-link" 
-	href="<c:url value='/community/adopt_community/adopt_info_update'>
-	<c:param name='postId' value='${pA.postId}'/> 
-	</c:url>">폼 수정</a>
-
-
-	<c:if test="${lui == pA.loginId}">
-		<a style="float:right" href="<c:url value='/community/adopt_community/apply_result'/>">모아보기</a><br><br>
-	</c:if>
+	
 	<table style="background-color: #848484" style="width: 100%">
 	    <!--<center>-->
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">제목</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
 	         <!-- 정보 가져오기${post.animal["name"]} -->
-	         ${pA.postTitle}
+	         <input type="text" style="width: 240" name="name" value="${pA.postTitle}">
 	      </td>
 	    </tr>
 	    <tr height="40">
@@ -67,8 +58,8 @@
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">신청(임보/입양)</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <c:if test="${pA.aType==1}">입양</c:if>
-	         <c:if test="${pA.aType==0}">임보</c:if>
+	         <c:if test="${pA.aType==0}">입양</c:if>
+	         <c:if test="${pA.aType==1}">임보</c:if>
 	      </td>
 	    </tr>
 	    <tr height="40">
@@ -95,52 +86,39 @@
 	    </tr><tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">동물 종</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         ${pA.animal['kind']}
+	         <input type="text" style="width: 240" name="name" value="${pA.animal['kind']}">
 	      </td>
 	    </tr>
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">동물 성별</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         ${pA.animal['gender']}
+	         <input type="text" style="width: 240" name="name" value="${pA.animal['gender']}">
 	      </td>
 	    </tr>
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">동물 나이</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         ${pA.animal['age']}
+	         <input type="text" style="width: 240" name="name" value="${pA.animal['age']}">
 	      </td>
 	    </tr>
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">건강상태</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         ${pA.animal['health']}
+	         <input type="text" style="width: 240" name="name" value=" ${pA.animal['health']}">
 	      </td>
 	    </tr>
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">백신 접종 여부</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         ${pA.animal['vaccination']}
+	         <input type="text" style="width: 240" name="name" value="${pA.animal['vaccination']}">
 	      </td>
 	    </tr>
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">작성자 희망 조건 사항</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         ${pA.postContent}
+	         <input type="text" style="width: 240" name="name" value="${pA.postContent}">
 	      </td>
 	     </tr>
-	    
-	    	<% 
-	    	if(session.getAttribute("loginId") != null) {// 입양일 경우 %>
-	    	<tr>	<td class="adopt_info_td_1"><a class="adopt_info_1" href="<c:url value='/community/adopt_community/apply_form'><c:param name="postId" value="${pA.postId}"></c:param></c:url>">입양 신청</a></td> 
-	    	<%
-			}
-	    	if(session.getAttribute("loginId") != null) //임보일 경우
-			{  
-			%>
-	    		<td class="adopt_info_td_2"><a class="adopt_info_2" href="<c:url value='/community/adopt_community/apply_form2'><c:param name="postId" value="${pA.postId}"></c:param></c:url>">임보 신청</a></td></tr>
-	 	  	<%
-			} 
-			%>
 	    </table>
 	 </td>
     </tr>

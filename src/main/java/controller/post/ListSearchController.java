@@ -4,18 +4,24 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
-import model.PostAdoption;
+import model.*;
 import model.service.UserManager;
 
-public class ListP3Controller implements Controller {
+public class ListSearchController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
 		
     	UserManager manager = UserManager.getInstance();
+    	List<PostInformation> p0List = manager.findP0List();
+		List<PostGroup> p1List = manager.findP1List();
+		List<PostPetstargram> p2List = manager.findP2List();
 		List<PostAdoption> p3List = manager.findP3List();
 		
-		// commList 객체를 request에 저장하여 커뮤니티 리스트 화면으로 이동(forwarding)
+		request.setAttribute("p0List", p0List);
+		request.setAttribute("p1List", p1List);
+		request.setAttribute("p2List", p2List);
 		request.setAttribute("p3List", p3List);
-		return "/community/adopt_community/adopt_community.jsp";        
+		
+		return "/search/search.jsp";
     }
 }

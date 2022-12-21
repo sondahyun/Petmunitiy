@@ -48,8 +48,8 @@ public class UserDAO {
 	 */
 	public int update(UserInfo user) throws SQLException {
 		String sql = "UPDATE UserInfo "
-				+ "SET loginPwd=?, userNickname=?, userBirth=?, phoneNumber=?, address=? email=? " + "WHERE userId=?";
-		Object[] param = new Object[] { user.getLoginPwd(), user.getUserNickname(),new java.sql.Date(user.getUserBirth().getTime()),
+				+ "SET loginId= ?, loginPwd=?, userNickname=?, userBirth=?, phoneNumber=?, address=?, email=? " + "WHERE userId=?";
+		Object[] param = new Object[] { user.getLoginId(), user.getLoginPwd(), user.getUserNickname(), new java.sql.Date(user.getUserBirth().getTime()),
 				user.getPhoneNumber(), user.getAddress(), user.getEmail(), user.getUserId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
@@ -184,5 +184,63 @@ public class UserDAO {
 		}
 		return 0;
 	}
+	
+	public int findUserIdWithN(String userNickname) throws SQLException {
+		String sql = "SELECT userId " + "FROM UserInfo " + "WHERE userNickname=? ";	//userinfo와 pet join해서..pet여럿이므로 while문으로 첫번째 레코드에서(null)만 user객체 pet객체 따로 생성, 아레쪽 while 추가 pet객체 llist에 add
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { userNickname }); // JDBCUtil에 query문과 매개 변수 설정
+		int userId = -1;
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+			if(rs.next()) {// 학생 정보 발견
+				userId = rs.getInt("userId");
+			}
+			return userId;
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close(); // resource 반환
+		}
+		return 0;
+	}
+	
+	public int updateJoinGroup(String joinGroup, int userId) throws SQLException {
+		String sql = "UPDATE UserInfo "
+				+ "SET joinGroup=? " + "WHERE userId=?";
+		Object[] param = new Object[] {joinGroup, userId};
+		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // update 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); //  resource 반환
+		}
+		return 0;
+	}
+	
+	public List<Integer> findUserWithGroup(String joinGroup) throws SQLException {
+		String sql = "SELECT userId " + "FROM UserInfo " + "WHERE joinGroup=? ";	//userinfo와 pet join해서..pet여럿이므로 while문으로 첫번째 레코드에서(null)만 user객체 pet객체 따로 생성, 아레쪽 while 추가 pet객체 llist에 add
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { joinGroup }); // JDBCUtil에 query문과 매개 변수 설정
+		ArrayList<Integer> joinList = new ArrayList<Integer>();
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+			while(rs.next()) {// 학생 정보 발견
+				joinList.add(rs.getInt("userId"));
+			}
+			return joinList;
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close(); // resource 반환
+		}
+		return null;
+	}
+	
 
 }

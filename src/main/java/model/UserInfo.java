@@ -16,6 +16,7 @@ public class UserInfo {
 	private String gender;
 	private String address;
 	private String email;
+	private String joinGroup;
 	//private int petList;
 	//private ArrayList<Pet> petList; //ArrayList<Integer> => Array(UserDAO findUser���� getArray�� ����
 	///private ArrayList<Pet> petList;
@@ -35,8 +36,21 @@ public class UserInfo {
 		this.address = address;
 		this.email = email;
 	}
-
 	
+	public UserInfo(int userId, String loginId, String loginPwd, String userNickname, Date userBirth,
+			String phoneNumber, String gender, String address, String email) {
+		super();
+		this.userId = userId;
+		this.loginId = loginId;
+		this.loginPwd = loginPwd;
+		this.userNickname = userNickname;
+		this.userBirth = userBirth;
+		this.phoneNumber = phoneNumber;
+		this.gender = gender;
+		this.address = address;
+		this.email = email;
+	}
+
 	public int getUserId() {
 		return userId;
 	}
@@ -130,8 +144,6 @@ public class UserInfo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
 
 	public String getEmail() {
 		return email;
@@ -139,6 +151,14 @@ public class UserInfo {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getJoinGroup() {
+		return joinGroup;
+	}
+
+	public void setJoinName(String joinGroup) {
+		this.joinGroup = joinGroup;
 	}
 
 	/* ��й�ȣ �˻� */

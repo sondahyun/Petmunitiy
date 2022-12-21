@@ -151,7 +151,6 @@ public class PostGroup implements Comparable {
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
-	
 
 	@Override
 	public String toString() {

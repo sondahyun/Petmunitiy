@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="java.util.*" import="model.*" %>
+    pageEncoding="utf-8" import="java.util.*" import="model.*" import="controller.user.UserSessionUtils" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -7,7 +7,7 @@
 	ArrayList<PostInformation> p0List = (ArrayList<PostInformation>)request.getAttribute("p0List");
 	Collections.sort(p0List);
 %>
-   
+<c:set var="size" value="${p0List.size()}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,9 +51,12 @@
 			<th>등록일자</th>
 	      </tr>
 	      </thead>
-	      <c:forEach var="item" items="${p0List}">
+	      <% int index = 0; %>
+	      <c:forEach var="item" items="${p0List}" varStatus="i">
+	      	<%String findUser = p0List.get(index).getLoginId();%>
+	      	<c:set var="userName" value="<%=UserSessionUtils.getUserNickName(findUser) %>"/>
 	         <tr>
-	         <td>${item.postId }</td>
+	         <td>${size-i.index}</td>
 	          <td>
 	             <a href="<c:url value='/community/info_community/info_content'>
 	                   	<c:param name='postId' value='${item.postId}'/>
@@ -61,12 +64,13 @@
 	             ${item.postTitle}</a>
 	          </td>
 	           <td>
-	             ${item.loginId}
+	           ${userName}
 	           </td>
 	           <td>
 	              ${item.postDate}
 	           </td>
 	         </tr>
+	         <%index++; %>
 	     </c:forEach> 
 		</table>
 		</td>

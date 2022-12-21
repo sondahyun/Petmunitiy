@@ -23,7 +23,7 @@ import model.PostPetstargram;
 import model.service.UserManager;
 
 public class CreateP2Controller implements Controller {
-	private static final Logger log = LoggerFactory.getLogger(Apply.class);
+	private static final Logger log = LoggerFactory.getLogger(PostPetstargram.class);
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if (request.getMethod().equals("GET")) {
@@ -33,11 +33,12 @@ public class CreateP2Controller implements Controller {
 
 		HttpSession session = request.getSession();
 		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
 		Object loginId = session.getAttribute("loginId");
-		String postTitle = null;
-		String postContent = null;
-		String filename = null;  
-		String kind = null;
+		String postTitle = request.getParameter("postTitle");
+		String postContent = request.getParameter("postContent");
+		String filename = request.getParameter("filename");
+		String kind = request.getParameter("kind");
 		boolean check = ServletFileUpload.isMultipartContent(request);    			
 		if(check) {    // 전송된 요청 메시지의 타입이 multipart 인지 여부를 체크한다. (multipart/form-data)
 
@@ -122,7 +123,11 @@ public class CreateP2Controller implements Controller {
 				e.printStackTrace();
 			}
 		}
-
+		
+		log.debug("before Create PostPetstargram : {}");
+		
+		System.out.println(postTitle+" "+postContent+" "+filename+" "+kind+" "+loginId);
+				
 		PostPetstargram pi = new PostPetstargram(
 				postTitle,
 				postContent,
