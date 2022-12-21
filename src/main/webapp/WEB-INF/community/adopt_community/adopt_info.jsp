@@ -59,8 +59,8 @@
 	    <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">신청(임보/입양)</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	         <c:if test="${pA.aType==0}">입양</c:if>
-	         <c:if test="${pA.aType==1}">임보</c:if>
+	         <c:if test="${pA.aType==1}">입양</c:if>
+	         <c:if test="${pA.aType==0}">임보</c:if>
 	      </td>
 	    </tr>
 	    <tr height="40">
@@ -123,13 +123,13 @@
 	    
 	    	<% 
 	    	if(session.getAttribute("loginId") != null) {// 입양일 경우 %>
-	    	<tr>	<td class="adopt_info_td_1"><a class="adopt_info_1" href="<c:url value='/community/adopt_community/apply_form'/>">입양 신청</a></td> 
+	    	<tr>	<td class="adopt_info_td_1"><a class="adopt_info_1" href="<c:url value='/community/adopt_community/apply_form'><c:param name="postId" value="${pA.postId}"></c:param></c:url>">입양 신청</a></td> 
 	    	<%
 			}
 	    	if(session.getAttribute("loginId") != null) //임보일 경우
 			{  
 			%>
-	    		<td class="adopt_info_td_2"><a class="adopt_info_2" href="<c:url value='/community/adopt_community/apply_form2'/>">임보 신청</a></td></tr>
+	    		<td class="adopt_info_td_2"><a class="adopt_info_2" href="<c:url value='/community/adopt_community/apply_form2'><c:param name="postId" value="${pA.postId}"></c:param></c:url>">임보 신청</a></td></tr>
 	 	  	<%
 			} 
 			%>
