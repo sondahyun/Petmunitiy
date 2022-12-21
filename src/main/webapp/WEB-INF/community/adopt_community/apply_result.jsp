@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="model.*" import="java.util.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+@SuppressWarnings("unchecked")
+ArrayList<Apply> aList = (ArrayList<Apply>)request.getAttribute("aList");
+Collections.sort(aList);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +29,7 @@
 	
 	<td class="main">
 		<table style="margin-top:0px;">
-		<tr>
+		<%-- <tr>
 			<td>
 				<!--  <select name=phone1>
 					<option value=0 selected>전체게시판</option>
@@ -33,7 +38,7 @@
 					<option value=2>그룹 게시판</option>
 					<option value=3>정보 게시판</option>
 				</select> -->
-				<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
+				<c:if test="${registerFailed}">value="${user.phone}"</c:if>
 				<!-- <input type="date" style="width: 240" name="startDate" > -->
 				<select name=phone1>
 					<option value=0 selected>전체 기간</option>
@@ -42,14 +47,14 @@
 					<option value=2>3일</option>
 					<option value=3>4일</option>
 					<option value=3>직접 기간 입력하기
-<%-- 	 						<input type="date" style="width: 5%" name="startDay >-<input type="date" style="width: 5%" name="endDay" >
- --%> 	 <!-- 제이쿼리 -->				
+	 						<input type="date" style="width: 5%" name="startDay >-<input type="date" style="width: 5%" name="endDay" >
+ 	 <!-- 제이쿼리 -->				
  					</option>
 				</select> 
 			    <input class="srch" type="text" placeholder="검색어를 입력하세요.">
 			    <button class="btn" >검색</button>
 			</td>
-		<tr>
+		</tr> --%>
 		<tr>
 			<td class="main">
 		<table class="list_table">
@@ -63,7 +68,6 @@
 	      <tr>
 	        <!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
 	        <th>번호</th>
-			<th>제목</th>
 			<th>이름</th>
 			<th>등록일자</th>
 	      </tr>
@@ -71,31 +75,30 @@
 	      <tbody>
 						<tr>
 							<td>5</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">안녕하세요!!</a></td>
+							
 							<td>고양이(cat)</td>
 							<td>2022-11-19</td>
 						</tr>
 						<tr>
 							<td>4</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">반가워요ㅎㅎ</a></td>
+							
 							<td>사자(lion)</td>
 							<td>2022-11-12</td>
 						</tr>
 						<tr>
 							<td>3</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">입양 원해요</a></td>
+			
 							<td>토끼(rabbit)</td>
 							<td>2022-9-19</td>
 						</tr>
 						<tr>
 							<td>2</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">안녕안녕</a></td>
+							
 							<td>판다(panda)</td>
 							<td>2022-9-9</td>
 						</tr>
 						<tr>
 							<td>1</td>
-							<td><a href = "<c:url value='/community/adopt_community/apply_result_closer' />" class = "postTitle">안녕하세요</a></td>
 							<td>판다(panda)</td>
 							<td>2022-8-19</td>
 						</tr>
@@ -103,12 +106,6 @@
 		      <c:forEach var="item" items="${p0List}">
 		         <tr>
 		         <td>${item.postId }</td>
-		           <td>
-		              <a href="<c:url value='/community/adopt_community/apply_result_closer'>
-		                     <%-- <c:param name='postId' value='${item.postId}'/> --%>
-		                   </c:url>">
-		              ${item.postTitle}</a>
-		           </td>
 		           <td>
 		             ${item.loginId}
 		           </td>

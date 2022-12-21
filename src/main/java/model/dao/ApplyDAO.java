@@ -102,7 +102,7 @@ public class ApplyDAO {
 	 */
 	public List<Apply> findApplyList() throws SQLException {
         String sql = "SELECT * "
-        		   + "FROM PostAdoption";
+        		   + "FROM ApplyForAdoption";
         
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 					

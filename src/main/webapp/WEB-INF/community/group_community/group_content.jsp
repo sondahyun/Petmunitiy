@@ -33,10 +33,15 @@
 			</tr>
 			<tr>
 				<td class="btn">
-					<a class="nav-link" href="<c:url value='/community/group_community/group_content_update' />">모임 수정</a>
+					<a class="nav-link" 
+					href="<c:url value='/community/group_community/group_content_update'>
+					<c:param name='postId' value='${post.postId}'/> 
+					</c:url>">모임 수정</a>
 				</td>
 				<td class="btn">
-					<a class="nav-link" href="<c:url value='/community/group_community/group_content_delete' />">모임 삭제</a>
+					<a class="nav-link" href="<c:url value='/community/group_community/group_content_delete'>
+					<c:param name='postId' value='${post.postId}'/> 
+					</c:url>">모임 삭제</a>
 				</td>
 			</tr>
 			<tr></tr>
