@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	UserInfo user = (UserInfo)request.getAttribute("user");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -93,7 +94,8 @@ function userList(targetUri) {
 	 <tr height="40">
 		<td width="50%" align="center" bgcolor="#E6E6E6">성별</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
-		<%if(user.getGender() == "female") {%>
+		<%
+		if(user.getGender().equals("female")) {%>
 			<input type="radio" name="gender" value="female" checked /> 여성
 			<input type="radio" name="gender" value="male"/> 남성
 		<%} else{%>
@@ -114,13 +116,40 @@ function userList(targetUri) {
 		<td width="50%" align="center" bgcolor="#E6E6E6">전화번호</td>
 		<td width="50%" bgcolor="ffffff" style="padding-left: 10">
 		<%
-		String phone[] = (user.getPhoneNumber()).split("-"); %>
+		String phone[] = (user.getPhoneNumber()).split("-"); 
+		if(phone[0].equals("010")){%>
 			<select name=phone1>
 				<option value=0 selected>010</option>
 				<option value=1>080</option>
 				<option value=2>070</option>
 				<option value=3>02</option>
-			</select> - <input type="text" name="phone2" value="" size="4" maxlength="4" value="${phone[1]}"> - <input type="text" name="phone3" value="" size="4" maxlength="4" value="${phone[2]}">
+			</select>
+		<%}
+		else if(phone[0].equals("080")){ %> 
+			<select name=phone1>
+				<option value=0>010</option>
+				<option value=1 selected>080</option>
+				<option value=2>070</option>
+				<option value=3>02</option>
+			</select>
+		<%}
+		else if(phone[0].equals("070")){%>
+			<select name=phone1>
+				<option value=0>010</option>
+				<option value=1>080</option>
+				<option value=2 selected>070</option>
+				<option value=3>02</option>
+			</select>
+		<%} 
+		else{%>
+			<select name=phone1>
+				<option value=0>010</option>
+				<option value=1>080</option>
+				<option value=2>070</option>
+				<option value=3 selected>02</option>
+			</select>
+		<%} %>
+			- <input type="text" name="phone2" value="" size="4" maxlength="4" value="${phone[1]}"> - <input type="text" name="phone3" value="" size="4" maxlength="4" value="${phone[2]}">
 			<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
 		</td>
 	 </tr>

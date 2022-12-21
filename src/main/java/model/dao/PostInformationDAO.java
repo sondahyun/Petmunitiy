@@ -51,8 +51,8 @@ public class PostInformationDAO {
 	 */
 	public int update(PostInformation post) throws SQLException {
 		String sql = "UPDATE PostInformation "
-				+ "SET postTitle=?, postDate=?, postContent=?, fileName=?, kind=? " + "WHERE postId=?";
-		Object[] param = new Object[] { post.getPostTitle(), new java.sql.Date(post.getPostDate().getTime()), post.getPostContent(), post.getFileName(), post.getKind(), post.getPostId() };
+				+ "SET postTitle=?, postDate=SYSDATE, postContent=?, fileName=?, kind=? " + "WHERE postId=?";
+		Object[] param = new Object[] { post.getPostTitle(), post.getPostContent(), post.getFileName(), post.getKind(), post.getPostId() };
 		jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
 		try {
