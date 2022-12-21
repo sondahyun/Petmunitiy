@@ -151,14 +151,6 @@ public class PostGroup implements Comparable {
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
-	
-
-	@Override
-	public String toString() {
-		return "PostGroup [postId=" + postId + ", postTitle=" + postTitle + ", postDate=" + postDate + ", postContent="
-				+ postContent + ", groupPurpose=" + groupPurpose + ", region=" + region + ", headCount=" + headCount
-				+ ", fileName=" + fileName + ", loginId=" + loginId + "]";
-	}
 
 	@Override
 	public int compareTo(Object o) {
