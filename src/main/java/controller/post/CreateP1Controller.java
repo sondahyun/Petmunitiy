@@ -41,7 +41,7 @@ public class CreateP1Controller implements Controller {
 		String postContent = null;
 		String groupPurpose = null;
 		String region = null;
-		int headCount = -1;
+		int headCount = 0;
 		String filename = null;  
 		
 		boolean check = ServletFileUpload.isMultipartContent(request);    			
@@ -88,7 +88,6 @@ public class CreateP1Controller implements Controller {
 						else if(item.getFieldName().equals("groupPurpose")) groupPurpose = value;
 						// parameter 이름이 pw이면 pw 변수에 값을 저장한다.
 						else if(item.getFieldName().equals("region")) region = value;
-						else if(item.getFieldName().equals("headCount")) headCount = Integer.parseInt(value);
 					}
 					else {  // item이 파일인 경우   
 						if (item.getFieldName().equals("fileName")) {
@@ -139,7 +138,7 @@ public class CreateP1Controller implements Controller {
 				headCount,
 				filename,
 				String.valueOf(loginId)
-				);		
+		);		
 
 		try {
 			UserManager manager = UserManager.getInstance();
