@@ -68,7 +68,7 @@
 	           </td>
 	           <td>
 	              ${item.postDate}
-	           </td>
+	           </td> 
 	         </tr>
 	         <%index++; %>
 	     </c:forEach> 
