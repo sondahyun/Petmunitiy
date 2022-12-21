@@ -18,6 +18,6 @@ public class ListApplyController implements Controller {
 		
 		// commList 객체를 request에 저장하여 커뮤니티 리스트 화면으로 이동(forwarding)
 		request.setAttribute("aList", aList);				
-		return "/community/petstar_community/apply_results.jsp";        
+		return "/community/adopt_community/apply_result.jsp";        
     }
 }
