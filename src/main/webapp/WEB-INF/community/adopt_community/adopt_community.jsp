@@ -120,7 +120,7 @@
 				</table>
 				
 				</td>
-				<c:if test="${i.index%3==2 and i.index!=0}"></tr></c:if>
+				<c:if test="${i.index%3==2 and i.index!=0}"></c:if>
 				</c:forEach>
 			</table>
 		</td>

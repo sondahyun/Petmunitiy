@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>게시글 작성</title>
+<title>폼 작성</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
@@ -56,7 +56,7 @@ function userList(targetUri) {
 <tr>
 <td>
 <br>
-<h3>게시글 작성</h3>
+<h3>폼 작성</h3>
    <table style="background-color: #848484" style="width: 100%">
     <!--<center>-->
     <tr height="40">
