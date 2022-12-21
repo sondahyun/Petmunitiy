@@ -43,7 +43,7 @@
 	<a class="nav-link" 
 	href="<c:url value='/community/adopt_community/adopt_info_update'>
 	<c:param name='postId' value='${pA.postId}'/> 
-	</c:url>">모임 수정</a>
+	</c:url>">폼 수정</a>
 
 
 	<c:if test="${lui == pA.loginId}">
