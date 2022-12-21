@@ -7,7 +7,7 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
-function applyAdopt() {
+function Create() {
    //alert("실행");
 
    /* if (form.userNickname.value == "") {
@@ -48,7 +48,7 @@ function userList(targetUri) {
 <!--<h2>회원가입</h2>  -->
 <br>
 <h3>폼 작성</h3>
-<form method="post" action="/community/petstar_community/add_content">
+<form name="form" method="post" action="<c:url value='/community/petstar_community/add_content'/>">
   <table style="background-color: ffffff" style="width: 100%">
     <!--<center>-->
     <tr>
@@ -74,19 +74,19 @@ function userList(targetUri) {
 		         <textarea style="width: 100%; height:80px" name="postContent"></textarea>
 		      </td>
 		    </tr> 
-		    <!-- <tr height="40">
+		    <tr height="40">
 		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">종</td>
 		      <td style="width: 100%" bgcolor="ffffff">
 		         <input type="text" style="width: 100%; height:30px" name="kind">
 		      </td>
-		    </tr> -->
+		    </tr>
 		    </table>
 	    <br>
 	    </td>
 	 </tr>
 	 <tr>
 	 	<td><br>
-	 		<input class="btn" type="button" value="폼 작성완료" onClick="applyInfo()"> &nbsp;
+	 		<input class="btn" type="button" value="폼 작성완료" onClick="Create()"> &nbsp;
 		</td>
 	 </tr>
 	</table>

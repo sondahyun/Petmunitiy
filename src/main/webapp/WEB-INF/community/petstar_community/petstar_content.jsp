@@ -65,6 +65,14 @@ if (c2List != null)
 							style="height: 40%; width: 15%; align: center; background-color: #E6E6E6;">작성일자</td>
 						<td
 							style="height: 40%; width: 100%; align: center; background-color: #ffffff; padding-left: 10">
+							<!-- 종 정보 가져오기 --> ${p2.kind}
+						</td>
+					</tr>
+					<tr style="height: 40%; width: 100%">
+						<td
+							style="height: 40%; width: 15%; align: center; background-color: #E6E6E6;">작성일자</td>
+						<td
+							style="height: 40%; width: 100%; align: center; background-color: #ffffff; padding-left: 10">
 							<!-- 작성일자 정보 가져오기 --> ${p2.postDate}
 						</td>
 					</tr>
