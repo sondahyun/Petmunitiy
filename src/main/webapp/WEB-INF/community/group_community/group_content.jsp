@@ -136,12 +136,12 @@
 						<td style="height:50%; width:10%; align:center; background-color:#E6E6E6;">
 							모임 팀원					
 						</td>
+						<td style="height:50%; width:90%; align:center; background-color:#E6E6E6;">
 						<% for(int jId:joinUser){%>
-							<td style="height:50%; width:90%; align:center; background-color:#E6E6E6;">
-								<% String userNickName = UserSessionUtils.getUserNickName(jId); %>
-								<%=userNickName%>
-							</td>
+							<% String userNickName = UserSessionUtils.getUserNickName(jId); %>
+								<%=userNickName%>&ensp;
 						<%} %>
+						</td>
 					</tr>
 				</table>
 			</td>
