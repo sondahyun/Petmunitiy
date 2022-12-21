@@ -143,8 +143,8 @@ public class UserManager {
 		return postInformationDAO.findPost(postId); 
 	}
 	
-	public List<PostInformation> searchP0List(String postTitle, Date start, Date end) throws SQLException {
-		return postInformationDAO.searchP0List(postTitle, start, end);
+	public List<PostInformation> searchP0List(String word, java.util.Date date, java.util.Date date2) throws SQLException {
+		return postInformationDAO.searchP0List(word, date, date2);
 	}
 	
 	public List<PostInformation> findP0List() throws SQLException {
@@ -205,8 +205,8 @@ public class UserManager {
 		return postGroupDAO.findPost(postId); 
 	}
 	
-	public List<PostGroup> searchP1List(String postTitle, Date start, Date end) throws SQLException {
-		return postGroupDAO.searchP1List(postTitle, start, end);
+	public List<PostGroup> searchP1List(String word, java.util.Date date, java.util.Date date2) throws SQLException {
+		return postGroupDAO.searchP1List(word, date, date2);
 	}
 	
 	public List<PostGroup> findP1List() throws SQLException {
@@ -274,8 +274,8 @@ public class UserManager {
 		return post;
 	}
 	
-	public List<PostPetstargram> searchP2List(String postTitle, Date start, Date end) throws SQLException {
-		return postPetstargramDAO.searchP2List(postTitle, start, end);
+	public List<PostPetstargram> searchP2List(String word, java.util.Date date, java.util.Date date2) throws SQLException {
+		return postPetstargramDAO.searchP2List(word, date, date2);
 	}
 	
 	public List<PostPetstargram> findP2List() throws SQLException {
@@ -333,8 +333,8 @@ public class UserManager {
 		return post;
 	}
 	
-	public List<PostAdoption> searchP3List(String postTitle, Date start, Date end) throws SQLException {
-		return postAdoptionDAO.searchP3List(postTitle, start, end);
+	public List<PostAdoption> searchP3List(String word, java.util.Date date, java.util.Date date2) throws SQLException {
+		return postAdoptionDAO.searchP3List(word, date, date2);
 	}
 	
 	public List<PostAdoption> findP3List() throws SQLException {

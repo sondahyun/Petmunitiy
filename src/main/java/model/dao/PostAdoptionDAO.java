@@ -141,11 +141,11 @@ public class PostAdoptionDAO {
    
    //검색조건을 받아 찾음
    //수정 필요
-   public List<PostAdoption> searchP3List(String postTitle, Date start, Date end) throws SQLException {
+   public List<PostAdoption> searchP3List(String word, Date start, Date end) throws SQLException {
         String sql = "SELECT * "
                  + "FROM PostAdoption p, adoptionAnimal aa "
-                 + "WHERE p.postId=aa.postId and postTitle like %?% and postDate between ? and ?";              
-      jdbcUtil.setSqlAndParameters(sql, new Object[] {postTitle, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});   // JDBCUtil에 query문과 매개 변수 설정
+                 + "WHERE p.postId=aa.postId and (postTitle like ? or postContent like ?) and (postDate between ?-1 and ?+1) ";              
+      jdbcUtil.setSqlAndParameters(sql, new Object[] {word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});   // JDBCUtil에 query문과 매개 변수 설정
       
       PostAdoption postAdoption = null;
       
