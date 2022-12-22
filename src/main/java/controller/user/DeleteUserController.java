@@ -16,22 +16,16 @@ public class DeleteUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-		String deleteId = request.getParameter("loginId");
-    	log.debug("Delete User : {}", deleteId);
 
 		UserManager manager = UserManager.getInstance();		
 		HttpSession session = request.getSession();	
-	
-												// �Ǵ� 
-			if(UserSessionUtils.isLoginUser(deleteId, session)) { // �α����� ����ڰ� ���� ����� ��� (�ڱ� �ڽ��� ����)			
-				manager.remove(deleteId);				// ����� ���� ����
-				return "redirect:/user/logout";		// logout ó��
-		}
+		String loginId = UserSessionUtils.getLoginId(session);
+    	log.debug("Delete User : {}", loginId);
+    	
+		manager.remove(loginId);				// ����� ���� ����
+		session.removeAttribute(UserSessionUtils.USER_SESSION_KEY);
+		session.invalidate();
 		
-		/* ������ �Ұ����� ��� */
-		UserInfo user = manager.findUser(deleteId);	// ����� ���� �˻�
-		request.setAttribute("user", user);						
-		request.setAttribute("deleteFailed", true);											     
-		return "/user/view.jsp";		// ����� ���� ȭ������ �̵� (forwarding)	
+		return "/main/main.jsp";		// ����� ���� ȭ������ �̵� (forwarding)	
 	}
 }
