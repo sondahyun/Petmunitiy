@@ -104,6 +104,7 @@ public class UserDAO {
 				user.setGender(rs.getString("gender"));
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
+				user.setJoinGroup(rs.getString("joinGroup"));
 				//pet 객체들의 list를 준다
 				return user;
 			}
