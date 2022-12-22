@@ -50,4 +50,10 @@
          <a class="nav-link" href="<c:url value='/user/user_update' />">회원정보 수정</a>
       </td>
    </tr>
+   <tr class="correction">
+      <td>
+         <!-- <input class="btn" type="button" value="ABOUT" onClick="location.href='/myPage/about.jsp';"> -->
+         <a class="nav-link" href="<c:url value='/user/user_exit' />">회원 탈퇴</a>
+      </td>
+   </tr>
 </table>
