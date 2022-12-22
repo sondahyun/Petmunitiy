@@ -57,7 +57,7 @@
 				<td>
 					정보 커뮤니티
 					<%if (p0List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+						<br>작성글이 없습니다
 					<% }else{ %>
 					<table class="list_table">
 						<colgroup>
@@ -97,7 +97,7 @@
 				<td>
 					그룹 커뮤니티
 					<%if (p1List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+						<br>작성글이 없습니다
 					<% }else{ %>
 					<table class="list_table">
 						<colgroup>
@@ -137,7 +137,7 @@
 				<td>
 					펫스타그램 커뮤니티
 					<%if (p2List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+						<br>작성글이 없습니다
 					<% }else{ %>
 					<table class="list_table">
 						<colgroup>
@@ -177,7 +177,7 @@
 				<td>
 					입양/임보 커뮤니티
 					<%if (p3List.isEmpty()){%>
-						<p>작성글이 없습니다</p>
+						<br>작성글이 없습니다
 					<% }else{ %>
 					<table class="list_table">
 						<colgroup>
