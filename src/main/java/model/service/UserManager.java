@@ -25,6 +25,7 @@ public class UserManager {
 	private CommentP2DAO commentP2DAO;
 	private CommentP3DAO commentP3DAO;
 	private ApplyDAO applyDAO;
+	private AdoptionAnimalDAO adoptionAnimalDAO;
 	private MessageDAO messageDAO;
 
 	private UserManager() {
@@ -319,7 +320,10 @@ public class UserManager {
 	public int createP3Adoption(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.create(post);	
 	}
-	
+	public int createAdoptionAnimal(AdoptionAnimal animal) throws SQLException{
+		return adoptionAnimalDAO.create(animal);
+	}
+	 
 	public int updateP3Adoption(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.update(post);
 	}

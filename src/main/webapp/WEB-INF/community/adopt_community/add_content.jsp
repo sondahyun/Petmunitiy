@@ -7,14 +7,14 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
-function applyAdopt() {
-   alert("실행");
+function Create() {
+   /* alert("실행");
 
    if (form.userNickname.value == "") {
       alert("이름을 입력하십시오.");
       form.userNickname.focus();
       return false;
-   }
+   } */
    
    //프론트팀 전달
    /* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;   //""
@@ -46,12 +46,12 @@ function userList(targetUri) {
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/user/register' />">
+<form name="form" method="POST" action="<c:url value='/community/adop_community/adopt_community' />">
    
    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-         <c:if test="${registerFailed}">
+         <%-- <c:if test="${registerFailed}">
          <font color="red"><c:out value="${exception.getMessage()}" /></font>
-       </c:if>  
+       </c:if>   --%>
 <table>
 <tr>
 <td>
@@ -62,36 +62,38 @@ function userList(targetUri) {
     <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">제목</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="userNickname" >
-                <c:if test="${registerFailed}">value="${user.userNickname}"</c:if>
+         <input type="text" style="width: 240" name="postTitle" >
+         <%-- <c:if test="${registerFailed}">value="${user.userNickname}"</c:if> --%>
       </td>
     </tr>
-     <tr height="40">
+     <!-- <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">작성일</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
 	      </td>
-	    </tr>
+	    </tr> -->
     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">신청(임보/입양)</td>
+      <td width="150" align="center" bgcolor="#E6E6E6">모집(임보/입양)</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="radio" name="select" value="imbo"/> 임보
-         <input type="radio" name="select" value="imag"/> 입양
+         <input type="radio" name="aType" value="0"/> 임보
+         <input type="radio" name="aType" value="1"/> 입양
+         <input type="radio" name="aType" value="2"/> 입양(임보)
       </td>
      </tr>
-          <tr height="40">
+          <!-- <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">현 상태</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	      </td>
+	      </td> -->
 	    </tr>
-          <tr height="40">
+          <!-- <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">입양(임보)완료일</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-	      </td>
+	      </td> -->
+	      <input type="hidden" name="approval" value="0">
 	    </tr>
 	     <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">동물 종</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="species">
+         <input type="text" style="width: 240" name="kind">
       </td>
      </tr>
      <tr height="40">
@@ -104,34 +106,20 @@ function userList(targetUri) {
     <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">동물 나이</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <select name=phone1>
+         <select name=age>
             <option value=0 selected>1</option>
-            <option value=1>2</option>
-            <option value=2>3</option>
-            <option value=3>4</option>
-            <option value=4>5</option>
-            <option value=5>6</option>
-            <option value=6>7</option>
-            <option value=7>8</option>
-            <option value=8>9</option>
-            <option value=9>10</option>
-            <option value=10>11</option>
-            <option value=11>12</option>
-            <option value=12>13</option>
-            <option value=13>14</option>
-            <option value=14>15</option>
-            <option value=15>16</option>
-            <option value=16>17</option>
-            <option value=17>18</option>
-            <option value=18>19</option>
-            <option value=19>20</option>
-         </select> 
+            <%
+            	for(int i=1;i<100;i++){
+            		out.println("<option value="+i+">"+(i+1)+"</option>");
+            	}
+            %>
+         </select>
       </td>
     </tr>
         <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">건강상태</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="species">
+         <input type="text" style="width: 240" name="health">
       </td>
      </tr>
     <%-- 
@@ -145,13 +133,13 @@ function userList(targetUri) {
    <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">백신 접종 여부</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="prepare">
+         <input type="text" style="width: 240" name="vaccination">
       </td>
      </tr>
     <tr height="40">
       <td width="150" align="center" bgcolor="#E6E6E6">작성자 희망 조건 사항</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="hope">
+         <input type="text" style="width: 240" name="hopeConditions">
       </td>
      </tr>
     </table>
@@ -160,7 +148,7 @@ function userList(targetUri) {
  </tr>
  <tr>
  	<td>
- 		<input class="btn" type="button" value="게시글 작성완료" onClick="userCreate()"> &nbsp;
+ 		<input class="btn" type="button" value="폼 작성완료" onClick="Create()"> &nbsp;
 	</td>
  </tr>
 </table>
