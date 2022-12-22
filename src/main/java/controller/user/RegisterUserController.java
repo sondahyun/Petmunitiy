@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,8 @@ public class RegisterUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    	HttpSession session = request.getSession();
+
        	if (request.getMethod().equals("GET")) {	
        		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterForm Request");
@@ -70,6 +73,7 @@ public class RegisterUserController implements Controller {
 			
 			System.out.println("user 성공");
 	       	String loginId =  request.getParameter("loginId");
+	       	session.setAttribute("logId", loginId);
 	       	//return response.sendRedirect("/user/register_pet/form?loginId="+loginId);
 	        return "redirect:/user/register_pet/form";	// ���� �� ����� ����Ʈ ȭ������ redirect
 	        

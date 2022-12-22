@@ -35,10 +35,10 @@ public class CreateP2Controller implements Controller {
 		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
 		Object loginId = session.getAttribute("loginId");
-		String postTitle = request.getParameter("postTitle");
-		String postContent = request.getParameter("postContent");
-		String filename = request.getParameter("filename");
-		String kind = request.getParameter("kind");
+		String postTitle = null;
+		String postContent = null;
+		String filename = null;
+		String kind = null;
 		boolean check = ServletFileUpload.isMultipartContent(request);    			
 		if(check) {    // 전송된 요청 메시지의 타입이 multipart 인지 여부를 체크한다. (multipart/form-data)
 
