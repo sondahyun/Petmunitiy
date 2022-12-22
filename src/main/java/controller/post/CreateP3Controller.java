@@ -39,6 +39,9 @@ public class CreateP3Controller implements Controller {
     	HttpSession session = request.getSession();
        	Object loginId = session.getAttribute("loginId");
        	
+       	System.out.println(request.getParameter("postTitle")+" "+request.getParameter("aType")+" "+request.getParameter("approval")+" "+request.getParameter("postContent")+" "+loginId);
+       	System.out.println(request.getParameter("gender")+" "+request.getParameter("age")+" "+request.getParameter("health")+" "+request.getParameter("vaccination")+" "+request.getParameter("kind")+" "+request.getParameter("filename"));
+       	
 		PostAdoption pA = new PostAdoption(
     		request.getParameter("postTitle"),
 			Integer.parseInt(request.getParameter("aType")),
@@ -63,13 +66,13 @@ public class CreateP3Controller implements Controller {
 			
 	    	log.debug("Create PostAdoption : {}", pA);
 	    	log.debug("Create AdoptionAnimal : {}", aA);
-	        return "redirect:/community/adopt_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect
+	        return "redirect:/community/adopt_community/adopt_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect
 	        
 		} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
             request.setAttribute("creationFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("pA", pA);
-			return "/community/creationP3Form.jsp";
+			return "/community/adopt_community/adopt_community.jsp";
 		}
     }
 }

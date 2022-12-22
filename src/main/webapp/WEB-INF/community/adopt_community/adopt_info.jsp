@@ -70,6 +70,7 @@
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
 	         <c:if test="${pA.aType==1}">입양</c:if>
 	         <c:if test="${pA.aType==0}">임보</c:if>
+	         <c:if test="${pA.aType==2}">입양(임보)</c:if>
 	      </td>
 	    </tr>
 	    <tr height="40">
