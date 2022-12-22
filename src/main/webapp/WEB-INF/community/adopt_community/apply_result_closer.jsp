@@ -6,6 +6,8 @@
 @SuppressWarnings("unchecked")
 Apply applyA = (Apply)request.getAttribute("applyA");
 System.out.println("applyId : "+applyA.getApplyId());
+
+pageContext.setAttribute("adoptId", request.getAttribute("adoptId"));
 %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +17,17 @@ System.out.println("applyId : "+applyA.getApplyId());
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
+<script>
+function removeApply()
+{
+	if(confirm("삭제를 하면 다시 복구할 수 없습니다. 삭제하시겠습니까?")==false)
+		return false;
+	
+	else return frmD.submit();
+	
+}
 
+</script>
 </head>
 
 <body>
@@ -119,9 +131,15 @@ System.out.println("applyId : "+applyA.getApplyId());
 	<table>
 	 <tr align="center">
 		<td align="left">
-		
-		<input class="btn" type="button" value="승인" onClick="userCreate()"> &nbsp;
-		<input class="btn" type="button" value="삭제" onClick="userList()">
+			<form name="frmU" action="<c:url value='/community/adopt_community/adopt_info'><c:param name='applyId' value='${applyA.applyId}'></c:param><c:param name='adoptId' value='${param.adoptId}'></c:param></c:url>">
+				<input type="hidden" name="applyId" value="${applyA.applyId}">
+				<input type="hidden" name="adoptId" value="${param.adoptId}">
+				<input class="btn" type="submit" value="승인"> &nbsp;
+			</form>
+			<form name="frmD" action="<c:url value='/community/adopt_community/adopt_info/deleteApply'/>">
+				<input type="hidden" name="applyId" value="${applyA.applyId}">
+				<input class="btn" type="button" value="삭제" onClick="removeApply()">
+			</form>
 		</td>
 	 </tr>
 	 

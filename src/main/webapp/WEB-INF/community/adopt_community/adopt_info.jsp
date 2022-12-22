@@ -8,6 +8,7 @@
 	
 	session.setAttribute("adoptAnimal", pA.getAnimal());
 	pageContext.setAttribute("apv", request.getAttribute("apId"));
+	
 %>
 <html>
 <head>
@@ -47,7 +48,7 @@
 	</c:url>">폼 수정</a>
 
 
-	<c:if test="${lui == pA.loginId}">
+	<c:if test="${lui == pA.loginId and pA.approval == 0}">
 		<a style="float:right" href="<c:url value='/community/adopt_community/apply_result'><c:param name="postId" value="${pA.postId}"></c:param></c:url>">모아보기</a><br><br>
 	</c:if>
 	<table style="background-color: #848484" style="width: 100%">
@@ -128,6 +129,7 @@
 	         ${pA.postContent}
 	      </td>
 	     </tr>
+	     <c:if test="${pA.approval==0}">
 	    	<% 
 	    	if(session.getAttribute("loginId") != null) {// 입양일 경우 %>
 	    	<tr>	<td class="adopt_info_td_1"><a class="adopt_info_1" href="<c:url value='/community/adopt_community/apply_form'><c:param name="postId" value="${pA.postId}"></c:param></c:url>">입양 신청</a></td> 
@@ -140,6 +142,7 @@
 	 	  	<%
 			} 
 			%>
+			</c:if>
 	    </table>
 	 </td>
     </tr>

@@ -15,11 +15,14 @@ public class DeleteApplyController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-    	int applyId = Integer.parseInt(request.getParameter("applyId"));
-    	log.debug("Delete applyId : {}", applyId);
-
-		UserManager manager = UserManager.getInstance();			
-		manager.removeApply(applyId);
-		return "redirect:/community/adopt_community";
+    	System.out.println("controller가 받은 applyId : "+request.getParameter("applyId"));
+    	
+		 int applyId = Integer.parseInt(request.getParameter("applyId"));
+		 log.debug("Delete applyId : {}", applyId);
+		  
+		 UserManager manager = UserManager.getInstance();
+		 manager.removeApply(applyId);
+		 
+		return "redirect:/community/adopt_community/adopt_community";
 	}
 }
