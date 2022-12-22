@@ -95,7 +95,12 @@
 		<td class="main">
 			<table>
 				<%int cnt=0; %>
+				<% int index = 0; %>
+				
 				<c:forEach var="item" varStatus="i" items="${p3List}">
+				<%
+					String file = p3List.get(index).getAnimal().getFilename();									
+				%>
 				<c:if test="${i.index%3==0}"><tr></c:if>
 				<td>
 				<table class="adopt_main_table1">
@@ -103,9 +108,18 @@
 						
 					</tr>
 					<tr class="pic1">
-						<td class="pic_td1" colspan=2>
-							<a href="<c:url value='/community/adopt_community/adopt_info'>
-										<c:param name='postId' value='${item.postId}'/></c:url>"> 사진 </a>
+						<td class="pic_td1" colspan=2>	
+						<%if(file != null) {%>
+								<a href="<c:url value='/community/adopt_community/adopt_info'>
+										<c:param name='postId' value='${item.postId}'/></c:url>">  
+										<img src="<c:url value='/upload/${item.animal.filename}'/>" style="width:200px; height:200px" />		
+								</a>	
+							<%} else{%>
+								<a href="<c:url value='/community/adopt_community/adopt_info'>
+	                              <c:param name='postId' value='${item.postId}'/></c:url>"> 					
+	                              <img src="<c:url value='/images/linkedin_profile_image.png'/>" style="width:200px; height:200px" />		
+							 	</a>
+						 <%} %>
 						</td>
 					</tr>
 					<tr class="spec1">
@@ -124,6 +138,7 @@
 				
 				</td>
 				<c:if test="${i.index%3==2 and i.index!=0}"></c:if>
+				<%index++; %>
 				</c:forEach>
 			</table>
 		</td>

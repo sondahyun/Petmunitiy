@@ -5,6 +5,9 @@
 	ArrayList<PostInformation> p0List = (ArrayList<PostInformation>)request.getAttribute("p0List");
 	ArrayList<PostPetstargram> p2List = (ArrayList<PostPetstargram>)request.getAttribute("p2List");
 	ArrayList<PostAdoption> p3List = (ArrayList<PostAdoption>)request.getAttribute("p3List");
+	Collections.sort(p0List);
+	Collections.sort(p2List);
+	Collections.sort(p3List);
 %>
 <!DOCTYPE html>
 <html>
@@ -156,13 +159,24 @@
 	                			<c:if test="${i.index > 4}"><c:set var="topN" value="true"/></c:if>
 								<c:if test="${topN==false}">
 								<%
-									String find3User = p3List.get(index).getLoginId();									
+									String find3User = p3List.get(index).getLoginId();
+									String file3 = p3List.get(index).getAnimal().getFilename();								
+
 								%>
 									<c:set var="userName3" value="<%=UserSessionUtils.getUserNickName(find3User) %>"/>
 					                <tr class="pic2">
 					                	<td class="pic_td2" colspan=2>
-						                 <a href="<c:url value='/community/adopt_community/adopt_info'>
-						                          <c:param name='postId' value='${p3.postId}'/></c:url>"> 사진 </a>
+						                	<%if(file3 != null) {%>
+												<a href="<c:url value='/community/adopt_community/adopt_info'>
+														<c:param name='postId' value='${p3.postId}'/></c:url>">  
+														<img src="<c:url value='/upload/${p3.animal.filename}'/>" style="width:200px; height:200px" />		
+												</a>	
+											<%} else{%>
+												<a href="<c:url value='/community/adopt_community/adopt_info'>
+					                              <c:param name='postId' value='${p3.postId}'/></c:url>"> 					
+					                              <img src="<c:url value='/images/linkedin_profile_image.png'/>" style="width:200px; height:200px" />		
+											 	</a>
+									 		<%} %>
 						                </td>
 						            </tr>
 						            <tr class="content_writer">
@@ -293,7 +307,6 @@
 		                  <%index3++; %>
 	                  	</table>
 			                  </c:if>
-	                  </td>
 	                  </c:forEach>
                   <%} %>
                   </tr>
