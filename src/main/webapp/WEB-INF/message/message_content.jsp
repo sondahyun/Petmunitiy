@@ -128,10 +128,17 @@
         text-align: center; /* Quirks Mode                  
    }*/
 </style>
+<script>
+	function userList(targetUri) {
+	   form.action = targetUri;
+	   form.submit();   //get
+	}
+</script>
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
+<form name="form" method="POST" action="<c:url value='/message/message_write' />">
 
 <h3>쪽지 상세보기</h3>
 <br>
@@ -176,6 +183,7 @@
 				<input class="btn" type="button" value="목록보기" onClick="userList('<c:url value='/message/message' />')">
 			</td>
 		 </tr> 
-	</table>   
+	</table>  
+	</form> 
 </body>
 </html>
