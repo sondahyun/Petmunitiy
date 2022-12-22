@@ -247,62 +247,60 @@
 	<tr>
 		<td>
 		<a class="nav-link" href="<c:url value='/community/info_community/info_community' />">정보 게시판</a>
-		<table >
+		<table>
 				<tr></tr>
 				<%if(p0List.isEmpty()) {%>
-         		<tr><td>작성한 글이 없습니다.</td></tr>
+         		<tr>
+         			<td colspan=6>작성한 글이 없습니다.</td>
+         		</tr>
+         		
          		<%} else{ %>
          		<tr>
 	         		<c:set var="topN" value="false"/>
 	         		<% int index3 = 0; %>
 		         	<c:forEach var="p0" items="${p0List}" varStatus="i">
-		         		<td>
-			         		<table class="group_main_table1">
-					         	<tr>
-					         		<td>
-						                <c:if test="${i.index > 5}"><c:set var="topN" value="true"/></c:if>
-										<c:if test="${topN==false}">
-										<%
-											String find0User = p0List.get(index3).getLoginId();									
-											String file0 = p0List.get(index3).getFileName();									
-										%>
-										<c:set var="userName0" value="<%=UserSessionUtils.getUserNickName(find0User) %>"/>
-						                  <tr class="pic2">
-						                     <td class="pic_td2" colspan=2>
-						                     <%if(file0 != null) {%>
-												<a href="<c:url value='/community/info_community/info_content'>
-														<c:param name='postId' value='${p0.postId}'/></c:url>">  
-														<img src="<c:url value='/upload/${p0.fileName}'/>" style="width:200px; height:200px" />		
-												</a>	
-											<%} else{%>
-												<a href="<c:url value='/community/info_community/info_content'>
-					                              <c:param name='postId' value='${p0.postId}'/></c:url>"> 					
-					                              <img src="<c:url value='/images/linkedin_profile_image.png'/>" style="width:200px; height:200px" />		
-											 	</a>
-										 	<%} %>
-										 
-						                     </td>
-						                  </tr>
-						                  <tr class="content_writer">
-						                     <td class="content_writer1">작성자</td>
-						                     <td class="content_writer2">${userName0}</td> <!-- 작성자 나타내기 -->
-						                  </tr>
-						                  <tr class="content_say">
-						                     <td class="content_say1">글</td>
-						                     <td class="content_say2">${p0.postTitle}</td> <!-- 게시글 불러오기 -->
-						                  </tr>
-					                  </c:if>
-					                  <%index3++; %>
-				                  </td>
+		         	<td>
+		         		<table class="group_main_table1">
+		                <c:if test="${i.index > 4}"><c:set var="topN" value="true"/></c:if>
+						<c:if test="${topN==false}">
+							<%
+								String find0User = p0List.get(index3).getLoginId();	
+								String file0 = p0List.get(index3).getFileName();									
+							%>
+							<c:set var="userName0" value="<%=UserSessionUtils.getUserNickName(find0User) %>"/>
+			                  <tr class="pic2">
+			                     <td class="pic_td2" colspan=2>
+			                     <%if(file0 != null) {%>
+									<a href="<c:url value='/community/info_community/info_content'>
+											<c:param name='postId' value='${p0.postId}'/></c:url>">  
+											<img src="<c:url value='/upload/${p0.fileName}'/>" style="width:200px; height:200px" />		
+									</a>	
+								<%} else{%>
+									<a href="<c:url value='/community/info_community/info_content'>
+		                              <c:param name='postId' value='${p0.postId}'/></c:url>"> 					
+		                              <img src="<c:url value='/images/linkedin_profile_image.png'/>" style="width:200px; height:200px" />		
+								 	</a>
+							 <%} %>
+			                     </td>
 			                  </tr>
-		                  </table>
+			                  <tr class="content_writer">
+			                     <td class="content_writer1">작성자</td>
+			                     <td class="content_writer2">${userName0}</td> <!-- 작성자 나타내기 -->
+			                  </tr>
+			                  <tr class="content_say">
+			                     <td class="content_say1">글</td>
+			                     <td class="content_say2">${p0.postTitle}</td> <!-- 게시글 불러오기 -->
+			                  </tr>
+			                  </c:if>
+		                  <%index3++; %>
+	                  	</table>
 	                  </td>
 	                  </c:forEach>
                   <%} %>
                   </tr>
-              </table>
-            </td>
-		</tr>
+         </table>
+        </td>
+	</tr>
 </table>  
 </td></tr></table>
 
