@@ -26,6 +26,6 @@ public class DeleteUserController implements Controller {
 		session.removeAttribute(UserSessionUtils.USER_SESSION_KEY);
 		session.invalidate();
 		
-		return "redirect:/";	// ����� ���� ȭ������ �̵� (forwarding)	
+		return "/main/main.jsp";		// ����� ���� ȭ������ �̵� (forwarding)	
 	}
 }
