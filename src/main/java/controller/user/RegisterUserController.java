@@ -67,7 +67,10 @@ public class RegisterUserController implements Controller {
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.create(user);
+			
 			System.out.println("user 성공");
+	       	request.setAttribute("loginId", request.getParameter("loginId"));
+
 	        return "redirect:/user/register_pet/form";	// ���� �� ����� ����Ʈ ȭ������ redirect
 	        
 		} catch (ExistingUserException e) {	// ���� �߻� �� ȸ������ form���� forwarding
