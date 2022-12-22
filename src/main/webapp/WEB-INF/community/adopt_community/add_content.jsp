@@ -46,7 +46,7 @@ function userList(targetUri) {
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/community/adopt_community/adopt_community/add_content' />">
+<form name="form" method="POST" action="<c:url value='/community/adopt_community/adopt_community/add_content' />" enctype="multipart/form-data">
    
    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
          <%-- <c:if test="${registerFailed}">
