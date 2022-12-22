@@ -62,6 +62,7 @@ public class CreateP3Controller implements Controller {
 			manager.createAdoptionAnimal(aA);
 			
 	    	log.debug("Create PostAdoption : {}", pA);
+	    	log.debug("Create AdoptionAnimal : {}", aA);
 	        return "redirect:/community/adopt_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect
 	        
 		} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
