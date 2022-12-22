@@ -142,9 +142,7 @@
 		<table>
 		<tr>
 		<td>
-		<br>
-		<a class="nav-link" style="position: absolute; left:50%" href="<c:url value='/community/adopt_community/adopt_community' />">입양/임보 게시판</a>
-			<br><br>
+		<a class="nav-link" href="<c:url value='/community/adopt_community/adopt_community' />">입양/임보 게시판</a>
 			<table>
         		<tr></tr>
 	         <%if(p3List.isEmpty()) {%>
@@ -204,10 +202,9 @@
 		
 	<tr>
 		<td>
-		<%-- <a class="nav-link" href="<c:url value='/community/petstar_community/petstar_community' />">펫스타그램 게시판</a> --%>
-		<table><br>
-				<tr><a class="nav-link" style="position: absolute; left:50%" href="<c:url value='/community/petstar_community/petstar_community' />">펫스타그램 게시판</a>
-				<br><br></tr>
+		<a class="nav-link" href="<c:url value='/community/petstar_community/petstar_community' />">펫스타그램 게시판</a>
+		<table>
+				<tr></tr>
 				<%if(p2List.isEmpty()) {%>
          		<tr>
          			<td colspan=6>작성한 글이 없습니다.</td>
@@ -260,9 +257,8 @@
         </td>
 	</tr>
 	<tr>
-		<td><br>
-		<a class="nav-link" style="position: absolute; left:50%" href="<c:url value='/community/info_community/info_community' />">정보 게시판</a>
-		<br><br>
+		<td>
+		<a class="nav-link" href="<c:url value='/community/info_community/info_community' />">정보 게시판</a>
 		<table>
 				<tr></tr>
 				<%if(p0List.isEmpty()) {%>
