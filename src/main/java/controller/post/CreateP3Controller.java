@@ -45,11 +45,21 @@ public class CreateP3Controller implements Controller {
 			Integer.parseInt(request.getParameter("approval")),
 			request.getParameter("postContent"),
 			String.valueOf(loginId)
+		);
+		AdoptionAnimal aA = new AdoptionAnimal(
+       			request.getParameter("gender"),
+       			Integer.parseInt(request.getParameter("age")),
+       			request.getParameter("health"),
+       			request.getParameter("vaccination"),
+       			request.getParameter("kind"),
+       			request.getParameter("filename"),
+       			pA.getPostId()
 			);
         
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.createP3Adoption(pA);
+			manager.createAdoptionAnimal(aA);
 			
 	    	log.debug("Create PostAdoption : {}", pA);
 	        return "redirect:/community/adopt_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect
