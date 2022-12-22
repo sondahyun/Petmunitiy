@@ -138,7 +138,7 @@ public class PostGroupDAO {
 
 	public List<PostGroup> searchP1List(String word, Date start, Date end) throws SQLException {
 		String sql = "SELECT * "+ "FROM PostGroup "+"where (postTitle like ? or postContent like ?) and (postDate between ?-1 and ?+1) ";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행

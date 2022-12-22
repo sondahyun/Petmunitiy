@@ -11,6 +11,7 @@
 	if(p1List != null) Collections.sort(p1List);
 	if(p2List != null) Collections.sort(p2List);
 	if(p3List != null) Collections.sort(p3List);
+	
 %>
 
 <!DOCTYPE html>
@@ -24,15 +25,15 @@
 <script>
 function search()
 {
-	if(searchForm.word.value==""){
+	/* if(searchForm.word.value==""){
 		alert("검색어를 입력하세요");
 		return false;
 	}
-	if(searchForm.start.value=="" || searchForm.end.value==""){
+	else if(searchForm.start.value=="" || searchForm.end.value==""){
 		alert("날짜조건을 입력하세요");
 		return false;
-	}
-	searchForm.submit();
+	} */
+	else searchForm.submit();
 	
 }
 
@@ -75,7 +76,7 @@ function search()
  					</option>
 				</select> --%>
 				
-				<input type="date" style="width: 240" name="start" >-<input type="date" style="width: 240" name="end" >
+				<input type="date" style="width: 240" name="start" value="2022-12-01">-<input type="date" style="width: 240" name="end" value="3000-01-01">
 				&nbsp;
 			    <input class="srch" type="text" placeholder="검색어를 입력하세요." name="word">
 			    <button class="btn" onClick="search()" >검색</button>
@@ -221,7 +222,7 @@ function search()
 			<tr>
 				<td>
 					<br>입양/임보 커뮤니티
-					<%if (p3List == null || (p3List == null && p3List.size()==0) || (comm!=0&&comm!=1)){%>
+					<%if (p3List == null || (p3List == null && p3List.size()==0) || (comm!=1)){%>
 						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
 					<% }else if (comm==0||comm==1){ %>
 					<table class="list_table">
