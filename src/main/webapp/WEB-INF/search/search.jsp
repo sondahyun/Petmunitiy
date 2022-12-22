@@ -87,7 +87,7 @@ function search()
 				<td>
 					<br>정보 커뮤니티
 					<%if (p0List == null || (p0List!=null && p0List.size()==0) || (comm!=0&&comm!=4)){%>
-						<tr><td>작성글이 없습니다<br><br></td></tr><hr>
+						<tr><td>작성글이 없습니다<br><br></td></tr><br>
 					<% }else if(comm==0 || comm==4){ %>
 					<table class="list_table">
 						<colgroup>
@@ -127,7 +127,7 @@ function search()
 					</table>
 					<%}%>
 				</td>
-			</tr>
+				</tr>
 				<tr>
 				<td>
 					<br>그룹 커뮤니티
