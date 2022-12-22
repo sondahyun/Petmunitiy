@@ -32,15 +32,19 @@ public class CreateP3Controller implements Controller {
     	if (request.getMethod().equals("GET")) {	
 			// GET request: 회원정보 등록 form 요청	
 			log.debug("adopt_community add");
-			//System.out.println("여기1");
 			return "/community/adopt_community/add_content.jsp";   //  registerForm���� ����     	
 		}
-    	
+    	System.out.print("create P3 controller");
     	HttpSession session = request.getSession();
        	Object loginId = session.getAttribute("loginId");
        	
-       	System.out.println(request.getParameter("postTitle")+" "+request.getParameter("aType")+" "+request.getParameter("approval")+" "+request.getParameter("postContent")+" "+loginId);
-       	System.out.println(request.getParameter("gender")+" "+request.getParameter("age")+" "+request.getParameter("health")+" "+request.getParameter("vaccination")+" "+request.getParameter("kind")+" "+request.getParameter("filename"));
+       	//System.out.println(request.getParameter("gender")+" "+request.getParameter("age")+" "+request.getParameter("health")+" "+request.getParameter("vaccination")+" "+request.getParameter("kind")+" "+request.getParameter("filename"));
+       	
+       	System.out.println(request.getParameter("postTitle"));
+       	System.out.println(request.getParameter("aType"));
+       	System.out.println(request.getParameter("approval"));
+
+       	System.out.println(request.getParameter("postContent"));
        	
 		PostAdoption pA = new PostAdoption(
     		request.getParameter("postTitle"),
@@ -55,24 +59,25 @@ public class CreateP3Controller implements Controller {
        			request.getParameter("health"),
        			request.getParameter("vaccination"),
        			request.getParameter("kind"),
-       			request.getParameter("filename"),
+       			null,
        			pA.getPostId()
 			);
         
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.createP3Adoption(pA);
-			manager.createAdoptionAnimal(aA);
-			
 	    	log.debug("Create PostAdoption : {}", pA);
+	    	
+			manager.createAdoptionAnimal(aA);
 	    	log.debug("Create AdoptionAnimal : {}", aA);
-	        return "redirect:/community/adopt_community/adopt_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect
+	    	
+	        return "/community/adopt_community/adopt_community";	// 성공 시 커뮤니티 리스트 화면으로 redirect
 	        
 		} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
             request.setAttribute("creationFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("pA", pA);
-			return "/community/adopt_community/adopt_community.jsp";
+			return "/community/adopt_community/adopt_community";
 		}
     }
 }
