@@ -43,7 +43,7 @@
 					</c:url>">폼 수정</a>
 					<a class="nav-link" href="<c:url value='/community/info_community/info_content_delete'>
 					<c:param name='postId' value='${post.postId}'/> 
-					</c:url>">게시글 삭제</a>
+					</c:url>">폼 삭제</a>
 				</td>
 			</tr>
 		</c:if>

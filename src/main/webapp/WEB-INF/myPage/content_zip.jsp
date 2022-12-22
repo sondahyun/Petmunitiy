@@ -31,12 +31,12 @@
 			<table style="margin-top:0px;">
 			<tr>
 				<td>
-					<select name=phone1>
+					<!-- <select name=phone1>
 							<option value=0 selected>입양/임보 커뮤니티</option>
 							<option value=1>펫스타그램 커뮤니티</option>
 							<option value=2>그룹 커뮤니티</option>
 							<option value=3>정보 커뮤니티</option>
-					</select> 
+					</select>  -->
 					&nbsp;
 					<!--  <select name=phone1>
 						<option value=0 selected>전체게시판</option>
