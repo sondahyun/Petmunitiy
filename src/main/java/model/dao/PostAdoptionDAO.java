@@ -226,10 +226,10 @@ public class PostAdoptionDAO {
                   rs.getString("vaccination"),
                   rs.getString("kind"),
                   rs.getString("fileName"),
-                  rs.getInt("aId")                  
+                  rs.getInt("aId")
                   );
 
-       	 	log.debug("Create AdoptionAnimal : {}", aa);
+       	 	log.debug("getList AdoptionAnimal : {}", aa);
        	 	
             PostAdoption pAdoption = new PostAdoption(         // PostAdoption 객체를 생성하여 현재 행의 정보를 저장
                   rs.getInt("pId"),
@@ -243,9 +243,10 @@ public class PostAdoptionDAO {
                   aa
                   );
             //pAdoption.setAnimal(aa);
-            log.debug("Create pAdoption : {}", pAdoption);
+            log.debug("getList pAdoption : {}", pAdoption);
             adoptionList.add(pAdoption);            // List에 PostAdoption 객체 저장
          }
+         System.out.println("p3List size : "+adoptionList.size());
          return adoptionList;               
          
       } catch (Exception ex) {

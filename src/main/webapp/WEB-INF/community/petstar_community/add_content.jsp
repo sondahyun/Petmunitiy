@@ -48,7 +48,7 @@ function userList(targetUri) {
 <!--<h2>회원가입</h2>  -->
 <br>
 <h3>폼 작성</h3>
-<form name="form" method="post" action="<c:url value='/community/petstar_community/add_content'/>">
+<form name="form" method="post" action="<c:url value='/community/petstar_community/add_content'/>" enctype="multipart/form-data">
   <table style="background-color: ffffff" style="width: 100%">
     <!--<center>-->
     <tr>

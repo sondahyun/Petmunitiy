@@ -66,6 +66,13 @@ function userList(targetUri) {
          <%-- <c:if test="${registerFailed}">value="${user.userNickname}"</c:if> --%>
       </td>
     </tr>
+    <tr height="40">
+      <td width="150" align="center" bgcolor="#E6E6E6">사진</td>
+      <td width="250" bgcolor="ffffff" style="padding-left: 10">
+         <input type="file" style="width: 240" name="filename" >
+         <%-- <c:if test="${registerFailed}">value="${user.userNickname}"</c:if> --%>
+      </td>
+    </tr>
      <!-- <tr height="40">
 	      <td width="150" align="center" bgcolor="#E6E6E6">작성일</td>
 	      <td width="250" bgcolor="ffffff" style="padding-left: 10">
@@ -107,10 +114,10 @@ function userList(targetUri) {
       <td width="150" align="center" bgcolor="#E6E6E6">동물 나이</td>
       <td width="250" bgcolor="ffffff" style="padding-left: 10">
          <select name=age>
-            <option value=0 selected>1</option>
+            <option value=1 selected>1</option>
             <%
-            	for(int i=1;i<100;i++){
-            		out.println("<option value="+i+">"+(i+1)+"</option>");
+            	for(int i=2;i<=100;i++){
+            		out.println("<option value="+i+">"+i+"</option>");
             	}
             %>
          </select>

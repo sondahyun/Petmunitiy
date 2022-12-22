@@ -28,21 +28,20 @@ import model.service.UserManager;
 
 public class RegisterPetController implements Controller {
     private static final Logger log = LoggerFactory.getLogger(RegisterPetController.class);
-	String loginId;
-
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
        	if (request.getMethod().equals("GET")) {	
        		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterPetForm Request");
-    		loginId= (String) request.getAttribute("loginId");
     		//System.out.println("여기1");
 			return "/user/register_pet.jsp";   //  registerForm���� ����     	
 	    }	
+    	HttpSession session = request.getSession();
 
      // POST request (회원정보가 parameter로 전송됨)
        	log.debug("befor Create Pet : {}");
-    	HttpSession session = request.getSession();
+    	String loginId = (String) session.getAttribute("logId");
+    	System.out.println("registerpet loginId:"+loginId);
        	String name = null;
        	String gender = null;
        	int age = -1;

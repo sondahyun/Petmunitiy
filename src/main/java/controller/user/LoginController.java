@@ -15,7 +15,14 @@ public class LoginController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(LoginController.class);
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	if (request.getMethod().equals("GET")) {	
+    	HttpSession session = request.getSession();
+
+    	if (request.getMethod().equals("GET")) {
+    		String logId = null;
+    		logId = (String)session.getAttribute("logId");
+    		if(logId != null) {
+    			session.removeAttribute("logId");
+    		}
        		// GET request: 회원정보 등록 form 요청	
     		log.debug("LoginController Request");
     		//System.out.println("여기1");
@@ -33,7 +40,6 @@ public class LoginController implements Controller {
 			System.out.println(userId);
 			
 			// ���ǿ� ����� ���̵� ����
-			HttpSession session = request.getSession();
             session.setAttribute("loginId", loginId);
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, String.valueOf(userId));
             
