@@ -41,11 +41,11 @@
 	<c:set var="lui" value="<%=logId%>"/>
 	
 	<!-- 작성자 ==방문자일경우에 모임 수정 버튼 보임 -->
-	<%if(logId.equals(pA.getLoginId())){ %>	
-		<a class="nav-link" 
+	 <%if(logId.equals(pA.getLoginId())){ %>	
+		<!-- <a class="nav-link" 
 		href="<c:url value='/community/adopt_community/adopt_info_update'>
 		<c:param name='postId' value='${pA.postId}'/> 
-		</c:url>">폼 수정</a>
+		</c:url>">폼 수정</a>-->
 		
 		<a class="nav-link" 
 		href="<c:url value='/community/adopt_community/adopt_info_delete'>

@@ -81,11 +81,11 @@
 <br>
 <table style="width:100%">
 	<% if(session.getAttribute("loginId") != null) {%>
-	<tr>
+	<!-- <tr>
 		<td colspan="3">
 			<a style="float:right" href="<c:url value='/community/adopt_community/adopt_community/add_content' />">폼 작성</a>
 		</td>
-	</tr>
+	</tr> -->
 	<%} %>
 	<tr>
 		<td class="myPage_mini">
