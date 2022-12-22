@@ -16,6 +16,7 @@ public class AdoptionAnimal {
 		super();
 	}
 	
+	
 	public AdoptionAnimal(String gender, int age, String health, String vaccination, String kind, String filename,
 			int postId) {
 		super();
