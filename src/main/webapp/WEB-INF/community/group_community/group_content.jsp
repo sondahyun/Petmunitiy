@@ -137,17 +137,19 @@
 							모임 팀원					
 						</td>
 						<td style="height:50%; width:90%; align:center; background-color:#E6E6E6;">
-						<% for(int jId:joinUser){%>
-							<% String userNickName = UserSessionUtils.getUserNickName(jId); %>
-								<%=userNickName%>&ensp;
-						<%} %>
+							<!-- 팀원 목록 보기 
+							-> 클릭하면 개인정보로 넘어감 -->
+							<% for(int jId:joinUser){%>
+								<% String userNickName = UserSessionUtils.getUserNickName(jId); %>
+									<a href="/community/group_community/group_member_info" class="btn btn-link"><%=userNickName%>&ensp;</a>
+							<%} %>
 						</td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 	<%} %>
-	<!--  -->
+
 	
 		<%-- 모달 이용 
 		<tr>
