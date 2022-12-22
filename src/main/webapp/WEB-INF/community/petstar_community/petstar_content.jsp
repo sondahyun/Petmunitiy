@@ -130,9 +130,6 @@ String lId=UserSessionUtils.getLoginId(session);
 									<br>
 									<input type="submit" class="btn" value="댓글 작성"></td>
 								</tr>
-								<tr>
-									<td colspan="3"><input type="file" name="fileName"></td>
-								</tr>
 							</table>
 						</form>
 					</div>

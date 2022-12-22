@@ -126,9 +126,6 @@
 									<td style="width:80%"><input type="text" style="width:100%; height:80px" name = "commentContent" class="form-control" placeholder="댓글을 입력하세요."></td>
 									<td style="width:10%"><br><br><input type="submit" class="btn" value="댓글 작성"></td>
 								</tr>
-								<tr>
-									<td colspan="3"><input type="file" name="fileName"></td>
-								</tr>
 							</table>
 						</form>
 					</div>
