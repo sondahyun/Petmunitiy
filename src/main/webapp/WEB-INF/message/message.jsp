@@ -165,7 +165,6 @@ List<Message> mList = (List<Message>)request.getAttribute("mList");
 <a class="nav-link" href="<c:url value='/message/message' />">받은 쪽지함 </a>&ensp;
 <a class="nav-link" href="<c:url value='/message/message2' />">보낸 쪽지함 </a>
 <br>
-<%if(check=="Y"){System.out.println("받은 쪽지입니다."); %>
 
 	<table style="width:80%" align="center" summary="받은쪽지 목록(아이디,이름,제목,날짜 항목)">
 	  <tr>
@@ -214,49 +213,6 @@ List<Message> mList = (List<Message>)request.getAttribute("mList");
 	  </tr>
 	  
 	</table>
-<%} 
-else if(check=="N"){ System.out.println("보낸 쪽지입니다.");%>
-	<table style="width:80%" align="center" summary="보낸쪽지 목록(아이디,이름,제목,날짜 항목)">
-	  <tr>
-	  	<td class="main">
-			<table class="list_table">
-		      <colgroup>
-		         <col width="15%" />
-		         <col width="45%" />
-		         <col width="20%" />
-		         <col width="20%" />
-		      </colgroup>
-		      <thead>
-		      <tr>
-		        <!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
-		        <th>번호</th>
-				<th>제목</th>
-				<th>받는 사람</th>
-				<th>날짜</th>
-		      </tr>
-		      </thead>
-		      <c:forEach var="item" items="${p0List}">
-		         <tr>
-		         <td>${item.postId }</td>
-		          <td>
-		             <a href="<c:url value='/message/message_content'>
-		                   	<c:param name='postId' value='${item.postId}'/>
-		                  </c:url>">
-		             ${item.postTitle}</a>
-		          </td>
-		           <td>
-		             ${item.loginId}
-		           </td>
-		           <td>
-		             ${item.postDate}
-		           </td>
-		         </tr>
-		     </c:forEach> 
-			</table>
-		</td>
-	  </tr> 
-	</table>
-<%} %>
 <!--  -->
 </body>
 </html>

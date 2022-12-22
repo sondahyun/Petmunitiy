@@ -63,7 +63,7 @@
 	 	  <%
 			} %>
 		</table>
-		<a href="<c:url value='/main/main' />">
+		<a href="<c:url value='/' />">
 		  <img src="<c:url value='/images/facebook_cover_photo_5.png' />" style="width:100%"/></a>		
    </header>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" >

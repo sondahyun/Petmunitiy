@@ -81,6 +81,8 @@ public class RequestMapping {
         mappings.put("/message/message2", new ListMSenderController());
 
         mappings.put("/message/message_write", new CreateMessageController());
+        mappings.put("/message/message_content", new ViewMessageController());
+
         
         //myPage
         mappings.put("/myPage/myPage", new ViewUserController());

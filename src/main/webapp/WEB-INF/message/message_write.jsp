@@ -148,6 +148,10 @@ function messageCreate() {
 	}
    form.submit();
 }
+function userList(targetUri) {
+	   form.action = targetUri;
+	   form.submit();   //get
+	}
 </script>
 </head>
 <body>
