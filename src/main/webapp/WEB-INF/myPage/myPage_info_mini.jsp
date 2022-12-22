@@ -33,7 +33,7 @@
         border-collapse : collapse;
    }
 </style>
-<table class="myPage_mini">
+<table  style="width:90%" class="myPage_mini">
    <tr class="content">
       <td>
          <a href="<c:url value='/myPage/content_zip' />">작성글 모아보기</a> <!-- value 수정하기 -->
