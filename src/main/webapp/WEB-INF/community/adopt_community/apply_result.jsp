@@ -93,7 +93,7 @@ pageContext.setAttribute("adoptId", request.getAttribute("adoptId"));
 											<tr>
 												<td>${size-i.index}</td>
 												<td><a
-													href="<c:url value='/community/adopt_community/apply_result_closer'><c:param name='applyId' value='${item.applyId}'></c:param></c:url>">${item.name}</a></td>
+													href="<c:url value='/community/adopt_community/apply_result_closer'><c:param name='applyId' value='${item.applyId}'></c:param><c:param name='adoptId' value='${adoptId}'></c:param></c:url>">${item.name}</a></td>
 												<c:if test="${item.aType==0}">
 													<td>임보</td>
 												</c:if>

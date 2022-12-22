@@ -35,6 +35,7 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/adopt_info_update", new UpdateP3Controller());
         
         mappings.put("/community/adopt_community/adopt_info/createApply", new CreateApplyController());
+        mappings.put("/community/adopt_community/adopt_info/deleteApply", new DeleteApplyController());
         
         //펫스타그램
         mappings.put("/community/petstar_community/petstar_community", new ListP2Controller());
