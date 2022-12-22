@@ -126,7 +126,7 @@
                      <td class="content_say1">모임명</td>
                      <td class="content_say2">${item.postTitle}</td> <!-- 게시글 불러오기 -->
                   </tr>
-                  <tr>
+                  <%-- <tr>
                   		<td class="btn" colspan=2>
 							<a class="nav-link" href="<c:url value='/community/group_community/group_join'>
 							<c:param name='headCount' value='${item.headCount}'/>
@@ -134,7 +134,8 @@
 							<c:param name='postTitle' value='${item.postTitle}'/> 
 							</c:url>">모임 가입하기</a>
 						</td>
-               </table>
+				 </tr>--%>
+               </table> 
             </td>
             <%-- <%
                if(cnt%3==0 && cnt!=0)
