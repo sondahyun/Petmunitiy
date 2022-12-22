@@ -176,6 +176,7 @@ function userList(targetUri) {
 	      <td style="width:100%; height:400px"><textarea id="wrtContent" name="content" style="font-size: 12px; width:80%; height:300px"></textarea></td>
 	    </tr>
 	</table>
+	<br>
 	<table>
 		 <tr align="center">
 			<td align="left">
