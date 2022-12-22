@@ -17,8 +17,9 @@
 <head>
 <title>myPage</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/list.css' />" type="text/css">
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
@@ -32,13 +33,13 @@
 			<table style="margin-top:0px;">
 			<tr>
 				<td>
-					<select name=phone1>
+					<!-- <select name=phone1>
 							<option value=0 selected>전체 커뮤니티</option>
 							<option value=0 selected>입양/임보 커뮤니티</option>
 							<option value=1>펫스타그램 커뮤니티</option>
 							<option value=2>그룹 커뮤니티</option>
 							<option value=3>정보 커뮤니티</option>
-					</select> 
+					</select>  -->
 					&nbsp;
 					<!--  <select name=phone1>
 						<option value=0 selected>전체게시판</option>

@@ -53,13 +53,13 @@ function search()
 		<table style="margin-top:0px;">
 		<tr>
 			<td>
-				<select name=community>
+				<!-- <select name=community>
 					<option value=0 selected>전체 커뮤니티</option>
 					<option value=1>입양/임보 커뮤니티</option>
 					<option value=2>펫스타그램 커뮤니티</option>
 					<option value=3>그룹 커뮤니티</option>
 					<option value=4>정보 커뮤니티</option>
-				</select> 
+				</select>  -->
 				&nbsp;
 				<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
 				<!-- <input type="date" style="width: 240" name="startDate" > -->
