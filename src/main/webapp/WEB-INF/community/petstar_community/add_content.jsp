@@ -65,7 +65,7 @@ function userList(targetUri) {
 		    <tr height="40">
 		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">사진</td>
 		      <td style="width: 100%" bgcolor="ffffff" >
-		         <input type="file" style="width: 240" name="fileName" size="11" multiple="multiple">
+		         <input type="file" style="width: 240" name="fileName">
 		      </td>
 		     </tr>
 		     <tr height="40">

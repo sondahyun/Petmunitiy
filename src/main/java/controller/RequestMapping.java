@@ -31,9 +31,10 @@ public class RequestMapping {
         mappings.put("/community/adopt_community/apply_form2", new ForwardController("/community/adopt_community/apply_form2.jsp"));
         mappings.put("/community/adopt_community/apply_result", new ListApplyController());
         mappings.put("/community/adopt_community/apply_result_closer", new ViewApplyController());
-        mappings.put("/community/adopt_community/add_content", new CreateP3Controller());
+        mappings.put("/community/adopt_community/adopt_community/add_content", new CreateP3Controller());
         mappings.put("/community/adopt_community/adopt_info_update", new UpdateP3Controller());
-        
+        mappings.put("/community/adopt_community/adopt_info_delete", new DeleteP3Controller());
+
         mappings.put("/community/adopt_community/adopt_info/createApply", new CreateApplyController());
         mappings.put("/community/adopt_community/adopt_info/deleteApply", new DeleteApplyController());
         
@@ -42,7 +43,8 @@ public class RequestMapping {
         mappings.put("/community/petstar_community/petstar_content", new ViewP2Controller());
         mappings.put("/community/petstar_community/add_content", new CreateP2Controller());
         mappings.put("/community/petstar_community/petstar_content_update", new UpdateP2Controller());
-        
+        mappings.put("/community/petstar_community/petstar_content_delete", new DeleteP2Controller());
+
         mappings.put("/community/petstar_community/add_comment", new CreateC2Controller());
         mappings.put("/community/petstar_community/update_comment", new UpdateC2Controller());
         mappings.put("/community/petstar_community/delete_comment", new DeleteC2Controller());
