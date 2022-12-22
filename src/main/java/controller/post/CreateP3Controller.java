@@ -77,8 +77,7 @@ public class CreateP3Controller implements Controller {
 		    		request.getParameter("health"),
 		    		request.getParameter("vaccination"),
 		    		request.getParameter("kind"),
-		    		filename,
-		    		pA.getPostId()
+		    		filename
 	    		);
 
 			manager.createAdoptionAnimal(aA);

@@ -29,7 +29,7 @@ public class PostAdoptionDAO {
    }
   
    public int create(PostAdoption post) throws SQLException {
-      String sql = "INSERT INTO PostAdoption VALUES (3,?,SYSDATE,?,?,?,?,?)";
+      String sql = "INSERT INTO PostAdoption VALUES (p3_seq.nextval,?,SYSDATE,?,?,?,?,?)";
       Object[] param = new Object[] { post.getPostTitle(), post.getaType(), post.getApproval(), null, post.getPostContent(), post.getLoginId() };
       
       

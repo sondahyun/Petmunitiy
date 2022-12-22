@@ -16,8 +16,8 @@ public class AdoptionAnimalDAO {
 
 	
 	public int create(AdoptionAnimal animal) throws SQLException {
-		String sql = "INSERT INTO AdoptionAnimal VALUES (3, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] {animal.getGender(), animal.getAge(), animal.getHealth(), animal.getVaccination(), animal.getKind(), animal.getFilename(), animal.getPostId()};
+		String sql = "INSERT INTO AdoptionAnimal VALUES (animal_seq.nextval, ?, ?, ?, ?, ?, ?, p3_seq.currval)";
+		Object[] param = new Object[] {animal.getGender(), animal.getAge(), animal.getHealth(), animal.getVaccination(), animal.getKind(), animal.getFilename()};
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		
 		try {
