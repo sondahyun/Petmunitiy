@@ -1,5 +1,6 @@
-<%@page contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=utf-8" import="java.util.*" import="model.*" import="controller.user.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%Message message = (Message) request.getAttribute("message"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,59 +128,47 @@
         text-align: center; /* Quirks Mode                  
    }*/
 </style>
-<script>
-function messageCreate() {
-	alert("보내기");
-   if (form.mTitle.value == "") {
-      alert("제목을 입력하십시오.");
-      form.mTitle.focus();
-      return false;
-   }
-   
-   if (form.loginId.value == "") {
-	   alert("수신자를 입력하십시오.");
-	   form.loginId.focus();
-	   return false;
-	}
-   if (form.content.value == "") {
-	   alert("내용을 입력하십시오.");
-	   form.content.focus();
-	   return false;
-	}
-   form.submit();
-}
-</script>
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
-<form name="form" method="POST" action="<c:url value='/message/message_write' />">
+
 <h3>쪽지쓰기</h3>
 <br>
 	<table style="width:100%; height:500px" border="1">
 	    <tr>
 	      <th style="width:10%; height:50px">제목</th>
-	      <td style="width:100%; height:50px"></td>
+	      <td style="width:100%; height:50px">${message.mTitle}</td>
 	    </tr>
+	    <tr>
+	      <th style="width:10%; height:50px">보낸 사람</th>
+	      <td style="width:100%; height:50px">
+	      	<% 
+	      	  int findSender = message.getSender();
+		      String senderNickName = UserSessionUtils.getUserNickName(findSender);
+		    %>
+		    <%=senderNickName %>
+	      </td>
+	    </tr>   
 	    <tr>
 	      <th style="width:10%; height:50px">받는 사람</th>
 	      <td style="width:100%; height:50px">
-	         
+	      	<% 
+	      	  int findReceiver = message.getReceiver();
+		      String receiverNickName = UserSessionUtils.getUserNickName(findReceiver);
+		    %>
+		    <%=receiverNickName %>
 	      </td>
-	    </tr>          
+	    </tr>  
+	    <tr>
+	      <th style="width:10%; height:50px">보낸 날짜</th>
+	      <td style="width:100%; height:50px">${message.sendDate}</td>
+	    </tr>         
 	    <tr style="width:100%; height:400px">
 	      <th style="width:10%; height:400px">내용</th>
-	      <td style="width:100%; height:400px"></td>
+	      <td style="width:100%; height:400px">${message.content}</td>
 	    </tr>
 	</table>
-	<table>
-		 <tr align="center">
-			<td align="left">
-			<input class="btn" type="button" value="전송하기" onClick="messageCreate()"> &nbsp;
-			<input class="btn" type="button" value="목록보기" onClick="userList('<c:url value='/message/message' />')">
-			</td>
-		 </tr> 
-	</table>   
-</form>
+
 </body>
 </html>
