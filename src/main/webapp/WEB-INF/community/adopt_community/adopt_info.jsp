@@ -8,7 +8,6 @@
 	
 	session.setAttribute("adoptAnimal", pA.getAnimal());
 	pageContext.setAttribute("apv", request.getAttribute("apId"));
-	
 %>
 <html>
 <head>
@@ -42,15 +41,17 @@
 	<c:set var="lui" value="<%=logId%>"/>
 	
 	<!-- 작성자 ==방문자일경우에 모임 수정 버튼 보임 -->
-	<a class="nav-link" 
-	href="<c:url value='/community/adopt_community/adopt_info_update'>
-	<c:param name='postId' value='${pA.postId}'/> 
-	</c:url>">폼 수정</a>
-	
-	<a class="nav-link" 
-	href="<c:url value='/community/adopt_community/adopt_info_delete'>
-	<c:param name='postId' value='${pA.postId}'/> 
-	</c:url>">폼 삭제</a>
+	<%if(logId.equals(pA.getLoginId())){ %>	
+		<a class="nav-link" 
+		href="<c:url value='/community/adopt_community/adopt_info_update'>
+		<c:param name='postId' value='${pA.postId}'/> 
+		</c:url>">폼 수정</a>
+		
+		<a class="nav-link" 
+		href="<c:url value='/community/adopt_community/adopt_info_delete'>
+		<c:param name='postId' value='${pA.postId}'/> 
+		</c:url>">폼 삭제</a>
+	<%} %>
 	
 
 	<c:if test="${lui == pA.loginId and pA.approval == 0}">

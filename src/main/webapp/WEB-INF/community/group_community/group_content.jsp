@@ -7,7 +7,7 @@
 	int headCount = (int)request.getAttribute("headCount");
 	List<Integer> joinUser = (List<Integer>)request.getAttribute("joinUser");
 	int userId= UserSessionUtils.getLoginUserId(session);
-
+	String lId=UserSessionUtils.getLoginId(session);
 
 %>
 <c:set var="pId" value="<%=post.getPostId() %>"/>
@@ -36,19 +36,21 @@
 				</td>
 			<!-- a class="nav-link" href="<c:url value='/community/group_community/group_community' />">그룹 커뮤니티</a> -->
 			</tr>
-			<tr>
-				<td class="btn">
-					<a class="nav-link" 
-					href="<c:url value='/community/group_community/group_content_update'>
-					<c:param name='postId' value='${post.postId}'/> 
-					</c:url>">모임 수정</a>
-				</td>
-				<td class="btn">
-					<a class="nav-link" href="<c:url value='/community/group_community/group_content_delete'>
-					<c:param name='postId' value='${post.postId}'/> 
-					</c:url>">모임 삭제</a>
-				</td>
-			</tr>
+			<%if(lId.equals(post.getLoginId())){ %>
+				<tr>
+					<td class="btn">
+						<a class="nav-link" 
+						href="<c:url value='/community/group_community/group_content_update'>
+						<c:param name='postId' value='${post.postId}'/> 
+						</c:url>">모임 수정</a>
+					</td>
+					<td class="btn">
+						<a class="nav-link" href="<c:url value='/community/group_community/group_content_delete'>
+						<c:param name='postId' value='${post.postId}'/> 
+						</c:url>">모임 삭제</a>
+					</td>
+				</tr>
+			<%} %>
 			<tr></tr>
 			<tr>
 				<td>
