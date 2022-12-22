@@ -22,6 +22,7 @@ public class RequestMapping {
 
     	// �� uri�� �����Ǵ� controller ��ü�� ���� �� ����
         mappings.put("/", new ForwardController("/index.jsp"));
+        mappings.put("/main/main", new MainController());
         mappings.put("/navbar", new ForwardController("/navbar.jsp"));
         
         //입양게시판
@@ -95,7 +96,6 @@ public class RequestMapping {
         mappings.put("/myPage/comment_zip", new ListCommentCreateController());
 
         //user
-        mappings.put("/main/main", new ForwardController("/main/main.jsp"));
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
