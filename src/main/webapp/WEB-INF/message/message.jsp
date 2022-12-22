@@ -145,10 +145,10 @@ List<Message> mList = (List<Message>)request.getAttribute("mList");
 	</tr>
 	<tr>
 		<td colspan=2 align="left">
-			<select name="newMessgeChk" id="newMessgeChk" style="width:100px">
+			<!-- <select name="newMessgeChk" id="newMessgeChk" style="width:100px">
 		        <option value="N" selected>보낸쪽지</option>
 		        <option value="Y">받은쪽지</option>
-		     </select>
+		     </select> -->
 			<input class="srch" type="text" placeholder="검색어를 입력하세요.">
 			<button class="btn" type = "submit">검색</button>
 		</td>
@@ -160,10 +160,14 @@ List<Message> mList = (List<Message>)request.getAttribute("mList");
 			<a class="btn" href="<c:url value='/message/message_write' />">쪽지쓰기</a>
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<a class="nav-link" href="<c:url value='/message/message' />">받은 쪽지함 </a>&ensp;
+			<a class="nav-link" href="<c:url value='/message/message2' />">보낸 쪽지함 </a>
+		</td>
+	</tr>
 </table>
 </form>
-<a class="nav-link" href="<c:url value='/message/message' />">받은 쪽지함 </a>&ensp;
-<a class="nav-link" href="<c:url value='/message/message2' />">보낸 쪽지함 </a>
 <br>
 
 	<table style="width:80%" align="center" summary="받은쪽지 목록(아이디,이름,제목,날짜 항목)">
