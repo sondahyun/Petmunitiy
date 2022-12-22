@@ -153,7 +153,7 @@
 	                <table class="group_main_table1">
 	                	<tr>	
 	                		<td>
-	                			<c:if test="${i.index > 5}"><c:set var="topN" value="true"/></c:if>
+	                			<c:if test="${i.index > 4}"><c:set var="topN" value="true"/></c:if>
 								<c:if test="${topN==false}">
 								<%
 									String find3User = p3List.get(index).getLoginId();									
@@ -195,17 +195,15 @@
          		<tr>
          			<td colspan=6>작성한 글이 없습니다.</td>
          		</tr>
-         		
          		<%} else{ %>
          		<tr>
-         			
 	         		<c:set var="topN" value="false"/>
 	         		<% int index2 = 0; %>
 		         	<c:forEach var="p2" items="${p2List}" varStatus="i">
+		         	<c:if test="${i.index > 4}"><c:set var="topN" value="true"/></c:if>
+						<c:if test="${topN==false}">
 		         	<td>
 		         		<table class="group_main_table1">
-		                <c:if test="${i.index > 5}"><c:set var="topN" value="true"/></c:if>
-						<c:if test="${topN==false}">
 						<%
 							String find2User = p2List.get(index2).getLoginId();	
 							String file2 = p2List.get(index2).getFileName();									
@@ -234,9 +232,9 @@
 		                     <td class="content_say1">글</td>
 		                     <td class="content_say2">${p2.postTitle}</td> <!-- 게시글 불러오기 -->
 		                  </tr>
-		                  </c:if>
 		                  <%index2++; %>
 	                  	</table>
+		                  </c:if>
 	                  </td>
 	                  </c:forEach>
                   <%} %>
@@ -259,10 +257,11 @@
 	         		<c:set var="topN" value="false"/>
 	         		<% int index3 = 0; %>
 		         	<c:forEach var="p0" items="${p0List}" varStatus="i">
+		         	<c:if test="${i.index > 4}"><c:set var="topN" value="true"/></c:if>
+						<c:if test="${topN==false}">
 		         	<td>
 		         		<table class="group_main_table1">
-		                <c:if test="${i.index > 4}"><c:set var="topN" value="true"/></c:if>
-						<c:if test="${topN==false}">
+		                
 							<%
 								String find0User = p0List.get(index3).getLoginId();	
 								String file0 = p0List.get(index3).getFileName();									
@@ -291,9 +290,9 @@
 			                     <td class="content_say1">글</td>
 			                     <td class="content_say2">${p0.postTitle}</td> <!-- 게시글 불러오기 -->
 			                  </tr>
-			                  </c:if>
 		                  <%index3++; %>
 	                  	</table>
+			                  </c:if>
 	                  </td>
 	                  </c:forEach>
                   <%} %>
