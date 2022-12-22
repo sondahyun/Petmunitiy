@@ -149,8 +149,8 @@ List<Message> mList = (List<Message>)request.getAttribute("mList");
 		        <option value="N" selected>보낸쪽지</option>
 		        <option value="Y">받은쪽지</option>
 		     </select> -->
-			<input class="srch" type="text" placeholder="검색어를 입력하세요.">
-			<button class="btn" type = "submit">검색</button>
+			<!-- <input class="srch" type="text" placeholder="검색어를 입력하세요.">
+			<button class="btn" type = "submit">검색</button> -->
 		</td>
 	</tr>
 	

@@ -116,7 +116,7 @@ if (c2List != null)
 							<table class="table table-striped"
 								style="text-align: center; width: 100%; border: 1px solid #dddddd">
 								<tr>
-									<td style="border-bottom: none; width: 10%" valign="middle"><br>
+									<td style="border-bottom: none; width: 10%" valign="top"><br>
 									<%
 										int loginUserId = UserSessionUtils.getLoginUserId(session);								
 									%>
@@ -125,13 +125,13 @@ if (c2List != null)
 									<td style="width: 80%"><input type="text"
 										style="width: 100%; height: 80px" name="commentContent"
 										class="form-control" placeholder="댓글을 입력하세요."></td>
-									<td style="width: 10%"><br>
+									<td style="width: 10%"  valign="top"><br>
 									<br>
 									<input type="submit" class="btn" value="댓글 작성"></td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td colspan="3"><input type="file" name="fileName"></td>
-								</tr>
+								</tr> -->
 							</table>
 						</form>
 					</div>

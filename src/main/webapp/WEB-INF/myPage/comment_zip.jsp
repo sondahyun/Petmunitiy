@@ -50,10 +50,10 @@
 					</select> -->
 					<%-- <c:if test="${registerFailed}">value="${user.phone}"</c:if> --%>
 					<!-- <input type="date" style="width: 240" name="startDate" > -->
-					<input type="date" style="width: 240" name="userBirth" >-<input type="date" style="width: 240" name="userBirth" >
-	 				&nbsp;
-				    <input class="srch" type="text" placeholder="검색어를 입력하세요.">
-				    <button class="btn" >검색</button>
+					<!-- <input type="date" style="width: 240" name="userBirth" >-<input type="date" style="width: 240" name="userBirth" >
+	 				&nbsp; -->
+				    <!-- <input class="srch" type="text" placeholder="검색어를 입력하세요."> -->
+				    <!--  <button class="btn" >검색</button> -->
 				</td>
 			</tr>
 			<tr>

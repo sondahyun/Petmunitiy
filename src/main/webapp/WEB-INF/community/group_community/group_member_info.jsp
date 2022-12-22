@@ -10,15 +10,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/modal.css' />" type="text/css">
 
 </head>
-<body>   
+<body>
+<%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->   
 
 <!-- registration form  -->
 
 <!--<h2>회원가입</h2>  -->
-	<h3>그룹원 상세정보 보기</h3>
-	<table style="background-color: #848484; width: 100%">
+<br>
+	<h2>그룹원 상세정보 보기</h2>
+	<br>
+	<h3>회원정보</h3>
+	<table class="list table" style="background-color: #848484; width: 100%">
 	
   	  <tbody>
   	  	<tr height="40">
@@ -54,17 +59,31 @@
  	</tbody>
 </table>
 <%if(pet == null){%>
-	펫이 등록되지 않았습니다.
+<br>
+<table>
+	<tr>
+		<td>
+		펫이 등록되지 않았습니다.
+		</td>
+	</tr>
+</table>
 <%}else{ %>
-<table style="width:100%">
-   <tr>
-   <td style="width:200px">
+<br>
+<table>
+	<tr>
+		<td style="width:200px">
    		<%if(pet!=null && pet.getFilename() == null){ %>
 			<img src="<c:url value='/images/linkedin_profile_image.png' />" style="width:200px; height:200px"/>	
 		<%}else{ %>
 			<img src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px" />	
 		<%} %>	 
-   </td>
+   		</td>
+   	</tr>
+</table>
+<br>
+<table style="width:100%">
+   <tr>
+   <h3>펫정보</h3>
    <td style="width:1200px">
    <br>
    	<table style="background-color: #848484; width: 100%">
@@ -106,8 +125,9 @@
 		      </td>
 		    </tr>
    	</table>
-   <%} %>
-</table>
+   </td>
+   </tr>
+</table>   <%} %>
 
 </body>
 </html>
