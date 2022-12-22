@@ -10,6 +10,7 @@ PostPetstargram p2 = (PostPetstargram) request.getAttribute("p2");
 ArrayList<CommentPetstargram> c2List = (ArrayList<CommentPetstargram>) request.getAttribute("c2List");
 if (c2List != null)
 	Collections.sort(c2List);
+String lId=UserSessionUtils.getLoginId(session);
 %>
 <c:set var="pId" value="${p2.postId}" />
 <c:set var="uId" value="<%= UserSessionUtils.getLoginUserId(session) %>"/>
@@ -32,16 +33,16 @@ if (c2List != null)
 				<h3>펫스타그램 폼</h3><br>
 				
 				<!-- 작성자 == 방문자일때 폼 수정 버튼 뜸 -->
-				<a class="nav-link" 
-				href="<c:url value='/community/petstar_community/petstar_content_update'>
-				<c:param name='postId' value='${p2.postId}'/> 
-				</c:url>">폼 수정</a>
-				
-				<a class="nav-link" 
-				href="<c:url value='/community/petstar_community/petstar_content_delete'>
-				<c:param name='postId' value='${p2.postId}'/> 
-				</c:url>">폼 삭제</a>
-				
+				<%if(lId.equals(p2.getLoginId())){ %>
+					<a class="nav-link" 
+					href="<c:url value='/community/petstar_community/petstar_content_update'>
+					<c:param name='postId' value='${p2.postId}'/> 
+					</c:url>">폼 수정</a>
+					<a class="nav-link" 
+					href="<c:url value='/community/petstar_community/petstar_content_delete'>
+					<c:param name='postId' value='${p2.postId}'/> 
+					</c:url>">폼 삭제</a>
+				<%} %>
 				<br>
 				<table
 					style="background-color: #848484; width: 100%; margin-top: 0px">
