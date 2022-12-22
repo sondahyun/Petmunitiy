@@ -192,7 +192,7 @@ List<Message> mList = (List<Message>)request.getAttribute("mList");
 		         <tr>
 		         <td>${message.messageId}</td>
 		          <td>
-		             <a href="<c:url value='/message/info_community/info_content'>
+		             <a href="<c:url value='/message/message_content'>
 		                   	<c:param name='messageId' value='${message.messageId}'/>
 		                  </c:url>">
 		             ${message.mTitle}</a>
@@ -239,7 +239,7 @@ else if(check=="N"){ System.out.println("보낸 쪽지입니다.");%>
 		         <tr>
 		         <td>${item.postId }</td>
 		          <td>
-		             <a href="<c:url value='/community/info_community/info_content'>
+		             <a href="<c:url value='/message/message_content'>
 		                   	<c:param name='postId' value='${item.postId}'/>
 		                  </c:url>">
 		             ${item.postTitle}</a>
