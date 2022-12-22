@@ -53,7 +53,6 @@
 				    <button class="btn" >검색</button> -->
 				</td>
 			</tr>
-			<%if(session.getAttribute("loginId") == null) {%> <!-- //정보게시판일 경우 -->
 			<tr>
 				<td>
 					정보 커뮤니티
@@ -91,14 +90,9 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<%}%>
+					<%} %>
 				</td>
 			</tr>
-			<%
-			}
-			else if(session.getAttribute("loginId") == null) //그룹 커뮤니티일때
-			{  
-			%>
 			<tr>
 				<td>
 					그룹 커뮤니티
@@ -136,14 +130,9 @@
 							</c:forEach>		
 						</tbody>
 					</table>
-					<%}%>
+					<%} %>
 				</td>
 			</tr>
-			<%
-			}
-			else if(session.getAttribute("loginId") == null) //펫스타그램 커뮤니티일때
-			{  
-			%>
 			<tr>
 				<td>
 					펫스타그램 커뮤니티
@@ -181,14 +170,9 @@
 							</c:forEach>		
 						</tbody>
 					</table>
-					<%}%>
+					<%} %>
 				</td>
 			</tr>
-			<%
-			}
-			else if(session.getAttribute("loginId") == null) //입양임보 커뮤니티일때
-			{  
-			%>
 			<tr>
 				<td>
 					입양/임보 커뮤니티
@@ -226,10 +210,9 @@
 							</c:forEach>		
 						</tbody>
 					</table>
-					<%}%>
+					<%} %>
 				</td>
 			</tr>
-			<% } %>
 			</table>
 		</td>
 	</tr>
