@@ -133,7 +133,7 @@
 <%@include file="/WEB-INF/navbar.jsp" %>
 <br>
 
-<h3>쪽지쓰기</h3>
+<h3>쪽지 상세보기</h3>
 <br>
 	<table style="width:100%; height:500px" border="1">
 	    <tr>
@@ -169,6 +169,13 @@
 	      <td style="width:100%; height:400px">${message.content}</td>
 	    </tr>
 	</table>
-
+	<br>
+	<table>
+		 <tr align="center">
+			<td align="left">
+				<input class="btn" type="button" value="목록보기" onClick="userList('<c:url value='/message/message' />')">
+			</td>
+		 </tr> 
+	</table>   
 </body>
 </html>
