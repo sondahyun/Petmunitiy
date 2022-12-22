@@ -72,114 +72,131 @@ function userList(targetUri) {
          <c:if test="${registerFailed}">
          <font color="red"><c:out value="${exception.getMessage()}" /></font>
        </c:if>
-<h3>마이페이지</h3>
+
+<table style="width:100%">
+<tr>
+	<td style="width:200px">
+	   		<%if(pet!=null && pet.getFilename() == null){ %>
+				<img src="<c:url value='/images/linkedin_profile_image.png' />" style="width:200px; height:200px"/>	
+			<%}else{ %>
+				<img src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px" />	
+				<%} %>	 
+	 </td>
+</tr>
+</table>
+<h3>마이페이지</h3>		
 <table style="width:100%">
    <tr>
-   <td style="width:200px">
-   		<%if(pet!=null && pet.getFilename() == null){ %>
-			<img src="<c:url value='/images/linkedin_profile_image.png' />" style="width:200px; height:200px"/>	
-		<%}else{ %>
-			<img src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px" />	
-			<%} %>	 
-   </td>
-   <td style="width:1200px">
-   <br>
-   <table style="background-color: #848484; width: 100%">
-    <!--<center>-->
-    <tr height="40">
-      <td width="50%" align="center" bgcolor="#E6E6E6">이름</td>
-      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-         ${user.userNickname}
-      </td>
-    </tr>
-    <tr height="40">
-      <td width="50%" align="center" bgcolor="#E6E6E6">생일</td>
-      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-		${user.userBirth}
-      </td>
-    </tr>
-    <tr height="40">
-      <td width="50%" align="center" bgcolor="#E6E6E6">성별</td>
-      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-		${user.gender}
-      </td>
-    </tr>
-    <tr height="40">
-      <td width="50%" align="center" bgcolor="#E6E6E6">전화번호</td>
-      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-		${user.phoneNumber}
-      </td>
-    </tr>
-    <tr height="40">
-      <td width="50%" align="center" bgcolor="#E6E6E6">사용자 ID</td>
-      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-		${user.loginId}
-      </td>
-    </tr>
-    <tr height="40">
-      <td width="50%" align="center" bgcolor="#E6E6E6">비밀번호</td>
-      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-		${user.loginPwd}
-      </td>
-    </tr>
-    <tr height="40">
-      <td width="50%" align="center" bgcolor="#E6E6E6">이메일 주소</td>
-      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-		${user.email}
-      </td>
-    </tr>
-    <tr height="40">
-      <td width="50%" align="center" bgcolor="#E6E6E6">거주지 주소</td>
-      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
-		${user.address}
-      </td>
-    </tr>   
-   </table>
-   
-   <h3>마이펫</h3>
-   <% if(pet == null){ %>
-	    pet이 등록되지 않았습니다.
-   <% }%>
-   <% if(pet != null) {%>
-	   <table style="background-color: #848484; width: 100%">
-	   		<tr height="40">
-		      <td align="center" bgcolor="#E6E6E6">이름</td>
-		      <td bgcolor="ffffff" style="padding-left: 10">
-		      	${pet.name}  		
-		      </td>
-		   </tr>
+	   <%-- <td style="width:200px">
+	   		<%if(pet!=null && pet.getFilename() == null){ %>
+				<img src="<c:url value='/images/linkedin_profile_image.png' />" style="width:200px; height:200px"/>	
+			<%}else{ %>
+				<img src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px" />	
+				<%} %>	 
+	   </td> --%>
+	   <td style="width:1200px">
+	   <br>
+		   <table style="background-color: #848484; width: 100%">
+		    <!--<center>-->
 		    <tr height="40">
-		      <td align="center" bgcolor="#E6E6E6">나이</td>
-		      <td bgcolor="ffffff" style="padding-left: 10">
-				${pet.age}
+		      <td width="50%" align="center" bgcolor="#E6E6E6">이름</td>
+		      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
+		         ${user.userNickname}
 		      </td>
 		    </tr>
 		    <tr height="40">
-		      <td align="center" bgcolor="#E6E6E6">성별</td>
-		      <td bgcolor="ffffff" style="padding-left: 10">
-		         ${pet.gender}
+		      <td width="50%" align="center" bgcolor="#E6E6E6">생일</td>
+		      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
+				${user.userBirth}
 		      </td>
 		    </tr>
 		    <tr height="40">
-		      <td align="center" bgcolor="#E6E6E6">건강상태</td>
-		      <td bgcolor="ffffff" style="padding-left: 10">
-		         ${pet.health}
+		      <td width="50%" align="center" bgcolor="#E6E6E6">성별</td>
+		      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
+				${user.gender}
 		      </td>
 		    </tr>
 		    <tr height="40">
-		      <td align="center" bgcolor="#E6E6E6">접종여부</td>
-		      <td bgcolor="ffffff" style="padding-left: 10">
-		         ${pet.vaccination}
+		      <td width="50%" align="center" bgcolor="#E6E6E6">전화번호</td>
+		      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
+				${user.phoneNumber}
 		      </td>
 		    </tr>
 		    <tr height="40">
-		      <td align="center" bgcolor="#E6E6E6">종</td>
-		      <td bgcolor="ffffff" style="padding-left: 10">
-		         ${pet.kind}
+		      <td width="50%" align="center" bgcolor="#E6E6E6">사용자 ID</td>
+		      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
+				${user.loginId}
 		      </td>
 		    </tr>
-	   </table>
-	    <%} %>
+		    <tr height="40">
+		      <td width="50%" align="center" bgcolor="#E6E6E6">비밀번호</td>
+		      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
+				${user.loginPwd}
+		      </td>
+		    </tr>
+		    <tr height="40">
+		      <td width="50%" align="center" bgcolor="#E6E6E6">이메일 주소</td>
+		      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
+				${user.email}
+		      </td>
+		    </tr>
+		    <tr height="40">
+		      <td width="50%" align="center" bgcolor="#E6E6E6">거주지 주소</td>
+		      <td width="50%" bgcolor="ffffff" style="padding-left: 10">
+				${user.address}
+		      </td>
+		    </tr>   
+		   </table>
+		</td>
+	</tr>
+   <tr>
+	   <td><br>
+		   <h3>마이펫</h3>
+		   <% if(pet == null){ %>
+			    pet이 등록되지 않았습니다.
+		   <% }%>
+		   <% if(pet != null) {%>
+			   <table style="background-color: #848484; width: 100%">
+			   		<tr height="40">
+				      <td align="center" bgcolor="#E6E6E6">이름</td>
+				      <td bgcolor="ffffff" style="padding-left: 10">
+				      	${pet.name}  		
+				      </td>
+				   </tr>
+				    <tr height="40">
+				      <td align="center" bgcolor="#E6E6E6">나이</td>
+				      <td bgcolor="ffffff" style="padding-left: 10">
+						${pet.age}
+				      </td>
+				    </tr>
+				    <tr height="40">
+				      <td align="center" bgcolor="#E6E6E6">성별</td>
+				      <td bgcolor="ffffff" style="padding-left: 10">
+				         ${pet.gender}
+				      </td>
+				    </tr>
+				    <tr height="40">
+				      <td align="center" bgcolor="#E6E6E6">건강상태</td>
+				      <td bgcolor="ffffff" style="padding-left: 10">
+				         ${pet.health}
+				      </td>
+				    </tr>
+				    <tr height="40">
+				      <td align="center" bgcolor="#E6E6E6">접종여부</td>
+				      <td bgcolor="ffffff" style="padding-left: 10">
+				         ${pet.vaccination}
+				      </td>
+				    </tr>
+				    <tr height="40">
+				      <td align="center" bgcolor="#E6E6E6">종</td>
+				      <td bgcolor="ffffff" style="padding-left: 10">
+				         ${pet.kind}
+				      </td>
+				    </tr>
+			   </table>
+			    <%} %>
+	    </td>
+	</tr>
 </table>
 </form>
 </body>

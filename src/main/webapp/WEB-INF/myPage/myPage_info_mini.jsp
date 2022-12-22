@@ -33,7 +33,7 @@
         border-collapse : collapse;
    }
 </style>
-<table class="myPage_mini">
+<table  style="width:90%" class="myPage_mini">
    <tr class="content">
       <td>
          <a href="<c:url value='/myPage/content_zip' />">작성글 모아보기</a> <!-- value 수정하기 -->
@@ -48,6 +48,12 @@
       <td>
          <!-- <input class="btn" type="button" value="ABOUT" onClick="location.href='/myPage/about.jsp';"> -->
          <a class="nav-link" href="<c:url value='/user/user_update' />">회원정보 수정</a>
+      </td>
+   </tr>
+   <tr class="correction">
+      <td>
+         <!-- <input class="btn" type="button" value="ABOUT" onClick="location.href='/myPage/about.jsp';"> -->
+         <a class="nav-link" href="<c:url value='/user/user_exit' />">회원 탈퇴</a>
       </td>
    </tr>
 </table>

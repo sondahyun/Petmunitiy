@@ -37,6 +37,11 @@ if (c2List != null)
 				<c:param name='postId' value='${p2.postId}'/> 
 				</c:url>">폼 수정</a>
 				
+				<a class="nav-link" 
+				href="<c:url value='/community/petstar_community/petstar_content_delete'>
+				<c:param name='postId' value='${p2.postId}'/> 
+				</c:url>">폼 삭제</a>
+				
 				<br>
 				<table
 					style="background-color: #848484; width: 100%; margin-top: 0px">

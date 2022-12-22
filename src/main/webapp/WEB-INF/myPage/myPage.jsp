@@ -12,9 +12,9 @@
 <%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
    <table style="width:100%">
       <tr>
-         <td width="5%"><%@include file="/WEB-INF/myPage/myPage_info_mini.jsp"%>
+         <td style="width : 15%; margin:auto"><%@include file="/WEB-INF/myPage/myPage_info_mini.jsp"%>
          </td>
-         <td width="95%"><%@include file="/WEB-INF/myPage/myPage_info.jsp"%>
+         <td style="width : 85%"><%@include file="/WEB-INF/myPage/myPage_info.jsp"%>
          </td>
    </table>
 </body>
