@@ -323,7 +323,7 @@ public class UserManager {
 	public int createAdoptionAnimal(AdoptionAnimal animal) throws SQLException{
 		return adoptionAnimalDAO.create(animal);
 	}
-	
+	 
 	public int updateP3Adoption(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.update(post);
 	}
