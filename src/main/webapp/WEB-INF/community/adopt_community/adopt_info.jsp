@@ -46,7 +46,12 @@
 	href="<c:url value='/community/adopt_community/adopt_info_update'>
 	<c:param name='postId' value='${pA.postId}'/> 
 	</c:url>">폼 수정</a>
-
+	
+	<a class="nav-link" 
+	href="<c:url value='/community/adopt_community/adopt_info_delete'>
+	<c:param name='postId' value='${pA.postId}'/> 
+	</c:url>">폼 삭제</a>
+	
 
 	<c:if test="${lui == pA.loginId and pA.approval == 0}">
 		<a style="float:right" href="<c:url value='/community/adopt_community/apply_result'><c:param name="postId" value="${pA.postId}"></c:param></c:url>">모아보기</a><br><br>
