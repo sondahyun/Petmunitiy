@@ -94,7 +94,8 @@
 				<% int index = 0; %>
 				<c:forEach var="item" varStatus="i" items="${p2List}">
 				<%
-					String findUser = p2List.get(index).getLoginId();									
+					String findUser = p2List.get(index).getLoginId();	
+					String file = p2List.get(index).getFileName();									
 				%>
 				<c:set var="userName" value="<%=UserSessionUtils.getUserNickName(findUser) %>"/>
 				<c:if test="${i.index%3==0}"><tr></c:if>
@@ -103,8 +104,17 @@
 						<tr></tr>
 						<tr class="pic2">
 							<td class="pic_td2" colspan=2>
+							<%if(file != null) {%>
 								<a href="<c:url value='/community/petstar_community/petstar_content'>
-										<c:param name='postId' value='${item.postId}'/></c:url>"> 사진 </a>
+										<c:param name='postId' value='${item.postId}'/></c:url>">  
+										<img src="<c:url value='/upload/${item.fileName}'/>" style="width:200px; height:200px" />		
+								</a>	
+							<%} else{%>
+								<a href="<c:url value='/community/petstar_community/petstar_content'>
+	                              <c:param name='postId' value='${item.postId}'/></c:url>"> 					
+	                              <img src="<c:url value='/images/linkedin_profile_image.png'/>" style="width:200px; height:200px" />		
+							 	</a>
+						 <%} %>
 							</td>
 						</tr>
 						<tr class="content_writer">

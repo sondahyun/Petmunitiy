@@ -60,11 +60,7 @@ function petstarUpdate() {
 						<td
 							style="height: 40%; width: 15%; align: center; background-color: #E6E6E6;">이미지</td>
 						<td style="width: 50%">
-							<% if(p2.getFileName() == null){%>
-								<img src="<c:url value='/images/linkedin_profile_image.png' />"
-								style="width: 500px; height: 500px" />
-							<%} 
-							else{%>
+							<% if(p2.getFileName()!=null){%>
 								<img src="<c:url value='/upload/${p2.fileName}'/>"
 								style="width: 500px; height: 500px" />
 							<%} %>

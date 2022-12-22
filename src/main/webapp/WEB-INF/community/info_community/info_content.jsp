@@ -57,8 +57,14 @@
 			    <tr>
 			    	<td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >이미지</td>
 			    	<td style="width:50%">
-				<!-- <a href="<c:url value='/main/main' />"> -->
-					<img src="<c:url value='/upload/${post.fileName}'/>" />		
+					<% if(post.getFileName() == null){%>
+						<img src="<c:url value='/images/linkedin_profile_image.png' />"
+							style="width: 500px; height: 500px" />
+					<%} 
+					else{%>
+						<img src="<c:url value='/upload/${post.fileName}'/>" 
+							style="width: 500px; height: 500px"/>	
+					<%} %>	
 				</td>
 				</tr>
 				<tr style="height: 40%; width: 100%">
