@@ -139,10 +139,20 @@
 						<td style="height:50%; width:90%; align:center; background-color:#E6E6E6;">
 							<!-- 팀원 목록 보기 
 							-> 클릭하면 개인정보로 넘어감 -->
-							<% for(int jId:joinUser){%>
-								<% String userNickName = UserSessionUtils.getUserNickName(jId); %>
-									<a href="/community/group_community/group_member_info" class="btn btn-link"><%=userNickName%>&ensp;</a>
-							<%} %>
+							
+							<% int index = 0; %>
+           					 <c:forEach var="jId" varStatus="i" items="${joinUser}">
+								<%
+								Integer idJoin = joinUser.get(index);
+								String userNickName = UserSessionUtils.getUserNickName(idJoin);
+								%>
+								<a class="btn btn-link" href="<c:url value='/community/group_community/group_member_info'>
+								<c:param name='userId' value='${jId}' /></c:url>">
+								<%=userNickName%>
+								</a>
+							 <%index++; %>
+									
+							</c:forEach>
 						</td>
 					</tr>
 				</table>

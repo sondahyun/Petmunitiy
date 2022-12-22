@@ -90,7 +90,11 @@
       <td class="main">
          <table>
             <%-- <%int cnt=0; %> --%>
+            <% int index = 0; %>
             <c:forEach var="item" varStatus="i" items="${p1List}">
+            <%
+				String file = p1List.get(index).getFileName();									
+			%>
             <%-- <%
                if(cnt%3==1)
                   out.println("<tr>");
@@ -101,8 +105,17 @@
                   <tr></tr>
                   <tr class="pic2">
                      <td class="pic_td2" colspan=2>
+                     	<%if(file != null) {%>
                         <a href="<c:url value='/community/group_community/group_content'>
-                              <c:param name='postId' value='${item.postId}'/></c:url>"> 사진 </a>
+                              <c:param name='postId' value='${item.postId}'/></c:url>"> 					
+                              <img src="<c:url value='/upload/${item.fileName}'/>" style="width:200px; height:200px" />		
+						 </a>
+						 <%} else{%>
+						 <a href="<c:url value='/community/group_community/group_content'>
+                              <c:param name='postId' value='${item.postId}'/></c:url>"> 					
+                              <img src="<c:url value='/images/linkedin_profile_image.png'/>" style="width:200px; height:200px" />		
+						 </a>
+						 <%} %>
                      </td>
                   </tr>
                   <tr class="content_writer">
@@ -114,7 +127,13 @@
                      <td class="content_say2">${item.postTitle}</td> <!-- 게시글 불러오기 -->
                   </tr>
                   <tr>
-                     <td colspan=2><input class="btn" type="button" value="모임 가입하기" onClick=""></td>
+                  		<td class="btn" colspan=2>
+							<a class="nav-link" href="<c:url value='/community/group_community/group_join'>
+							<c:param name='headCount' value='${item.headCount}'/>
+							<c:param name='postId' value='${item.postId}'/> 
+							<c:param name='postTitle' value='${item.postTitle}'/> 
+							</c:url>">모임 가입하기</a>
+						</td>
                </table>
             </td>
             <%-- <%
@@ -123,6 +142,7 @@
                cnt++;
             %> --%>
                <c:if test="${i.index%3==2 and i.index!=0}"></tr></c:if>
+               <%index++; %>
             </c:forEach>
          </table>
       </td>

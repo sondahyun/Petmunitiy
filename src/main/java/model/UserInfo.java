@@ -157,7 +157,7 @@ public class UserInfo {
 		return joinGroup;
 	}
 
-	public void setJoinName(String joinGroup) {
+	public void setJoinGroup(String joinGroup) {
 		this.joinGroup = joinGroup;
 	}
 
