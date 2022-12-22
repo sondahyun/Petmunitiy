@@ -29,17 +29,10 @@ public class ListCommentCreateController implements Controller {
 		List<CommentInformation> c0List = null;
 		c0List = manager.findC0WithUser(userId);
 		
-		List<String> p1List = new ArrayList<String>();
-		List<CommentGroup> c1List = null;
-		c1List = manager.findC1WithUser(userId);
-		
 		List<String> p2List = new ArrayList<String>();
 		List<CommentPetstargram> c2List = null;
 		c2List = manager.findC2WithUser(userId);
 		
-		List<String> p3List = new ArrayList<String>();
-		List<CommentAdoption> c3List = null;
-		c3List = manager.findC3WithUser(userId);
 		
 		if(!c0List.isEmpty()) {
 			for(CommentInformation ci: c0List) {
@@ -50,12 +43,6 @@ public class ListCommentCreateController implements Controller {
 			}
 		}
 		
-		if(!c1List.isEmpty()) {
-			for(CommentGroup cg: c1List) {
-				String pg = manager.findP1Title(cg.getPostId());
-				p1List.add(pg);
-			}	
-		}
 		
 		if(!c2List.isEmpty()) {
 			for(CommentPetstargram cp: c2List) {
@@ -63,13 +50,7 @@ public class ListCommentCreateController implements Controller {
 				p2List.add(pp);
 			}		
 		}
-		
-		if(!c3List.isEmpty()) {
-			for(CommentAdoption ca: c3List) {
-				String pa = manager.findP3Title(ca.getPostId());
-				p3List.add(pa);
-			}		
-		}
+	
 		
 	/*	List<PostGroup> p1List = null;
 		p1List = manager.findP1WithUser(loginId);
@@ -79,12 +60,10 @@ public class ListCommentCreateController implements Controller {
 		request.setAttribute("loginId", loginId);
 		request.setAttribute("c0List", c0List);		
 		request.setAttribute("p0List", p0List);
-		request.setAttribute("c1List", c1List);
-		request.setAttribute("p1List", p1List);
+		
 		request.setAttribute("c2List", c2List);
 		request.setAttribute("p2List", p2List);
-		request.setAttribute("c3List", c3List);
-		request.setAttribute("p3List", p3List);
+		
 		//request.setAttribute("p1List", p1List);
 		//request.setAttribute("p3List", p3List);
 		
