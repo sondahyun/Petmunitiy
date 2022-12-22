@@ -5,11 +5,11 @@
    @SuppressWarnings("unchecked")
    PostInformation post = (PostInformation)request.getAttribute("post");
 	ArrayList<CommentInformation> c0List = (ArrayList<CommentInformation>)request.getAttribute("c0List");
-	
+	String lId=UserSessionUtils.getLoginId(session);
 	Collections.sort(c0List);
 %>
 <c:set var="pId" value="<%=post.getPostId() %>"/>
-<c:set var="uId" value="<%= UserSessionUtils.getLoginUserId(session) %>"/>
+
 <html>
 <head>
 <title>정보 게시글</title>
@@ -34,7 +34,7 @@
 			</td>
 		<!-- a class="nav-link" href="<c:url value='/community/group_community/group_community' />">그룹 커뮤니티</a> -->
 		</tr>
-		<c:if test="${uId == item.userId}">
+		<%if(lId.equals(post.getLoginId())){ %>
 			<tr>
 				<td>
 					<a class="nav-link" 
@@ -46,7 +46,7 @@
 					</c:url>">폼 삭제</a>
 				</td>
 			</tr>
-		</c:if>
+		<%} %>
 		</table>
 		<br>
 		</td>
@@ -126,9 +126,6 @@
 									<td style="width:80%" valign="top"><input type="text" style="width:100%; height:80px" name = "commentContent" class="form-control" placeholder="댓글을 입력하세요."></td>
 									<td style="width:10%" valign="top"><br><br><input type="submit" class="btn" value="댓글 작성"></td>
 								</tr>
-								<!-- <tr>
-									<td colspan="3"><input type="file" name="fileName"></td>
-								</tr> -->
 							</table>
 						</form>
 					</div>

@@ -132,7 +132,7 @@ public class PostInformationDAO {
 
 	public List<PostInformation> searchP0List(String word, Date start, Date end) throws SQLException {
 		String sql = "SELECT * "+ "FROM PostInformation "+"where (postTitle like ? or postContent like ?) and (postDate between ?-1 and ?+1) ";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {word, word, new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime())});
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
