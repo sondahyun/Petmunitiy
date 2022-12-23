@@ -35,7 +35,7 @@ pageContext.setAttribute("adoptId", request.getAttribute("adoptId"));
 			</td>
 
 			<td class="main">
-				<table style="margin-top: 0px; width:100%">
+				<table style="margin-top: 0px;">
 					<%-- <tr>
 			<td>
 				<!--  <select name=phone1>
